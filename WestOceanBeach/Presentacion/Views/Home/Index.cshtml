@@ -78,7 +78,42 @@
 <!-- facilidades-->
 <section id="facilidades" style="background-color:green;">
     <p>Facilidades</p>
-  
+
+    <div class="w3-container">
+        <p>
+            Para las reservaciones de habitaciones junior se cuenta con facilidades como: <br>
+            Spa, Gimnasio, lavanderia y desayuno gratis durante el tiempo de estadia. <br>
+            Para las reservaciones de habitaciones estandar se cuenta con facilidades como: <br>
+            Lavanderia y desayuno gratis durante el tiempo de estadia. <br>
+        </p>
+    </div>
+
+    <div class="w3-content w3-section" style="max-width:500px">
+        <img class="slides w3-animate-top" src="https://www.sekco-laundryservices.com/media/1233/hero-orange-white-laundromat.jpg" style="width:100%">
+        <img class="slides w3-animate-bottom" src="https://www.timeoutriyadh.com/cloud/timeoutriyadh/2021/07/11/elqbkbwM-bestbreakfastsriyadhshutterstock_1-1200x800.jpg" style="width:100%">
+        <img class="slides w3-animate-bottom" src="https://www.timeoutriyadh.com/cloud/timeoutriyadh/2021/07/11/elqbkbwM-bestbreakfastsriyadhshutterstock_1-1200x800.jpg" style="width:100%">
+        <img class="slides w3-animate-top" src="https://www.hotelvalencialasarenas.com/wp-content/blogs.dir/1493/files/cabeceras/header-spa.jpg" style="width:100%">
+        <img class="slides w3-animate-bottom" src="https://www.bestgym.com.mx/storage/home-page/August2020/kW1Sf6E1K9ti7OfsCJdp.jpg" style="width:100%">
+    </div>
+
+    <script>
+        // para intercambiar imagenes durante un periodo de tiempo 
+            var myIndex = 0;
+            carousel();
+
+            function carousel() {
+                var i;
+                var x = document.getElementsByClassName("slides");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                myIndex++;
+                if (myIndex > x.length) { myIndex = 1 }
+                x[myIndex - 1].style.display = "block";
+                setTimeout(carousel, 2500);
+            }
+    </script>
+
 </section>
 
 
@@ -86,7 +121,19 @@
 <!-- About Section -->
 <section id="sobrenosotros" style="background-color:red;">
     <p>About</p>
-
+    <p>
+        El hotel West Ocean Beach, ubicado en (UBICACION) es el primer hotel que posee la cadena en Costa Rica, <br>
+        tenemos una larga trayectoria en el manejo de hoteles desde 1985, nos hemos ubicado en los destinos <br>
+        turisticos más concurridos del mundo, y Costa Rica no iba a ser la excepción. En West Ocean Beach, <br>
+        nos caracterizamos por brindar una experiencia inolvidable, con la mayor comodidad y opciones de <br>
+        entretenimiento y descanso para las personas que nos visitan. <br>
+        Una valiosa experiencia: <br>
+        Juana Bolaños, la fundadora de la cadena West Ocean Beach, fue una recepcionista en un hotel de alto prestigio <br>
+        en los Estado Unidos, donde trabajó por 10 años, hasta que se empezó a sentir inconforme con lo que veía en el  <br>
+        hotel, precios muy elevados, servicios innecesarios, poco interés en la experencia de los clientes, y demás <br>
+        situaciones, por esta razón su sueno fue crear una cadena de hoteles realmente interesados en generar una <br>
+        experiencia inolvidable y a precios accesibles.<br>
+    </p>
 </section>
 
 <!-- contacto Section -->
