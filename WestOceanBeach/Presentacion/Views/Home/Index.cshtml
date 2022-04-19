@@ -9,24 +9,30 @@
   </head>
 <link href="~/css/Katherine.css" rel="stylesheet" type="text/css">
 
-<!-- Home Section -->
-<section id="home">
-    <ul id="contenedor">
-      <div id="menuu">
+
+
+    
+      <div id="menuu" class="estatica">
         <div class="titulo">
       <img class="izquierda" src="https://i.postimg.cc/Qxvj8K4q/logo.png">
       <aside> <p class="new"> Hotel West Ocean Beach</p></aside>
+      
       </div>
-        <hr style="height:8px;border-width:0;color:#3498DB;background-color:#3498DB">
+       <hr style="height:7px;border-width:0;color:#3498DB;background-color:#3498DB;">
+       
       </div>
-       </ul>
+     
+
+
+
+<section>
  
-        <nav id="cuerpo">
-            <hr class="menu" />
+        <nav >
+            
             <ul class="menuVert1">
             <nav id="menu" class="navbar navbar-default navbar-fixed-top">
              <div class="container"> 
-              <ul class="nav navbar-nav">
+              <ul class="nav navbar-nav alto">
                 <li><a href="#home" class="page-scroll">Inicio</a></li>
                 <li><a href="#sobrenosotros" class="page-scroll">Sobre Nosotros</a></li>
                 <li><a href="#facilidades" class="page-scroll">Facilidades</a></li>
@@ -38,17 +44,24 @@
           </div>
            </nav>
             </ul>
-         
+          </nav>
 
-    <table class="default">
+   
+</section>
+
+<!-- Home Section -->
+<section id="home" style="background-color:white;">
+
+
+    <table class="default posicion">
       <tr>
-        <p class="new2">  Bienvenidos al Hotel West Ocean Beach</p>
+        <p class="new2 posicion">  Bienvenidos al Hotel West Ocean Beach</p>
       </tr>
      <th>
-         <img class="imgnew3" src="https://www.nammbu.com/wp-content/uploads/2020/03/restaurant.jpg" alt="Nature">
+         <img class="imgnew3 " src="https://www.nammbu.com/wp-content/uploads/2020/03/restaurant.jpg" alt="Nature">
      </th>
      <th>
-            <p class="msjBienvenida">Lorem ipsum dolor sit amet, maiores ornare ac fermentum, imperdiet ut
+            <p class="msjBienvenida ">Lorem ipsum dolor sit amet, maiores ornare ac fermentum, imperdiet ut
             vivamus a, nam lectus at nunc. Cum quam euismod sem, semper ut potenti pellentesque quisque. In eget sapien sed, sit duis vestibulum
             ultricies, placerat morbi amet vel, nullam in in lorem vel. In molestie elit dui
             dictum, praesent nascetur pulvinar sed, in dolor pede in aliquam, risus nec error quis pharetra.
@@ -70,84 +83,93 @@
     </th>
   </tr>
 </table>
-  </nav>
 
-<div id="footer">
-</div>    
+
+
 </section>
-<!-- facilidades-->
-<section id="facilidades" style="background-color:green;">
-    <p>Facilidades</p>
 
-    <div class="w3-container">
-        <p>
-            Para las reservaciones de habitaciones junior se cuenta con facilidades como: <br>
-            Spa, Gimnasio, lavanderia y desayuno gratis durante el tiempo de estadia. <br>
-            Para las reservaciones de habitaciones estandar se cuenta con facilidades como: <br>
-            Lavanderia y desayuno gratis durante el tiempo de estadia. <br>
+
+
+
+    <!-- facilidades-->
+    <section id="facilidades" style="background-color:white;">
+        
+            <p class="posicion">Facilidades</p>
+
+            <div class="w3-container posicion">
+                <p>
+                    Para las reservaciones de habitaciones junior se cuenta con facilidades como: <br>
+                    Spa, Gimnasio, lavanderia y desayuno gratis durante el tiempo de estadia. <br>
+                    Para las reservaciones de habitaciones estandar se cuenta con facilidades como: <br>
+                    Lavanderia y desayuno gratis durante el tiempo de estadia. <br>
+                </p>
+            </div>
+
+            <div class="w3-content w3-section posicion" style="max-width:500px">
+                <img class="slides w3-animate-top" src="https://www.sekco-laundryservices.com/media/1233/hero-orange-white-laundromat.jpg" style="width:100%">
+                <img class="slides w3-animate-bottom" src="https://www.timeoutriyadh.com/cloud/timeoutriyadh/2021/07/11/elqbkbwM-bestbreakfastsriyadhshutterstock_1-1200x800.jpg" style="width:100%">
+                <img class="slides w3-animate-bottom" src="https://www.timeoutriyadh.com/cloud/timeoutriyadh/2021/07/11/elqbkbwM-bestbreakfastsriyadhshutterstock_1-1200x800.jpg" style="width:100%">
+                <img class="slides w3-animate-top" src="https://www.hotelvalencialasarenas.com/wp-content/blogs.dir/1493/files/cabeceras/header-spa.jpg" style="width:100%">
+                <img class="slides w3-animate-bottom" src="https://www.bestgym.com.mx/storage/home-page/August2020/kW1Sf6E1K9ti7OfsCJdp.jpg" style="width:100%">
+            </div>
+
+            <script>
+                // para intercambiar imagenes durante un periodo de tiempo 
+                    var myIndex = 0;
+                    carousel();
+
+                    function carousel() {
+                        var i;
+                        var x = document.getElementsByClassName("slides");
+                        for (i = 0; i < x.length; i++) {
+                            x[i].style.display = "none";
+                        }
+                        myIndex++;
+                        if (myIndex > x.length) { myIndex = 1 }
+                        x[myIndex - 1].style.display = "block";
+                        setTimeout(carousel, 2500);
+                    }
+            </script>
+
+     
+
+    </section>
+
+
+
+    <!-- About Section -->
+    <section id="sobrenosotros" style="background-color:white;">
+        <p class="posicion">About</p>
+        <p class="posicion">
+            El hotel West Ocean Beach, ubicado en (UBICACION) es el primer hotel que posee la cadena en Costa Rica, <br>
+            tenemos una larga trayectoria en el manejo de hoteles desde 1985, nos hemos ubicado en los destinos <br>
+            turisticos más concurridos del mundo, y Costa Rica no iba a ser la excepción. En West Ocean Beach, <br>
+            nos caracterizamos por brindar una experiencia inolvidable, con la mayor comodidad y opciones de <br>
+            entretenimiento y descanso para las personas que nos visitan. <br>
+            Una valiosa experiencia: <br>
+            Juana Bolaños, la fundadora de la cadena West Ocean Beach, fue una recepcionista en un hotel de alto prestigio <br>
+            en los Estado Unidos, donde trabajó por 10 años, hasta que se empezó a sentir inconforme con lo que veía en el  <br>
+            hotel, precios muy elevados, servicios innecesarios, poco interés en la experencia de los clientes, y demás <br>
+            situaciones, por esta razón su sueno fue crear una cadena de hoteles realmente interesados en generar una <br>
+            experiencia inolvidable y a precios accesibles.<br>
         </p>
-    </div>
+    </section>
 
-    <div class="w3-content w3-section" style="max-width:500px">
-        <img class="slides w3-animate-top" src="https://www.sekco-laundryservices.com/media/1233/hero-orange-white-laundromat.jpg" style="width:100%">
-        <img class="slides w3-animate-bottom" src="https://www.timeoutriyadh.com/cloud/timeoutriyadh/2021/07/11/elqbkbwM-bestbreakfastsriyadhshutterstock_1-1200x800.jpg" style="width:100%">
-        <img class="slides w3-animate-bottom" src="https://www.timeoutriyadh.com/cloud/timeoutriyadh/2021/07/11/elqbkbwM-bestbreakfastsriyadhshutterstock_1-1200x800.jpg" style="width:100%">
-        <img class="slides w3-animate-top" src="https://www.hotelvalencialasarenas.com/wp-content/blogs.dir/1493/files/cabeceras/header-spa.jpg" style="width:100%">
-        <img class="slides w3-animate-bottom" src="https://www.bestgym.com.mx/storage/home-page/August2020/kW1Sf6E1K9ti7OfsCJdp.jpg" style="width:100%">
-    </div>
-
-    <script>
-        // para intercambiar imagenes durante un periodo de tiempo 
-            var myIndex = 0;
-            carousel();
-
-            function carousel() {
-                var i;
-                var x = document.getElementsByClassName("slides");
-                for (i = 0; i < x.length; i++) {
-                    x[i].style.display = "none";
-                }
-                myIndex++;
-                if (myIndex > x.length) { myIndex = 1 }
-                x[myIndex - 1].style.display = "block";
-                setTimeout(carousel, 2500);
-            }
-    </script>
-
-</section>
-
-
-
-<!-- About Section -->
-<section id="sobrenosotros" style="background-color:red;">
-    <p>About</p>
-    <p>
-        El hotel West Ocean Beach, ubicado en (UBICACION) es el primer hotel que posee la cadena en Costa Rica, <br>
-        tenemos una larga trayectoria en el manejo de hoteles desde 1985, nos hemos ubicado en los destinos <br>
-        turisticos más concurridos del mundo, y Costa Rica no iba a ser la excepción. En West Ocean Beach, <br>
-        nos caracterizamos por brindar una experiencia inolvidable, con la mayor comodidad y opciones de <br>
-        entretenimiento y descanso para las personas que nos visitan. <br>
-        Una valiosa experiencia: <br>
-        Juana Bolaños, la fundadora de la cadena West Ocean Beach, fue una recepcionista en un hotel de alto prestigio <br>
-        en los Estado Unidos, donde trabajó por 10 años, hasta que se empezó a sentir inconforme con lo que veía en el  <br>
-        hotel, precios muy elevados, servicios innecesarios, poco interés en la experencia de los clientes, y demás <br>
-        situaciones, por esta razón su sueno fue crear una cadena de hoteles realmente interesados en generar una <br>
-        experiencia inolvidable y a precios accesibles.<br>
-    </p>
-</section>
-
-<!-- contacto Section -->
-<section id="contacto" style="background-color:blue;">
-    <p>Contact</p>
+    <!-- contacto Section -->
+    <section id="contacto" style="background-color:blue;">
+        <p class="posicion">Contact</p>
  
-</section>
+    </section>
 
 
 
 
-<!-- como llegar Section -->
-<div id="comollegar" style="background-color:pink;">
-    <p>Como llegar</p>
+    <!-- como llegar Section -->
+    <div id="comollegar" style="background-color:pink;">
+        <p >Como llegar</p>
 
-</div>
+    </div>
+
+
+</secon>
  
