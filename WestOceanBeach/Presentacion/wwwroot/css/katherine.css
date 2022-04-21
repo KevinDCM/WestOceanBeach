@@ -4,7 +4,9 @@ body {
     background-color: #cccccc;
 }
 
-
+html {
+    font-family: Times New Roman, Arial, sans-serif;
+}
 #cuerpo {
     height: 800px;
     background-color: white;
@@ -72,6 +74,16 @@ p.new2 {
     text-align: center;
     font-size: 32px;
     text-shadow: 7px 4px 5px #3498DB;
+}
+p.Alineacion {
+    margin-left: 2em;
+    text-align: justify;
+    margin-right: 2em;
+}
+p.Alineacion2 {
+    margin-left: 6em;
+    text-align: justify;
+    margin-right: 3em;
 }
 
 div.titulo {
@@ -173,15 +185,11 @@ textarea.cajamsjBienvenida {
 p.msjBienvenida {
     text-align: justify;
     color: #000;
-    height: 400px;
-    width: 550px;
-    display: block;
-    margin: 0px auto;
     background: white;
     color: darkslateblue;
     font-weight: bold;
     padding: 1px;
-    border: 3px solid #5878ca;
+
 }
 .alto {
     margin-top:155px;
@@ -192,4 +200,9 @@ p.msjBienvenida {
     position: sticky;
     top: 0;
    
+}
+
+li {
+    line-height: 1.5;
+
 }
