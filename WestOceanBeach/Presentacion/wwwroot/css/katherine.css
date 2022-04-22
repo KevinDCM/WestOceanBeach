@@ -1,0 +1,208 @@
+﻿
+body {
+    background-image: url("https://st.depositphotos.com/2343945/4774/i/950/depositphotos_47744377-stock-photo-white-sand-background.jpg");
+    background-color: #cccccc;
+}
+
+html {
+    font-family: Times New Roman, Arial, sans-serif;
+}
+#cuerpo {
+    height: 800px;
+    background-color: white;
+}
+
+#contenedor {
+    width: 1100px;
+}
+
+#footer {
+    height: 5px;
+    width: 1100px;
+    background-color: #86b4ca;
+}
+
+.responsive {
+    width: 100%;
+    height: auto;
+}
+
+.imagCentr {
+    display: block;
+    margin: auto;
+}
+
+img.imgnew {
+    max-width: 100%;
+    max-height: 100%;
+    height: 200px;
+    width: 200px;
+}
+
+img.imgnew3 {
+    max-width: 100%;
+    max-height: 100%;
+    height: 400px;
+    width: 550px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header {
+    padding: 50px;
+    text-align: center;
+    // background: #1abc9c;
+    background-image: url("https://www.lkm.org.uk/wp-content/uploads/2019/08/LKM-Summer-Banner-2.jpg");
+    color: white;
+    font-size: 50px;
+    height: 300px;
+    width: 1100px;
+}
+
+p.new {
+    font-family: new times roman;
+    font-size: large;
+    text-align: center;
+    font-size: 42px;
+    text-shadow: 7px 4px 5px #3498DB;
+}
+
+p.new2 {
+    font-family: new times roman;
+    font-size: large;
+    text-align: center;
+    font-size: 32px;
+    text-shadow: 7px 4px 5px #3498DB;
+}
+p.Alineacion {
+    margin-left: 2em;
+    text-align: justify;
+    margin-right: 2em;
+}
+p.Alineacion2 {
+    margin-left: 6em;
+    text-align: justify;
+    margin-right: 3em;
+}
+
+div.titulo {
+    width: 100%;
+    margin: 20px auto;
+    background-color: #86b4ca;
+    color: #fff;
+    padding: 15px;
+}
+
+    div.titulo img.izquierda {
+        float: left;
+        margin-right: 10px;
+        max-width: 100%;
+        max-height: 100%;
+        height: 100px;
+        width: 150px;
+    }
+
+
+
+/* Curso CSS estilos */
+* {
+    font-family: new times roman;
+}
+
+hr.menu {
+    display: none;
+    margin-top:0px;
+ 
+}
+
+ul.menuVert1 {
+    width: 290px;
+    list-style: none;
+    text-align: center;
+    text-shadow: 2px 2px 4px #3498DB;
+    padding: 0;
+    
+}
+
+    ul.menuVert1 li {
+        padding: 10px 0px;
+        border: groove white;
+        border-width: 6px 6px 0px 6px;
+        background-color: #3498DB;
+    }
+
+        ul.menuVert1 li:last-child {
+            border-bottom: groove white;
+            border-bottom-width: 8px;
+        }
+
+        ul.menuVert1 li a:link, ul.menuVert1 li a:visited {
+            text-decoration: none;
+            color: white;
+        }
+
+        ul.menuVert1 li:hover {
+            background-color: #47e6f0;
+        }
+
+.caja {
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+    color: #000000;
+    font-size: 15px;
+    font-weight: 200;
+    text-align: justify;
+    background: white;
+    margin: 0 0 25px;
+    overflow: hidden;
+    padding: 10px;
+    border-radius: 35px 0px 35px 0px;
+    -moz-border-radius: 15px 0px 15px 0px;
+    -webkit-border-radius: 15px 0px 15px 0px;
+    border: 2px solid #5878ca;
+}
+
+.caja2 {
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+    color: #000000;
+    font-size: 15px;
+    font-weight: 200;
+    text-align: justify;
+    background: white;
+    margin: 0 0 25px;
+    overflow: hidden;
+}
+
+textarea.cajamsjBienvenida {
+    text-align: center;
+    color: #000;
+    height: 418px;
+    width: 500px;
+    display: block;
+    margin: 0px auto;
+}
+
+p.msjBienvenida {
+    text-align: justify;
+    color: #000;
+    background: white;
+    color: darkslateblue;
+    font-weight: bold;
+    padding: 1px;
+
+}
+.alto {
+    margin-top:155px;
+  
+}
+.estatica {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+   
+}
+
+li {
+    line-height: 1.5;
+
+}
