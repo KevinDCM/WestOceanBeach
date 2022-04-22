@@ -117,16 +117,16 @@ hr.menu {
 }
 
 ul.menuVert1 {
-    width: 290px;
     list-style: none;
     text-align: center;
     text-shadow: 2px 2px 4px #3498DB;
     padding: 0;
-    
+    width:10em;
+   
 }
 
     ul.menuVert1 li {
-        padding: 10px 0px;
+        padding: 5px 0px;
         border: groove white;
         border-width: 6px 6px 0px 6px;
         background-color: #3498DB;
@@ -134,7 +134,7 @@ ul.menuVert1 {
 
         ul.menuVert1 li:last-child {
             border-bottom: groove white;
-            border-bottom-width: 8px;
+            border-bottom-width: 5px;
         }
 
         ul.menuVert1 li a:link, ul.menuVert1 li a:visited {
@@ -206,3 +206,4 @@ li {
     line-height: 1.5;
 
 }
+
