@@ -131,5 +131,48 @@ body {
     text-shadow: 7px 4px 5px #3498DB;
 }
 
+.espacio {
+    width: 270px;
+    height: 300px;
+    margin-left: 20px;
+    border: 3px solid #73AD21;
+}
+
+#imgCarrusel {
+    width: 265px;
+    height: 290px;
+}
+
+#galeria1 {
+    margin-left: 4em;
+}
+
+.galeria2 {
+    display: inline-block;
+    margin-left: 4em;
+    width: 270px;
+    height: 300px;
+    margin-left: 20px;
+    border: 3px solid #73AD21;
+}
+
+.forma {
+    display: inline-block;
+}
+
+.parent {
+    margin: 1rem;
+}
+
+.child {
+    display: inline-block;
+    padding: 0;
+    vertical-align: middle;
+}
+
+#childLeft {
+    margin-left: 25px;
+}
+
 
 
