@@ -75,6 +75,13 @@ p.new2 {
     font-size: 32px;
     text-shadow: 7px 4px 5px #3498DB;
 }
+
+#contactoo {
+    background-color: lightblue;
+    color: black;
+    padding: 40px;
+    text-align: center;
+}
 p.Alineacion {
     margin-left: 2em;
     text-align: justify;
