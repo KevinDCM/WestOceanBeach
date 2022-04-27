@@ -10,14 +10,23 @@ namespace APItest.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ClienteController : ControllerBase
+    public class ReservaController : ControllerBase
     {
         [HttpPost]
-        [Route("insertarCliente")]
-        public string insertarCliente(Cliente datosCliente)
+        [Route("obtenerHabitaciones")]
+        public string obtenerHabitaciones(Reserva reserva)
         {
-           return new ClienteBusiness().insertarCliente(datosCliente);
-        }
+            return new ReservaBusiness().buscarHabitaciones(reserva);
+        }// fin m
 
-    }
-}
+        [HttpPost]
+        [Route("reservarHabitacion")]
+        public string reservarHabitacion(Reserva reserva)
+        {
+            return new ReservaBusiness().reservarHabitacion(reserva);
+        }// fin m
+
+    }// fin clase
+
+}// fin
+
