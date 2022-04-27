@@ -65,7 +65,6 @@ p.new {
     font-size: large;
     text-align: center;
     font-size: 42px;
-    text-shadow: 7px 4px 5px #3498DB;
 }
 
 p.new2 {
@@ -73,7 +72,6 @@ p.new2 {
     font-size: large;
     text-align: center;
     font-size: 32px;
-    text-shadow: 7px 4px 5px #3498DB;
 }
 
 #contactoo {
@@ -108,6 +106,7 @@ div.titulo {
         max-height: 100%;
         height: 100px;
         width: 150px;
+        margin-top:-10px;
     }
 
 
@@ -150,7 +149,7 @@ ul.menuVert1 {
         }
 
         ul.menuVert1 li:hover {
-            background-color: #47e6f0;
+            background-color: lightgray;
         }
 
 .caja {
