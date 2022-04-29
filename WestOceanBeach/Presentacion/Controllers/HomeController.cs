@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using Presentacion.Models;
 using System;
 using System.Collections.Generic;
@@ -25,9 +26,35 @@ namespace Presentacion.Controllers
         {
             _logger = logger;
         }
-
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+             new MediaTypeWithQualityHeaderValue("application/json"));
+            
+
+           var response = await client.GetAsync("https://localhost:44386/SitioGeneral/obtenerSitioGeneral");
+           string resultado = await response.Content.ReadAsStringAsync();
+          var sitioGeneral = JsonConvert.DeserializeObject<SitioGeneral>(resultado);
+
+           
+            ViewBag.Home = sitioGeneral.HOME;
+           
+            string[] subs = sitioGeneral.SOBRE_NOSOTROS.Split('/');
+            string[] subs2 = sitioGeneral.CONTACTO.Split(',');
+
+            @ViewBag.texto1=subs[0];
+            @ViewBag.texto2 = subs[1];
+            @ViewBag.texto3 = subs[2];
+            @ViewBag.texto4 = subs[3];
+            @ViewBag.contacto1=subs2[0];
+            @ViewBag.contacto2 = subs2[1];
+            @ViewBag.contacto3 = subs2[2];
+            @ViewBag.contacto4 = subs2[3];
+
+
             return View();
         }
 
@@ -41,6 +68,9 @@ namespace Presentacion.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+       
+
 
         [HttpPost]
         public async Task<IActionResult> buscarHabitaciones(Reserva reserva)
