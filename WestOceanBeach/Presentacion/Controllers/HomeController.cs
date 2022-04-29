@@ -37,7 +37,7 @@ namespace Presentacion.Controllers
 
            var response = await client.GetAsync("https://localhost:44386/SitioGeneral/obtenerSitioGeneral");
            string resultado = await response.Content.ReadAsStringAsync();
-          var sitioGeneral = JsonConvert.DeserializeObject<SitioGeneral>(resultado);
+           var sitioGeneral = JsonConvert.DeserializeObject<SitioGeneral>(resultado);
 
            
             ViewBag.Home = sitioGeneral.HOME;
