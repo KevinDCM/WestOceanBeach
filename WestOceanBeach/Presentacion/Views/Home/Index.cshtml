@@ -1,5 +1,6 @@
 @model Entities.Entities.Reserva
 
+
 @{
     ViewData["Title"] = "Hotel West Ocean Beach Resort";
 }
@@ -95,14 +96,9 @@
                     <div class="col-sm-4">
                         <p class="msjBienvenida">
                         <p class="new">Bienvenidos al Hotel West Ocean Beach</p>
-                        <p class="Alineacion">
-                            Querido invitado,
-                            Es un placer darle la bienvenida. Sabemos que tiene una variedad de hoteles para elegir. 
-                            Nos esforzamos por brindarle un servicio amable y atento a un precio asequible, con habitaciones limpias y cómodas. 
-                            Queremos que disfrute cada día de su estadía por lo que garantizamos un excelente servicio. 
-                            El personal amable y profesional de West Ocean Beach Resort está comprometido a brindarle una estadía placentera y cómoda.
-                            Esperamos que continúe visitando nuestro hotel. 
-                            Gracias por preferirnos. 
+                        <p id="parrafoHome" class="Alineacion">
+                            @ViewBag.Home
+
                         </p>
                     </div>
                 </div>
@@ -246,16 +242,7 @@
 
                 <h2 class="new">Acerca de</h2>
                 <p class="Alineacion2">
-                    El hotel West Ocean Beach, ubicado en la provincia de <a href="#comollegar">Puntarenas, Costa Rica,</a> es el primer hotel que posee la cadena en Costa Rica,
-                    tenemos una larga trayectoria en el manejo de hoteles desde 1985, nos hemos ubicado en los destinos turisticos
-                    más concurridos del mundo, y Costa Rica no iba a ser la excepción. En West Ocean Beach, nos caracterizamos por brindar
-                    una experiencia inolvidable, con la mayor comodidad y opciones entretenimiento y descanso para las personas que nos visitan.<br>
-                    Una valiosa experiencia: <br>
-                    Juana Bolaños, la fundadora de la cadena West Ocean Beach, fue una recepcionista en un hotel de alto prestigio
-                    en los Estado Unidos, donde trabajó por 10 años, hasta que se empezó a sentir inconforme con lo que veía en el
-                    hotel, precios muy elevados, servicios innecesarios, poco interés en la experencia de los clientes, y demás
-                    situaciones, por esta razón su sueno fue crear una cadena de hoteles realmente interesados en generar una
-                    experiencia inolvidable y a precios accesibles.<br>
+                    @ViewBag.texto1 <a href="#comollegar">Puntarenas, Costa Rica,</a>@ViewBag.texto2.<br> @ViewBag.texto3 <br> @ViewBag.texto4
                 </p>
 
                 <!-- galeria -->
@@ -390,15 +377,16 @@
                 <div class="row">
               
                     <div class="col-sm-6">
+                        
 
                         <div id="ubicacionTextoContact">
                             <br />
-                              <h4 id="tituloContacto">Hotel West Ocean Beach</h4>
-                              <p id="telefonoContacto" >Tel:(+506) 2222-2222 / 2222-2323</p>
-                             <p id="codigoContacto">Apdo Postal XYZ</p> 
+                              <h4 id="tituloContacto">@ViewBag.contacto1</h4>
+                              <p id="telefonoContacto" >@ViewBag.contacto2</p>
+                             <p id="codigoContacto">@ViewBag.contacto3</p> 
                              
                             <p>Informacion:   <a id="correoContacto" href = "mailto:WestOceanBeach@gmail.com?subject = Feedback&body = Message">
-                                     WestOceanBeach@gmail.com
+                                     @ViewBag.contacto4
                                 </a> </p> 
                         </div>
                     </div>
