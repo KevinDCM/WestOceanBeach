@@ -1,7 +1,8 @@
 @model Entities.Entities.Reserva
 
+
 @{
-    ViewData["Title"] = "Hotel West Ocean Beach ";
+    ViewData["Title"] = "Hotel West Ocean Beach Resort";
 }
 
 <head>
@@ -16,6 +17,7 @@
         <div class="titulo">
             <img class="izquierda" src="https://i.postimg.cc/Qxvj8K4q/logo.png">
             <aside> <p class="new"> Hotel West Ocean Beach</p></aside>
+        </div>
     </div>
 
 
@@ -93,15 +95,10 @@
                     </div>
                     <div class="col-sm-4">
                         <p class="msjBienvenida">
-                        <p class="new">Bienvenidos al Hotel West Ocean Beach</p>
-                        <p class="Alineacion">
-                            Querido invitado,
-                            Es un placer darle la bienvenida. Sabemos que tiene una variedad de hoteles para elegir. 
-                            Nos esforzamos por brindarle un servicio amable y atento a un precio asequible, con habitaciones limpias y cómodas. 
-                            Queremos que disfrute cada día de su estadía por lo que garantizamos un excelente servicio. 
-                            El personal amable y profesional de West Ocean Beach Resort está comprometido a brindarle una estadía placentera y cómoda.
-                            Esperamos que continúe visitando nuestro hotel. 
-                            Gracias por preferirnos. 
+                        <p class="new"> Bienvenidos al Hotel West Ocean Beach</p>
+                        <p id="parrafoHome" class="Alineacion">
+                            @ViewBag.Home
+
                         </p>
                     </div>
                 </div>
@@ -111,7 +108,7 @@
 
             <!-- Sección Facilidades -->
             <section id="facilidades" style="background-color:white;">
-
+           
                 <h2>Facilidades Seccion </h2>
 
                 <div class="w3-container">
@@ -121,15 +118,22 @@
                         Para las reservaciones de habitaciones estándar se cuenta con facilidades como: <br>
                         Lavanderia y desayuno gratis durante el tiempo de estadia. <br>
                     </p>
+                <div class="w3-container">   
+                       <p class="Alineacion2"> @ViewBag.Facilidades1 <br> </p>
+                       <p class="Alineacion2">- @ViewBag.Facilidades2<br> </p>
+                       <p class="Alineacion2"> @ViewBag.Facilidades3 <br> </p>
+                       <p class="Alineacion2">- @ViewBag.Facilidades4 <br></p>
                 </div>
 
-                <div class="w3-content w3-section" style="max-width:500px">
-                    <img class="slides w3-animate-top" src="https://www.sekco-laundryservices.com/media/1233/hero-orange-white-laundromat.jpg" style="width:100%">
-                    <img class="slides w3-animate-bottom" src="https://www.timeoutriyadh.com/cloud/timeoutriyadh/2021/07/11/elqbkbwM-bestbreakfastsriyadhshutterstock_1-1200x800.jpg" style="width:100%">
-                    <img class="slides w3-animate-bottom" src="https://www.timeoutriyadh.com/cloud/timeoutriyadh/2021/07/11/elqbkbwM-bestbreakfastsriyadhshutterstock_1-1200x800.jpg" style="width:100%">
-                    <img class="slides w3-animate-top" src="https://www.hotelvalencialasarenas.com/wp-content/blogs.dir/1493/files/cabeceras/header-spa.jpg" style="width:100%">
-                    <img class="slides w3-animate-bottom" src="https://www.bestgym.com.mx/storage/home-page/August2020/kW1Sf6E1K9ti7OfsCJdp.jpg" style="width:100%">
-                </div>
+                       <div id="center"> 
+                        <div class="w3-content w3-section posicion"  align="center" style="max-width:500px">
+                            <img class="slides w3-animate-top" src="https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/itemimages/10/02/100295_v4.jpeg" style="width:100%">
+                            <img class="slides w3-animate-bottom" src="https://a-static.besthdwallpaper.com/playa-por-el-mar-en-grecia-papel-pintado-1920x1280-28278_38.jpg" style="width:100%">
+                            <img class="slides w3-animate-bottom" src="https://images.neobookings.com/hotels/ibiza/apartamentos-mar-y-playa/apartamentos-mar-y-playa-r56e23v6l1.jpeg" style="width:100%">
+                            <img class="slides w3-animate-top" src="https://media.staticontent.com/media/pictures/8ca1a747-aab2-42fa-a413-9a0818f5f20f" style="width:100%">
+                            <img class="slides w3-animate-bottom" src="https://i1.wp.com/holanews.com/wp-content/uploads/e030fb02218acecca92c062116453e3d13b77133w.jpg?fit=1920%2C1280&ssl=1" style="width:100%">
+                        </div>
+                      </div>
 
                 <script>
                     // para intercambiar imagenes durante un periodo de tiempo
@@ -245,16 +249,7 @@
 
                 <h2 class="new">Acerca de</h2>
                 <p class="Alineacion2">
-                    El hotel West Ocean Beach, ubicado en la provincia de <a href="#comollegar">Puntarenas, Costa Rica,</a> es el primer hotel que posee la cadena en Costa Rica,
-                    tenemos una larga trayectoria en el manejo de hoteles desde 1985, nos hemos ubicado en los destinos turisticos
-                    más concurridos del mundo, y Costa Rica no iba a ser la excepción. En West Ocean Beach, nos caracterizamos por brindar
-                    una experiencia inolvidable, con la mayor comodidad y opciones entretenimiento y descanso para las personas que nos visitan.<br>
-                    Una valiosa experiencia: <br>
-                    Juana Bolaños, la fundadora de la cadena West Ocean Beach, fue una recepcionista en un hotel de alto prestigio
-                    en los Estado Unidos, donde trabajó por 10 años, hasta que se empezó a sentir inconforme con lo que veía en el
-                    hotel, precios muy elevados, servicios innecesarios, poco interés en la experencia de los clientes, y demás
-                    situaciones, por esta razón su sueno fue crear una cadena de hoteles realmente interesados en generar una
-                    experiencia inolvidable y a precios accesibles.<br>
+                    @ViewBag.texto1 <a href="#comollegar">Puntarenas, Costa Rica,</a>@ViewBag.texto2.<br> @ViewBag.texto3 <br> @ViewBag.texto4
                 </p>
 
                 <!-- galeria -->
@@ -389,15 +384,16 @@
                 <div class="row">
               
                     <div class="col-sm-6">
+                        
 
                         <div id="ubicacionTextoContact">
                             <br />
-                              <h4 id="tituloContacto">Hotel West Ocean Beach</h4>
-                              <p id="telefonoContacto" >Tel:(+506) 2222-2222 / 2222-2323</p>
-                             <p id="codigoContacto">Apdo Postal XYZ</p> 
+                              <h4 id="tituloContacto">@ViewBag.contacto1</h4>
+                              <p id="telefonoContacto" >@ViewBag.contacto2</p>
+                             <p id="codigoContacto">@ViewBag.contacto3</p> 
                              
                             <p>Informacion:   <a id="correoContacto" href = "mailto:WestOceanBeach@gmail.com?subject = Feedback&body = Message">
-                                     WestOceanBeach@gmail.com
+                                     @ViewBag.contacto4
                                 </a> </p> 
                         </div>
                     </div>
