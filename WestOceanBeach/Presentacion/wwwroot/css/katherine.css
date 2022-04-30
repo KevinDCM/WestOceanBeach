@@ -65,6 +65,7 @@ p.new {
     font-size: large;
     text-align: center;
     font-size: 42px;
+    text-shadow: 7px 4px 5px #3498DB;
 }
 
 p.new2 {
@@ -73,6 +74,7 @@ p.new2 {
     text-align: center;
     font-size: 32px;
 }
+
 
 #contactoo {
     color: black;
@@ -210,6 +212,12 @@ p.msjBienvenida {
 
 li {
     line-height: 1.5;
-
 }
+
+    li.uno {
+        line-height: 1.5;
+       /* margin-left: 6em;
+        text-align: justify;
+        margin-right: 3em;*/
+    }
 
