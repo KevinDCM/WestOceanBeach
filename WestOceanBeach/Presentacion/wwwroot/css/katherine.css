@@ -2,23 +2,26 @@
 body {
     background-image: url("https://st.depositphotos.com/2343945/4774/i/950/depositphotos_47744377-stock-photo-white-sand-background.jpg");
     background-color: #cccccc;
+    width: 100%;
 }
 
 html {
     font-family: Times New Roman, Arial, sans-serif;
+    width: 100%;
 }
 #cuerpo {
     height: 800px;
     background-color: white;
+    width: 100%
 }
 
 #contenedor {
-    width: 1100px;
+    width: 100%
 }
 
 #footer {
     height: 5px;
-    width: 1100px;
+    width: 100%;
     background-color: #86b4ca;
 }
 
@@ -66,6 +69,7 @@ p.new {
     text-align: center;
     font-size: 42px;
     text-shadow: 7px 4px 5px #3498DB;
+    width: 100%;
 }
 
 p.new2 {
@@ -120,38 +124,45 @@ div.titulo {
 
 hr.menu {
     display: none;
-    margin-top:0px;
- 
+    margin-top: 0px;
+
 }
 
 ul.menuVert1 {
     list-style: none;
     text-align: center;
-    text-shadow: 2px 2px 4px #3498DB;
+    text-shadow: 2px 2px 4px #3498Db;
     padding: 0;
-    width:10em;
-   
+    width: 100%;
+
+ 
 }
 
     ul.menuVert1 li {
         padding: 5px 0px;
         border: groove white;
         border-width: 6px 6px 0px 6px;
-        background-color: #3498DB;
+        background-color: #3498Db
+       
+       
     }
 
         ul.menuVert1 li:last-child {
             border-bottom: groove white;
             border-bottom-width: 5px;
+            position: center;
         }
 
         ul.menuVert1 li a:link, ul.menuVert1 li a:visited {
             text-decoration: none;
             color: white;
+            font-size: 15px;
+            position: center;
         }
 
         ul.menuVert1 li:hover {
-            background-color: lightgray;
+            background-color: lightcoral;
+            position: center;
         }
 
 .caja {
