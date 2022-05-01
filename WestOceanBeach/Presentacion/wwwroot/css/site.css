@@ -103,31 +103,32 @@ body {
 
 
 
-#header01{
-    top:3em;
-
-    padding:0;
+#header01 {
+    top: 12em;
+    padding: 0;
+    position: fixed;
+    margin-bottom: 12em;
 }
 
 #header02 {
-
-    top: 3em;
+    top: 30em;
     padding: 0;
+    position: fixed;
+    text-align: center;
 }
 
 
 #imagenPublicidad {
-
-    width:12em;
-    height:15em;
-    border-radius:3px;
+    width: 8em;
+    height: 10em;
+    border-radius: 3px;
+    margin-bottom: 20em;
 }
 
 #tituloPublicidad {
     font-family: new times roman;
     font-size: large;
     text-align: center;
-
     text-shadow: 7px 4px 5px #3498DB;
 }
 
