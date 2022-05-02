@@ -10,13 +10,26 @@
     <link rel="shortcut icon" href="https://i.postimg.cc/Qxvj8K4q/logo.png">
 </head>
 
-<div class="container">
+ 
 
+
+<div class="container">
+       <!-- OFERTAS -->
+<div class="dj-banner">
+    <div class="dj-bg">
+          <div id="menuu" class="col-sm-12">
+          <marquee> <h1><b><p class="new">Ofertas Actuales</p></b></h1></marquee> 
+         <p class="new3">
+        <marquee>  <a href="#reservas" style="color:black;">Por la cantidad de: @ViewBag.ofertas01 personas, se aplica un  @ViewBag.ofertas02 % , desde el @ViewBag.ofertas03 hasta el @ViewBag.ofertas04 </a></marquee> 
+            </p>
+        </div>
+    </div>            
+</div>
     <!-- logo y header -->
     <div id="menuu" class="col-sm-12">
         <div class="titulo">
             <img class="izquierda" src="https://i.postimg.cc/Qxvj8K4q/logo.png">
-            <aside> <p class="new"> Hotel West Ocean Beach</p></aside>
+             <p class="new"> Hotel West Ocean Beach</p>
         </div>
     </div>
 
@@ -89,7 +102,7 @@
                 <div class="row">
                     <div class="col-sm-6">
 
-                        <img src="https://costarica.org/wp-content/uploads/2017/06/Hotel-Guanamar-Beach-1.jpg" alt="Nature"  style="width:100%" vspace="30" hspace="20">
+                        <img src="https://costarica.org/wp-content/uploads/2017/06/Hotel-Guanamar-Beach-1.jpg"  style="width:100%" vspace="30" hspace="10" >
 
                     </div>
                     <div class="col-sm-6">
@@ -106,28 +119,17 @@
 
 
             <!-- Sección Facilidades -->
-            <section id="facilidades" style="background-color:white;">
+              <section id="Facilidades" class="container" style="margin-block: 1em; background-color: white">
           
-              <!--   <h2>Facilidades</h2>
-                <div class="w3-container">   
-                       <p class="Alineacion2"> @ViewBag.Facilidades1 <br> </p>
-                       <p class="Alineacion2">- @ViewBag.Facilidades2<br> </p>
-                       <p class="Alineacion2"> @ViewBag.Facilidades3 <br> </p>
-                       <p class="Alineacion2">- @ViewBag.Facilidades4 <br></p>
-                </div> -->
               
                 <div class="row" >
                     <div class="col-sm-6"> 
-                     <div id="center"> 
-                   
-                            <img class="slides w3-animate-top" src="https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/itemimages/10/02/100295_v4.jpeg" alt="Nature"  style="width:100%" vspace="30" hspace="20">
-                            <img class="slides w3-animate-bottom" src="https://a-static.besthdwallpaper.com/playa-por-el-mar-en-grecia-papel-pintado-1920x1280-28278_38.jpg" alt="Nature"  style="width:100%" vspace="30" hspace="20">
-                            <img class="slides w3-animate-bottom" src="https://images.neobookings.com/hotels/ibiza/apartamentos-mar-y-playa/apartamentos-mar-y-playa-r56e23v6l1.jpeg" alt="Nature"  style="width:100%" vspace="30" hspace="20">
-                            <img class="slides w3-animate-top" src="https://media.staticontent.com/media/pictures/8ca1a747-aab2-42fa-a413-9a0818f5f20f" alt="Nature"  style="width:100%" vspace="30" hspace="20">
-                            <img class="slides w3-animate-bottom" src="https://i1.wp.com/holanews.com/wp-content/uploads/e030fb02218acecca92c062116453e3d13b77133w.jpg?fit=1920%2C1280&ssl=1" alt="Nature"  style="width:100%" vspace="30" hspace="20"> 
-                   
-                      </div>
-                    </div>
+                            <img class="slides w3-animate-top" src="https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/itemimages/10/02/100295_v4.jpeg"  style="width:100%" vspace="30"  hspace="10">
+                            <img class="slides w3-animate-bottom" src="https://a-static.besthdwallpaper.com/playa-por-el-mar-en-grecia-papel-pintado-1920x1280-28278_38.jpg"  style="width:100%" vspace="30"  hspace="10" >
+                            <img class="slides w3-animate-bottom" src="https://images.neobookings.com/hotels/ibiza/apartamentos-mar-y-playa/apartamentos-mar-y-playa-r56e23v6l1.jpeg" style="width:100%" vspace="30"   hspace="10">
+                            <img class="slides w3-animate-top" src="https://media.staticontent.com/media/pictures/8ca1a747-aab2-42fa-a413-9a0818f5f20f"   style="width:100%" vspace="30"  hspace="10">
+                            <img class="slides w3-animate-bottom" src="https://i1.wp.com/holanews.com/wp-content/uploads/e030fb02218acecca92c062116453e3d13b77133w.jpg?fit=1920%2C1280&ssl=1" style="width:100%" vspace="30"  hspace="10"> 
+                  </div>
                     <div class="col-sm-6">
                            <p id="parrafoFacilidades" class="Alineacion">
                          <h2 id="contactoo" >Facilidades</h2>
@@ -136,6 +138,7 @@
                              <p id="parrafoHome" class="Alineacion"> @ViewBag.Facilidades3 <br> </p>
                             <p id="parrafoHome" class="Alineacion">- @ViewBag.Facilidades4 <br></p>
                     </div>
+                </div>
                 <script>
                     // para intercambiar imagenes durante un periodo de tiempo
                     var myIndex = 0;
@@ -341,28 +344,28 @@
             <!-- cómo llegar Section -->
             <section id="comollegar" class="container"  style="background-color:white;">
                 <div class="row">
-                    <h2>Cómo llegar</h2>
+                    <h2 id="contactoo"> Cómo llegar</h2>
 
                     <div class="col-sm-6">
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-12" >
                         <div class="mapouter">
                             <div class="gmap_canvas">
-                                <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=playa%20fantasia%20costa%20rica&t=k&z=7&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org">123 movies</a><br>
+                                <iframe width="500" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=playa%20fantasia%20costa%20rica&t=k&z=7&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"> <br>123 movies</a><br>
                                 <style>
                                     .mapouter {
                                         position: relative;
-                                        text-align: right;
-                                        height: 500px;
-                                        width: 600px;
+                                        text-align: center;
+                                        height: 100%;
+                                        width: 100%;
                                     }
-                                </style><a href="https://www.embedgooglemap.net">google maps widget html</a>
+                                </style><a href="https://www.embedgooglemap.net">google maps widget html <br></a>
                                 <style>
                                     .gmap_canvas {
                                         overflow: hidden;
                                         background: none !important;
-                                        height: 500px;
-                                        width: 600px;
+                                       height: 100%;
+                                        width: 100%;
                                     }
                                 </style>
                             </div>

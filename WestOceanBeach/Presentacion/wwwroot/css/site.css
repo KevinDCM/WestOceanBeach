@@ -104,17 +104,15 @@ body {
 
 
 #header01 {
-    top: 12em;
+    top: 18em;
     padding: 0;
     position: fixed;
-    margin-bottom: 12em;
 }
 
 #header02 {
-    top: 30em;
+    top: 38em;
     padding: 0;
     position: fixed;
-    text-align: center;
 }
 
 
@@ -122,7 +120,6 @@ body {
     width: 8em;
     height: 10em;
     border-radius: 3px;
-    margin-bottom: 20em;
 }
 
 #tituloPublicidad {

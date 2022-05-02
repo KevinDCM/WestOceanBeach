@@ -80,6 +80,17 @@ p.new2 {
 }
 
 
+p.new3 {
+    color: white;
+    font-family: new times roman;
+    font-size: large;
+    text-align: center;
+    font-size: 24px;
+    text-shadow: 7px 4px 5px #3498DB;
+    width: 100%;
+}
+
+
 #contactoo {
     color: black;
     padding: 10px;
@@ -165,33 +176,6 @@ ul.menuVert1 {
             position: center;
         }
 
-.caja {
-    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
-    color: #000000;
-    font-size: 15px;
-    font-weight: 200;
-    text-align: justify;
-    background: white;
-    margin: 0 0 25px;
-    overflow: hidden;
-    padding: 10px;
-    border-radius: 35px 0px 35px 0px;
-    -moz-border-radius: 15px 0px 15px 0px;
-    -webkit-border-radius: 15px 0px 15px 0px;
-    border: 2px solid #5878ca;
-}
-
-.caja2 {
-    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
-    color: #000000;
-    font-size: 15px;
-    font-weight: 200;
-    text-align: justify;
-    background: white;
-    margin: 0 0 25px;
-    overflow: hidden;
-}
-
 textarea.cajamsjBienvenida {
     text-align: center;
     color: #000;
@@ -231,4 +215,3 @@ li {
         text-align: justify;
         margin-right: 3em;*/
     }
-
