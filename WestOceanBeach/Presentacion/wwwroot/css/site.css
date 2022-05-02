@@ -104,14 +104,15 @@ body {
 
 
 #header01 {
-    top: 12em;
+    top: 18em;
     padding: 0;
-
+    position: fixed;
 }
 
 #header02 {
-    top: 30em;
+    top: 38em;
     padding: 0;
+    position: fixed;
 }
 
 

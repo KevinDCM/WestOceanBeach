@@ -10,11 +10,21 @@
     <link rel="shortcut icon" href="https://i.postimg.cc/Qxvj8K4q/logo.png">
 </head>
 
-
+ 
 
 
 <div class="container">
-
+       <!-- OFERTAS -->
+<div class="dj-banner">
+    <div class="dj-bg">
+          <div id="menuu" class="col-sm-12">
+          <marquee> <h1><b><p class="new">Ofertas Actuales</p></b></h1></marquee> 
+         <p class="new3">
+        <marquee>  <a href="#reservas" style="color:black;">Por la cantidad de: @ViewBag.ofertas01 personas, se aplica un  @ViewBag.ofertas02 % , desde el @ViewBag.ofertas03 hasta el @ViewBag.ofertas04 </a></marquee> 
+            </p>
+        </div>
+    </div>            
+</div>
     <!-- logo y header -->
     <div id="menuu" class="col-sm-12">
         <div class="titulo">
@@ -92,7 +102,7 @@
                 <div class="row">
                     <div class="col-sm-6">
 
-                        <img src="https://costarica.org/wp-content/uploads/2017/06/Hotel-Guanamar-Beach-1.jpg"  style="width:100%" vspace="30">
+                        <img src="https://costarica.org/wp-content/uploads/2017/06/Hotel-Guanamar-Beach-1.jpg"  style="width:100%" vspace="30" hspace="10" >
 
                     </div>
                     <div class="col-sm-6">
@@ -111,13 +121,6 @@
             <!-- Sección Facilidades -->
               <section id="Facilidades" class="container" style="margin-block: 1em; background-color: white">
           
-              <!--   <h2>Facilidades</h2>
-                <div class="w3-container">   
-                       <p class="Alineacion2"> @ViewBag.Facilidades1 <br> </p>
-                       <p class="Alineacion2">- @ViewBag.Facilidades2<br> </p>
-                       <p class="Alineacion2"> @ViewBag.Facilidades3 <br> </p>
-                       <p class="Alineacion2">- @ViewBag.Facilidades4 <br></p>
-                </div> -->
               
                 <div class="row" >
                     <div class="col-sm-6"> 
@@ -341,28 +344,28 @@
             <!-- cómo llegar Section -->
             <section id="comollegar" class="container"  style="background-color:white;">
                 <div class="row">
-                    <h2>Cómo llegar</h2>
+                    <h2 id="contactoo"> Cómo llegar</h2>
 
                     <div class="col-sm-6">
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-12" >
                         <div class="mapouter">
                             <div class="gmap_canvas">
-                                <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=playa%20fantasia%20costa%20rica&t=k&z=7&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org">123 movies</a><br>
+                                <iframe width="500" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=playa%20fantasia%20costa%20rica&t=k&z=7&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"> <br>123 movies</a><br>
                                 <style>
                                     .mapouter {
                                         position: relative;
-                                        text-align: right;
-                                        height: 500px;
-                                        width: 600px;
+                                        text-align: center;
+                                        height: 100%;
+                                        width: 100%;
                                     }
-                                </style><a href="https://www.embedgooglemap.net">google maps widget html</a>
+                                </style><a href="https://www.embedgooglemap.net">google maps widget html <br></a>
                                 <style>
                                     .gmap_canvas {
                                         overflow: hidden;
                                         background: none !important;
-                                        height: 500px;
-                                        width: 600px;
+                                       height: 100%;
+                                        width: 100%;
                                     }
                                 </style>
                             </div>

@@ -60,13 +60,23 @@ namespace Presentacion.Controllers
             @ViewBag.facilidades3 = subs3[2];
             @ViewBag.facilidades4 = subs3[3];
 
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+             new MediaTypeWithQualityHeaderValue("application/json"));
 
+            var response02 = await client.GetAsync("https://localhost:44386/ofertas/OfertasActuales");
+            string resultado02 = await response02.Content.ReadAsStringAsync();
 
+            var respContent = await response.Content.ReadAsStringAsync();
 
+            var ofertas = JsonConvert.DeserializeObject<Ofertas>(respContent);
 
-            return View();
+            @ViewBag.ofertas01 = ofertas.cantidad_personas;
+            @ViewBag.ofertas02 = ofertas.descuento;
+            @ViewBag.ofertas03 = ofertas.fecha_inicio;
+            @ViewBag.ofertas04 = ofertas.fecha_final;
+             return View();
         }
-
         public IActionResult Privacy()
         {
             return View();
@@ -77,9 +87,6 @@ namespace Presentacion.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-       
-
 
         [HttpPost]
         public async Task<IActionResult> buscarHabitaciones(Reserva reserva)
