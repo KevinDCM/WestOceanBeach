@@ -96,14 +96,23 @@ body {
     top:10px;
 }
 
+#sidebar-menu {
+    margin-top: 0px!important;
+    padding: 0;
+    position: fixed;
+    margin-left:auto;
+}
+
 #header01 {
     top: 18em;
     padding: 0;
+    position: fixed;
 }
 
 #header02 {
     top: 38em;
     padding: 0;
+    position: fixed;
 }
 
 #imagenPublicidad {

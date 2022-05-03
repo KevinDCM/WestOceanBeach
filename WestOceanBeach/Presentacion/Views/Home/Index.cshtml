@@ -1,6 +1,5 @@
 @model Entities.Entities.Reserva
 
-
 @{
     ViewData["Title"] = "Hotel West Ocean Beach Resort";
 }
@@ -14,35 +13,38 @@
 </head>
 
 <div class="container">
-       <!-- OFERTAS -->
-<div class="dj-banner">
-    <div class="dj-bg">
-          <div id="menuu" class="col-sm-12">
-          <marquee> 
-              <h1>
-                  <b>
-                      <p class="new">Ofertas Actuales</p>
-                  </b>
-              </h1>
-          </marquee> 
-         <p class="new3">
-        <marquee>  <a href="#reservas" style="color:black;">Por la cantidad de: @ViewBag.ofertas01 personas, se aplica un  @ViewBag.ofertas02 % de descuento, desde el @ViewBag.ofertas03 hasta el @ViewBag.ofertas04 </a></marquee> 
-            </p>
-        </div>
-    </div>            
-</div>
+
     <!-- logo y header -->
     <div id="menuu" class="col-sm-12">
         <div class="titulo">
             <img class="izquierda" src="https://i.postimg.cc/Qxvj8K4q/logo.png">
              <p class="new"> Hotel West Ocean Beach</p>
         </div>
+        <!-- OFERTAS EN TENDENCIA -->
+        <div class="dj-banner">
+            <div class="dj-bg">
+                  <div id="menuu" class="col-sm-12">
+                      <marquee> 
+                          <h1>
+                              <b>
+                                  <p class="new">Ofertas Actuales</p>
+                              </b>
+                          </h1>
+                      </marquee> 
+                      <p class="new3">
+                          <marquee>  
+                              <a href="#reservas" style="color:black;">Por la cantidad de: @ViewBag.ofertas01 personas, se aplica un  @ViewBag.ofertas02 % de descuento, desde el @ViewBag.ofertas03 hasta el @ViewBag.ofertas04 </a>
+                           </marquee> 
+                       </p>
+                 </div>
+            </div>            
+         </div>
     </div>
 
     <div class="row">
 
         <!-- Menú principal y publicidad -->
-        <div class="col-sm-2" style="margin-block: 1em; background-color: white; width:100%" >
+        <div id="sidebar-menu" class="col-sm-2" style="width:100%" >
             <div id="header01" >
 
                 <ul class="nav nav-pills flex-column menuVert1  ">
@@ -78,11 +80,9 @@
                 </ul>
             </div>
 
-            <br/>
-
             <div id="header02">
 
-                <h3 id="tituloPublicidad">Publicidad</h3>
+                <h4 id="tituloPublicidad">Publicidad</h4>
 
                 <div class="row" >
                     <div class="slideshow-container"> 
@@ -123,7 +123,7 @@
 
 
         <!-- Secciones (contenido) -->
-        <div class="col-sm-10">
+        <div style="margin-left: auto !important;" class="col-sm-10">
 
             <!-- Sección Home (Inicio) -->
             <section id="inicio" class="container" style="margin-block: 1em; background-color: white">
@@ -196,70 +196,69 @@
                    
                     <div class="col-sm-12">
                        <div class="container">
-    <table class="table table-responsive table-striped">
-      <thead> 
-        <tr> 
-          <th>Imagen</th> 
-          <th>Habitaciòn</th>
-          <th>Tarifa Tem. Baja</th>
-          <th>Fecha Inicio</th>
-          <th>Fecha Final</th>  
-          <th>Tarifa Tem. Alta</th>
-          <th>Fecha Inicio</th>
-          <th>Fecha Final</th>  
+                        <table class="table table-responsive table-striped">
+                          <thead> 
+                            <tr> 
+                              <th>Imagen</th> 
+                              <th>Habitaciòn</th>
+                              <th>Tarifa Tem. Baja</th>
+                              <th>Fecha Inicio</th>
+                              <th>Fecha Final</th>  
+                              <th>Tarifa Tem. Alta</th>
+                              <th>Fecha Inicio</th>
+                              <th>Fecha Final</th>  
 
 
           
-        </tr> 
-      </thead>
-      <tbody>
-        <tr> 
-          <td>
-               <img class="img-fluid " src=@ViewBag.habitacionImagen1 alt="Nature" >
+                            </tr> 
+                          </thead>
+                          <tbody>
+                            <tr> 
+                              <td>
+                                   <img class="img-fluid " src=@ViewBag.habitacionImagen1 alt="Nature" >
               
-              </td>
-          <td>@ViewBag.nombre1</td> 
-          <td>@ViewBag.precioBaja1</td> 
-          <td>@ViewBag.fechaIniBaja1</td>
-          <td>@ViewBag.fechaTermBaja1</td> 
-          <td>@ViewBag.precioAlta1</td>    
-          <td>@ViewBag.fechaIniAlta1</td> 
-          <td> @ViewBag.fechaTermAlta1</td> 
+                                  </td>
+                              <td>@ViewBag.nombre1</td> 
+                              <td>@ViewBag.precioBaja1</td> 
+                              <td>@ViewBag.fechaIniBaja1</td>
+                              <td>@ViewBag.fechaTermBaja1</td> 
+                              <td>@ViewBag.precioAlta1</td>    
+                              <td>@ViewBag.fechaIniAlta1</td> 
+                              <td> @ViewBag.fechaTermAlta1</td> 
               
-        </tr>
-        <tr> 
-             <td>
-                 <img class="img-fluid " src=@ViewBag.habitacionImagen2 alt="Nature" >
-                 </td>
-          <td>@ViewBag.nombre2</td> 
-          <td>@ViewBag.precioBaja2</td> 
-          <td>@ViewBag.fechaIniBaja2</td>
-          <td>@ViewBag.fechaTermBaja2</td> 
-          <td>@ViewBag.precioAlta2</td>    
-          <td>@ViewBag.fechaIniAlta2</td> 
-          <td> @ViewBag.fechaTermAlta2</td>    
-        </tr>
+                            </tr>
+                            <tr> 
+                                 <td>
+                                     <img class="img-fluid " src=@ViewBag.habitacionImagen2 alt="Nature" >
+                                     </td>
+                              <td>@ViewBag.nombre2</td> 
+                              <td>@ViewBag.precioBaja2</td> 
+                              <td>@ViewBag.fechaIniBaja2</td>
+                              <td>@ViewBag.fechaTermBaja2</td> 
+                              <td>@ViewBag.precioAlta2</td>    
+                              <td>@ViewBag.fechaIniAlta2</td> 
+                              <td> @ViewBag.fechaTermAlta2</td>    
+                            </tr>
 
-         <tr> 
-           <td>
+                             <tr> 
+                               <td>
 
-               <img class="img-fluid " src=@ViewBag.habitacionImagen3 alt="Nature" >
-           </td>
-          <td>@ViewBag.nombre3</td> 
-          <td>@ViewBag.precioBaja3</td> 
-          <td>@ViewBag.fechaIniBaja3</td>
-          <td>@ViewBag.fechaTermBaja3</td> 
-          <td>@ViewBag.precioAlta3</td>    
-          <td>@ViewBag.fechaIniAlta3</td> 
-          <td> @ViewBag.fechaTermAlta3</td>    
-        </tr>
+                                   <img class="img-fluid " src=@ViewBag.habitacionImagen3 alt="Nature" >
+                               </td>
+                              <td>@ViewBag.nombre3</td> 
+                              <td>@ViewBag.precioBaja3</td> 
+                              <td>@ViewBag.fechaIniBaja3</td>
+                              <td>@ViewBag.fechaTermBaja3</td> 
+                              <td>@ViewBag.precioAlta3</td>    
+                              <td>@ViewBag.fechaIniAlta3</td> 
+                              <td> @ViewBag.fechaTermAlta3</td>    
+                            </tr>
     
-      </tbody>
-    </table>
-  </div> 
+                          </tbody>
+                        </table>
+                       </div> 
                     </div>
                 </div>
-
             </section>
 
             <br/>
@@ -460,19 +459,14 @@
 
             </section>
 
-          
-
             <!-- contacto Section -->
-
             <section id="contacto" class="container" style="margin-block: 1em; background-color: white;  text-align: left;">
 
-
-                  <h2 id="contactoo" >Contacto</h2>
+                <h2 id="contactoo" >Contacto</h2>
                 
                 <div class="row">
               
                     <div class="col-sm-6">
-                        
 
                         <div id="ubicacionTextoContact">
                             <br />
@@ -488,7 +482,7 @@
 
                     <div class="col-sm-6">
 
-                         <img src="~/imagenes/contacto.png" style="width:150px; height:120px;">
+                        <img src="~/imagenes/contacto.png" style="width:150px; height:120px;">
                         <p style="width:100%;">
                          Si en algún momento tiene alguna sugerencia sobre cómo mejorar nuestro servicio, háganoslo saber. Si tiene algún problema durante su estadía con nosotros, comuníquese de inmediato al teléfono 2298-1700 ext: 42 para que tengamos la oportunidad de corregir la situación.
                         </p>
