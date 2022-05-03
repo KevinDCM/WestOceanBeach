@@ -78,48 +78,45 @@ body {
 
 #menu {
     height: 100%;
-   
     position: fixed;
     z-index: 1;
     top: 0;
     left: 47px;
     overflow-x: hidden;
-
 }
 
 .section{
-
     height: 500px;
     border-style:dashed;
     border-color: black;
 }
 
 .posicion {
-
     margin-left:110px;
     top:10px;
-
 }
-
-
 
 #header01 {
     top: 18em;
     padding: 0;
-    position: fixed;
 }
 
 #header02 {
     top: 38em;
     padding: 0;
-    position: fixed;
 }
-
 
 #imagenPublicidad {
     width: 8em;
     height: 10em;
     border-radius: 3px;
+}
+
+#publicity {
+    width: 150px !important;
+    height: 120px !important;
+    /* display: block; */
+    margin-left: auto;
 }
 
 #tituloPublicidad {
@@ -173,15 +170,5 @@ body {
 }
 
 #ubicacionTextoContact {
-
-
-    text-align:left;
-   
-    
-
+    text-align: left;
 }
-
-
-
-
-

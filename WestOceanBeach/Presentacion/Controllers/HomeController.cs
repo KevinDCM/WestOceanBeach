@@ -26,18 +26,31 @@ namespace Presentacion.Controllers
         {
             _logger = logger;
         }
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+
+        // se llaman varios métodos de la API, para aprovechar el ViewBag del HomeController
         [HttpGet]
         public async Task<IActionResult> Index()
         {
 
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
-             new MediaTypeWithQualityHeaderValue("application/json"));
+            new MediaTypeWithQualityHeaderValue("application/json"));
             
 
-           var response = await client.GetAsync("https://localhost:44386/SitioGeneral/obtenerSitioGeneral");
-           string resultado = await response.Content.ReadAsStringAsync();
-           var sitioGeneral = JsonConvert.DeserializeObject<SitioGeneral>(resultado);
+            var response = await client.GetAsync("https://localhost:44386/SitioGeneral/obtenerSitioGeneral");
+            string resultado = await response.Content.ReadAsStringAsync();
+            var sitioGeneral = JsonConvert.DeserializeObject<SitioGeneral>(resultado);
 
            
             ViewBag.Home = sitioGeneral.HOME;
@@ -62,26 +75,24 @@ namespace Presentacion.Controllers
 
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
-             new MediaTypeWithQualityHeaderValue("application/json"));
+            new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var response02 = await client.GetAsync("https://localhost:44386/ofertas/OfertasActuales");
+            var response02 = await client.GetAsync("https://localhost:44386/Oferta/obtenerOfertaSobresalientes");
             string resultado02 = await response02.Content.ReadAsStringAsync();
 
-            var respContent = await response.Content.ReadAsStringAsync();
+            List<Oferta> ofertas = JsonConvert.DeserializeObject<List<Oferta>>(resultado02);
 
-            var ofertas = JsonConvert.DeserializeObject<Oferta>(respContent);
-
-            @ViewBag.ofertas01 = ofertas.cantidad_personas;
-            @ViewBag.ofertas02 = ofertas.descuento;
-            @ViewBag.ofertas03 = ofertas.fecha_inicio;
-            @ViewBag.ofertas04 = ofertas.fecha_final;
+            @ViewBag.ofertas01 = ofertas[0].cantidad_personas;
+            @ViewBag.ofertas02 = ofertas[0].descuento;
+            @ViewBag.ofertas03 = ofertas[0].fecha_inicio;
+            @ViewBag.ofertas04 = ofertas[0].fecha_final;
           
 
 
             //HabitacionTemporada
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
-             new MediaTypeWithQualityHeaderValue("application/json"));
+            new MediaTypeWithQualityHeaderValue("application/json"));
 
             var responseHabitacionTemporada= await client.GetAsync("https://localhost:44386/Habitacion/obtenerHabitacionesTemporada");
             string resultadoHabitacionTemporada = await responseHabitacionTemporada.Content.ReadAsStringAsync();
@@ -117,18 +128,31 @@ namespace Presentacion.Controllers
             @ViewBag.fechaTermAlta3 = habitaciones[24];
 
 
+            // PUBLICIDAD   (programado para mostrar 4 elementos publicitarios)
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage responsePublicidad = await client.GetAsync("https://localhost:44386/Publicidad/getPublicidadActiva");
+
+            string responsePublicidadContent = await responsePublicidad.Content.ReadAsStringAsync();
+
+            List<Publicidad> publicidad = JsonConvert.DeserializeObject<List<Publicidad>>(responsePublicidadContent);
+
+            @ViewBag.public1 = publicidad[0].RutaImagen;
+            @ViewBag.uri1 = publicidad[0].SiteUrl;
+
+            @ViewBag.public2 = publicidad[1].RutaImagen;
+            @ViewBag.uri2 = publicidad[1].SiteUrl;
+
+            @ViewBag.public3 = publicidad[2].RutaImagen;
+            @ViewBag.uri3 = publicidad[2].SiteUrl;
+
+            @ViewBag.public4 = publicidad[3].RutaImagen;
+            @ViewBag.uri4 = publicidad[3].SiteUrl;
+
 
             return View();
-        }
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
         [HttpPost]
@@ -179,5 +203,5 @@ namespace Presentacion.Controllers
             return View("Index");
         }// reservarHabitacion
 
-    }// fin clase
-}// fin
+    }
+}

@@ -18,7 +18,7 @@ namespace AccessData.Data
 
         public ClienteData()
         {
-            sqlConnection = new SqlConnection("Data Source=163.178.107.10;Initial Catalog=WestISTest;Persist Security Info=True;User ID=laboratorios;Password=KmZpo.2796;Pooling=False");
+            sqlConnection = new SqlConnection("Data Source=163.178.107.10;Initial Catalog=WestOceanBeach;Persist Security Info=True;User ID=laboratorios;Password=KmZpo.2796;Pooling=False");
             sqlCommand = new SqlCommand();
         }
         
@@ -26,16 +26,7 @@ namespace AccessData.Data
         {
 
             string salida = "NULL";
-            sqlConnection.Open();
-            sqlCommand = new SqlCommand("sp_insertarCliente", sqlConnection);
-            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-            sqlCommand.Parameters.AddWithValue("@cedula", datosCliente.cedula);
-            sqlCommand.Parameters.AddWithValue("@nombre", datosCliente.nombre);
-            sqlCommand.Parameters.AddWithValue("@correo", datosCliente.correo);
-
-            sqlCommand.ExecuteNonQuery();
-    
-            sqlConnection.Close();
+     
 
             return salida;
         }
