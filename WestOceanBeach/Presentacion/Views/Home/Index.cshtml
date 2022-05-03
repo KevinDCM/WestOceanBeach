@@ -7,9 +7,9 @@
 <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="https://i.postimg.cc/Qxvj8K4q/logo.png">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <div class="container">
@@ -18,27 +18,20 @@
     <div id="menuu" class="col-sm-12">
         <div class="titulo">
             <img class="izquierda" src="https://i.postimg.cc/Qxvj8K4q/logo.png">
-             <p class="new"> Hotel West Ocean Beach</p>
+             <p class="new"> Hotel West Ocean Beach Resort</p>
+            <!-- OFERTAS EN TENDENCIA -->
+            <div class="dj-banner">
+                <div class="dj-bg">
+                      <div id="menuu" class="col-sm-12"> 
+                          <p class="new3">
+                              <marquee>  
+                                  <a href="#reservas" style="color:black;">Ofertas Actuales<br/>@ViewBag.top5_Ofertas </a>
+                               </marquee> 
+                           </p>
+                     </div>
+                </div>            
+             </div>
         </div>
-        <!-- OFERTAS EN TENDENCIA -->
-        <div class="dj-banner">
-            <div class="dj-bg">
-                  <div id="menuu" class="col-sm-12">
-                      <marquee> 
-                          <h1>
-                              <b>
-                                  <p class="new">Ofertas Actuales</p>
-                              </b>
-                          </h1>
-                      </marquee> 
-                      <p class="new3">
-                          <marquee>  
-                              <a href="#reservas" style="color:black;">Por la cantidad de: @ViewBag.ofertas01 personas, se aplica un  @ViewBag.ofertas02 % de descuento, desde el @ViewBag.ofertas03 hasta el @ViewBag.ofertas04 </a>
-                           </marquee> 
-                       </p>
-                 </div>
-            </div>            
-         </div>
     </div>
 
     <div class="row">
@@ -490,6 +483,14 @@
                     </div>
 
                 </div>
+            </section>
+
+            <section id="loginadmin" style="background-color:lightgray;">
+  
+                <p style="text-align: center !important;">
+                   Ir al <a  href="#" >Login administrativo</a>
+                </p>
+            
             </section>
 
         </div>

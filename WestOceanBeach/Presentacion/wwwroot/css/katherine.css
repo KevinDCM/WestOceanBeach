@@ -74,9 +74,9 @@ p.new {
 
 p.new2 {
     font-family: new times roman;
-    font-size: large;
-    text-align: center;
+    text-align: left;
     font-size: 32px;
+    text-shadow: 7px 4px 5px #3498DB;
 }
 
 
