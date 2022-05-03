@@ -82,11 +82,24 @@ namespace Presentacion.Controllers
 
             List<Oferta> ofertas = JsonConvert.DeserializeObject<List<Oferta>>(resultado02);
 
-            @ViewBag.ofertas01 = ofertas[0].cantidad_personas;
-            @ViewBag.ofertas02 = ofertas[0].descuento;
-            @ViewBag.ofertas03 = ofertas[0].fecha_inicio;
-            @ViewBag.ofertas04 = ofertas[0].fecha_final;
-          
+            // hacer un for que concatene en un string las 5 ofertas recibidas
+
+            string top5_ofertas = "| ";
+
+            for(int i=0; i<ofertas.Count; i++)
+            {
+
+                top5_ofertas += "Oferta  #" + (i+1) + 
+                ", Habitación: " + ofertas[i].tipo_habitacion +
+                ", Descuento: $ " + ofertas[i].descuento +
+                ", Inicia: " + ofertas[i].fecha_inicio +
+                ", Finaliza: " + ofertas[i].fecha_final;
+                // top5_ofertas +=", Cantidad de personas: " + ofertas[i].cantidad_personas;
+
+                top5_ofertas += "  |  ";
+            }
+
+            @ViewBag.top5_Ofertas = top5_ofertas;
 
 
             //HabitacionTemporada

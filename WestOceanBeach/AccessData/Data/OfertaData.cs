@@ -27,13 +27,10 @@ namespace AccessData.Data
             sqlCommand.ExecuteNonQuery();
             List<Oferta> ofertas= new List<Oferta>();
 
-            
-
             using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand)) //permite llenar registro base de datos
             {
                 DataTable dt = new DataTable(); //representacion de una tabla base de datos 
                 adapter.Fill(dt);//llena registro 
-
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
@@ -42,35 +39,21 @@ namespace AccessData.Data
                     float DESCUENTO = Convert.ToInt32(dt.Rows[i]["DESCUENTO"]);
                     DateTime FECHA_INICIO = Convert.ToDateTime(dt.Rows[i]["FECHA_INICIO"]);
                     DateTime FECHA_FINAL = Convert.ToDateTime(dt.Rows[i]["FECHA_FINAL"]);
+                    string TIPOHABITACION = Convert.ToString(dt.Rows[i]["TIPO_HABITACION"]);
 
                     Oferta OFERTA = new Oferta();
                     OFERTA.cantidad_personas = CANTIDAD_PERSONAS;
                     OFERTA.descuento = (int)Math.Ceiling(DESCUENTO);
                     OFERTA.fecha_inicio = FECHA_INICIO;
                     OFERTA.fecha_final = FECHA_FINAL;
+                    OFERTA.tipo_habitacion = TIPOHABITACION;
 
                     ofertas.Add(OFERTA);
-                    /*int alt = Convert.ToInt32(dt.Rows[i]["CANTIDAD_PERSONAS"];
-
-                    ofertas[i].cantidad_personas = Convert.ToInt32(dt.Rows[i]["CANTIDAD_PERSONAS"]);
-
-                    ofertas[i].descuento = Convert.ToInt32(dt.Rows[i]["DESCUENTO"]);
-                    ofertas[i].fecha_inicio = Convert.ToDateTime(dt.Rows[i]["FECHA_INICIO"]);
-                    ofertas[i].fecha_final = Convert.ToDateTime(dt.Rows[0]["FECHA_FINAL"]);
-                    */
-
-
-
 
                 }
 
             };
             sqlConnection.Close();
-
-
-
-
-
 
             return ofertas;
 
