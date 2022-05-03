@@ -2,7 +2,7 @@
 using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace APItest.Controllers
+namespace API.Controllers
 {
 
 

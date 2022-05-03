@@ -2,11 +2,8 @@
 using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace APItest.Controllers
+namespace API.Controllers
 {
-    
-
-
         [ApiController]
         [Route("[controller]")]
         public class SitioGeneralController : ControllerBase
@@ -16,12 +13,9 @@ namespace APItest.Controllers
             public SitioGeneral obtenerSitioGeneral()
 
             {
-               ;
                 return new SitioGeneralBusiness().ObtenerSitioGeneral();
             }// fin m
-
          
-
         }// fin clase
     
 }
