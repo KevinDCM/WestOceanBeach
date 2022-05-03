@@ -44,39 +44,60 @@ namespace AccessData.Data
                 string imagen1 = dt.Rows[0]["imagen"].ToString();
                 string habitacion1 = dt.Rows[0]["HABITACION"].ToString();
                 string precioTempBaja1 = dt.Rows[0]["PRECIOTEMPORADABAJA"].ToString();
-                string fechaIniBaja1 = dt.Rows[0]["fechaIniciaBaja"].ToString();
-                string fechaFinBaja1= dt.Rows[0]["fechaTerminaBaja"].ToString();
-                
+                DateTime fechaIniBaja1 =  Convert.ToDateTime(  dt.Rows[0]["fechaIniciaBaja"]);
+
+                DateTime fechaFinBaja1 = Convert.ToDateTime(dt.Rows[0]["fechaTerminaBaja"]);
+
+                var fechaIniBaj1 = fechaIniBaja1.ToShortDateString();
+                var fechaFnBaj1 = fechaFinBaja1.ToShortDateString();
+
                 string precioTempAlta1 = dt.Rows[0]["PRECIOTEMPORADAALTA"].ToString();
-                string fechaIniAlta1 = dt.Rows[0]["fechaIniciaAlta"].ToString();
-                string fechaFinAlta1 = dt.Rows[0]["fechaTerminaAlta"].ToString();
-                
+                DateTime fechaIniAlta1 = Convert.ToDateTime(dt.Rows[0]["fechaIniciaAlta"]);
+                DateTime fechaFinAlta1 = Convert.ToDateTime(dt.Rows[0]["fechaTerminaAlta"]);
+
+                var fechaInAlta1 = fechaIniAlta1.ToShortDateString();
+                var fechaFnAlta1 = fechaIniAlta1.ToShortDateString();
 
 
-               string imagen2 = dt.Rows[1]["imagen"].ToString();
+
+                string imagen2 = dt.Rows[1]["imagen"].ToString();
                 string habitacion2 = dt.Rows[1]["HABITACION"].ToString();
                 string precioTempBaja2 = dt.Rows[1]["PRECIOTEMPORADABAJA"].ToString();
-                string fechaIniBaja2 = dt.Rows[1]["fechaIniciaBaja"].ToString();
-                string fechaFinBaja2 = dt.Rows[1]["fechaTerminaBaja"].ToString();
+                DateTime fechaIniBaja2 = Convert.ToDateTime(dt.Rows[1]["fechaIniciaBaja"]);
+
+                DateTime fechaFinBaja2 = Convert.ToDateTime(dt.Rows[1]["fechaTerminaBaja"]);
+
+                var fechaIniBaj2 = fechaIniBaja2.ToShortDateString();
+                var fechaFnBaj2= fechaFinBaja2.ToShortDateString();
 
                 string precioTempAlta2 = dt.Rows[1]["PRECIOTEMPORADAALTA"].ToString();
-                string fechaIniAlta2 = dt.Rows[1]["fechaIniciaAlta"].ToString();
-                string fechaFinAlta2 = dt.Rows[1]["fechaTerminaAlta"].ToString();
+                DateTime fechaIniAlta2 = Convert.ToDateTime(dt.Rows[1]["fechaIniciaAlta"]);
+                DateTime fechaFinAlta2 = Convert.ToDateTime(dt.Rows[1]["fechaTerminaAlta"]);
+
+                var fechaInAlta2 = fechaIniAlta2.ToShortDateString();
+                var fechaFnAlta2 = fechaFinAlta2.ToShortDateString();
 
 
                 string imagen3 = dt.Rows[2]["imagen"].ToString();
                 string habitacion3 = dt.Rows[2]["HABITACION"].ToString();
                 string precioTempBaja3 = dt.Rows[2]["PRECIOTEMPORADABAJA"].ToString();
-                string fechaIniBaja3 = dt.Rows[2]["fechaIniciaBaja"].ToString();
-                string fechaFinBaja3 = dt.Rows[2]["fechaTerminaBaja"].ToString();
+                DateTime fechaIniBaja3 = Convert.ToDateTime(dt.Rows[2]["fechaIniciaBaja"]);
+
+                DateTime fechaFinBaja3 = Convert.ToDateTime(dt.Rows[2]["fechaTerminaBaja"]);
+
+                var fechaIniBaj3 = fechaIniBaja3.ToShortDateString();
+                var fechaFnBaj3 = fechaFinBaja3.ToShortDateString();
 
                 string precioTempAlta3 = dt.Rows[2]["PRECIOTEMPORADAALTA"].ToString();
-                string fechaIniAlta3 = dt.Rows[2]["fechaIniciaAlta"].ToString();
-                string fechaFinAlta3 = dt.Rows[2]["fechaTerminaAlta"].ToString();
+                DateTime fechaIniAlta3 = Convert.ToDateTime(dt.Rows[2]["fechaIniciaAlta"]);
+                DateTime fechaFinAlta3 = Convert.ToDateTime(dt.Rows[2]["fechaTerminaAlta"]);
+
+                var fechaInAlta3 = fechaIniAlta3.ToShortDateString();
+                var fechaFnAlta3 = fechaFinAlta3.ToShortDateString();
 
 
 
-                habitacionesTemporada =(imagen1 + "#" + habitacion1 + "#" + precioTempBaja1 + "#" + fechaIniBaja1 + "#" + fechaFinBaja1 + "#" + precioTempAlta1 + "#" + fechaIniAlta1 + "#" + fechaFinAlta1+ "#" + imagen2 + "#" + habitacion2 + "#" + precioTempBaja2 + "#" + fechaIniBaja2 + "#" + fechaFinBaja2 + "#" + precioTempAlta2 + "#" + fechaIniAlta2 + "#" + fechaFinAlta2 + "#"+ imagen3 + "#" + habitacion3 + "#" + precioTempBaja3 + "#" + fechaIniBaja3 + "#" + fechaFinBaja3 + "#" + precioTempAlta3 + "#" + fechaIniAlta3 + "#" + fechaFinAlta3);
+                habitacionesTemporada =("info" + "#" + imagen1 + "#" + habitacion1 + "#" + precioTempBaja1 + "#" + fechaIniBaj1 + "#" + fechaFnBaj1 + "#" + precioTempAlta1 + "#" + fechaInAlta1 + "#" + fechaFnAlta1+ "#" + imagen2 + "#" + habitacion2 + "#" + precioTempBaja2 + "#" + fechaIniBaj2 + "#" + fechaFnBaj2 + "#" + precioTempAlta2 + "#" + fechaInAlta2 + "#" + fechaFnAlta2 + "#"+ imagen3 + "#" + habitacion3 + "#" + precioTempBaja3 + "#" + fechaIniBaj3 + "#" + fechaFnBaj3 + "#" + precioTempAlta3 + "#" + fechaInAlta3 + "#" + fechaFnAlta3+ "#" + "info");
                 
 
             };
