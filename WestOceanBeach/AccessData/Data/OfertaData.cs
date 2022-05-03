@@ -8,12 +8,12 @@ using Entities.Entities;
 
 namespace AccessData.Data
 {
-    public class OfertData
+    public class OfertaData
     {
         private SqlConnection sqlConnection;
         private SqlCommand sqlCommand;
 
-        public OfertData()
+        public OfertaData()
         {
             sqlConnection = new SqlConnection("Data Source=163.178.107.10;Initial Catalog=WestOceanBeach;Persist Security Info=True;User ID=laboratorios;Password=KmZpo.2796;Pooling=False");
             sqlCommand = new SqlCommand();

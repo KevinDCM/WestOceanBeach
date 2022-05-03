@@ -5,14 +5,14 @@ using AccessData.Data;
 using Entities.Entities;
 namespace Business.Business
 {
-    public class OfertBusiness
+    public class OfertaBusiness
     {
-        private static OfertData ofertaData;
+        private static OfertaData ofertaData;
 
-        public OfertBusiness() {
+        public OfertaBusiness() {
           
         
-            ofertaData=new OfertData();
+            ofertaData=new OfertaData();
         }
 
 

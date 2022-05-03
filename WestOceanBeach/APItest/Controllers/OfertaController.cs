@@ -9,7 +9,7 @@ namespace API.Controllers
 
     [ApiController]
     [Route("[controller]")]
-    public class OfertController : ControllerBase
+    public class OfertaController : ControllerBase
     {
         [HttpGet]
         [Route("obtenerOfertaSobresalientes")]
@@ -17,7 +17,7 @@ namespace API.Controllers
 
         {
             
-            return new OfertBusiness().obtenerOfertaSobresaliente();
+            return new OfertaBusiness().obtenerOfertaSobresaliente();
         }// fin m
 
 

@@ -69,7 +69,7 @@ namespace Presentacion.Controllers
 
             var respContent = await response.Content.ReadAsStringAsync();
 
-            var ofertas = JsonConvert.DeserializeObject<Ofertas>(respContent);
+            var ofertas = JsonConvert.DeserializeObject<Oferta>(respContent);
 
             @ViewBag.ofertas01 = ofertas.cantidad_personas;
             @ViewBag.ofertas02 = ofertas.descuento;
