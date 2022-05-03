@@ -75,7 +75,50 @@ namespace Presentacion.Controllers
             @ViewBag.ofertas02 = ofertas.descuento;
             @ViewBag.ofertas03 = ofertas.fecha_inicio;
             @ViewBag.ofertas04 = ofertas.fecha_final;
-             return View();
+          
+
+
+            //HabitacionTemporada
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+             new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var responseHabitacionTemporada= await client.GetAsync("https://localhost:44386/Habitacion/obtenerHabitacionesTemporada");
+            string resultadoHabitacionTemporada = await responseHabitacionTemporada.Content.ReadAsStringAsync();
+
+            string[] habitaciones = resultadoHabitacionTemporada.Split('#');
+
+            @ViewBag.habitacionImagen1=habitaciones[1];
+            @ViewBag.nombre1 = habitaciones[2];
+            @ViewBag.precioBaja1 = habitaciones[3];
+            @ViewBag.fechaIniBaja1 = habitaciones[4];
+            @ViewBag.fechaTermBaja1 = habitaciones[5];
+            @ViewBag.precioAlta1 = habitaciones[6];
+            @ViewBag.fechaIniAlta1 = habitaciones[7];
+            @ViewBag.fechaTermAlta1 = habitaciones[8];
+
+
+            @ViewBag.habitacionImagen2 = habitaciones[9];
+            @ViewBag.nombre2 = habitaciones[10];
+            @ViewBag.precioBaja2 = habitaciones[11];
+            @ViewBag.fechaIniBaja2 = habitaciones[12];
+            @ViewBag.fechaTermBaja2 = habitaciones[13];
+            @ViewBag.precioAlta2 = habitaciones[14];
+            @ViewBag.fechaIniAlta2 = habitaciones[15];
+            @ViewBag.fechaTermAlta2 = habitaciones[16];
+
+            @ViewBag.habitacionImagen3 = habitaciones[17];
+            @ViewBag.nombre3 = habitaciones[18];
+            @ViewBag.precioBaja3 = habitaciones[19];
+            @ViewBag.fechaIniBaja3 = habitaciones[20];
+            @ViewBag.fechaTermBaja3 = habitaciones[21];
+            @ViewBag.precioAlta3 = habitaciones[22];
+            @ViewBag.fechaIniAlta3 = habitaciones[23];
+            @ViewBag.fechaTermAlta3 = habitaciones[24];
+
+
+
+            return View();
         }
         public IActionResult Privacy()
         {
