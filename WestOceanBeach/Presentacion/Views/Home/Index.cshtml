@@ -26,7 +26,7 @@
               </h1>
           </marquee> 
          <p class="new3">
-        <marquee>  <a href="#reservas" style="color:black;">Por la cantidad de: @ViewBag.ofertas01 personas, se aplica un  @ViewBag.ofertas02 % , desde el @ViewBag.ofertas03 hasta el @ViewBag.ofertas04 </a></marquee> 
+        <marquee>  <a href="#reservas" style="color:black;">Por la cantidad de: @ViewBag.ofertas01 personas, se aplica un  @ViewBag.ofertas02 % de descuento, desde el @ViewBag.ofertas03 hasta el @ViewBag.ofertas04 </a></marquee> 
             </p>
         </div>
     </div>            
@@ -39,9 +39,7 @@
         </div>
     </div>
 
-
     <div class="row">
-
 
         <!-- Menú principal y publicidad -->
         <div class="col-sm-2" style="margin-block: 1em; background-color: white; width:100%" >
@@ -78,26 +76,50 @@
                     </li>
 
                 </ul>
-
             </div>
 
+            <br/>
 
-            <div id="header02"   >
+            <div id="header02">
 
                 <h3 id="tituloPublicidad">Publicidad</h3>
 
-                <img id="imagenPublicidad" class="img-fluid " src="https://i.ytimg.com/vi/R0NZ-dNI8CI/maxresdefault.jpg" alt="Nature" >
-              
-                 <!--
-                <img id="imagenPublicidad" class="img-fluid " src="https://i.postimg.cc/90jdW04P/coca-cola-wristband-ooh.jpg" alt="Nature">
-                </br >
+                <div class="row" >
+                    <div class="slideshow-container"> 
+                        @*elementos publicitarios actuales*@
+                        <a href='@ViewBag.uri1' target="_blank">
+                            <img id="publicity" class="mySlides w3-animate-top" src= '@ViewBag.public1' style="width:100%" vspace="30" hspace="10">
+                        </a>
+                        <a href='@ViewBag.uri2' target="_blank">
+                            <img id="publicity" class="mySlides w3-animate-bottom" src= '@ViewBag.public2' style="width:100%" vspace="30" hspace="10" >
+                        </a>
+                        <a href='@ViewBag.uri3' target="_blank">
+                            <img id="publicity" class="mySlides w3-animate-bottom" src= '@ViewBag.public3' style="width:100%" vspace="30" hspace="10">
+                        </a>
+                        <a href='@ViewBag.uri4' target="_blank">
+                            <img id="publicity"  class="mySlides w3-animate-top" src= '@ViewBag.public4' style="width:100%" vspace="30" hspace="10">
+                        </a>
+                  </div>
+                </div>
+                <script>
+                    let slideIndex = 0;
+                    showSlides();
 
-                <img id="imagenPublicidad" class="img-fluid " src=" https://i.postimg.cc/W1rsZ4tq/20201002102718-parque-x2.webp" alt="Nature">
-                -->
+                    function showSlides() {
+                      let i;
+                      let slides = document.getElementsByClassName("mySlides");
+                      for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";  
+                      }
+                      slideIndex++;
+                      if (slideIndex > slides.length) {slideIndex = 1}    
+
+                      slides[slideIndex-1].style.display = "block";  
+                      setTimeout(showSlides, 4000); // Change image every 2 seconds
+                    }
+                </script>
             </div>
-
         </div>
-
 
 
         <!-- Secciones (contenido) -->
