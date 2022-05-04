@@ -4,10 +4,9 @@ using System.Text;
 
 namespace Entities.Entities
 {
-    public class Cliente
+    public class Cliente : Persona
     {
-        public int cedula { get; set; }
-        public string nombre { get; set; }
-        public string correo { get; set; }
+        public int Betado { get; set; }
+        public int Activo { get; set; }
     }
 }
