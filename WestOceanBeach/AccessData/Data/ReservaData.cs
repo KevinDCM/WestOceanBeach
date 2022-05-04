@@ -57,13 +57,13 @@ namespace AccessData.Data
 
         public string reservarHabitacion(Reserva reserva)
         {
-            string salida = "";
+            string salida = "Reservación realizada, no olvide llevar su cédula.";
 
             sqlConnection.Open();
             sqlCommand = new SqlCommand("SP_reservarHabitacion", sqlConnection);
             sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-            sqlCommand.Parameters.AddWithValue("@fechaI", reserva.fechaIS);
-            sqlCommand.Parameters.AddWithValue("@fechaF", reserva.fechaFS);
+            sqlCommand.Parameters.AddWithValue("@fechaI", reserva.fechaI);
+            sqlCommand.Parameters.AddWithValue("@fechaF", reserva.fechaF);
             sqlCommand.Parameters.AddWithValue("@numHabitacion", reserva.numHabitacion);
             sqlCommand.Parameters.AddWithValue("@nombre", reserva.nombre);
 

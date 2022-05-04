@@ -91,8 +91,8 @@ namespace Presentacion.Controllers
 
                 top5_ofertas += "Oferta  #" + (i+1) + 
                 ", Habitación: " + ofertas[i].tipo_habitacion +
-                ", Descuento: $ " + ofertas[i].descuento +
-                ", Inicia: " + ofertas[i].fecha_inicio +
+                ", Descuento: " + ofertas[i].descuento +
+                "%, Inicia: " + ofertas[i].fecha_inicio +
                 ", Finaliza: " + ofertas[i].fecha_final;
                 // top5_ofertas +=", Cantidad de personas: " + ofertas[i].cantidad_personas;
 
@@ -200,6 +200,8 @@ namespace Presentacion.Controllers
         [HttpPost]
         public async Task<IActionResult> reservarHabitacion(Reserva reserva)
         {
+            reserva.fechaI = Convert.ToDateTime(reserva.fechaIS);
+            reserva.fechaF = Convert.ToDateTime(reserva.fechaFS);
 
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
