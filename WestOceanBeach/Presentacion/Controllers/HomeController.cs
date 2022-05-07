@@ -37,24 +37,19 @@ namespace Presentacion.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-
-        // se llaman varios métodos de la API, para aprovechar el ViewBag del HomeController
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-
+            // Home, Facilidades, Sobre Nosotros y Contacto 
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
-            new MediaTypeWithQualityHeaderValue("application/json"));
-            
+                new MediaTypeWithQualityHeaderValue("application/json"));
 
             var response = await client.GetAsync("https://localhost:44386/SitioGeneral/obtenerSitioGeneral");
             string resultado = await response.Content.ReadAsStringAsync();
             var sitioGeneral = JsonConvert.DeserializeObject<SitioGeneral>(resultado);
 
-           
             ViewBag.Home = sitioGeneral.HOME;
-            //ViewBag.Facilidades = sitioGeneral.FACILIDADES;
            
             string[] subs = sitioGeneral.SOBRE_NOSOTROS.Split('/');
             string[] subs2 = sitioGeneral.CONTACTO.Split(',');
@@ -73,6 +68,8 @@ namespace Presentacion.Controllers
             @ViewBag.facilidades3 = subs3[2];
             @ViewBag.facilidades4 = subs3[3];
 
+
+            // Ofertas que se muestran en el header (top 5)
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
@@ -81,8 +78,6 @@ namespace Presentacion.Controllers
             string resultado02 = await response02.Content.ReadAsStringAsync();
 
             List<Oferta> ofertas = JsonConvert.DeserializeObject<List<Oferta>>(resultado02);
-
-            // hacer un for que concatene en un string las 5 ofertas recibidas
 
             string top5_ofertas = "| ";
 
@@ -102,7 +97,7 @@ namespace Presentacion.Controllers
             @ViewBag.top5_Ofertas = top5_ofertas;
 
 
-            //HabitacionTemporada
+            // Tarifas de habitaciones según Temporada
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
@@ -120,7 +115,6 @@ namespace Presentacion.Controllers
             @ViewBag.precioAlta1 = habitaciones[6];
             @ViewBag.fechaIniAlta1 = habitaciones[7];
             @ViewBag.fechaTermAlta1 = habitaciones[8];
-
 
             @ViewBag.habitacionImagen2 = habitaciones[9];
             @ViewBag.nombre2 = habitaciones[10];
@@ -164,59 +158,7 @@ namespace Presentacion.Controllers
             @ViewBag.public4 = publicidad[3].RutaImagen;
             @ViewBag.uri4 = publicidad[3].SiteUrl;
 
-
             return View();
         }
-
-        [HttpPost]
-        public async Task<IActionResult> buscarHabitaciones(Reserva reserva)
-        {
-
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = await client.PostAsJsonAsync(
-                "https://localhost:44386/Reserva/obtenerHabitaciones", reserva);
-            string resultado = await response.Content.ReadAsStringAsync();
-
-            resultado = string.Join("", resultado.Split('"'));
-
-            string[] sList = resultado.Split(",");
-            List<SelectListItem> List = new List<SelectListItem>();
-            foreach (string parte in sList)
-            {
-                List.Add(new SelectListItem { Text = parte, Value = parte });
-            }// for
-
-            ViewBag.H = List;
-
-            ViewBag.fIn = reserva.fechaI.ToString("dd/MM/yyyy");
-            ViewBag.fFn = reserva.fechaF.ToString("dd/MM/yyyy");
-
-            return View("Index");
-        }// buscarHabitaciones
-
-
-        [HttpPost]
-        public async Task<IActionResult> reservarHabitacion(Reserva reserva)
-        {
-            reserva.fechaI = Convert.ToDateTime(reserva.fechaIS);
-            reserva.fechaF = Convert.ToDateTime(reserva.fechaFS);
-
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = await client.PostAsJsonAsync(
-                "https://localhost:44386/Reserva/reservarHabitacion", reserva);
-            string resultado = await response.Content.ReadAsStringAsync();
-
-            resultado = string.Join("", resultado.Split('"'));
-
-            // esto se imprime mal, pero funciona en la base de datos
-            ViewBag.Respuesta = resultado;
-
-            return View("Index");
-        }// reservarHabitacion
-
     }
 }

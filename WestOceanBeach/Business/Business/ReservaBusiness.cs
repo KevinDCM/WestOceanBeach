@@ -10,17 +10,9 @@ namespace Business.Business
     {
         private static ReservaData dataReserva = new ReservaData();
 
-        public string buscarHabitaciones(Reserva reserva)
+        public string RealizarReserva(Reserva reserva)
         {
-            return dataReserva.buscarHabitaciones(reserva);
-        }// fin m
-
-        public string reservarHabitacion(Reserva reserva)
-        {
-            return dataReserva.reservarHabitacion(reserva);
-        }// fin m
-
-
-    }// fin clase
-
-}// fin
+            return dataReserva.RealizarReserva(reserva);
+        }
+    }
+}

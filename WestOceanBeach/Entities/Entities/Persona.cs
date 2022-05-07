@@ -16,7 +16,6 @@ namespace Entities.Entities
 		public string Direccion { get; set; }
 		public string Nacionalidad { get; set; }
 	    public DateTime FechaNacimiento{ get; set; }
-
 	}
 
 }
