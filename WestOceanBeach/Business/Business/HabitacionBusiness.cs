@@ -10,10 +10,17 @@ namespace Business.Business
     {
         private static HabitacionData dataHabitacion = new HabitacionData();
 
+        public List<Habitacion> ObtenerHabitacionesDisponibles(int tipoHabitacion)
+        {
+            return dataHabitacion.ObtenerHabitacionesDisponibles(tipoHabitacion);
+
+        }
+
         public string obtenerHabitacionesTemporada()
         {
+            return dataHabitacion.obtenerHabitacionesTemporada();
 
-            return dataHabitacion.obtenerHabitacionTemporada();
         }
+
     }
 }

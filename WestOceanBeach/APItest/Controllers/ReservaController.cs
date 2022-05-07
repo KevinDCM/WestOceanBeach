@@ -13,20 +13,10 @@ namespace API.Controllers
     public class ReservaController : ControllerBase
     {
         [HttpPost]
-        [Route("obtenerHabitaciones")]
-        public string obtenerHabitaciones(Reserva reserva)
-        {
-            return new ReservaBusiness().buscarHabitaciones(reserva);
-        }// fin m
-
-        [HttpPost]
         [Route("reservarHabitacion")]
-        public string reservarHabitacion(Reserva reserva)
+        public string RealizarReserva(Reserva reserva)
         {
-            return new ReservaBusiness().reservarHabitacion(reserva);
-        }// fin m
-
-    }// fin clase
-
-}// fin
-
+            return new ReservaBusiness().RealizarReserva(reserva);
+        }
+    }
+}

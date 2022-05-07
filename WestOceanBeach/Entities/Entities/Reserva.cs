@@ -6,26 +6,29 @@ namespace Entities.Entities
 {
     public class Reserva
     {
-        public int numReserva { get; set; }
-        public DateTime fechaI { get; set; }
-        public DateTime fechaF { get; set; }
+        public int numReserva { get; set; }  // lo define la BD
+
+        public DateTime fechaI { get; set; }  // lo define el usuario
+
+        public DateTime fechaF { get; set; }  // lo define el usuario
+
+        // DateTime to string
         public string fechaIS { get; set; }
         public string fechaFS { get; set; }
-        public Cliente Cliente { get; set; }
-        public Temporada Temporada { get; set; }
-        public Oferta Oferta { get; set; }    // puede ser nula
-        public float CostoSinDescuento { get; set; }
-        public float CostoFinal { get; set; }
-        public List<Habitacion> Habitaciones { get; set; } // una reserva de momento solo permite una habitacion, version 1
-        public int Num_TarjetaCredito { get; set; }  // no se guarda en BD
+
+
+        public Cliente Cliente { get; set; }  // lo define el usuario
+        public Temporada Temporada { get; set; }  // lo define la BD
+        public Oferta Oferta { get; set; }  // puede ser nula (depende de clickear el header)
+
+
+        // suma las tarifas diarias de las habitaciones escogidas
+        public float CostoSinDescuento { get; set; } 
+
+        public float CostoFinal { get; set; } // lo define la BD, hace el descuento según temporada actual y/o la oferta
+        public List<Habitacion> Habitaciones { get; set; }  // las define el usuario (funcionalidad tipo carrito compras)
+        public int Num_TarjetaCredito { get; set; }  // a modo simulación, no se guarda en BD
         
-
-
-        // los siguientes atributos ya están encapsulados (están obsoletos), se quitan en el sprint 3
-        public int numHabitacion { get; set; }
-        public string tipoHabitacion { get; set; }
-        public string nombre { get; set; }
-
     }
 
 }
