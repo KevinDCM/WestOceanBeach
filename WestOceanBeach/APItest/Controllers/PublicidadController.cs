@@ -10,13 +10,14 @@ namespace API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ReservaController : ControllerBase
+    public class PublicidadController : ControllerBase
     {
-        [HttpPost]
-        [Route("reservarHabitacion")]
-        public string RealizarReserva(Reserva reserva)
+        [HttpGet]
+        [Route("getPublicidadActiva")]
+        public List<Publicidad> getPublicidadActiva()
         {
-            return new ReservaBusiness().RealizarReserva(reserva);
+           return new PublicidadBusiness().getPublicidadActiva();
         }
+
     }
 }

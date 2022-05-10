@@ -4,19 +4,13 @@ using System.Text;
 
 namespace Entities.Entities
 {
-    public class Ofertas
+    public class Oferta
     {
-        public Ofertas()
-        {
-
-        }
         public int cantidad_personas { get; set; }
+        public string tipo_habitacion { get; set; }
         public int descuento { get; set; }
         public DateTime fecha_inicio { get; set; }
         public DateTime fecha_final { get; set; }
 
-
-
     }
-
 }

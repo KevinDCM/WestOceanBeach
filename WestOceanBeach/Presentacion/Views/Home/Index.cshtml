@@ -1,6 +1,5 @@
 @model Entities.Entities.Reserva
 
-
 @{
     ViewData["Title"] = "Hotel West Ocean Beach Resort";
 }
@@ -8,37 +7,37 @@
 <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="https://i.postimg.cc/Qxvj8K4q/logo.png">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <div class="container">
-       <!-- OFERTAS -->
-<div class="dj-banner">
-    <div class="dj-bg">
-          <div id="menuu" class="col-sm-12">
-          <marquee> <h1><b><p class="new">Ofertas Actuales</p></b></h1></marquee> 
-         <p class="new3">
-        <marquee>  <a href="#reservas" style="color:black;">Por la cantidad de: @ViewBag.ofertas01 personas, se aplica un  @ViewBag.ofertas02 % , desde el @ViewBag.ofertas03 hasta el @ViewBag.ofertas04 </a></marquee> 
-            </p>
-        </div>
-    </div>            
-</div>
+
     <!-- logo y header -->
     <div id="menuu" class="col-sm-12">
         <div class="titulo">
             <img class="izquierda" src="https://i.postimg.cc/Qxvj8K4q/logo.png">
-             <p class="new"> Hotel West Ocean Beach</p>
+             <p class="new"> Hotel West Ocean Beach Resort</p>
+            <!-- OFERTAS EN TENDENCIA -->
+            <div class="dj-banner">
+                <div class="dj-bg">
+                      <div id="menuu" class="col-sm-12"> 
+                          <p class="new3">
+                              <marquee>  
+                                  <a href="#reservas" style="color:black;">Ofertas Actuales<br/>@ViewBag.top5_Ofertas </a>
+                               </marquee> 
+                           </p>
+                     </div>
+                </div>            
+             </div>
         </div>
     </div>
 
-
     <div class="row">
 
-
         <!-- Menú principal y publicidad -->
-        <div class="col-sm-2" style="margin-block: 1em; background-color: white; width:100%" >
+        <div id="sidebar-menu" class="col-sm-2" style="width:100%" >
             <div id="header01" >
 
                 <ul class="nav nav-pills flex-column menuVert1  ">
@@ -72,30 +71,52 @@
                     </li>
 
                 </ul>
-
             </div>
 
+            <div id="header02">
 
-            <div id="header02"   >
+                <h4 id="tituloPublicidad">Publicidad</h4>
 
-                <h3 id="tituloPublicidad">Publicidad</h3>
+                <div class="row" >
+                    <div class="slideshow-container"> 
+                        @*elementos publicitarios actuales*@
+                        <a href='@ViewBag.uri1' target="_blank">
+                            <img id="publicity" class="mySlides w3-animate-top" src= '@ViewBag.public1' style="width:100%" vspace="30" hspace="10">
+                        </a>
+                        <a href='@ViewBag.uri2' target="_blank">
+                            <img id="publicity" class="mySlides w3-animate-bottom" src= '@ViewBag.public2' style="width:100%" vspace="30" hspace="10" >
+                        </a>
+                        <a href='@ViewBag.uri3' target="_blank">
+                            <img id="publicity" class="mySlides w3-animate-bottom" src= '@ViewBag.public3' style="width:100%" vspace="30" hspace="10">
+                        </a>
+                        <a href='@ViewBag.uri4' target="_blank">
+                            <img id="publicity"  class="mySlides w3-animate-top" src= '@ViewBag.public4' style="width:100%" vspace="30" hspace="10">
+                        </a>
+                  </div>
+                </div>
+                <script>
+                    let slideIndex = 0;
+                    showSlides();
 
-                <img id="imagenPublicidad" class="img-fluid " src="https://i.ytimg.com/vi/R0NZ-dNI8CI/maxresdefault.jpg" alt="Nature" >
-              
-                 <!--
-                <img id="imagenPublicidad" class="img-fluid " src="https://i.postimg.cc/90jdW04P/coca-cola-wristband-ooh.jpg" alt="Nature">
-                </br >
+                    function showSlides() {
+                      let i;
+                      let slides = document.getElementsByClassName("mySlides");
+                      for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";  
+                      }
+                      slideIndex++;
+                      if (slideIndex > slides.length) {slideIndex = 1}    
 
-                <img id="imagenPublicidad" class="img-fluid " src=" https://i.postimg.cc/W1rsZ4tq/20201002102718-parque-x2.webp" alt="Nature">
-                -->
+                      slides[slideIndex-1].style.display = "block";  
+                      setTimeout(showSlides, 4000); // Change image every 2 seconds
+                    }
+                </script>
             </div>
-
         </div>
 
 
-
         <!-- Secciones (contenido) -->
-        <div class="col-sm-10">
+        <div style="margin-left: auto !important;" class="col-sm-10">
 
             <!-- Sección Home (Inicio) -->
             <section id="inicio" class="container" style="margin-block: 1em; background-color: white">
@@ -119,9 +140,8 @@
 
 
             <!-- Sección Facilidades -->
-              <section id="Facilidades" class="container" style="margin-block: 1em; background-color: white">
-          
-              
+              <section id="facilidades" class="container" style="margin-block: 1em; background-color: white">
+
                 <div class="row" >
                     <div class="col-sm-6"> 
                             <img class="slides w3-animate-top" src="https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/itemimages/10/02/100295_v4.jpeg"  style="width:100%" vspace="30"  hspace="10">
@@ -163,121 +183,175 @@
             <section id="tarifas" class="container" style="background-color:white;">
 
                 <div class="row">
-                    <h2>Tarifas</h2>
+                    <h2>Tarifas(por noche)</h2>
                     <br>
                    
                     <div class="col-sm-12">
                        <div class="container">
-    <table class="table table-responsive table-striped">
-      <thead> 
-        <tr> 
-          <th>Imagen</th> 
-          <th>Habitaciòn</th>
-          <th>Tarifa Tem. Baja</th>
-          <th>Fecha Inicio</th>
-          <th>Fecha Final</th>  
-          <th>Tarifa Tem. Alta</th>
-          <th>Fecha Inicio</th>
-          <th>Fecha Final</th>  
-        </tr> 
-      </thead>
-      <tbody>
-        <tr> 
-          <td>Elemento 1,1</td>
-          <td>Elemento 1,2</td> 
-          <td>Elemento 1,3</td> 
-          <td>Elemento 1,4</td> 
-          <td>Elemento 1,5</td>    
-          <td>Elemento 1,3</td> 
-          <td>Elemento 1,4</td> 
-          <td>Elemento 1,5</td>    
-        </tr>
-        <tr> 
-          <td>Elemento 2,1</td>
-          <td>Elemento 2,2</td> 
-          <td>Elemento 2,3</td> 
-          <td>Elemento 2,4</td> 
-          <td>Elemento 2,5</td>    
-          <td>Elemento 1,3</td> 
-          <td>Elemento 1,4</td> 
-          <td>Elemento 1,5</td>    
-        </tr>
-    
-      </tbody>
-    </table>
-  </div> 
+                            <table class="table table-responsive table-striped">
+                                <thead> 
+                                    <tr> 
+                                        <th></th> 
+                                        <th>Habitación</th>
+                                        <th>Tarifa Temp. Baja</th>
+                                        <th>Fecha Inicio</th>
+                                        <th>Fecha Final</th>  
+                                        <th>Tarifa Temp. Alta</th>
+                                        <th>Fecha Inicio</th>
+                                        <th>Fecha Final</th>  
+                                    </tr> 
+                                </thead>
+                                <tbody>
+
+                                    <tr> 
+                                        <td>
+                                            <img class="img-fluid " src=@ViewBag.habitacionImagen1 alt="Nature" >
+                                        </td>
+                                        <td>@ViewBag.nombre1</td> 
+                                        <td>$@ViewBag.precioBaja1</td> 
+                                        <td>@ViewBag.fechaIniBaja1</td>
+                                        <td>@ViewBag.fechaTermBaja1</td> 
+                                        <td>$@ViewBag.precioAlta1</td>    
+                                        <td>@ViewBag.fechaIniAlta1</td> 
+                                        <td>@ViewBag.fechaTermAlta1</td> 
+                                    </tr>
+
+                                    <tr> 
+                                        <td>
+                                            <img class="img-fluid " src=@ViewBag.habitacionImagen2 alt="Nature" >
+                                        </td>
+                                        <td>@ViewBag.nombre2</td> 
+                                        <td>$@ViewBag.precioBaja2</td> 
+                                        <td>@ViewBag.fechaIniBaja2</td>
+                                        <td>@ViewBag.fechaTermBaja2</td> 
+                                        <td>$@ViewBag.precioAlta2</td>    
+                                        <td>@ViewBag.fechaIniAlta2</td> 
+                                        <td>@ViewBag.fechaTermAlta2</td>    
+                                    </tr>
+
+                                    <tr> 
+                                        <td>
+                                            <img class="img-fluid " src=@ViewBag.habitacionImagen3 alt="Nature" >
+                                        </td>
+                                        <td>@ViewBag.nombre3</td> 
+                                        <td>$@ViewBag.precioBaja3</td> 
+                                        <td>@ViewBag.fechaIniBaja3</td>
+                                        <td>@ViewBag.fechaTermBaja3</td> 
+                                        <td>$@ViewBag.precioAlta3</td>    
+                                        <td>@ViewBag.fechaIniAlta3</td> 
+                                        <td>@ViewBag.fechaTermAlta3</td>    
+                                    </tr>
+                                </tbody>
+                            </table>
+                       </div> 
                     </div>
                 </div>
-
             </section>
 
             <br/>
 
             <!-- Reservas Section -->
             <section id="reservas" class="container" style="background-color:white;">
-                <div class="row">
-                    <h2>Reservas</h2>
-                     <br/>
+                <div style="display: block !important;" class="row">
+                    <h1>Reservas</h1>
+                    <br/>
                     <br/>
 
-                    <form style="margin-top:45px;" asp-action="buscarHabitaciones">
+                     @*solicitar disponibilidad de habitaciones segun el tipo*@
+                    <div id="rangoFechas" style="display: block !important; background-color:white;" class="entry-form">
+
+                        <h4>Ver habitaciones disponibles según el tipo</h4>
+ 
                         <label>Fecha inicio: </label>
-                        <input asp-for="fechaI" type="date">
+	                    <input id="fechaI" type="date" placeholder="dd/mm/yy">
 
-                        <label>Fecha final: </label>
-                        <input asp-for="fechaF" type="date">
-                        <br/>
+	                    <label>Fecha final: </label>
+	                    <input id="fechaF" type="date" placeholder="dd/mm/yy">
+	                    <br/>
 
-                        <select asp-for="tipoHabitacion">
-                            <option value="1">Junior</option>
-                            <option value="2">Estandar</option>
-                        </select>
-                        <br/>
-                        <br/>
+	                    <label>Tipo de Habitación: </label>
 
-                        <input style="margin-left:50px;" type="submit" value="Buscar habitaciones disponibles" class="btn btn-primary" />
-                    </form>
+	                    <select id="tipoHabitacion">
+		                    <option value="1">Junior</option>
+		                    <option value="2">Estándar</option>
+		                    <option value="3">Suite</option>
+	                    </select>
+	
+	                    <br/>
+	
+	                    <button class="submit-btn form-control" id="button" onclick="return ObtenerHabitacionesDisponibles()">Consultar</button> 
+
+                    </div>
+
+                    <br/>
                     <br/>
 
-                    <!-- Button trigger modal -->
-                    <button style="margin-left:50px;"type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        Reservar
-                    </button>
+                    @*carrito para seleccionar habitaciones a reservar*@
+                    <div style="display: block !important;" id="divSelectHabitaciones" class="entry-form">
+                        
+                        <h3>Seleccionar habitaciones a reservar</h3>
+                        <label>Habitación: </label>
+	                    <select style="width: 100px;" id="numsHabitacion" class="sbody">
+	                    </select>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Reservación</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form asp-action="reservarHabitacion">
-                                        <label class="control-label">Habitaciones disponibles: </label>
-                                        <select asp-for="numHabitacion" asp-items="ViewBag.H" class="custom-select">
-                                        </select>
-                                        <input asp-for="fechaIS" value="@(ViewBag.fIn ?? String.Empty)" readonly />
-                                        <input asp-for="fechaFS" value="@(ViewBag.fFn ?? String.Empty)" readonly />
-                                        <div class="form-group row">
-                                            <label asp-for="nombre" class="control-label">Nombre: </label>
-                                            <input asp-for="nombre" class="form-control" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="submit" value="Reservar" class="btn btn-primary" />
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
+
+                         <label>Fecha inicio: </label>
+	                    <input id="fechaI2" type="date">
+
+	                    <label>Fecha final: </label>
+	                    <input id="fechaF2" type="date">
+	                    <br/>
+	
+                        <div style="display: inline !important;">
+	                        <button style="background-color: yellow !important;" class="submit-btn form-control" id="button" onclick="return AgregarHabitacionAlCarrito()">Agregar</button>
+	                        <button class="submit-btn form-control" id="button" onclick="return VerDatosCliente()">Listo</button>
                         </div>
                     </div>
 
-                    <p>@ViewBag.Respuesta</p>
+                    <br/>
+                    <br/>
+
+                    @*formulario de datos del cliente*@
+                    <div style="display: block !important; background-color: lightgray" id="datosCliente" class="entry-form">
+                        
+                        <h3>Finalizar reservación</h3>
+
+	                    <input type="text" name="cedula" id="cedula" class="form-control" placeholder="Cédula" required autocomplete="off">
+
+	                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" required>
+	
+	                    <input type="text" name="PrimerApellido" id="PrimerApellido" class="form-control" placeholder="Primer Apellido" required>
+	
+	                    <input type="text" name="SegundoApellido" id="SegundoApellido" class="form-control" placeholder="Segundo Apellido" required>
+
+	                    <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo electrónico" required>
+
+	                    <input type="text" name="Telefono" id="Telefono" class="form-control" placeholder="Teléfono" required>
+
+	                    <input type="number" name="edad" id="edad" class="form-control" placeholder="Edad" required>
+
+	                    <input type="text" name="Direccion" id="Direccion" class="form-control" placeholder="Dirección" required>
+	
+	                    <input type="text" name="Nacionalidad" id="Nacionalidad" class="form-control" placeholder="Nacionalidad" required>	
+	
+	                    <label>Fecha de nacimiento:</label>
+	                    <input id="fechaNacimiento" class="form-control" type="date">
+	
+                        <br/>
+
+	                    <div style="display: block !important;"> 
+		                    <label>Datos de pago:</label>
+		                    <input name="precio" id="precio" class="form-control" placeholder="Precio Total: $000" readonly required>
+		
+		                    <input type="number" name="numeroTarjeta" id="numeroTarjeta" class="form-control" placeholder="Número de tarjeta" required>
+		
+		                    <img src="https://i.postimg.cc/Gpr1Rtth/Captura.png" alt="security" width="200" height="100">
+	                    </div>
+	
+	                    <button class="submit-btn form-control" id="button" onclick="return SolicitarReservacion()">Reservar</button>
+
+                    </div>
+
                 </div>
             </section>
 
@@ -387,7 +461,7 @@
                     <div class="col-sm-12" >
                         <div class="mapouter">
                             <div class="gmap_canvas">
-                                <iframe width="500" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=playa%20fantasia%20costa%20rica&t=k&z=7&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"> <br>123 movies</a><br>
+                                <iframe width="500" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=playa%20fantasia%20costa%20rica&t=k&z=7&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                                 <style>
                                     .mapouter {
                                         position: relative;
@@ -395,8 +469,6 @@
                                         height: 100%;
                                         width: 100%;
                                     }
-                                </style><a href="https://www.embedgooglemap.net">google maps widget html <br></a>
-                                <style>
                                     .gmap_canvas {
                                         overflow: hidden;
                                         background: none !important;
@@ -411,19 +483,14 @@
 
             </section>
 
-          
-
             <!-- contacto Section -->
-
             <section id="contacto" class="container" style="margin-block: 1em; background-color: white;  text-align: left;">
 
-
-                  <h2 id="contactoo" >Contacto</h2>
+                <h2 id="contactoo" >Contacto</h2>
                 
                 <div class="row">
               
                     <div class="col-sm-6">
-                        
 
                         <div id="ubicacionTextoContact">
                             <br />
@@ -439,7 +506,7 @@
 
                     <div class="col-sm-6">
 
-                         <img src="~/imagenes/contacto.png" style="width:150px; height:120px;">
+                        <img src="~/imagenes/contacto.png" style="width:150px; height:120px;">
                         <p style="width:100%;">
                          Si en algún momento tiene alguna sugerencia sobre cómo mejorar nuestro servicio, háganoslo saber. Si tiene algún problema durante su estadía con nosotros, comuníquese de inmediato al teléfono 2298-1700 ext: 42 para que tengamos la oportunidad de corregir la situación.
                         </p>
@@ -447,6 +514,15 @@
                     </div>
 
                 </div>
+            </section>
+
+            <section id="loginadmin" style="background-color:lightgray;">
+  
+                <p style="text-align: center !important;">
+                   Ir al <a  href="#" >Login administrativo</a>
+                   @*redireccionar a vista Admin*@
+                </p>
+            
             </section>
 
         </div>
