@@ -11,20 +11,22 @@ namespace Business.Business
         private SitioGeneralData sitio;
 
         public SitioGeneralBusiness() {
-
-           sitio = new SitioGeneralData();
-        
-        
+           sitio = new SitioGeneralData();        
         }
-
 
         public SitioGeneral ObtenerSitioGeneral() { 
-        
-        
             return sitio.obtenerSitioGeneral();
-        
         }
 
+        public string editarFacilidades(SitioGeneral sitioGeneral)
+        {
+            return sitio.editarFacilidades(sitioGeneral);
+        }
+
+        public SitioGeneral obtenerFacilidades()
+        {
+            return sitio.obtenerFacilidades();
+        }
 
 
     }
