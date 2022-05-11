@@ -54,7 +54,7 @@ namespace Presentacion.Controllers
             string[] subs = sitioGeneral.SOBRE_NOSOTROS.Split('/');
             string[] subs2 = sitioGeneral.CONTACTO.Split(',');
             string[] subs3 = sitioGeneral.FACILIDADES.Split('/');
-
+         
             @ViewBag.texto1=subs[0];
             @ViewBag.texto2 = subs[1];
             @ViewBag.texto3 = subs[2];
@@ -67,7 +67,6 @@ namespace Presentacion.Controllers
             @ViewBag.facilidades2 = subs3[1];
             @ViewBag.facilidades3 = subs3[2];
             @ViewBag.facilidades4 = subs3[3];
-
 
             // Ofertas que se muestran en el header (top 5)
             client.DefaultRequestHeaders.Accept.Clear();

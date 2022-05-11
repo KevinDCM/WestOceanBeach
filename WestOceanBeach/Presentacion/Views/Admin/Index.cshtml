@@ -1,0 +1,26 @@
+﻿@model Entities.Entities.SitioGeneral
+
+@{
+    ViewData["Title"] = "Admin Module";
+}
+
+<h1>West Ocean Beach Administrator Module</h1>
+
+<p>Use this page for the administrator changes and login/logout</p>
+
+<label>Editar Facilidades</label>
+<form method="post" asp-controller="Admin" asp-action="EditarFacilidades">
+
+    <textarea rows="6" cols="70" asp-for="FACILIDADES">
+   </textarea>
+
+    <textarea rows="6" cols="70" readonly>
+      @ViewBag.facilidades
+   </textarea>
+
+    <div class="form-group">
+        <div class="col-lg-6">
+            <input class="btn btn-success" type="submit" value="Editar texto" style="background-color: #F35C2D;" />
+        </div>
+    </div>
+</form>

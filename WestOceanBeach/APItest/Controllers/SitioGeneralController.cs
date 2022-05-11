@@ -15,7 +15,23 @@ namespace API.Controllers
             {
                 return new SitioGeneralBusiness().ObtenerSitioGeneral();
             }// fin m
-         
-        }// fin clase
-    
+
+           [HttpPost]
+           [Route("editarFacilidades")]
+           public string editarFacilidades(SitioGeneral  sitioGeneral)
+           {
+             return new SitioGeneralBusiness().editarFacilidades(sitioGeneral);
+           }
+
+          [HttpGet]
+          [Route("obtenerFacilidades")]
+          public SitioGeneral obtenerFacilidades()
+          {
+             return new SitioGeneralBusiness().obtenerFacilidades();
+          }// fin m
+
+
+
+    }// fin clase
+
 }
