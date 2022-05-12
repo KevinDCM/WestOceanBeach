@@ -361,8 +361,8 @@
             <section id="acercade" style="background-color:white;">
 
                 <h2 class="new">Acerca de</h2>
-                <p class="Alineacion2">
-                    @ViewBag.texto1 <a href="#comollegar">Puntarenas, Costa Rica,</a>@ViewBag.texto2.<br> @ViewBag.texto3 <br> @ViewBag.texto4
+                <p id="parrafoHome" class="Alineacion" >
+                    @ViewBag.CercaDe
                 </p>
 
                 <!-- galeria -->
@@ -493,14 +493,10 @@
                     <div class="col-sm-6">
 
                         <div id="ubicacionTextoContact">
-                            <br />
-                              <h4 id="tituloContacto">@ViewBag.contacto1</h4>
-                              <p id="telefonoContacto" >@ViewBag.contacto2</p>
-                             <p id="codigoContacto">@ViewBag.contacto3</p> 
-                             
-                            <p>Informacion:   <a id="correoContacto" href = "mailto:WestOceanBeach@gmail.com?subject = Feedback&body = Message">
-                                     @ViewBag.contacto4
-                                </a> </p> 
+                            <p id="parrafoHome" class="Alineacion" style="display:block;">
+
+                                @ViewBag.Contacto
+                            </p>
                         </div>
                     </div>
 
