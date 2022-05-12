@@ -35,7 +35,10 @@ function ObtenerHabitacionesDisponibles(){
 
 		// 1. validar que ambas fechas sean superiores a hoy
 		//    y
-		// 2. validar que la fechaInicio sea menor a la fechaFinal
+		// 2. validar que la fechaInicio sea menor a la fechaFinal, al menos un día
+
+		document.getElementById('fechaI').readOnly = true;
+		document.getElementById('fechaF').readOnly = true;
 
 		var tipoHabitacionText = $('#tipoHabitacion :selected').text(); 
 
@@ -81,6 +84,9 @@ function ObtenerHabitacionesDisponibles(){
 			}
 		});
 
+
+		document.getElementById('fechaI2').readOnly = true;
+		document.getElementById('fechaF2').readOnly = true;
 		document.getElementById("divSelectHabitaciones").style.display = "";
 
 	}
@@ -88,7 +94,9 @@ function ObtenerHabitacionesDisponibles(){
 
 function AgregarHabitacionAlCarrito(){
 	
-	// pendiente: por cada Habitación se debe poder escoger un rango de fechas distinto
+
+	// se debería poder eliminar un item del carrito
+	// en vez de cargar las escogidas como texto, cargarlas en un combo y agregar boton eliminar
 
 	var answer = window.confirm("Seleccionar esta habitación?");
 	var numHabitacion = $('#numsHabitacion :selected').text(); 
@@ -118,26 +126,50 @@ function AgregarHabitacionAlCarrito(){
 		}
 		$('.sbody').html(html);
 
+		var parElement = document.getElementById("habitacionesEscogidas");
+		var textToAdd = document.createTextNode(numHabitacion.toString() + "(" + $('#tipoHabitacion :selected').text() + ") " );
+		parElement.appendChild(textToAdd);
+
 	} else {
 		// se descarta selección
 	}
+}
+
+
+function ReiniciarReserva(){
+
+    document.getElementById("datosCliente").style.display = "none";
+    document.getElementById("divSelectHabitaciones").style.display = "none";
+
+	document.getElementById('fechaI').readOnly = false;
+	document.getElementById('fechaF').readOnly = false;
+
+    document.getElementById("rangoFechas").style.display = "";
+	// reset carrito
+	carrito = [];
+	i = -1;		
+
+	document.getElementById("habitacionesEscogidas").innerHTML = "";	
+
 }
 
 function VerDatosCliente(){
 	document.getElementById("datosCliente").style.display = "";
     document.getElementById("divSelectHabitaciones").style.display = "none";
     document.getElementById("rangoFechas").style.display = "none";
+
+	// aqui se debe solicitar el precio final de la reserva llamando a ReservaController
 }
 
 function SolicitarReservacion(){
 	// hacer post del objeto reserva
-	// marcar en BD habitaciones esocogidas como no disponibles
+	// marcar en BD habitaciones esocogidas(carrito) como no disponibles
 	// hacer post del objeto cliente
 	var nombre = $('#nombre').val();
+
+
 	alert("Gracias " + nombre +", su reserva ha sido realizada con éxito!");
-    document.getElementById("datosCliente").style.display = "none";
-    document.getElementById("rangoFechas").style.display = "";
-	// reset carrito
-	carrito = [];
-	i = -1;
+	
+   // ReiniciarReserva
+   location.reload();
 }

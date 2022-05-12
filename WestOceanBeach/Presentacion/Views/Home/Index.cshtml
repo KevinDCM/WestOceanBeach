@@ -290,7 +290,7 @@
                     <div style="display: block !important;" id="divSelectHabitaciones" class="entry-form">
                         
                         <h3>Seleccionar habitaciones a reservar</h3>
-                        <label>Habitación: </label>
+                        <label>Seleccione una habitación: </label>
 	                    <select style="width: 100px;" id="numsHabitacion" class="sbody">
 	                    </select>
 
@@ -301,10 +301,14 @@
 	                    <label>Fecha final: </label>
 	                    <input id="fechaF2" type="date">
 	                    <br/>
+
+                        <label>Habitaciones escogidas: </label>
+                        <p id="habitacionesEscogidas"></p>
 	
                         <div style="display: inline !important;">
-	                        <button style="background-color: yellow !important;" class="submit-btn form-control" id="button" onclick="return AgregarHabitacionAlCarrito()">Agregar</button>
-	                        <button class="submit-btn form-control" id="button" onclick="return VerDatosCliente()">Listo</button>
+	                        <button style="background-color: blue !important;" class="submit-btn form-control" id="button" onclick="return AgregarHabitacionAlCarrito()">Agregar</button>
+	                        <button style="background-color: yellow !important;" class="submit-btn form-control" id="button" onclick="return ReiniciarReserva()">Reiniciar</button>     
+                            <button class="submit-btn form-control" id="button" onclick="return VerDatosCliente()">Finalizar</button>   
                         </div>
                     </div>
 
@@ -349,6 +353,7 @@
 	                    </div>
 	
 	                    <button class="submit-btn form-control" id="button" onclick="return SolicitarReservacion()">Reservar</button>
+                        <button style="background-color: yellow !important;" class="submit-btn form-control" id="button" onclick="return ReiniciarReserva()">Reiniciar</button>   
 
                     </div>
 
@@ -494,13 +499,12 @@
 
                         <div id="ubicacionTextoContact">
                             <br />
-                              <h4 id="tituloContacto">@ViewBag.contacto1</h4>
-                              <p id="telefonoContacto" >@ViewBag.contacto2</p>
-                             <p id="codigoContacto">@ViewBag.contacto3</p> 
-                             
-                            <p>Informacion:   <a id="correoContacto" href = "mailto:WestOceanBeach@gmail.com?subject = Feedback&body = Message">
-                                     @ViewBag.contacto4
-                                </a> </p> 
+                            <h4 id="tituloContacto">@ViewBag.contacto1</h4>
+                            <p id="telefonoContacto" >@ViewBag.contacto2</p>
+                            <p id="codigoContacto">@ViewBag.contacto3</p> 
+                            <p>Informacion:<a id="correoContacto" href = "mailto:info@westoceanbeach.com?subject = Feedback&body = Message">
+                                     @ViewBag.contacto4</a> 
+                            </p> 
                         </div>
                     </div>
 

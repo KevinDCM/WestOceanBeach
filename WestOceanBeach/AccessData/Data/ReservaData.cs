@@ -22,10 +22,24 @@ namespace AccessData.Data
 
         public string RealizarReserva(Reserva reserva)
         {
-            string salida = "";
-
             // call stored procedure here...
-           
+            string salida = "Reserva no realizada!";
+
+            //sqlConnection.Open();
+            //sqlCommand = new SqlCommand("SP_RealizarReserva", sqlConnection);
+            //sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            //sqlCommand.Parameters.AddWithValue("@tipoHabitacion", tipoHabitacion);
+
+            //sqlCommand.ExecuteNonQuery();
+            //SitioGeneral sitio = new SitioGeneral();
+
+            //using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand)) //permite llenar registro base de datos
+            //{
+
+
+            //};
+            //sqlConnection.Close();
+
             return salida;
         }
     }
