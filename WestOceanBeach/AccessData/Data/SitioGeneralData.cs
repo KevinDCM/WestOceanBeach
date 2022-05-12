@@ -23,7 +23,7 @@ namespace AccessData.Data
 
         public SitioGeneral obtenerSitioGeneral()
         {
-            /*
+            
             sqlConnection.Open();
             sqlCommand = new SqlCommand("SP_obtenerSitioGeneral", sqlConnection);
             sqlCommand.ExecuteNonQuery();
@@ -33,12 +33,11 @@ namespace AccessData.Data
             {
                 DataTable dt = new DataTable(); //representacion de una tabla base de datos 
                 adapter.Fill(dt);//llena registro 
-                Console.WriteLine("Estoy en data");
+            
 
                 
                 string HOME = dt.Rows[0]["HOME"].ToString();
                 string SOBRE_NOSOTROS = dt.Rows[0]["SOBRENOSOTROS"].ToString();
-              //  string FACILIDADES = dt.Rows[0]["FACILIDADES"].ToString();
                 string CONTACTO = dt.Rows[0]["CONTACTO"].ToString();
                 string COMO_LLEGAR = "Puntarenas";
           
@@ -50,13 +49,8 @@ namespace AccessData.Data
 
             };
             sqlConnection.Close();
-            */
-            SitioGeneral sitio = new SitioGeneral();
-            sitio.SOBRE_NOSOTROS = "SOBRE_NOSOTROS";
-            sitio.HOME = "HOME";
-            sitio.FACILIDADES = "Prueba";
-            sitio.CONTACTO = "CONTACTO";
-            sitio.COMO_LLEGAR = "COMO_LLEGAR";
+            
+           
 
             return sitio;        
         }// metodo
