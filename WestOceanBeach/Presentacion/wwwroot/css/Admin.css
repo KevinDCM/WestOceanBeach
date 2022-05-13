@@ -1,0 +1,24 @@
+﻿body {
+}
+
+
+#acerca {
+    text-align: justify-all;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 70%;
+}
+
+#btnEditarSobreNostros {
+    background-color: #007bff;
+    text-align: center;
+    color: white;
+    margin: 13px;
+    width: 115px;
+    height: 45px;
+    border-radius: 0.3em;
+    border-color: #007bff; 
+}
+
+
