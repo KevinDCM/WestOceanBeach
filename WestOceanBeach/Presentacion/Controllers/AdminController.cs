@@ -24,6 +24,21 @@ namespace Presentacion.Controllers
         public async Task<IActionResult> Index()
         {
 
+            // Home, Facilidades, Sobre Nosotros y Contacto 
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var response1 = await client.GetAsync("https://localhost:44386/SitioGeneral/obtenerSitioGeneral");
+            string resultado1 = await response1.Content.ReadAsStringAsync();
+            SitioGeneral sitioGeneral1 = JsonConvert.DeserializeObject<SitioGeneral>(resultado1);
+
+            ViewBag.Home = sitioGeneral1.HOME;
+            ViewBag.CercaDe = sitioGeneral1.SOBRE_NOSOTROS;
+            ViewBag.Contacto = sitioGeneral1.CONTACTO;
+
+
+
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));

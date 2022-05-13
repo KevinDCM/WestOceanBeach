@@ -8,6 +8,10 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     width: 70%;
+    padding: 0;
+    margin: 0;
+    display: inline;
+    white-space: normal;
 }
 
 #btnEditarSobreNostros {
@@ -20,5 +24,4 @@
     border-radius: 0.3em;
     border-color: #007bff; 
 }
-
 
