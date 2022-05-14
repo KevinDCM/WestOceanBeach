@@ -12,7 +12,10 @@ namespace Business.Business
 
         public string RealizarReserva(Reserva reserva)
         {
-            return dataReserva.RealizarReserva(reserva);
+            if (reserva.Edad >= 18)
+                return dataReserva.RealizarReserva(reserva);
+            else
+                return ("Menores de edad no pueden hacer reservaciones.");
         }
     }
 }

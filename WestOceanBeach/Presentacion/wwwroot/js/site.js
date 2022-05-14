@@ -7,7 +7,7 @@ $(document).ready(function () {
     console.log('hello world');
     document.getElementById("divSelectHabitaciones").style.display = "none";
     document.getElementById("datosCliente").style.display = "none";
-    carrito.length = 100;
+    //carrito.length = 100;
 
     var now = new Date();
     var month = (now.getMonth() + 1);               
@@ -157,19 +157,65 @@ function VerDatosCliente(){
 	document.getElementById("datosCliente").style.display = "";
     document.getElementById("divSelectHabitaciones").style.display = "none";
     document.getElementById("rangoFechas").style.display = "none";
-
-	// aqui se debe solicitar el precio final de la reserva llamando a ReservaController
+	
+	// validar que carrito no esté vacío
+	// aqui se debe solicitar el precio final de la reserva llamando a ReservaController/GetMontoTotal(param carrito)
 }
 
 function SolicitarReservacion(){
-	// hacer post del objeto reserva
-	// marcar en BD habitaciones esocogidas(carrito) como no disponibles
-	// hacer post del objeto cliente
-	var nombre = $('#nombre').val();
 
+	// POST de la entidad Reserva
+	// marca en BD habitaciones esocogidas (carrito) como no disponibles
+	// hace insert del Cliente
 
-	alert("Gracias " + nombre +", su reserva ha sido realizada con éxito!");
+	// usar carrito	como concatenacion de int's  (num1,num2,num3,numN)
+	let listHabit = '';
+
+	for (var r = 0, n = carrito.length; r < n; r++) {
+		listHabit += carrito[r].toString() + ",";
+	}
+
+	var Cedula = $('#cedula').val();
+	var Nombre = $('#nombre').val();
+	var PrimerApellido = $('#PrimerApellido').val();
+	var SegundoApellido = $('#SegundoApellido').val();
+	var Correo = $('#correo').val();
+	var Telefono = $('#Telefono').val();
+	var Edad = parseInt($('#edad').val());
+	var Direccion = $('#Direccion').val();
+	var Nacionalidad = $('#Nacionalidad').val();
+	var fechaIS = $('#fechaI').val();
+	var fechaFS = $('#fechaF').val();
+	var ListHabitaciones = listHabit;
+	var IdOferta = 0;
+
 	
-   // ReiniciarReserva
-   location.reload();
+    $.ajax({
+        type: "POST", 
+        url: "/Reserva/RealizarReserva",
+		data: JSON.stringify({ "Cedula": Cedula, "Nombre" : Nombre,
+			"PrimerApellido" : PrimerApellido,
+			"SegundoApellido" : SegundoApellido,
+			"Correo" : Correo,
+			"Telefono" : Telefono,
+			"Edad" : Edad,
+			"Direccion" : Direccion,
+			"Nacionalidad" : Nacionalidad,
+			"fechaIS" : fechaIS, 
+			"fechaFS" : fechaFS,
+			"ListHabitaciones" : listHabit,
+			"IdOferta" : 0
+		}),
+        contentType: "application/json",
+        success: function (result) {
+
+			alert(result);
+		
+        },
+        error: function (result, status) {
+			console.log(result);
+		}
+    });
+	
+
 }
