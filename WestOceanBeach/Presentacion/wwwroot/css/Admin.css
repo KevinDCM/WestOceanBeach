@@ -1,0 +1,193 @@
+﻿body {
+}
+
+
+#aboutUs {
+    text-align: justify-all;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 70%;
+    padding: 0;
+    margin: 0;
+    display: inline;
+    white-space: normal;
+}
+
+#btnAceptAboutUs {
+    background-color: #007bff;
+    text-align: center;
+    color: white;
+    margin: 13px;
+    width: 115px;
+    height: 45px;
+    border-radius: 0.3em;
+    border-color: #007bff;
+}
+
+#btnCancelAboutUs {
+    background-color: red;
+    text-align: center;
+    color: white;
+    margin: 13px;
+    width: 115px;
+    height: 45px;
+    border-radius: 0.3em;
+    border-color: white;
+}
+
+
+/* The Modal (background) */
+.modal {
+    margin-top: 70px;
+    margin-left: 80px;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 50%; /* Full width */
+    height: 40%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+
+.btn {
+    display: inline-block;
+    margin-right: 20px;
+}
+/* Curso CSS estilos */
+* {
+    font-family: new times roman;
+}
+
+hr.menu {
+hr.menu02 {
+    display: none;
+    margin-top: 0px;
+}
+
+ul.menuVert2 {
+    list-style: none;
+    text-align: left;
+    text-shadow: 2px 2px 4px #3498Db;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+    padding: 0;
+    width: 100%;
+}
+
+    ul.menuVert2 li {
+        padding: 5px 0px;
+        border: groove white;
+        border-width: 6px 6px 0px 6px;
+        background-color: #86b4ca
+    }
+
+        ul.menuVert2 li:last-child {
+            border-bottom: groove white;
+            border-bottom-width: 5px;
+            position: center;
+        }
+        ul.menuVert2 li a:link, ul.menuVert2 li a:visited {
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+        ul.menuVert2 li a:link, ul.menuVert1 li a:visited {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            position: center;
+        }
+
+        ul.menuVert2 li:hover {
+            background-color: lightcoral;
+            position: center;
+        }
+
+
+#header001 {
+    top: 6em;
+    padding: 0;
+    position: fixed;
+}
+            background-color: hotpink;
+            position: center;
+        }
+
+#header001 {
+    top: 9em;
+    padding: 0;
+    position: fixed;
+}
+p.admin01 {
+    font-family: new times roman;
+    font-size: large;
+    text-align: center;
+    font-size: 42px;
+    text-shadow: 7px 4px 5px #3498DB;
+    width: 100%;
+}
+/**********************************/
+.mainmenubtn {
+    background-color: skyblue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 30px;
+    margin-top: 60px;
+    width: 100%;
+    font-size:25px;
+}
+
+    .mainmenubtn:hover {
+        background-color: #86b4ca;
+    }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-child {
+    display: none;
+    background-color: skyblue;
+    min-width: 200px;
+}
+
+    .dropdown-child a {
+        color: midnightblue;/*Color letra*/
+        padding: 18px;
+        text-decoration: none;
+        display: block;
+    }
+
+.dropdown:hover .dropdown-child {
+    display: block;
+}

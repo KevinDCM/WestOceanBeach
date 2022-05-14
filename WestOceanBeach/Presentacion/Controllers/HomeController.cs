@@ -47,26 +47,11 @@ namespace Presentacion.Controllers
 
             var response = await client.GetAsync("https://localhost:44386/SitioGeneral/obtenerSitioGeneral");
             string resultado = await response.Content.ReadAsStringAsync();
-            var sitioGeneral = JsonConvert.DeserializeObject<SitioGeneral>(resultado);
+            SitioGeneral sitioGeneral = JsonConvert.DeserializeObject<SitioGeneral>(resultado);
 
             ViewBag.Home = sitioGeneral.HOME;
-           
-            //string[] subs = sitioGeneral.SOBRE_NOSOTROS.Split('/');
-            //string[] subs2 = sitioGeneral.CONTACTO.Split(',');
-            //string[] subs3 = sitioGeneral.FACILIDADES.Split('/');
-
-            //@ViewBag.texto1=subs[0];
-            //@ViewBag.texto2 = subs[1];
-            //@ViewBag.texto3 = subs[2];
-            //@ViewBag.texto4 = subs[3];
-            //@ViewBag.contacto1=subs2[0];
-            //@ViewBag.contacto2 = subs2[1];
-            //@ViewBag.contacto3 = subs2[2];
-            //@ViewBag.contacto4 = subs2[3];
-            //@ViewBag.facilidades1 = subs3[0];
-            ////@ViewBag.facilidades2 = subs3[1];
-            //@ViewBag.facilidades3 = subs3[2];
-            //@ViewBag.facilidades4 = subs3[3];
+            ViewBag.CercaDe = sitioGeneral.SOBRE_NOSOTROS;
+            ViewBag.Contacto= sitioGeneral.CONTACTO;
 
 
             // Ofertas que se muestran en el header (top 5)
