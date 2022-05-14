@@ -83,3 +83,100 @@
     display: inline-block;
     margin-right: 20px;
 }
+
+/* Curso CSS estilos */
+* {
+    font-family: new times roman;
+}
+
+hr.menu {
+    display: none;
+    margin-top: 0px;
+}
+
+ul.menuVert2 {
+    list-style: none;
+    text-align: left;
+    text-shadow: 2px 2px 4px #3498Db;
+    padding: 0;
+    width: 100%;
+}
+
+    ul.menuVert2 li {
+        padding: 5px 0px;
+        border: groove white;
+        border-width: 6px 6px 0px 6px;
+        background-color: #86b4ca
+    }
+
+        ul.menuVert2 li:last-child {
+            border-bottom: groove white;
+            border-bottom-width: 5px;
+            position: center;
+        }
+
+        ul.menuVert2 li a:link, ul.menuVert2 li a:visited {
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+            position: center;
+        }
+
+        ul.menuVert2 li:hover {
+            background-color: lightcoral;
+            position: center;
+        }
+
+
+#header001 {
+    top: 6em;
+    padding: 0;
+    position: fixed;
+}
+
+p.admin01 {
+    font-family: new times roman;
+    font-size: large;
+    text-align: center;
+    font-size: 42px;
+    text-shadow: 7px 4px 5px #3498DB;
+    width: 100%;
+}
+
+/**********************************/
+.mainmenubtn {
+    background-color: skyblue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 30px;
+    margin-top: 60px;
+    width: 100%;
+    font-size:25px;
+}
+
+    .mainmenubtn:hover {
+        background-color: #86b4ca;
+    }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-child {
+    display: none;
+    background-color: skyblue;
+    min-width: 200px;
+}
+
+    .dropdown-child a {
+        color: midnightblue;/*Color letra*/
+        padding: 18px;
+        text-decoration: none;
+        display: block;
+    }
+
+.dropdown:hover .dropdown-child {
+    display: block;
+}
