@@ -13,7 +13,7 @@ namespace API.Controllers
     public class ReservaController : ControllerBase
     {
         [HttpPost]
-        [Route("reservarHabitacion")]
+        [Route("RealizarReserva")]
         public string RealizarReserva(Reserva reserva)
         {
             return new ReservaBusiness().RealizarReserva(reserva);
