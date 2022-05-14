@@ -88,6 +88,7 @@
     font-family: new times roman;
 }
 
+hr.menu {
 hr.menu02 {
     display: none;
     margin-top: 0px;
@@ -96,6 +97,7 @@ hr.menu02 {
 ul.menuVert2 {
     list-style: none;
     text-align: left;
+    text-shadow: 2px 2px 4px #3498Db;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
     padding: 0;
     width: 100%;
@@ -113,7 +115,10 @@ ul.menuVert2 {
             border-bottom-width: 5px;
             position: center;
         }
-
+        ul.menuVert2 li a:link, ul.menuVert2 li a:visited {
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
         ul.menuVert2 li a:link, ul.menuVert1 li a:visited {
             text-decoration: none;
             color: white;
@@ -122,6 +127,16 @@ ul.menuVert2 {
         }
 
         ul.menuVert2 li:hover {
+            background-color: lightcoral;
+            position: center;
+        }
+
+
+#header001 {
+    top: 6em;
+    padding: 0;
+    position: fixed;
+}
             background-color: hotpink;
             position: center;
         }
@@ -131,7 +146,6 @@ ul.menuVert2 {
     padding: 0;
     position: fixed;
 }
-/**/
 p.admin01 {
     font-family: new times roman;
     font-size: large;
@@ -139,4 +153,41 @@ p.admin01 {
     font-size: 42px;
     text-shadow: 7px 4px 5px #3498DB;
     width: 100%;
+}
+/**********************************/
+.mainmenubtn {
+    background-color: skyblue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 30px;
+    margin-top: 60px;
+    width: 100%;
+    font-size:25px;
+}
+
+    .mainmenubtn:hover {
+        background-color: #86b4ca;
+    }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-child {
+    display: none;
+    background-color: skyblue;
+    min-width: 200px;
+}
+
+    .dropdown-child a {
+        color: midnightblue;/*Color letra*/
+        padding: 18px;
+        text-decoration: none;
+        display: block;
+    }
+
+.dropdown:hover .dropdown-child {
+    display: block;
 }
