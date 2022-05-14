@@ -29,27 +29,25 @@
 
         <!-- Menú principal y publicidad -->
         <section id="inicio_01" class="container" style="margin-block: 1em; background-color: white">
-
-        <div id="sidebar-menu" class="col-sm-2" style="width:100%" >
-             <div class="col-sm-12">
-            <div id="header001" >
-                       <div class="dropdown">
-                                      <button class="mainmenubtn">Menù Principal</button>
-                                      <div class="dropdown-child">
-                                      <a href="#inicio_01" class="page-scroll"> Home </a>
-                                      <a href="#" class="page-scroll"> Modificar Pàginas </a>
-                                      <a href="#" class="page-scroll"> Listado de reservaciòn</a>
-                                      <a href="#" class="page-scroll">Administrar Habitaciones</a>
-                                      <a href="#" class="page-scroll">Ver Estado del Hotel Hoy</a>
-                                      <a href="#" class="page-scroll">Consultar Disponibilidad <br>de Habitaciones</a>
-                                      <a href="#" class="page-scroll">Publicidad</a>
-                  
-                                      </div>
-                                    </div>
-                                        </div>
+        <div class="col-sm-10">
+                 <div id="sidebar-menu" class="col-sm-2" style="width:100%" >
+                 <div id="header001" >
+                                 <div class="dropdown">
+              <button class="mainmenubtn">Menù Principal</button>
+              <div class="dropdown-child">
+                <a href="#inicio_01">Home</a>
+                <a href="">Modificar Pàginas</a>
+                <a href="">Listado de Reservaciones</a>
+                <a href="">Ver Estado del Hotel Hoy</a>
+                <a href="">Disponibilidad de Habitaciones</a>
+                <a href="">Publicidad</a>
+              </div>
             </div>
+
+              </div>  
+             </div>
          </div>
-           </section>
+      </section>
 
            <!-- Secciones (contenido) -->
         <div style="margin-left: auto !important;" class="col-sm-9">
@@ -61,14 +59,14 @@
                  
                     <div class="col-sm-12">
                         <p class="msjBienvenida">
-                        <p class="admin01"> Mòdulo Administrativo</p>
-                        <p class="admin01"> West Ocean Beach Administrator Module</p>
-                        <center>   <p>Use this page for the administrator changes and login/logout</p>  </center>
+                  <center> <p class="admin01"> Mòdulo Administrativo</p> </center>
+                        <center> <p class="admin01"> West Ocean Beach Administrator Module</p> </center>
+                        <center>   <p class="admin02">Use this page for the administrator changes and login/logout</p>  </center>
                  
-                                      <center>    <a href="#inicio_01" style="color:black;">Home</a><br> </center>
-                                       <center>   <a href="#sobre_nosotros_01" style="color:black;">Sobre Nosotros</a><br> </center>
-                                       <center>   <a href="#Facilidades_01" style="color:black;">Facilidades</a><br> </center>
-                                        <center>  <a href="#como_llegar_01" style="color:black;">Como Llegar</a><br> </center>
+                                      <center>    <a  href="#inicio_01"; class="admin02" style="color:black;">Home</a><br> </center>
+                                       <center>   <a href="#sobre_nosotros_01";  class="admin02" style="color:black;">Sobre Nosotros</a><br> </center>
+                                       <center>   <a href="#Facilidades_01" ; class="admin02" style="color:black;">Facilidades</a><br> </center>
+                                        <center>  <a href="#como_llegar_01"; class="admin02" style="color:black;">Como Llegar</a><br> </center>
                          </div>
                 </div>
                  </section>
@@ -109,8 +107,30 @@
                 </ul>
             </div>
          </div>-->
-                
-           
+       <!-- Sección Editar Home (Editar Home) -->
+            <section id="Home_001" class="container" style="margin-block: 1em; background-color: white">
+                <div class="row">
+                   
+                    <div class="col-sm-10">
+                         <p class="new2"> Ediciòn de la secciòn Home </p>
+                            <form method="post" asp-controller="Admin" asp-action="EditarHome">
+
+                                <textarea rows="6" cols="70" asp-for="HOME">
+                               </textarea>
+
+                                <textarea rows="6" cols="70" readonly>
+                           
+                               </textarea>
+
+                                <div class="form-group">
+                                    <div class="col-lg-6">
+                                        <input class="btn btn-success" type="submit" value="Editar texto" style="background-color: #86b4ca;" />
+                                    </div>
+                                </div>
+                            </form>
+                    </div>
+                </div>
+              </section>
  <!-- Sección Editar Facilidades (Editar Facilidades) -->
             <section id="Facilidades_01" class="container" style="margin-block: 1em; background-color: white">
                 <div class="row">
@@ -128,7 +148,7 @@
 
                                 <div class="form-group">
                                     <div class="col-lg-6">
-                                        <input class="btn btn-success" type="submit" value="Editar texto" style="background-color: #F35C2D;" />
+                                        <input class="btn btn-success" type="submit" value="Editar texto" style="background-color: #86b4ca;" />
                                     </div>
                                 </div>
                             </form>
@@ -141,18 +161,18 @@
                                 <div class="col-sm-10">
                                     <div id="acercaDe">
 
-                                        <h2 class="new2"> Ediciòn de la secciòn Acerca de</h2>
+                                         <p class="new2">  Ediciòn de la secciòn Acerca de</p>
 
                                         <form action="javascript:updateAboutUs()">
       
-                                              <textarea  class="noteToAdd" id="aboutUs" name="aboutUs" rows="10" cols="70">
+                                              <textarea  class="noteToAdd" id="aboutUs" name="aboutUs" rows="10" cols="100">
       
                                                           @ViewBag.CercaDe
       
                                               </textarea>
                                               <br>
-                                              <input class="btn" id="btnAceptAboutUs" type="submit" value="Aceptar">
-                                              <input class="btn" id="btnCancelAboutUs" type="submit" value="Cancelar">
+                                              <input class="btn" id="btnAceptAboutUs" type="submit" value="Aceptar" style="background-color: #86b4ca";>
+                                              <input class="btn" id="btnCancelAboutUs" type="submit" value="Cancelar" style="background-color: #86b4ca;">
                                          </form>
 
                                     </div>
