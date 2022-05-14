@@ -290,7 +290,7 @@
                     <div style="display: block !important;" id="divSelectHabitaciones" class="entry-form">
                         
                         <h3>Seleccionar habitaciones a reservar</h3>
-                        <label>Habitación: </label>
+                        <label>Seleccione una habitación: </label>
 	                    <select style="width: 100px;" id="numsHabitacion" class="sbody">
 	                    </select>
 
@@ -301,10 +301,15 @@
 	                    <label>Fecha final: </label>
 	                    <input id="fechaF2" type="date">
 	                    <br/>
-	
+
+                        <div style="border-style: solid">
+                            <label>Habitaciones escogidas: </label>
+                            <p id="habitacionesEscogidas"></p>
+	                    </div>
                         <div style="display: inline !important;">
-	                        <button style="background-color: yellow !important;" class="submit-btn form-control" id="button" onclick="return AgregarHabitacionAlCarrito()">Agregar</button>
-	                        <button class="submit-btn form-control" id="button" onclick="return VerDatosCliente()">Listo</button>
+	                        <button style="background-color: blue !important;" class="submit-btn form-control" id="button" onclick="return AgregarHabitacionAlCarrito()">Agregar</button>
+                            <button class="submit-btn form-control" id="button" onclick="return VerDatosCliente()">Finalizar</button>   
+	                        <button style="background-color: yellow !important" class="submit-btn form-control" id="button" onclick="return ReiniciarReserva()">Reiniciar</button>     
                         </div>
                     </div>
 
@@ -349,6 +354,7 @@
 	                    </div>
 	
 	                    <button class="submit-btn form-control" id="button" onclick="return SolicitarReservacion()">Reservar</button>
+                        <button style="background-color: yellow !important;" class="submit-btn form-control" id="button" onclick="return ReiniciarReserva()">Reiniciar</button>   
 
                     </div>
 
@@ -493,10 +499,7 @@
                     <div class="col-sm-6">
 
                         <div id="ubicacionTextoContact">
-                            <p id="parrafoHome" class="Alineacion" style="display:block;">
 
-                                @ViewBag.Contacto
-                            </p>
                         </div>
                     </div>
 
