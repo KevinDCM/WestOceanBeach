@@ -91,17 +91,43 @@
                                     </div>
                                 </div>
                             </form>
-
-                         <p class="new2"> Cargar Una Nueva Imagen Para Home </p>
-                            <form name="subida-imagenes" type="POST" enctype="multipart/formdata" >
-	               
-                
+                            
+                            <p class="new2"> Cambiar la imagen de Home </p>
+                             <form method="post" asp-controller="Admin" asp-action="EditarHome">
+                               <div class="row">
+                                   <input type="file" id="file" accept="image/*" onchange="mostrar()"/>
+                                   
+                                <div class="col-sm-6">
+                                  
+                                   <img id="img" style="width:100%" vspace="30" hspace="10"  />
+                                      <div class="col-lg-6">
+                                        <input class="btn btn-success" type="submit" value="Cambiar Imagen" style="background-color: #86b4ca; " />
+                                    </div>
+    
+                                </div>
+                                </div>
                         </form>
-                           
-                    </div>
+                        
+                               
+
+                    </div>    
+                
                 </div>
-                 
+                    <script>
+                              function mostrar(){
+                  var archivo = document.getElementById("file").files[0];
+                  var reader = new FileReader();
+                  if (file) {
+                    reader.readAsDataURL(archivo );
+                    reader.onloadend = function () {
+                      document.getElementById("img").src = reader.result;
+                    }
+                  }
+                }
+
+                 </script>
               </section>
+                
  <!-- Sección Editar Facilidades (Editar Facilidades) -->
             <section id="Facilidades_01" class="container" style="margin-block: 1em; background-color: white">
                 <div class="row">
@@ -184,11 +210,13 @@
                                 modal.style.display = "none";
                               }
                             }
+                        
                             </script>
 
-             
+              
             </section>
        </div>
+      
 
 
 
