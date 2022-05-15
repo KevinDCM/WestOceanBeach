@@ -16,12 +16,20 @@ namespace API.Controllers
                 return new SitioGeneralBusiness().ObtenerSitioGeneral();
             }// fin m
 
-           [HttpPost]
+
+        [HttpPost]
+        [Route("EditarHome")]
+        public string EditarHome(SitioGeneral sitioGeneral)
+        {
+            return new SitioGeneralBusiness().EditarHome(sitioGeneral);
+        }
+        [HttpPost]
            [Route("editarFacilidades")]
-           public string editarFacilidades(SitioGeneral  sitioGeneral)
+           public string EditarFacilidades(SitioGeneral  sitioGeneral)
            {
              return new SitioGeneralBusiness().editarFacilidades(sitioGeneral);
            }
+
 
           [HttpGet]
           [Route("obtenerFacilidades")]
@@ -30,8 +38,15 @@ namespace API.Controllers
              return new SitioGeneralBusiness().obtenerFacilidades();
           }// fin m
 
+        [HttpGet]
+        [Route("obtenerHome")]
+        public SitioGeneral obtenerHome()
+        {
+            return new SitioGeneralBusiness().obtenerHome();
+        }// fin m
+
 
 
     }// fin clase
-
+    
 }
