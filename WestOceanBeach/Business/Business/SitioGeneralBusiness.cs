@@ -33,6 +33,13 @@ namespace Business.Business
             return sitio.obtenerFacilidades();
         }
 
+
+        public String editarSobreNosostros(SitioGeneral sito) {
+
+            return sitio.editarSobreNosotros(sito);
+        
+        }
+
         public SitioGeneral obtenerHome()
         {
             return sitio.obtenerHome();

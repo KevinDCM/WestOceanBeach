@@ -71,6 +71,32 @@ namespace Presentacion.Controllers
 
             return View("Index");
         }// metodo
+        
+        
+        [HttpPost]
+        public async Task<ActionResult> EditarSobreNosotros(string sobreNosotros) {
+
+            
+
+            SitioGeneral sitio= new SitioGeneral();
+
+            sitio.SOBRE_NOSOTROS= sobreNosotros;
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var response2 = await client.PostAsJsonAsync("https://localhost:44386/SitioGeneral/editarSobreNosotros",sitio);
+            string resultado = await response2.Content.ReadAsStringAsync();
+            var response3 = JsonConvert.DeserializeObject<string>(resultado);
+
+
+
+            return Json(new { success = true, message = response3 });
+
+
+        }
+
+
+        
 
         [HttpPost]
         public async Task<IActionResult> EditarHome(SitioGeneral sitioGeneral)
