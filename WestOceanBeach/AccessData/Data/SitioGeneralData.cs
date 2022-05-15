@@ -70,6 +70,28 @@ namespace AccessData.Data
             return salida;
         }// metodo
 
+        public string editarSobreNosotros(SitioGeneral sitio)
+        {
+            string salida = "No se logro editar  el apartado sobreNosotros ";
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("sp_update_SobreNosotros", sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            sqlCommand.Parameters.AddWithValue("SOBRENOSOTROS", sitio.SOBRE_NOSOTROS);
+
+
+           int rowAfected = sqlCommand.ExecuteNonQuery();
+           if (rowAfected == 1) {
+
+                salida = "Se edito el apartado Acerca de  con exito!";
+            }
+            
+
+            sqlConnection.Close();
+
+            return salida;
+        }// metodo
+
+
         public SitioGeneral obtenerFacilidades()
         {
             

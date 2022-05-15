@@ -4,26 +4,35 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-        [ApiController]
-        [Route("[controller]")]
-        public class SitioGeneralController : ControllerBase
+    [ApiController]
+    [Route("[controller]")]
+    public class SitioGeneralController : ControllerBase
+    {
+        [HttpGet]
+        [Route("obtenerSitioGeneral")]
+        public SitioGeneral obtenerSitioGeneral()
+
         {
-            [HttpGet]
-            [Route("obtenerSitioGeneral")]
-            public SitioGeneral obtenerSitioGeneral()
+            return new SitioGeneralBusiness().ObtenerSitioGeneral();
+        }// fin m
 
-            {
-                return new SitioGeneralBusiness().ObtenerSitioGeneral();
-            }// fin m
+        [HttpPost]
+        [Route("editarFacilidades")]
+        public string editarFacilidades(SitioGeneral sitioGeneral)
+        {
+            return new SitioGeneralBusiness().editarFacilidades(sitioGeneral);
+        }
 
-           [HttpPost]
-           [Route("editarFacilidades")]
-           public string editarFacilidades(SitioGeneral  sitioGeneral)
-           {
-             return new SitioGeneralBusiness().editarFacilidades(sitioGeneral);
-           }
+        [HttpPost]
+        [Route("editarSobreNosotros")]
+        public string editarSobreNosostros(SitioGeneral sitio)
+        {
 
-          [HttpGet]
+                  
+            return new SitioGeneralBusiness().editarSobreNosostros(sitio);
+        }
+
+        [HttpGet]
           [Route("obtenerFacilidades")]
           public SitioGeneral obtenerFacilidades()
           {
