@@ -55,6 +55,47 @@ namespace AccessData.Data
             return sitio;        
         }// metodo
 
+        public string EditarHome(SitioGeneral sitioGeneral)
+        {
+            string salida = "";
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("sp_update_Home", sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            sqlCommand.Parameters.AddWithValue("home", sitioGeneral.HOME);
+
+            sqlCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();
+
+            return salida;
+        }// metodo
+
+        public SitioGeneral obtenerHome()
+        {
+
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("[SP_obtenerHome]", sqlConnection);
+            sqlCommand.ExecuteNonQuery();
+            SitioGeneral sitio = new SitioGeneral();
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+
+                    DataRow dr = dt.Rows[i];
+                    string[] allColumns = dr.ItemArray.Select(obj => obj.ToString()).ToArray();
+                    ArrayList itm = new ArrayList(allColumns);
+
+                    sitio.FACILIDADES = itm[0].ToString();
+                }
+            }
+
+            return sitio;
+        }// metodo
         public string editarFacilidades(SitioGeneral sitioGeneral)
         {
             string salida = "";

@@ -23,11 +23,21 @@ namespace Business.Business
             return sitio.editarFacilidades(sitioGeneral);
         }
 
+        public string EditarHome(SitioGeneral sitioGeneral)
+        {
+            return sitio.EditarHome(sitioGeneral);
+        }
+
         public SitioGeneral obtenerFacilidades()
         {
             return sitio.obtenerFacilidades();
         }
 
+        public SitioGeneral obtenerHome()
+        {
+            return sitio.obtenerHome();
+        }
 
+        
     }
 }

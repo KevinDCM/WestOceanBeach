@@ -50,7 +50,7 @@
       </section>
 
            <!-- Secciones (contenido) -->
-        <div style="margin-left: auto !important;" class="col-sm-9">
+        <iv style="margin-left: auto !important;" class="col-sm-9">
 
             <!-- Sección Home (Inicio) -->
  
@@ -70,43 +70,6 @@
                          </div>
                 </div>
                  </section>
-
-
-                 <!-- Menú principal y publicidad -->
-       <!--     <div id="sidebar-menu" class="col-sm-4" style="width:100%" >
-            <div id="header001" >
-
-                <ul class="nav nav-pills flex-column menuVert2  ">
-
-                    <li class="nav-item">
-                        <a href="#inicio_01" class="page-scroll"> Home </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#facilidades_01" class="page-scroll"> Modificar Pàginas </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#acercade_01" class="page-scroll"> Listado de reservaciòn</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#comollegar_01" class="page-scroll">Administrar Habitaciones</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#contacto_01" class="page-scroll">Ver Estado del Hotel Hoy</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a href="#contacto_01" class="page-scroll">Consultar Disponibilidad <br>de Habitaciones</a>
-                  </li>
-                      <li class="nav-item">
-                        <a href="#contacto_01" class="page-scroll">Publicidad</a>
-                    </li>
-                </ul>
-            </div>
-         </div>-->
        <!-- Sección Editar Home (Editar Home) -->
             <section id="Home_001" class="container" style="margin-block: 1em; background-color: white">
                 <div class="row">
@@ -119,7 +82,7 @@
                                </textarea>
 
                                 <textarea rows="6" cols="70" readonly>
-                           
+                              @ViewBag.home
                                </textarea>
 
                                 <div class="form-group">
@@ -128,8 +91,16 @@
                                     </div>
                                 </div>
                             </form>
+
+                         <p class="new2"> Cargar Una Nueva Imagen Para Home </p>
+                            <form name="subida-imagenes" type="POST" enctype="multipart/formdata" >
+	               
+                
+                        </form>
+                           
                     </div>
                 </div>
+                 
               </section>
  <!-- Sección Editar Facilidades (Editar Facilidades) -->
             <section id="Facilidades_01" class="container" style="margin-block: 1em; background-color: white">
