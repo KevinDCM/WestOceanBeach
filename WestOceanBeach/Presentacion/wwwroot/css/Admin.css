@@ -1,5 +1,3 @@
-﻿body {
-}
 
 
 #aboutUs {
@@ -71,20 +69,18 @@
     font-weight: bold;
 }
 
-.close:hover,
- .close:focus {
+    .close:hover,
+    .close:focus {
         color: #000;
         text-decoration: none;
         cursor: pointer;
-}
+    }
 
 
 .btn {
     display: inline-block;
     margin-right: 20px;
 }
-
-
 
 
 /*Modal confirmation message*/
@@ -182,4 +178,106 @@ button:hover {
     }
 }
 
+
+/* Curso CSS estilos */
+* {
+    font-family: new times roman;
+}
+
+hr.menu02 {
+    display: none;
+    margin-top: 0px;
+}
+
+ul.menuVert2 {
+    list-style: none;
+    text-align: left;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+    padding: 0;
+    width: 100%;
+}
+
+    ul.menuVert2 li {
+        padding: 5px 0px;
+        border: groove white;
+        border-width: 6px 6px 0px 6px;
+        background-color: #86b4ca
+    }
+
+        ul.menuVert2 li:last-child {
+            border-bottom: groove white;
+            border-bottom-width: 5px;
+            position: center;
+        }
+
+        ul.menuVert2 li a:link, ul.menuVert1 li a:visited {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            position: center;
+        }
+
+        ul.menuVert2 li:hover {
+            background-color: hotpink;
+            position: center;
+        }
+
+#header001 {
+    top: 9em;
+    padding: 0;
+    position: fixed;
+}
+/**/
+p.admin01 {
+    font-family: new times roman;
+    font-size: large;
+    text-align: center;
+    font-size: 42px;
+    text-shadow: 7px 4px 5px #3498Db;
+    width: 100%;
+}
+
+p.admin02 {
+    font-family: new times roman;
+    font-size: large;
+    text-align: center;
+    font-size: 18px;
+    width: 100%;
+}
+
+.mainmenubtn {
+    background-color: #86b4ca;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 20px;
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+    .mainmenubtn:hover {
+        background-color: black;
+    }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-child {
+    display: none;
+    background-color: skyblue;
+    min-width: 200px;
+}
+
+    .dropdown-child a {
+        color: white;
+        padding: 20px;
+        text-decoration: none;
+        display: block;
+    }
+.dropdown:hover .dropdown-child {
+    display: block;
+
+}
 

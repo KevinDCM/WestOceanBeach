@@ -63,11 +63,11 @@ namespace Presentacion.Controllers
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-            var response2 = await client.GetAsync("https://localhost:44386/SitioGeneral/obtenerFacilidades");
+            var response2 = await client.GetAsync("https://localhost:44386/SitioGeneral/obtenerHome");
             string resultado = await response2.Content.ReadAsStringAsync();
             var sitioGeneral2 = JsonConvert.DeserializeObject<SitioGeneral>(resultado);
 
-            ViewBag.facilidades = sitioGeneral2.FACILIDADES;
+            ViewBag.home = sitioGeneral2.HOME;
 
             return View("Index");
         }// metodo
@@ -98,6 +98,25 @@ namespace Presentacion.Controllers
 
         
 
-       
+        [HttpPost]
+        public async Task<IActionResult> EditarHome(SitioGeneral sitioGeneral)
+        {
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = await client.PostAsJsonAsync(
+                "https://localhost:44386/SitioGeneral/EditarHome", sitioGeneral);
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            var response2 = await client.GetAsync("https://localhost:44386/SitioGeneral/obtenerFacilidades");
+            string resultado = await response2.Content.ReadAsStringAsync();
+            var sitioGeneral2 = JsonConvert.DeserializeObject<SitioGeneral>(resultado);
+
+            ViewBag.facilidades = sitioGeneral2.FACILIDADES;
+
+            return View("Index");
+        }// metodo 
     }
 }

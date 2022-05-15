@@ -1,51 +1,205 @@
-﻿@model Entities.Entities.SitioGeneral
+﻿@model  Entities.Entities.SitioGeneral
 
 @{
     ViewData["Title"] = "Admin Module";
 }
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="https://i.postimg.cc/Qxvj8K4q/logo.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="~/css/Admin.css" rel="stylesheet" type="text/css">
+</head>
+ 
+
+<div class="container">
+
+    <!-- logo y header -->
+    <div id="menuu" class="col-sm-18">
+        <div class="titulo">
+         
+             <p class="admin01"> Site Administrativo del Hotel West Ocean Beach Resort</p>
+           
+        </div>
+    </div> </div>
+
  
 
 
-<h1>West Ocean Beach Administrator Module</h1>
-
-<p>Use this page for the administrator changes and login/logout</p>
-
-<label>Editar Facilidades</label>
-<form method="post" asp-controller="Admin" asp-action="EditarFacilidades">
-
-    <textarea rows="6" cols="70" asp-for="FACILIDADES">
-   </textarea>
-
-    <textarea rows="6" cols="70" readonly>
-      @ViewBag.facilidades
-   </textarea>
-
-    <div class="form-group">
-        <div class="col-lg-6">
-            <input class="btn btn-success" type="submit" value="Editar texto" style="background-color: #F35C2D;" />
-        </div>
-    </div>
-</form>
-
-<div class="row">
-    <div class="col-sm-10">
-        <div id="acercaDe">
-
-            <h2> Editar Acerca de </h2>
-
             
       
-                  <textarea  class="noteToAdd" id="aboutUs" name="sitelink" rows="10" cols="70">@ViewBag.CercaDe </textarea>
-                  <br>
-                  <input class="btn" id="btnAceptAboutUs" type="submit" value="Aceptar" onclick="updateAboutUs()">
-                  <input class="btn" id="btnCancelAboutUs" type="submit" value="Cancelar" onclick="document.getElementById('id01').style.display='block'">
+                  
             
 
-        </div>
+        <!-- Menú principal y publicidad -->
+        <section id="inicio_01" class="container" style="margin-block: 1em; background-color: white">
+        <div class="col-sm-10">
+                 <div id="sidebar-menu" class="col-sm-2" style="width:100%" >
+                 <div id="header001" >
+                                 <div class="dropdown">
+              <button class="mainmenubtn">Menù Principal</button>
+              <div class="dropdown-child">
+                <a href="#inicio_01">Home</a>
+                <a href="">Modificar Pàginas</a>
+                <a href="">Listado de Reservaciones</a>
+                <a href="">Ver Estado del Hotel Hoy</a>
+                <a href="">Disponibilidad de Habitaciones</a>
+                <a href="">Publicidad</a>
+              </div>
+            </div>
 
-    </div>
+              </div>  
+             </div>
+         </div>
+      </section>
 
-</div>
+                   <!-- Secciones (contenido) -->
+        <div style="margin-left: auto !important;" class="col-sm-9">
+
+            <!-- Sección Home (Inicio) -->
+ 
+            <section id="inicio_01" class="container" style="margin-block: 1em; background-color: white">
+                <div class="row">
+                 
+                    <div class="col-sm-12">
+                        <p class="msjBienvenida">
+                  <center> <p class="admin01"> Mòdulo Administrativo</p> </center>
+                        <center> <p class="admin01"> West Ocean Beach Administrator Module</p> </center>
+                        <center>   <p class="admin02">Use this page for the administrator changes and login/logout</p>  </center>
+                 
+                                      <center>    <a  href="#inicio_01"; class="admin02" style="color:black;">Home</a><br> </center>
+                                       <center>   <a href="#sobre_nosotros_01";  class="admin02" style="color:black;">Sobre Nosotros</a><br> </center>
+                                       <center>   <a href="#Facilidades_01" ; class="admin02" style="color:black;">Facilidades</a><br> </center>
+                                        <center>  <a href="#como_llegar_01"; class="admin02" style="color:black;">Como Llegar</a><br> </center>
+                         </div>
+                </div>
+                 </section>
+       <!-- Sección Editar Home (Editar Home) -->
+            <section id="Home_001" class="container" style="margin-block: 1em; background-color: white">
+                <div class="row">
+                   
+                    <div class="col-sm-10">
+                         <p class="new2"> Ediciòn de la secciòn Home </p>
+                            <form method="post" asp-controller="Admin" asp-action="EditarHome">
+
+                                <textarea rows="6" cols="70" asp-for="HOME">
+                               </textarea>
+
+                                <textarea rows="6" cols="70" readonly>
+                              @ViewBag.home
+                               </textarea>
+
+                                <div class="form-group">
+                                    <div class="col-lg-6">
+                                        <input class="btn btn-success" type="submit" value="Editar texto" style="background-color: #86b4ca;" />
+                                    </div>
+                                </div>
+                            </form>
+                             </div>  
+                             </div>
+            
+              
+
+              <div class="row">
+                   
+                    <div class="col-sm-10">
+                         <p class="new2"> Cambiar Imagen de Home </p>
+                         
+                                <div class="btn btn-success fileup-btn">
+                                    Seleccione la Imagen
+                                    <input type="file" id="file"  accept="image/*"  onchange="mostrar()">
+                                </div>
+                                <div id="file-queue""></div>
+                                <div class="form-group">
+                                    <div class="col-lg-6">
+                                        <img id="img" style="width:100%" vspace="30" hspace="10"  />
+                                        </div>
+                                </div>
+                         
+                             </div>  
+                             </div>
+              
+                    <script>
+                              function mostrar(){
+                  var archivo = document.getElementById("file").files[0];
+                  var reader = new FileReader();
+                  if (file) {
+                    reader.readAsDataURL(archivo );
+                    reader.onloadend = function () {
+                      document.getElementById("img").src = reader.result;
+                }
+                  }
+                }
+                  $.fileup({
+            url: '/wwwroot/imagenes',
+            inputID: 'file',
+            queueID: 'file-queue',
+            onSuccess: function(response, file_number, file) {
+                Snarl.addNotification({
+                    title: 'Upload success',
+                    text: file.name,
+                    icon: '<i class="fa fa-check"></i>'
+                });
+            },
+            onError: function(event, file, file_number) {
+                Snarl.addNotification({
+                    title: 'Upload error',
+                    text: file.name,
+                    icon: '<i class="fa fa-times"></i>'
+                });
+            }
+        });
+
+           
+                 </script>
+
+              </section>
+                
+ <!-- Sección Editar Facilidades (Editar Facilidades) -->
+            <section id="Facilidades_01" class="container" style="margin-block: 1em; background-color: white">
+                <div class="row">
+                   
+                    <div class="col-sm-10">
+                         <p class="new2"> Ediciòn de la secciòn Facilidades </p>
+                            <form method="post" asp-controller="Admin" asp-action="EditarFacilidades">
+
+                                <textarea rows="6" cols="70" asp-for="FACILIDADES">
+                               </textarea>
+
+                                <textarea rows="6" cols="70" readonly>
+                                  @ViewBag.facilidades
+                               </textarea>
+
+                                <div class="form-group">
+                                    <div class="col-lg-6">
+                                        <input class="btn btn-success" type="submit" value="Editar texto" style="background-color: #86b4ca;" />
+                                    </div>
+                                </div>
+                            </form>
+                    </div>
+                </div>
+            </section>
+             <!-- Sección Editar Acerca de  (Editar Acerca de ) -->
+            <section id="acercade_01" class="container" style="margin-block: 1em; background-color: white">
+                       <div class="row">
+                                <div class="col-sm-10">
+                                    <div id="acercaDe">
+
+                                         <p class="new2">  Ediciòn de la secciòn Acerca de</p>
+                                            <textarea  class="noteToAdd" id="aboutUs" name="sitelink" rows="10" cols="70">@ViewBag.CercaDe </textarea>
+                                              <br>
+                                              <input class="btn" id="btnAceptAboutUs" type="submit" value="Aceptar" onclick="updateAboutUs()">
+                                              <input class="btn" id="btnCancelAboutUs" type="submit" value="Cancelar" onclick="document.getElementById('id01').style.display='block'">
+                                              
+                                      
+
+                                    </div>
+
+                                </div>
+
+                            </div>
 
 
 <!-- The Modal Messages confimation  -->
@@ -70,19 +224,8 @@
 
 
 
+
 <!-- The Modal Messages -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p id="answer"></p>
-  </div>
-
-</div>
-
-
-<!-- The Modal Messages  confimation-->
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
@@ -129,4 +272,9 @@ window.onclick = function(event) {
   }
 }
 </script>
+
+
+                                    
+
+
 

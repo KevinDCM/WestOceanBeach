@@ -26,14 +26,14 @@ namespace Presentacion.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> RealizarReserva(Reserva reserva)
+        public async Task<IActionResult> RealizarReserva([FromBody] Reserva reserva)
         {
-            reserva.fechaI = Convert.ToDateTime(reserva.fechaIS);
-            reserva.fechaF = Convert.ToDateTime(reserva.fechaFS);
-
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
+
+            reserva.fechaI = Convert.ToDateTime(reserva.fechaIS);
+            reserva.fechaF = Convert.ToDateTime(reserva.fechaFS);
 
             HttpResponseMessage response = await client.PostAsJsonAsync(
                 "https://localhost:44386/Reserva/RealizarReserva", reserva);

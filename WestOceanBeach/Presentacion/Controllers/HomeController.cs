@@ -52,8 +52,8 @@ namespace Presentacion.Controllers
             ViewBag.Home = sitioGeneral.HOME;
             ViewBag.CercaDe = sitioGeneral.SOBRE_NOSOTROS;
             ViewBag.Contacto= sitioGeneral.CONTACTO;
-           
-          
+
+
             // Ofertas que se muestran en el header (top 5)
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(

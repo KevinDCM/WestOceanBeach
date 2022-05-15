@@ -23,10 +23,16 @@ namespace Business.Business
             return sitio.editarFacilidades(sitioGeneral);
         }
 
+        public string EditarHome(SitioGeneral sitioGeneral)
+        {
+            return sitio.EditarHome(sitioGeneral);
+        }
+
         public SitioGeneral obtenerFacilidades()
         {
             return sitio.obtenerFacilidades();
         }
+
 
         public String editarSobreNosostros(SitioGeneral sito) {
 
@@ -34,6 +40,11 @@ namespace Business.Business
         
         }
 
+        public SitioGeneral obtenerHome()
+        {
+            return sitio.obtenerHome();
+        }
 
+        
     }
 }
