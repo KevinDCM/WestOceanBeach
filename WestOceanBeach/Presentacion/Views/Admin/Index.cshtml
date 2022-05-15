@@ -91,28 +91,30 @@
                                     </div>
                                 </div>
                             </form>
-                            
-                            <p class="new2"> Cambiar la imagen de Home </p>
-                             <form method="post" asp-controller="Admin" asp-action="EditarHome">
-                               <div class="row">
-                                   <input type="file" id="file" accept="image/*" onchange="mostrar()"/>
-                                   
-                                <div class="col-sm-6">
-                                  
-                                   <img id="img" style="width:100%" vspace="30" hspace="10"  />
-                                      <div class="col-lg-6">
-                                        <input class="btn btn-success" type="submit" value="Cambiar Imagen" style="background-color: #86b4ca; " />
-                                    </div>
-    
-                                </div>
-                                </div>
-                        </form>
-                        
-                               
+                             </div>  
+                             </div>
+            
+              
 
-                    </div>    
-                
-                </div>
+              <div class="row">
+                   
+                    <div class="col-sm-10">
+                         <p class="new2"> Cambiar Imagen de Home </p>
+                         
+                                <div class="btn btn-success fileup-btn">
+                                    Seleccione la Imagen
+                                    <input type="file" id="file"  accept="image/*"  onchange="mostrar()">
+                                </div>
+                                <div id="file-queue""></div>
+                                <div class="form-group">
+                                    <div class="col-lg-6">
+                                        <img id="img" style="width:100%" vspace="30" hspace="10"  />
+                                        </div>
+                                </div>
+                         
+                             </div>  
+                             </div>
+              
                     <script>
                               function mostrar(){
                   var archivo = document.getElementById("file").files[0];
@@ -121,11 +123,32 @@
                     reader.readAsDataURL(archivo );
                     reader.onloadend = function () {
                       document.getElementById("img").src = reader.result;
-                    }
+                }
                   }
                 }
+                  $.fileup({
+            url: '/wwwroot/imagenes',
+            inputID: 'file',
+            queueID: 'file-queue',
+            onSuccess: function(response, file_number, file) {
+                Snarl.addNotification({
+                    title: 'Upload success',
+                    text: file.name,
+                    icon: '<i class="fa fa-check"></i>'
+                });
+            },
+            onError: function(event, file, file_number) {
+                Snarl.addNotification({
+                    title: 'Upload error',
+                    text: file.name,
+                    icon: '<i class="fa fa-times"></i>'
+                });
+            }
+        });
 
+           
                  </script>
+
               </section>
                 
  <!-- Sección Editar Facilidades (Editar Facilidades) -->
