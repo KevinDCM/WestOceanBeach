@@ -12,6 +12,9 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Presentacion.Models;
 using Entities.Entities;
+using System.Web.Helpers;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Presentacion.Controllers
 {
@@ -19,6 +22,15 @@ namespace Presentacion.Controllers
     {
         public IConfiguration Configuration { get; }
         HttpClient client = new HttpClient();
+        private readonly IWebHostEnvironment _iwebhost;// get the project access
+
+
+        public AdminController(IWebHostEnvironment _web) { 
+        
+            _iwebhost = _web;
+        
+        
+        }
 
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -95,8 +107,25 @@ namespace Presentacion.Controllers
 
         }
 
+        [HttpPost]
+        public async Task<IActionResult> EjemploImagen(IFormFile ifile) {
+
+            Imagenes ic;
+
+            var saveimg = Path.Combine(_iwebhost.WebRootPath, "imagenes", ifile.FileName);
+            var stream = new FileStream(saveimg, FileMode.Create);
+            await ifile.CopyToAsync(stream);
+            ic.name = ifile.FileName;
+            ic.full_path = saveimg;
+            return View();
 
         
+        
+        
+        
+        }
+
+
 
         [HttpPost]
         public async Task<IActionResult> EditarHome(SitioGeneral sitioGeneral)
