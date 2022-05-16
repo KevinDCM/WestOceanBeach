@@ -27,6 +27,12 @@
 
  
 
+
+            
+      
+                  
+            
+
         <!-- Menú principal y publicidad -->
         <section id="inicio_01" class="container" style="margin-block: 1em; background-color: white">
         <div class="col-sm-10">
@@ -182,18 +188,12 @@
                                     <div id="acercaDe">
 
                                          <p class="new2">  Ediciòn de la secciòn Acerca de</p>
-
-                                        <form action="javascript:updateAboutUs()">
-      
-                                              <textarea  class="noteToAdd" id="aboutUs" name="aboutUs" rows="10" cols="100">
-      
-                                                          @ViewBag.CercaDe
-      
-                                              </textarea>
+                                            <textarea  class="noteToAdd" id="aboutUs" name="sitelink" rows="10" cols="70">@ViewBag.CercaDe </textarea>
                                               <br>
-                                              <input class="btn" id="btnAceptAboutUs" type="submit" value="Aceptar" style="background-color: #86b4ca";>
-                                              <input class="btn" id="btnCancelAboutUs" type="submit" value="Cancelar" style="background-color: #86b4ca;">
-                                         </form>
+                                              <input class="btn" id="btnAceptAboutUs" type="submit" value="Aceptar" onclick="updateAboutUs()">
+                                              <input class="btn" id="btnCancelAboutUs" type="submit" value="Cancelar" onclick="document.getElementById('id01').style.display='block'">
+                                              
+                                      
 
                                     </div>
 
@@ -202,44 +202,79 @@
                             </div>
 
 
-
-                            <!-- The Modal -->
-                            <div id="myModal" class="modal">
-
-                              <!-- Modal content -->
-                              <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <p id="answer"></p>
-                              </div>
-
-                            </div>
-
-                            <script>
-                            // Get the modal
-                            var modal = document.getElementById("myModal");
+<!-- The Modal Messages confimation  -->
 
 
-                            // Get the <span> element that closes the modal
-                            var span = document.getElementsByClassName("close")[0];
 
-                            // When the user clicks on <span> (x), close the modal
-                            span.onclick = function() {
-                              modal.style.display = "none";
-                            }
+<div id="id01" class="modal1">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close1" title="Close Modal">×</span>
+  <form class="modal-content1" >
+    <div class="container1">
+      <h1>Cancelar la operacion</h1>
+      <p>Estas seguro quieres cancelar la operacion?</p>
+    
+      <div class="clearfix">
+        <button type="button" onclick="cancelarupdateAboutUs()" class="cancelbtn">Aceptar</button>
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="deletebtn">Cancelar</button>
+      </div>
+    </div>
+  </form>
+</div>
 
-                            // When the user clicks anywhere outside of the modal, close it
-                            window.onclick = function(event) {
-                              if (event.target == modal) {
-                                modal.style.display = "none";
-                              }
-                            }
-                        
-                            </script>
 
-              
-            </section>
-       </div>
-      
+
+
+
+<!-- The Modal Messages -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p id="answer"></p>
+
+
+  </div>
+
+</div>
+
+</div>
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+</script>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+  window.location = "https://localhost:44343/Admin";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+
+                                    
 
 
 
