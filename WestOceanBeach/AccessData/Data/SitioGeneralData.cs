@@ -102,15 +102,22 @@ namespace AccessData.Data
      
         public string editarFacilidades(SitioGeneral sitioGeneral)
         {
-            string salida = "";
+            string salida = "No se logro editar  el apartado facilidades ";
             sqlConnection.Open();
             sqlCommand = new SqlCommand("SP_editarFacilidades", sqlConnection);
             sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
             sqlCommand.Parameters.AddWithValue("facilidades", sitioGeneral.FACILIDADES);
 
-            sqlCommand.ExecuteNonQuery();
-        
-           sqlConnection.Close();
+
+            int rowAfected = sqlCommand.ExecuteNonQuery();
+            if (rowAfected == 1)
+            {
+
+                salida = "Se edito el apartado facilidades  con exito!";
+            }
+
+
+            sqlConnection.Close();
 
             return salida;
         }// metodo
