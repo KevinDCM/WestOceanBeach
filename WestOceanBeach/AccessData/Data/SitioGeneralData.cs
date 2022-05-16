@@ -90,12 +90,16 @@ namespace AccessData.Data
                     string[] allColumns = dr.ItemArray.Select(obj => obj.ToString()).ToArray();
                     ArrayList itm = new ArrayList(allColumns);
 
-                    sitio.FACILIDADES = itm[0].ToString();
+                    sitio.HOME = itm[0].ToString();
                 }
             }
 
             return sitio;
         }// metodo
+
+
+
+     
         public string editarFacilidades(SitioGeneral sitioGeneral)
         {
             string salida = "";

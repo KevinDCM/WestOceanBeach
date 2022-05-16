@@ -14,6 +14,8 @@ namespace Business.Business
            sitio = new SitioGeneralData();        
         }
 
+
+
         public SitioGeneral ObtenerSitioGeneral() { 
             return sitio.obtenerSitioGeneral();
         }
@@ -45,6 +47,8 @@ namespace Business.Business
             return sitio.obtenerHome();
         }
 
-        
+     
+
+
     }
 }

@@ -49,15 +49,8 @@ namespace API.Controllers
              return new SitioGeneralBusiness().obtenerFacilidades();
           }// fin m
 
-        [HttpGet]
-        [Route("obtenerHome")]
-        public SitioGeneral obtenerHome()
-        {
-            return new SitioGeneralBusiness().obtenerHome();
-        }// fin m
-
-
+      
 
     }// fin clase
-    
+
 }
