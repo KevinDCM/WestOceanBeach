@@ -20,6 +20,8 @@ namespace Presentacion.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         public IConfiguration Configuration { get; }
+        public Imagenes Imagenes { get; private set; }
+
         HttpClient client = new HttpClient();
 
         public HomeController(ILogger<HomeController> logger)
@@ -53,7 +55,9 @@ namespace Presentacion.Controllers
             ViewBag.CercaDe = sitioGeneral.SOBRE_NOSOTROS;
             ViewBag.Contacto= sitioGeneral.CONTACTO;
 
-
+            //Imagen de HOME
+         
+          
             // Ofertas que se muestran en el header (top 5)
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
