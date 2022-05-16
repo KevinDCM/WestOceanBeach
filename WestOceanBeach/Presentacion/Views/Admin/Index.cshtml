@@ -1,8 +1,13 @@
-﻿@model  Entities.Entities.SitioGeneral
+﻿
+@model  Entities.Entities.SitioGeneral
 
 @{
     ViewData["Title"] = "Admin Module";
 }
+
+
+
+  
 
 <head>
     <meta charset="utf-8">
@@ -221,6 +226,24 @@
   </form>
 </div>
 
+<!-- Ejemplo imagen -->
+
+
+   
+    
+    <form asp-controller="Admin" asp-action="EjemploImagen"  method="post" enctype="multipart/form-data">
+
+        <input  type="file" name="ifile"/>
+        <input  type="submit" value="upload.."/>
+        
+        
+
+    </form>
+    
+
+
+
+
 
 
 
@@ -238,7 +261,8 @@
 
 </div>
 
-</div>
+
+
 <script>
     // Get the modal
     var modal = document.getElementById('id01');
