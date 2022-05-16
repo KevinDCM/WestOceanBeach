@@ -56,8 +56,17 @@ namespace Presentacion.Controllers
             ViewBag.Contacto= sitioGeneral.CONTACTO;
 
             //Imagen de HOME
-         
-          
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var responseF = await client.GetAsync("https://localhost:44386/SitioGeneral/obtenerFacilidades");
+            string resultadoF = await responseF.Content.ReadAsStringAsync();
+            var sitioGeneralF = JsonConvert.DeserializeObject<SitioGeneral>(resultadoF);
+
+            ViewBag.Facilidades = sitioGeneralF.FACILIDADES;
+
             // Ofertas que se muestran en el header (top 5)
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
