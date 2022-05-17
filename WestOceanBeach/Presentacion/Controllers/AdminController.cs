@@ -113,13 +113,13 @@ namespace Presentacion.Controllers
         [HttpPost]
         public async Task<IActionResult> EjemploImagen(IFormFile ifile) {
 
-            Imagenes ic;
+            Imagenes ic = new Imagenes();
 
             var saveimg = Path.Combine(_iwebhost.WebRootPath, "imagenes", ifile.FileName);
             var stream = new FileStream(saveimg, FileMode.Create);
             await ifile.CopyToAsync(stream);
-            ic.name = ifile.FileName;
-            ic.full_path = saveimg;
+            ic.Name = ifile.FileName;
+            ic.Full_path = saveimg;
             return View();
 
         
