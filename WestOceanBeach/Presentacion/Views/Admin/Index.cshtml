@@ -201,6 +201,7 @@
                                 </div>
 
                             </div>
+            </section>
 
 
 <!-- The Modal Messages confimation  -->
@@ -221,6 +222,29 @@
     </div>
   </form>
 </div>
+
+
+<!-- Ejemplo imagen -->
+
+
+   
+    
+   <h2>UploadFile</h2>
+@using(Html.BeginForm("EjemploImagen","Admin", FormMethod.Post, new { enctype="multipart/form-data"}))
+{
+    <div>
+        @Html.TextBox("file", "", new {  type= "file"}) <br />
+        <input type="submit" value="Upload" />
+        @ViewBag.Message
+    </div>
+}
+
+
+
+
+
+
+
 
 <!-- The Modal Messages -->
 <div id="myModal" class="modal">
