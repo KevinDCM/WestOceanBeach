@@ -56,6 +56,58 @@ function updateAboutUs() {
 
 }
 
+function updateFacilities() {
+
+
+    var text = document.getElementById('facilities');
+    var facilidades = text.value;
+
+
+
+    if (trimfield(facilidades) == '') {
+
+
+        var aswer = document.getElementById('answer');
+        aswer.innerHTML = "Complete el campo no puede ir vacio";
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+
+    } else {
+
+
+
+        $.ajax({
+
+            type: 'POST',
+            dataType: 'json',
+            url: '/Admin/editarFacilidades',
+            data: { facilidades: facilidades },
+
+
+            success: function (result) {
+
+
+
+
+                var aswer = document.getElementById('answer');
+                aswer.innerHTML = result.message;
+                var modal = document.getElementById("myModal");
+                modal.style.display = "block";
+
+
+
+
+            },
+            error:
+                function (response) {
+                    alert("Error en el llamado: " + response);
+                }
+        });
+
+    }
+
+}// editar facilidades
+
 function trimfield(str) {
     return str.replace(/^\s+|\s+$/g, '');
 }
@@ -67,6 +119,17 @@ function cancelarupdateAboutUs() {
     var text = document.getElementById('aboutUs');
     text.value = "";
     var modal = document.getElementById('id01');
+    modal.style.display = "none";
+
+
+}
+
+function cancelarupdateFacilities() {
+
+
+    var text = document.getElementById('facilities');
+    text.value = "";
+    var modal = document.getElementById('id02');
     modal.style.display = "none";
 
 

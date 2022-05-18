@@ -73,27 +73,30 @@ namespace Presentacion.Controllers
         }// metodo
 
         [HttpPost]
-        public async Task<IActionResult> EditarFacilidades(SitioGeneral sitioGeneral)
+        public async Task<ActionResult> EditarFacilidades(string facilidades)
         {
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = await client.PostAsJsonAsync(
-                "https://localhost:44386/SitioGeneral/editarFacilidades", sitioGeneral);
 
+
+
+            SitioGeneral sitio = new SitioGeneral();
+
+            sitio.FACILIDADES = facilidades;
             client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-            var response2 = await client.GetAsync("https://localhost:44386/SitioGeneral/obtenerHome");
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var response2 = await client.PostAsJsonAsync("https://localhost:44386/SitioGeneral/editarFacilidades", sitio);
             string resultado = await response2.Content.ReadAsStringAsync();
-            var sitioGeneral2 = JsonConvert.DeserializeObject<SitioGeneral>(resultado);
+            var response3 = JsonConvert.DeserializeObject<string>(resultado);
 
-            ViewBag.home = sitioGeneral2.HOME;
 
-            return View("Index");
-        }// metodo
-        
-        
+
+            return Json(new { success = true, message = response3 });
+
+
+        }
+
+
+
         [HttpPost]
         public async Task<ActionResult> EditarSobreNosotros(string sobreNosotros) {
 
@@ -119,6 +122,7 @@ namespace Presentacion.Controllers
         [HttpPost]
         public async Task<IActionResult> EjemploImagen(IFormFile file) {
 
+
             Imagenes ic= new Imagenes();
 
 
@@ -127,15 +131,12 @@ namespace Presentacion.Controllers
             var saveimg = Path.Combine(_iwebhost.WebRootPath, "imagenes", file.FileName);//la ruta de mi proyecto imagenes
             var stream = new FileStream(saveimg, FileMode.Create);// Creo en un nuevo archivo esa ruta
             await file.CopyToAsync(stream);// agrego
-            ic.name = file.FileName; //nombre imagen
-            ic.full_path = "imagenes/"+ic.name;// ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
+            ic.Name = file.FileName; //nombre imagen
+            ic.Full_path = "imagenes/"+ic.name;// ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
 
             ViewBag.Message = "Se cambio la imagen";
-           
-           
-
         
-         return View("Index");
+             return View("Index");
         
         
         }
