@@ -132,7 +132,7 @@ namespace Presentacion.Controllers
             var stream = new FileStream(saveimg, FileMode.Create);// Creo en un nuevo archivo esa ruta
             await file.CopyToAsync(stream);// agrego
             ic.Name = file.FileName; //nombre imagen
-            ic.Full_path = "imagenes/"+ic.name;// ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
+            ic.Full_path = "imagenes/"+ic.Name;// ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
 
             ViewBag.Message = "Se cambio la imagen";
         
