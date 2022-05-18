@@ -16,6 +16,15 @@ using System.Web.Helpers;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+
 namespace Presentacion.Controllers
 {
     public class AdminController : Controller
@@ -108,19 +117,25 @@ namespace Presentacion.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EjemploImagen(IFormFile ifile) {
+        public async Task<IActionResult> EjemploImagen(IFormFile file) {
 
-            Imagenes ic;
+            Imagenes ic= new Imagenes();
 
-            var saveimg = Path.Combine(_iwebhost.WebRootPath, "imagenes", ifile.FileName);
-            var stream = new FileStream(saveimg, FileMode.Create);
-            await ifile.CopyToAsync(stream);
-            ic.name = ifile.FileName;
-            ic.full_path = saveimg;
-            return View();
+
+
+
+            var saveimg = Path.Combine(_iwebhost.WebRootPath, "imagenes", file.FileName);//la ruta de mi proyecto imagenes
+            var stream = new FileStream(saveimg, FileMode.Create);// Creo en un nuevo archivo esa ruta
+            await file.CopyToAsync(stream);// agrego
+            ic.name = file.FileName; //nombre imagen
+            ic.full_path = "imagenes/"+ic.name;// ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
+
+            ViewBag.Message = "Se cambio la imagen";
+           
+           
 
         
-        
+         return View("Index");
         
         
         }

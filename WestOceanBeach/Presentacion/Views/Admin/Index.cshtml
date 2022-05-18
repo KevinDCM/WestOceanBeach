@@ -205,6 +205,7 @@
                                 </div>
 
                             </div>
+            </section>
 
 
 <!-- The Modal Messages confimation  -->
@@ -231,15 +232,15 @@
 
    
     
-    <form asp-controller="Admin" asp-action="EjemploImagen"  method="post" enctype="multipart/form-data">
-
-        <input  type="file" name="ifile"/>
-        <input  type="submit" value="upload.."/>
-        
-        
-
-    </form>
-    
+   <h2>UploadFile</h2>
+@using(Html.BeginForm("EjemploImagen","Admin", FormMethod.Post, new { enctype="multipart/form-data"}))
+{
+    <div>
+        @Html.TextBox("file", "", new {  type= "file"}) <br />
+        <input type="submit" value="Upload" />
+        @ViewBag.Message
+    </div>
+}
 
 
 
