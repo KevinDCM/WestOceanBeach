@@ -1,6 +1,7 @@
 ﻿using Business.Business;
 using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace API.Controllers
 {
@@ -38,10 +39,17 @@ namespace API.Controllers
         {
             return new SitioGeneralBusiness().EditarHome(sitioGeneral);
         }
-       
+        [HttpPost]
+
+        [Route("editarRutaImgHome")]
+        public string editarRutaImgHome(Imagenes Imagen)
+        {
+            return new SitioGeneralBusiness().editarRutaImgHome(Imagen);
+        }
 
 
-          [HttpGet]
+
+        [HttpGet]
 
           [Route("obtenerFacilidades")]
           public SitioGeneral obtenerFacilidades()
@@ -49,7 +57,23 @@ namespace API.Controllers
              return new SitioGeneralBusiness().obtenerFacilidades();
           }// fin m
 
-      
+
+        [HttpGet]
+
+        [Route("obtenerHome")]
+        public SitioGeneral obtenerHome()
+        {
+            return new SitioGeneralBusiness().obtenerHome();
+        }// fin m
+
+
+
+        [HttpGet]
+        [Route("ObtenerImagenesHome")]
+        public List<Imagenes> ObtenerImagenesHome()
+        {
+            return new SitioGeneralBusiness().ObtenerImagenesHome();
+        }
 
     }// fin clase
 

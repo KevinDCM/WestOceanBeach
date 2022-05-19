@@ -15,13 +15,6 @@ using Entities.Entities;
 using System.Web.Helpers;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
-
-
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 
@@ -121,47 +114,42 @@ namespace Presentacion.Controllers
 
         [HttpPost]
         public async Task<IActionResult> EjemploImagen(IFormFile file) {
-
-
-            Imagenes ic= new Imagenes();
-
-
-
-
+             Imagenes ic= new Imagenes();
             var saveimg = Path.Combine(_iwebhost.WebRootPath, "imagenes", file.FileName);//la ruta de mi proyecto imagenes
             var stream = new FileStream(saveimg, FileMode.Create);// Creo en un nuevo archivo esa ruta
             await file.CopyToAsync(stream);// agrego
-            ic.Name = file.FileName; //nombre imagen
-            ic.Full_path = "imagenes/"+ic.Name;// ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
-
+            ic.Name = "ImgHome"; //nombre imagen
+            ic.Full_path = "imagenes/"+file.FileName;// ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
             ViewBag.Message = "Se cambio la imagen";
-        
              return View("Index");
-        
+        //Llamar Api pasar objeto imagenes 
         
         }
 
 
-
         [HttpPost]
-        public async Task<IActionResult> EditarHome(SitioGeneral sitioGeneral)
+        public async Task<ActionResult> EditarHome(string home)
         {
+
+
+
+            SitioGeneral sitio = new SitioGeneral();
+
+            sitio.HOME = home;
             client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = await client.PostAsJsonAsync(
-                "https://localhost:44386/SitioGeneral/EditarHome", sitioGeneral);
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var response4 = await client.PostAsJsonAsync("https://localhost:44386/SitioGeneral/EditarHome", sitio);
+            string resultado = await response4.Content.ReadAsStringAsync();
+            var response5 = JsonConvert.DeserializeObject<string>(resultado);
 
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-            var response2 = await client.GetAsync("https://localhost:44386/SitioGeneral/obtenerFacilidades");
-            string resultado = await response2.Content.ReadAsStringAsync();
-            var sitioGeneral2 = JsonConvert.DeserializeObject<SitioGeneral>(resultado);
 
-            ViewBag.facilidades = sitioGeneral2.FACILIDADES;
 
-            return View("Index");
-        }// metodo 
+            return Json(new { success = true, message = response4 });
+
+
+        }
     }
+
+    
 }
+
