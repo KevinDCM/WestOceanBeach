@@ -215,4 +215,9 @@ li {
         margin-right: 3em;*/
     }
 
- 
+
+.saltos {
+    padding: 3em;
+    width: 22em;
+    overflow-wrap: break-word;
+}
