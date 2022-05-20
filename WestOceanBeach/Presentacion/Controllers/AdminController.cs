@@ -128,8 +128,18 @@ namespace Presentacion.Controllers
             ic.Name = "ImgHome"; //nombre imagen
             ic.Full_path = "imagenes/"+file.FileName;// ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
             ViewBag.Message = "Se cambio la imagen";
-             return View("Index");
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var response2 = await client.PostAsJsonAsync("https://localhost:44386/SitioGeneral/editarRutaImgHome", ic);
+            string resultado = await response2.Content.ReadAsStringAsync();
+            var response3 = JsonConvert.DeserializeObject<string>(resultado);
+            ViewBag.Message = response3;
+
+            return View("Index");
         //Llamar Api pasar objeto imagenes 
+
         
 
         }
@@ -152,7 +162,7 @@ namespace Presentacion.Controllers
 
 
 
-            return Json(new { success = true, message = response4 });
+            return Json(new { success = true, message = response5 });
 
 
             
@@ -196,8 +206,9 @@ namespace Presentacion.Controllers
         
 
         }
+     
+
     }
 
-    
 }
 
