@@ -56,7 +56,9 @@ namespace Presentacion.Controllers
             ViewBag.Contacto= sitioGeneral.CONTACTO;
 
             //Imagen de HOME
-
+           
+            
+            //FACILIDADES
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));

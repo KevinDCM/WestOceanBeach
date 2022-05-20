@@ -55,21 +55,6 @@ namespace AccessData.Data
             return sitio;        
         }// metodo
 
-        public string EditarHome(SitioGeneral sitioGeneral)
-        {
-            string salida = "";
-            sqlConnection.Open();
-            sqlCommand = new SqlCommand("sp_update_Home", sqlConnection);
-            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-            sqlCommand.Parameters.AddWithValue("home", sitioGeneral.HOME);
-
-            sqlCommand.ExecuteNonQuery();
-
-            sqlConnection.Close();
-
-            return salida;
-        }// metodo
-
         public SitioGeneral obtenerHome()
         {
 
@@ -97,9 +82,66 @@ namespace AccessData.Data
             return sitio;
         }// metodo
 
+        public SitioGeneral obtenerFacilidades()
+        {
+
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("SP_obtenerFacilidades", sqlConnection);
+            sqlCommand.ExecuteNonQuery();
+            SitioGeneral sitio = new SitioGeneral();
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+
+                    DataRow dr = dt.Rows[i];
+                    string[] allColumns = dr.ItemArray.Select(obj => obj.ToString()).ToArray();
+                    ArrayList itm = new ArrayList(allColumns);
+
+                    sitio.FACILIDADES = itm[0].ToString();
+                }
+            }
+
+            return sitio;
+        }// metodo
+
+        public List<Imagenes> ObtenerImagenesHome()
+        {
+
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("SP_obtenerImgHome", sqlConnection);
+            sqlCommand.ExecuteNonQuery();
+            List<Imagenes> imagenes = new List<Imagenes>();
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
 
 
-     
+                    string full_path = Convert.ToString(dt.Rows[i]["full_path"]);
+
+                    Imagenes element = new Imagenes();
+                    element.Full_path = full_path;
+
+                    imagenes.Add(element);
+
+                }
+
+            };
+
+            sqlConnection.Close();
+
+            return imagenes;
+
+        }
         public string editarFacilidades(SitioGeneral sitioGeneral)
         {
             string salida = "No se logro editar  el apartado facilidades ";
@@ -144,31 +186,50 @@ namespace AccessData.Data
         }// metodo
 
 
-        public SitioGeneral obtenerFacilidades()
+
+        public string editarRutaImgHome(Imagenes Imagen)
         {
-            
+            string salida = "No se logro editar la ruta de la imagen principal del Home ";
             sqlConnection.Open();
-            sqlCommand = new SqlCommand("SP_obtenerFacilidades", sqlConnection);
-            sqlCommand.ExecuteNonQuery();
-            SitioGeneral sitio= new SitioGeneral();
+            sqlCommand = new SqlCommand("[Update_Imagenes]", sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            sqlCommand.Parameters.AddWithValue("ImgHome", Imagen.Name);
 
-            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+
+            int rowAfected = sqlCommand.ExecuteNonQuery();
+            if (rowAfected == 1)
             {
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
 
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-
-                    DataRow dr = dt.Rows[i];
-                    string[] allColumns = dr.ItemArray.Select(obj => obj.ToString()).ToArray();
-                    ArrayList itm = new ArrayList(allColumns);
-
-                    sitio.FACILIDADES = itm[0].ToString();
-                }
+                salida = "Se realizo el cambio de imagen con exito!";
             }
 
-            return sitio;
+
+            sqlConnection.Close();
+
+            return salida;
+        }// metodo
+
+
+        public string EditarHome(SitioGeneral home)
+        {
+            string salida = "No se logro editar  el apartado de Home ";
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("sp_update_Home", sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            sqlCommand.Parameters.AddWithValue("home",home.HOME);
+
+
+            int rowAfected = sqlCommand.ExecuteNonQuery();
+            if (rowAfected == 1)
+            {
+
+                salida = "Se edito el apartado de Home  con exito!";
+            }
+
+
+            sqlConnection.Close();
+
+            return salida;
         }// metodo
 
     }

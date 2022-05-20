@@ -47,8 +47,21 @@ namespace Business.Business
             return sitio.obtenerHome();
         }
 
-     
 
+        private static SitioGeneralData sitio_general_data_02 = new SitioGeneralData();
+
+        public List<Imagenes> ObtenerImagenesHome()
+        {
+            return sitio_general_data_02.ObtenerImagenesHome();
+        }
+
+        public String editarRutaImgHome(Imagenes Imagen)
+        {
+
+            return sitio.editarRutaImgHome(Imagen);
+
+        }
 
     }
 }
+
