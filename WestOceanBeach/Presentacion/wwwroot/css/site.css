@@ -96,45 +96,6 @@ body {
     top:10px;
 }
 
-#sidebar-menu {
-    margin-top: 0px!important;
-    padding: 0;
-    position: fixed;
-    margin-left:auto;
-}
-
-#header01 {
-    top: 18em;
-    padding: 0;
-    position: fixed;
-}
-
-#header02 {
-    top: 38em;
-    padding: 0;
-    position: fixed;
-}
-
-#imagenPublicidad {
-    width: 8em;
-    height: 10em;
-    border-radius: 3px;
-}
-
-#publicity {
-    width: 150px !important;
-    height: 120px !important;
-    /* display: block; */
-    margin-left: auto;
-}
-
-#tituloPublicidad {
-    font-family: new times roman;
-    font-size: large;
-    text-align: center;
-    text-shadow: 7px 4px 5px #3498DB;
-}
-
 .espacio {
     width: 270px;
     height: 300px;
