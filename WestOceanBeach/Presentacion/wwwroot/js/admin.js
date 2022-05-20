@@ -166,6 +166,8 @@ function cancelarupdateAboutUs() {
     text.value = "";
     var modal = document.getElementById('id01');
     modal.style.display = "none";
+    window.location = "https://localhost:44343/Admin";
+
 
 
 }
@@ -177,6 +179,7 @@ function cancelarupdateFacilities() {
     text.value = "";
     var modal = document.getElementById('id02');
     modal.style.display = "none";
+    window.location = "https://localhost:44343/Admin";
 
 
 }
@@ -188,5 +191,6 @@ function cancelarupdateHome() {
     text.value = "";
     var modal = document.getElementById('id03');
     modal.style.display = "none";
+    window.location = "https://localhost:44343/Admin";
  
 }
