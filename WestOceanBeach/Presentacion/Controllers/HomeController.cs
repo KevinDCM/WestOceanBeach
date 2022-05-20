@@ -20,6 +20,8 @@ namespace Presentacion.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         public IConfiguration Configuration { get; }
+        public Imagenes Imagenes { get; private set; }
+
         HttpClient client = new HttpClient();
 
         public HomeController(ILogger<HomeController> logger)
@@ -53,6 +55,30 @@ namespace Presentacion.Controllers
             ViewBag.CercaDe = sitioGeneral.SOBRE_NOSOTROS;
             ViewBag.Contacto= sitioGeneral.CONTACTO;
 
+            //Imagen de HOME
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage responseImgHome = await client.GetAsync("https://localhost:44386/SitioGeneral/ObtenerImagenesHome");
+            string responseImagenHomeContent = await responseImgHome.Content.ReadAsStringAsync();
+            List<Imagenes> imagenes = JsonConvert.DeserializeObject<List<Imagenes>>(responseImagenHomeContent);
+            @ViewBag.ImgHome = imagenes[0].Full_path;
+         
+
+
+
+            //FACILIDADES
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var responseF = await client.GetAsync("https://localhost:44386/SitioGeneral/obtenerFacilidades");
+            string resultadoF = await responseF.Content.ReadAsStringAsync();
+            var sitioGeneralF = JsonConvert.DeserializeObject<SitioGeneral>(resultadoF);
+
+            ViewBag.Facilidades = sitioGeneralF.FACILIDADES;
 
             // Ofertas que se muestran en el header (top 5)
             client.DefaultRequestHeaders.Accept.Clear();

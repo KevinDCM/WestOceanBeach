@@ -8,14 +8,11 @@
     <PackageReference Include="AlertifyJS" Version="1.13.1" />
     <PackageReference Include="Grpc.Core" Version="2.45.0" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNet.WebPages" Version="3.2.8" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\imagenes\" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,3 @@
-﻿body {
-}
 
 
 #aboutUs {
@@ -36,6 +34,40 @@
     border-color: white;
 }
 
+#homeedit {
+    text-align: justify-all;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 70%;
+    padding: 0;
+    margin: 0;
+    display: inline;
+    white-space: normal;
+}
+
+#btnAceptHome {
+    background-color: #007bff;
+    text-align: center;
+    color: white;
+    margin: 13px;
+    width: 115px;
+    height: 45px;
+    border-radius: 0.3em;
+    border-color: #007bff;
+}
+
+#btnCancelHome {
+    background-color: red;
+    text-align: center;
+    color: white;
+    margin: 13px;
+    width: 115px;
+    height: 45px;
+    border-radius: 0.3em;
+    border-color: white;
+}
+
 
 /* The Modal (background) */
 .modal {
@@ -47,8 +79,8 @@
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
-    width: 50%; /* Full width */
-    height: 40%; /* Full height */
+    width: 80%; /* Full width */
+    height: 60%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -83,12 +115,109 @@
     display: inline-block;
     margin-right: 20px;
 }
+
+
+/*Modal confirmation message*/
+
+
+/* The Modal (background) */
+.modal1 {
+    margin-top: 70px;
+    margin-left: 80px;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 70%; /* Full width */
+    height: 60%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content1 {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* The Modal Close Button (x) */
+.close1 {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1;
+}
+
+    .close1:hover,
+    .close1:focus {
+        color: #f44336;
+        cursor: pointer;
+    }
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+button:hover {
+    opacity: 1;
+}
+
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn, .deletebtn {
+    float: left;
+    width: 50%;
+    color:white;
+}
+
+/* Add a color to the cancel button */
+.cancelbtn {
+    background-color: red;
+    color: black;
+}
+
+/* Add a color to the delete button */
+.deletebtn {
+    background-color: #007bff;
+}
+
+/* Add padding and center-align text to the container */
+.container1 {
+    padding: 16px;
+    text-align: center;
+}
+
+
+
+/* Change styles for cancel button and delete button on extra small screens */
+@media screen and (max-width: 300px) {
+    .cancelbtn, .deletebtn {
+        width: 100%;
+    }
+}
+
+
 /* Curso CSS estilos */
 * {
     font-family: new times roman;
 }
 
-hr.menu {
 hr.menu02 {
     display: none;
     margin-top: 0px;
@@ -97,7 +226,6 @@ hr.menu02 {
 ul.menuVert2 {
     list-style: none;
     text-align: left;
-    text-shadow: 2px 2px 4px #3498Db;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
     padding: 0;
     width: 100%;
@@ -115,10 +243,7 @@ ul.menuVert2 {
             border-bottom-width: 5px;
             position: center;
         }
-        ul.menuVert2 li a:link, ul.menuVert2 li a:visited {
-            text-decoration: none;
-            color: white;
-            font-size: 15px;
+
         ul.menuVert2 li a:link, ul.menuVert1 li a:visited {
             text-decoration: none;
             color: white;
@@ -127,16 +252,6 @@ ul.menuVert2 {
         }
 
         ul.menuVert2 li:hover {
-            background-color: lightcoral;
-            position: center;
-        }
-
-
-#header001 {
-    top: 6em;
-    padding: 0;
-    position: fixed;
-}
             background-color: hotpink;
             position: center;
         }
@@ -146,28 +261,36 @@ ul.menuVert2 {
     padding: 0;
     position: fixed;
 }
+/**/
 p.admin01 {
     font-family: new times roman;
     font-size: large;
     text-align: center;
     font-size: 42px;
-    text-shadow: 7px 4px 5px #3498DB;
+    text-shadow: 7px 4px 5px #3498Db;
     width: 100%;
 }
-/**********************************/
+
+p.admin02 {
+    font-family: new times roman;
+    font-size: large;
+    text-align: center;
+    font-size: 18px;
+    width: 100%;
+}
+
 .mainmenubtn {
-    background-color: skyblue;
+    background-color: #86b4ca;
     color: white;
     border: none;
     cursor: pointer;
-    padding: 30px;
-    margin-top: 60px;
-    width: 100%;
-    font-size:25px;
+    padding: 20px;
+    margin-top: 20px;
+    font-size: 25px;
 }
 
     .mainmenubtn:hover {
-        background-color: #86b4ca;
+        background-color: black;
     }
 
 .dropdown {
@@ -182,12 +305,13 @@ p.admin01 {
 }
 
     .dropdown-child a {
-        color: midnightblue;/*Color letra*/
-        padding: 18px;
+        color: white;
+        padding: 20px;
         text-decoration: none;
         display: block;
     }
-
 .dropdown:hover .dropdown-child {
     display: block;
+
 }
+
