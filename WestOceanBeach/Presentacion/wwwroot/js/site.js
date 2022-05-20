@@ -32,7 +32,7 @@ function ObtenerHabitacionesDisponibles(){
 		return;
 
 	} else {
-
+		alert("-");
 		// 1. validar que ambas fechas sean superiores a hoy
 		//    y
 		// 2. validar que la fechaInicio sea menor a la fechaFinal, al menos un día
