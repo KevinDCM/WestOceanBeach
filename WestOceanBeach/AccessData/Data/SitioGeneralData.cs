@@ -193,9 +193,7 @@ namespace AccessData.Data
             sqlConnection.Open();
             sqlCommand = new SqlCommand("[Update_Imagenes]", sqlConnection);
             sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-            sqlCommand.Parameters.AddWithValue("ImgHome", Imagen.Name);
-
-
+            sqlCommand.Parameters.AddWithValue("full_path", Imagen.Full_path);
             int rowAfected = sqlCommand.ExecuteNonQuery();
             if (rowAfected == 1)
             {
@@ -217,8 +215,6 @@ namespace AccessData.Data
             sqlCommand = new SqlCommand("sp_update_Home", sqlConnection);
             sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
             sqlCommand.Parameters.AddWithValue("home",home.HOME);
-
-
             int rowAfected = sqlCommand.ExecuteNonQuery();
             if (rowAfected == 1)
             {
