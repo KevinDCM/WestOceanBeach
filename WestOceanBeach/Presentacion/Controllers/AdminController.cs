@@ -135,7 +135,7 @@ namespace Presentacion.Controllers
             var response2 = await client.PostAsJsonAsync("https://localhost:44386/SitioGeneral/editarRutaImgHome", ic);
             string resultado = await response2.Content.ReadAsStringAsync();
             var response3 = JsonConvert.DeserializeObject<string>(resultado);
-            ViewBag.Message = response3;
+            ViewBag.Message = "Se realizo la carga de la imagen de la forma correcta!";
 
             return View("Index");
         //Llamar Api pasar objeto imagenes 
