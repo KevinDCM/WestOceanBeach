@@ -15,7 +15,13 @@ using Entities.Entities;
 using System.Web.Helpers;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+
+using System.Net.Mail;
+using System.Net.NetworkInformation;
+using System.Net;
+
 using System.Web.Mvc;
+
 
 
 namespace Presentacion.Controllers
@@ -27,11 +33,11 @@ namespace Presentacion.Controllers
         private readonly IWebHostEnvironment _iwebhost;// get the project access
 
 
-        public AdminController(IWebHostEnvironment _web) { 
-        
+        public AdminController(IWebHostEnvironment _web) {
+
             _iwebhost = _web;
-        
-        
+
+
         }
 
         [HttpGet]
@@ -93,15 +99,15 @@ namespace Presentacion.Controllers
         [HttpPost]
         public async Task<ActionResult> EditarSobreNosotros(string sobreNosotros) {
 
-            
 
-            SitioGeneral sitio= new SitioGeneral();
 
-            sitio.SOBRE_NOSOTROS= sobreNosotros;
+            SitioGeneral sitio = new SitioGeneral();
+
+            sitio.SOBRE_NOSOTROS = sobreNosotros;
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var response2 = await client.PostAsJsonAsync("https://localhost:44386/SitioGeneral/editarSobreNosotros",sitio);
+            var response2 = await client.PostAsJsonAsync("https://localhost:44386/SitioGeneral/editarSobreNosotros", sitio);
             string resultado = await response2.Content.ReadAsStringAsync();
             var response3 = JsonConvert.DeserializeObject<string>(resultado);
 
@@ -114,6 +120,7 @@ namespace Presentacion.Controllers
 
         [HttpPost]
         public async Task<IActionResult> EjemploImagen(IFormFile file) {
+
              Imagenes ic= new Imagenes();
             var saveimg = Path.Combine(_iwebhost.WebRootPath, "imagenes", file.FileName);//la ruta de mi proyecto imagenes
             var stream = new FileStream(saveimg, FileMode.Create);// Creo en un nuevo archivo esa ruta
@@ -124,6 +131,7 @@ namespace Presentacion.Controllers
              return View("Index");
         //Llamar Api pasar objeto imagenes 
         
+
         }
 
 
@@ -146,6 +154,46 @@ namespace Presentacion.Controllers
 
             return Json(new { success = true, message = response4 });
 
+
+            
+        }// metodo 
+
+        
+        public bool  enviarCorreo(string correoEnviar,string asunto, string contenidoMsj) {
+
+            Mensaje mensaje = new Mensaje();
+            mensaje.Para = correoEnviar;
+            mensaje.De = "bwestocean@gmail.com";
+            mensaje.Asunto = asunto;
+            mensaje.Cuerpo = contenidoMsj;
+
+
+            MailMessage ms = new MailMessage(mensaje.De, mensaje.Para);
+            ms.Subject = mensaje.Asunto;
+            ms.Body = mensaje.Cuerpo;
+
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);//protocolo de envio
+            smtp.UseDefaultCredentials = false;
+
+            smtp.Credentials = new NetworkCredential("bwestocean@gmail.com","West.2022");
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.EnableSsl = true;
+
+            
+            try
+            {
+
+                smtp.Send(ms);
+                return true;
+            }
+            catch (SmtpException e)
+            {
+                Console.WriteLine("eror");
+            }
+
+           return false;
+        
+        
 
         }
     }
