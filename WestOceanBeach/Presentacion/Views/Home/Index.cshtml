@@ -303,9 +303,12 @@
 	                    <input id="fechaF2" type="date">
 	                    <br/>
 
-                        <div style="border-style: solid">
-                            <label>Habitaciones escogidas: </label>
-                            <p id="habitacionesEscogidas"></p>
+                        <div style="display:inline">
+                            <div style="border-style: solid">
+                                <label>Habitaciones escogidas: </label>
+                                <p id="habitacionesEscogidas"></p>
+                            </div>
+                            <button style="font-size:12px;color:red;">Descartar <i class="fa fa-trash-o"></i></button>
 	                    </div>
                         <div style="display: inline !important;">
 	                        <button style="background-color: blue !important;" class="submit-btn form-control" id="button" onclick="return AgregarHabitacionAlCarrito()">Agregar</button>
@@ -347,7 +350,7 @@
 
 	                    <div style="display: block !important;"> 
 		                    <label>Datos de pago:</label>
-		                    <input name="precio" id="precio" class="form-control" placeholder="Precio Total: $000" readonly required>
+		                    <input name="precio" id="precio" class="form-control" placeholder="Precio Total: $100" readonly required>
 		
 		                    <input type="number" name="numeroTarjeta" id="numeroTarjeta" class="form-control" placeholder="Número de tarjeta" required>
 		
@@ -486,6 +489,12 @@
                             </div>
                         </div>
                     </div>
+
+                    <div id="">
+                        <p class="">
+                            @ViewBag.ComoLLegar
+                        </p>
+                     </div>
                 </div>
 
             </section>

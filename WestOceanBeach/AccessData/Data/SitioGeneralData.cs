@@ -39,7 +39,7 @@ namespace AccessData.Data
                 string HOME = dt.Rows[0]["HOME"].ToString();
                 string SOBRE_NOSOTROS = dt.Rows[0]["SOBRENOSOTROS"].ToString();
                 string CONTACTO = dt.Rows[0]["CONTACTO"].ToString();
-                string COMO_LLEGAR = "Puntarenas";
+                string COMO_LLEGAR = dt.Rows[0]["COMOLLEGAR"].ToString();
           
                     sitio.SOBRE_NOSOTROS= SOBRE_NOSOTROS;
                     sitio.HOME =HOME;
@@ -163,6 +163,29 @@ namespace AccessData.Data
 
             return salida;
         }// metodo
+
+        public string EditarComoLlegar(SitioGeneral sitioGeneral)
+        {
+            string salida = "No se logró editar  el apartado cómo lllegar ";
+
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("sp_update_ComoLlegar", sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            sqlCommand.Parameters.AddWithValue("@Como_llegar", sitioGeneral.COMO_LLEGAR);
+
+
+            int rowAfected = sqlCommand.ExecuteNonQuery();
+            if (rowAfected == 1)
+            {
+
+                salida = "Se editó el apartado Cómo llegar,  con éxito!";
+            }
+
+
+            sqlConnection.Close();
+
+            return salida;
+        }
 
         public string editarSobreNosotros(SitioGeneral sitio)
         {

@@ -25,6 +25,14 @@ namespace API.Controllers
         }
 
         [HttpPost]
+        [Route("EditarComoLlegar")]
+        public string EditarComoLlegar(SitioGeneral sitioGeneral)
+        {
+            return new SitioGeneralBusiness().EditarComoLlegar(sitioGeneral);
+        }
+
+
+        [HttpPost]
         [Route("editarSobreNosotros")]
         public string editarSobreNosostros(SitioGeneral sitio)
         {
