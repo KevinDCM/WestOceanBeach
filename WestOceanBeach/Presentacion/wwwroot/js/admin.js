@@ -109,6 +109,11 @@ function updateFacilities() {
 }// editar facilidades
 
 
+
+
+
+
+
 function updateHome() {
 
 
@@ -194,3 +199,45 @@ function cancelarupdateHome() {
     window.location = "https://localhost:44343/Admin";
  
 }
+
+
+
+
+function updateComoLlegar() {
+
+    var text = document.getElementById('comollegarr');
+    var comollegar = text.value;
+
+    if (trimfield(comollegar) == '') {
+
+        var aswer = document.getElementById('answer');
+        aswer.innerHTML = "Complete el campo no puede ir vacio";
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+
+    } else {
+
+        $.ajax({
+
+            type: 'POST',
+            dataType: 'json',
+            url: '/Admin/EditarComoLLegar',
+            data: { comollegar: comollegar },
+
+            success: function (result) {
+
+                var aswer = document.getElementById('answer');
+                aswer.innerHTML = result.message;
+                var modal = document.getElementById("myModal");
+                modal.style.display = "block";
+
+            },
+            error:
+                function (response) {
+                    alert("Error en el llamado: " + response);
+                }
+        });
+
+    }
+
+}// editar cómon llegar

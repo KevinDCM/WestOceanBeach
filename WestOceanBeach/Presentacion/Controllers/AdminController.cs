@@ -56,7 +56,7 @@ namespace Presentacion.Controllers
             ViewBag.Home = sitioGeneral1.HOME;
             ViewBag.CercaDe = sitioGeneral1.SOBRE_NOSOTROS;
             ViewBag.Contacto = sitioGeneral1.CONTACTO;
-
+            ViewBag.comollegar = sitioGeneral1.COMO_LLEGAR;
 
 
             client.DefaultRequestHeaders.Accept.Clear();
@@ -91,9 +91,25 @@ namespace Presentacion.Controllers
 
             return Json(new { success = true, message = response3 });
 
-
         }
 
+
+        [HttpPost]
+        public async Task<ActionResult> EditarComoLlegar(string comollegar)
+        {
+            SitioGeneral sitio = new SitioGeneral();
+
+            sitio.COMO_LLEGAR = comollegar;
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var response2 = await client.PostAsJsonAsync("https://localhost:44386/SitioGeneral/EditarComoLlegar", sitio);
+            string resultado = await response2.Content.ReadAsStringAsync();
+            var response3 = JsonConvert.DeserializeObject<string>(resultado);
+
+            return Json(new { success = true, message = response3 });
+
+        }
 
 
         [HttpPost]
