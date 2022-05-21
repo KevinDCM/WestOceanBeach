@@ -11,6 +11,61 @@
     cursor: pointer;
 }
 
+#imagenPublicidad {
+    width: 8em !important;
+    height: 10em !important;
+    border-radius: 3px !important;
+}
+
+#publicity {
+    width: 150px !important;
+    height: 120px !important;
+    margin-left: auto !important;
+    margin-top: 0px !important;
+}
+
+#tituloPublicidad {
+    font-family: new times roman;
+    font-size: large;
+    text-align: center;
+    text-shadow: 7px 4px 5px #3498DB;
+}
+
+
+#tituloMenu {
+    font-family: new times roman;
+    font-size: large;
+    text-align: center;
+    text-shadow: 7px 4px 5px #3498DB;
+}
+
+#sidebar-menu {
+    margin-top: 0px !important;
+    position: fixed !important;
+    margin-left: -20px !important;
+}
+
+#header01 {
+    top: 1em !important;
+    position: fixed !important;
+}
+
+#header02 {
+    top: 21em !important;
+    position: fixed !important;
+}
+
+
+
+
+
+
+
+
+/* CSS del site */
+
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
     white-space: normal;
@@ -110,45 +165,6 @@ body {
     top: 10px;
 }
 
-#sidebar-menu {
-    margin-top: 0px !important;
-    padding: 0;
-    position: fixed;
-    margin-left: auto;
-}
-
-#header01 {
-    top: 18em;
-    padding: 0;
-    position: fixed;
-}
-
-#header02 {
-    top: 38em;
-    padding: 0;
-    position: fixed;
-}
-
-#imagenPublicidad {
-    width: 8em;
-    height: 10em;
-    border-radius: 3px;
-}
-
-#publicity {
-    width: 150px !important;
-    height: 120px !important;
-    /* display: block; */
-    margin-left: auto;
-}
-
-#tituloPublicidad {
-    font-family: new times roman;
-    font-size: large;
-    text-align: center;
-    text-shadow: 7px 4px 5px #3498DB;
-}
-
 .espacio {
     width: 270px;
     height: 300px;
@@ -195,5 +211,7 @@ body {
 #ubicacionTextoContact {
     text-align: left;
 }
+
+
 
 
