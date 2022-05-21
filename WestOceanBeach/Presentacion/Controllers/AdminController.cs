@@ -125,17 +125,24 @@ namespace Presentacion.Controllers
             var saveimg = Path.Combine(_iwebhost.WebRootPath, "imagenes", file.FileName);//la ruta de mi proyecto imagenes
             var stream = new FileStream(saveimg, FileMode.Create);// Creo en un nuevo archivo esa ruta
             await file.CopyToAsync(stream);// agrego
+             string exten_img = Path.GetExtension(file.FileName);
+            if(exten_img == ".jpg")
+            {
             ic.Name = "ImgHome"; //nombre imagen
             ic.Full_path = "imagenes/"+file.FileName;// ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
             ViewBag.Message = "Se cambio la imagen";
-
+           
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
             var response2 = await client.PostAsJsonAsync("https://localhost:44386/SitioGeneral/editarRutaImgHome", ic);
             string resultado = await response2.Content.ReadAsStringAsync();
             var response3 = JsonConvert.DeserializeObject<string>(resultado);
             ViewBag.Message = "Se realizo la carga de la imagen de la forma correcta!";
+
+            }else
+            {
+                ViewBag.Message = "El formato de la imagen no se encuentra entre las permitidas";
+            }
 
             return View("Index");
         //Llamar Api pasar objeto imagenes 
