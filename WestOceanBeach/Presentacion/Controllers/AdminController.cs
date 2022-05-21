@@ -126,7 +126,7 @@ namespace Presentacion.Controllers
             var stream = new FileStream(saveimg, FileMode.Create);// Creo en un nuevo archivo esa ruta
             await file.CopyToAsync(stream);// agrego
              string exten_img = Path.GetExtension(file.FileName);
-            if(exten_img == ".jpg")
+            if(exten_img == ".jpg"|| exten_img == ".png" || exten_img == ".gif")
             {
             ic.Name = "ImgHome"; //nombre imagen
             ic.Full_path = "imagenes/"+file.FileName;// ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
@@ -134,7 +134,7 @@ namespace Presentacion.Controllers
            
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            var response2 = await client.PostAsJsonAsync("https://localhost:44386/SitioGeneral/editarRutaImgHome", ic);
+            var response2 = await client. PostAsJsonAsync("https://localhost:44386/SitioGeneral/editarRutaImgHome", ic);
             string resultado = await response2.Content.ReadAsStringAsync();
             var response3 = JsonConvert.DeserializeObject<string>(resultado);
             ViewBag.Message = "Se realizo la carga de la imagen de la forma correcta!";
