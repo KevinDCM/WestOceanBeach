@@ -137,7 +137,10 @@ namespace Presentacion.Controllers
         [HttpPost]
         public async Task<IActionResult> EjemploImagen(IFormFile file) {
 
-             Imagenes ic= new Imagenes();
+            if (file != null && file.Length > 0)
+            {
+
+                Imagenes ic= new Imagenes();
             var saveimg = Path.Combine(_iwebhost.WebRootPath, "imagenes", file.FileName);//la ruta de mi proyecto imagenes
             var stream = new FileStream(saveimg, FileMode.Create);// Creo en un nuevo archivo esa ruta
             await file.CopyToAsync(stream);// agrego
@@ -159,11 +162,15 @@ namespace Presentacion.Controllers
             {
                 ViewBag.Message = "El formato de la imagen no se encuentra entre las permitidas";
             }
+            }else
+            {
+                ViewBag.Message = "No se ha seleccionado ningùn archivo.";
+            }
 
             return View("Index");
-        //Llamar Api pasar objeto imagenes 
+                //Llamar Api pasar objeto imagenes 
+          
 
-        
 
         }
 
