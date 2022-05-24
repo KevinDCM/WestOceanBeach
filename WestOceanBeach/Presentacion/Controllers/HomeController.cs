@@ -54,6 +54,7 @@ namespace Presentacion.Controllers
             ViewBag.Home = sitioGeneral.HOME;
             ViewBag.CercaDe = sitioGeneral.SOBRE_NOSOTROS;
             ViewBag.Contacto= sitioGeneral.CONTACTO;
+            ViewBag.ComoLLegar = sitioGeneral.COMO_LLEGAR;
 
             //Imagen de HOME
 

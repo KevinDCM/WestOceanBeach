@@ -25,7 +25,14 @@ namespace AccessData.Data
             sqlConnection.Open();
             sqlCommand = new SqlCommand("SP_buscarHabitaciones", sqlConnection);
             sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-            // pendiente pasar por parámetro rango de fechas también
+
+            DateTime fechaI = Convert.ToDateTime("2022-05-20");
+            DateTime fechaF = Convert.ToDateTime("2022-05-21");
+
+            sqlCommand.Parameters.AddWithValue("@fechaI", fechaI);
+            sqlCommand.Parameters.AddWithValue("@fechaF", fechaF);
+            sqlCommand.Parameters.AddWithValue("@fechaIS", "");
+            sqlCommand.Parameters.AddWithValue("@fechaFS", "");
             sqlCommand.Parameters.AddWithValue("@tipoHabitacion", tipoHabitacion);
             sqlCommand.ExecuteNonQuery();
 

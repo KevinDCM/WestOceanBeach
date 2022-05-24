@@ -24,6 +24,11 @@ namespace Business.Business
         {
             return sitio.editarFacilidades(sitioGeneral);
         }
+        
+        public string EditarComoLlegar(SitioGeneral sitioGeneral)
+        {
+            return sitio.EditarComoLlegar(sitioGeneral);
+        }
 
         public string EditarHome(SitioGeneral sitioGeneral)
         {
