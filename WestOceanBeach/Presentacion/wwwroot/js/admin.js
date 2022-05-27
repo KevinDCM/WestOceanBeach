@@ -166,6 +166,8 @@ function cancelarupdateAboutUs() {
     text.value = "";
     var modal = document.getElementById('id01');
     modal.style.display = "none";
+    window.location = "https://localhost:44343/Admin";
+
 
     window.location = "https://localhost:44343/Admin";
 
