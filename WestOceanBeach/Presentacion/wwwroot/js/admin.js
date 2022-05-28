@@ -1,7 +1,40 @@
 ﻿
 
 
+function uploadFile() {
 
+
+    var formData = new FormData();
+
+    var uploadField = document.getElementById('filee');
+    formData.append("file", uploadField.files[0]);
+
+    $.ajax({
+        type: 'POST',
+        url: "/Admin/ChangeImageHome",
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (result) {
+            
+
+            var aswer = document.getElementById('answer');
+            aswer.innerHTML = result.message;
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+
+
+        },
+        error:
+            function (response) {
+                alert("Error en el llamado: " + response);
+            }
+    });
+
+
+
+}
 
 
 function updateAboutUs() {
@@ -173,6 +206,8 @@ function cancelarupdateAboutUs() {
     modal.style.display = "none";
     window.location = "https://localhost:44343/Admin";
 
+
+    window.location = "https://localhost:44343/Admin";
 
 
 }

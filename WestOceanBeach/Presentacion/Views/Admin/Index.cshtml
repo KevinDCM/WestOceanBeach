@@ -102,16 +102,12 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-6">
-                            @using(Html.BeginForm("EjemploImagen","Admin", FormMethod.Post, new { enctype="multipart/form-data"}))
-                                {
-                                    <div>
-                                        @Html.TextBox("file", "", new {  type= "file"}) <br />
-                                        <input type="submit" value="Cargar" />
-                                            @ViewBag.Message
+                             @using(Html.BeginForm (new {enctype = "multipart / form-data"})){
+                     
+                         <input id="filee" type = "file" name = "file" />
+                         <input type = "button" value = "OK" onclick = "uploadFile (); return false;" />
 
-                                    </div>
-                                     
-                                    }
+                         }
                             </div>
                             </div>
                             </div>
