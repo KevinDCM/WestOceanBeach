@@ -20,7 +20,24 @@ $(document).ready(function () {
     $('#fechaI').val(today);
 
 
+    var now2 = new Date();
+    var month2 = (now2.getMonth() + 1);               
+    var day2 = (now2.getDate()+1);
+    if (month2 < 10) 
+        month2 = "0" + month2;
+    if (day2 < 10) 
+        day2 = "0" + day2;
+    var tomorrow = now2.getFullYear() + '-' + month2 + '-' + day2;
+    $('#fechaF').val(tomorrow);
+
+
 }); 
+
+
+function parseDate(s) {
+  var b = s.toString().split(/\D/); 
+  return new Date(b[0], --b[1], b[2]);
+}
 
 function ObtenerHabitacionesDisponibles(){
 
@@ -33,61 +50,77 @@ function ObtenerHabitacionesDisponibles(){
 
 	} else {
 
-		// 1. validar que ambas fechas sean superiores a hoy
-		//    y
-		// 2. validar que la fechaInicio sea menor a la fechaFinal, al menos un día
+		// obtener fecha actual
+		var hoyStr = new Date().toJSON().slice(0,10).replace(/-/g,'-');
+        var hoy = parseDate(hoyStr);
 
-		document.getElementById('fechaI').readOnly = true;
-		document.getElementById('fechaF').readOnly = true;
+		var Inicio_date = parseDate(fechaI); 
+		var Final_date = parseDate(fechaF);
 
-		var tipoHabitacionText = $('#tipoHabitacion :selected').text(); 
-
-		var CodigoTipoHabitacion = "";
-
-		if ( tipoHabitacionText === "Junior" ){ 
-			CodigoTipoHabitacion = "1"; 
+		if( Inicio_date < hoy || Final_date < hoy ){
+			alert('Las fechas seleccionadas son inválidas! Deben ser superiores a la fecha actual.');
+			return;
 		}
 
-		if ( tipoHabitacionText === "Estándar" ){ 
-			CodigoTipoHabitacion = "2"; 
-		}
+		if( Inicio_date >= Final_date ){
+			alert('La fecha de inicio debe ser menor a la fecha final!');
+			return;
+		} else {
 
-		if ( tipoHabitacionText === "Suite" ){ 
-			CodigoTipoHabitacion = "3"; 
-		}
+			// una vez que se valida el rango de fechas, se consulta la disponibilidad de habitaciones
 
-		$.ajax({
-				
-			url: "/Habitacion/ObtenerHabitacionesDisponibles",
-			//data: JSON.stringify(Habitacion),
-			data: {"CodigoTipoHabitacion": CodigoTipoHabitacion},
-			type: "GET",
-			contentType: "application/json;charset=utf-8",
-			dataType: "json",
-			success: function (result) {
-					
-				var html = '';
-				$.each(result, function (key, item) {
+			document.getElementById('fechaI').readOnly = true;
+			document.getElementById('fechaF').readOnly = true;
 
-					html += '<option>' + item.numeroHabitacion + '</option>';
+			var tipoHabitacionText = $('#tipoHabitacion :selected').text(); 
 
-				});
+			var CodigoTipoHabitacion = "";
 
-				document.getElementById('fechaI2').value =	$('#fechaI').val();
-				document.getElementById('fechaF2').value = 	$('#fechaF').val();
-
-				$('.sbody').html(html);
-
-			},
-			error: function (errorMessage) {
-				alert(errorMessage.responseText);
+			if ( tipoHabitacionText === "Junior" ){ 
+				CodigoTipoHabitacion = "1"; 
 			}
-		});
+
+			if ( tipoHabitacionText === "Estándar" ){ 
+				CodigoTipoHabitacion = "2"; 
+			}
+
+			if ( tipoHabitacionText === "Suite" ){ 
+				CodigoTipoHabitacion = "3"; 
+			}
+
+			$.ajax({
+				
+				url: "/Habitacion/ObtenerHabitacionesDisponibles",
+				//data: JSON.stringify(Habitacion),
+				data: {"CodigoTipoHabitacion": CodigoTipoHabitacion},
+				type: "GET",
+				contentType: "application/json;charset=utf-8",
+				dataType: "json",
+				success: function (result) {
+					
+					var html = '';
+					$.each(result, function (key, item) {
+
+						html += '<option>' + item.numeroHabitacion + '</option>';
+
+					});
+
+					document.getElementById('fechaI2').value =	$('#fechaI').val();
+					document.getElementById('fechaF2').value = 	$('#fechaF').val();
+
+					$('.sbody').html(html);
+
+				},
+				error: function (errorMessage) {
+					alert(errorMessage.responseText);
+				}
+			});
 
 
-		document.getElementById('fechaI2').readOnly = true;
-		document.getElementById('fechaF2').readOnly = true;
-		document.getElementById("divSelectHabitaciones").style.display = "";
+			document.getElementById('fechaI2').readOnly = true;
+			document.getElementById('fechaF2').readOnly = true;
+			document.getElementById("divSelectHabitaciones").style.display = "";				
+		}
 
 	}
 }
@@ -154,12 +187,20 @@ function ReiniciarReserva(){
 }
 
 function VerDatosCliente(){
-	document.getElementById("datosCliente").style.display = "";
-    document.getElementById("divSelectHabitaciones").style.display = "none";
-    document.getElementById("rangoFechas").style.display = "none";
-	
+
 	// validar que carrito no esté vacío
-	// aqui se debe solicitar el precio final de la reserva llamando a ReservaController/GetMontoTotal(param carrito)
+	if(carrito.length === 0){	 
+		alert("Aún no se han agregado habitaciones.");
+	} else {
+
+		document.getElementById("datosCliente").style.display = "";
+		document.getElementById("divSelectHabitaciones").style.display = "none";
+		document.getElementById("rangoFechas").style.display = "none";
+	
+		// aqui se debe solicitar el precio final de la reserva llamando a ReservaController/GetMontoTotal(param carrito)
+		//document.getElementById("precio").innerHTML = returnedValue.toString();
+	}
+
 }
 
 function SolicitarReservacion(){

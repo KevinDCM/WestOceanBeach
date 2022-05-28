@@ -54,10 +54,22 @@ namespace Presentacion.Controllers
             ViewBag.Home = sitioGeneral.HOME;
             ViewBag.CercaDe = sitioGeneral.SOBRE_NOSOTROS;
             ViewBag.Contacto= sitioGeneral.CONTACTO;
+            ViewBag.ComoLLegar = sitioGeneral.COMO_LLEGAR;
 
             //Imagen de HOME
-           
-            
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage responseImgHome = await client.GetAsync("https://localhost:44386/SitioGeneral/ObtenerImagenesHome");
+            string responseImagenHomeContent = await responseImgHome.Content.ReadAsStringAsync();
+            List<Imagenes> imagenes = JsonConvert.DeserializeObject<List<Imagenes>>(responseImagenHomeContent);
+            @ViewBag.ImgHome = imagenes[0].Full_path;
+         
+
+
+
             //FACILIDADES
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(

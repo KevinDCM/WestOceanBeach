@@ -69,6 +69,29 @@
 }
 
 
+#btnAceptFacilities {
+    background-color: #007bff;
+    text-align: center;
+    color: white;
+    margin: 13px;
+    width: 115px;
+    height: 45px;
+    border-radius: 0.3em;
+    border-color: #007bff;
+}
+
+#btnCancelFacilities {
+    background-color: red;
+    text-align: center;
+    color: white;
+    margin: 13px;
+    width: 115px;
+    height: 45px;
+    border-radius: 0.3em;
+    border-color: white;
+}
+
+
 /* The Modal (background) */
 .modal {
     margin-top: 70px;
@@ -257,7 +280,7 @@ ul.menuVert2 {
         }
 
 #header001 {
-    top: 9em;
+    top: 13em;
     padding: 0;
     position: fixed;
 }

@@ -108,11 +108,12 @@ p.Alineacion2 {
 }
 
 div.titulo {
-    width: 100%;
+    width: 895px!important;
     margin: 20px auto;
     background-color: #86b4ca;
     color: #fff;
     padding: 15px;
+    margin-left: 168px !important;
 }
 
     div.titulo img.izquierda {
@@ -215,4 +216,9 @@ li {
         margin-right: 3em;*/
     }
 
- 
+
+.saltos {
+    padding: 3em;
+    width: 22em;
+    overflow-wrap: break-word;
+}
