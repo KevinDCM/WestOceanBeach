@@ -1,28 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Entities.Entities;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Collections;
+using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Threading.Tasks;
-using System.Web;
-using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using Presentacion.Models;
-using Entities.Entities;
-using System.Web.Helpers;
-using System.IO;
-using Microsoft.AspNetCore.Hosting;
-
 using System.Net.Mail;
-using System.Net.NetworkInformation;
-using System.Net;
-
-using System.Web.Mvc;
-
-
+using System.Threading.Tasks;
 
 namespace Presentacion.Controllers
 {
@@ -32,18 +20,13 @@ namespace Presentacion.Controllers
         HttpClient client = new HttpClient();
         private readonly IWebHostEnvironment _iwebhost;// get the project access
 
-
         public AdminController(IWebHostEnvironment _web) {
-
             _iwebhost = _web;
-
-
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-
             // Home, Facilidades, Sobre Nosotros y Contacto 
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
@@ -58,7 +41,6 @@ namespace Presentacion.Controllers
             ViewBag.Contacto = sitioGeneral1.CONTACTO;
             ViewBag.comollegar = sitioGeneral1.COMO_LLEGAR;
 
-
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
@@ -69,14 +51,11 @@ namespace Presentacion.Controllers
             ViewBag.facilidades = sitioGeneral.FACILIDADES;
 
             return View();
-        }// metodo
+        }
 
         [HttpPost]
         public async Task<ActionResult> EditarFacilidades(string facilidades)
         {
-
-
-
             SitioGeneral sitio = new SitioGeneral();
 
             sitio.FACILIDADES = facilidades;
@@ -87,12 +66,9 @@ namespace Presentacion.Controllers
             string resultado = await response2.Content.ReadAsStringAsync();
             var response3 = JsonConvert.DeserializeObject<string>(resultado);
 
-
-
             return Json(new { success = true, message = response3 });
 
         }
-
 
         [HttpPost]
         public async Task<ActionResult> EditarComoLlegar(string comollegar)
@@ -108,14 +84,11 @@ namespace Presentacion.Controllers
             var response3 = JsonConvert.DeserializeObject<string>(resultado);
 
             return Json(new { success = true, message = response3 });
-
         }
 
 
         [HttpPost]
         public async Task<ActionResult> EditarSobreNosotros(string sobreNosotros) {
-
-
 
             SitioGeneral sitio = new SitioGeneral();
 
@@ -127,61 +100,51 @@ namespace Presentacion.Controllers
             string resultado = await response2.Content.ReadAsStringAsync();
             var response3 = JsonConvert.DeserializeObject<string>(resultado);
 
-
-
             return Json(new { success = true, message = response3 });
-
 
         }
 
         [HttpPost]
         public async Task<IActionResult> ChangeImageHome(IFormFile file) {
+
             string mensaje = "";
 
-            if (file != null && file.Length > 0)
-            {
+            if (file != null && file.Length > 0) {
 
                 Imagenes ic= new Imagenes();
-            var saveimg = Path.Combine(_iwebhost.WebRootPath, "imagenes", file.FileName);//la ruta de mi proyecto imagenes
-            var stream = new FileStream(saveimg, FileMode.Create);// Creo en un nuevo archivo esa ruta
-            await file.CopyToAsync(stream);// agrego
-             string exten_img = Path.GetExtension(file.FileName);
-            if(exten_img == ".jpg"|| exten_img == ".png" || exten_img == ".gif")
-            {
-            ic.Name = "ImgHome"; //nombre imagen
-            ic.Full_path = "imagenes/"+file.FileName;// ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
+                var saveimg = Path.Combine(_iwebhost.WebRootPath, "imagenes", file.FileName);//la ruta de mi proyecto imagenes
+                var stream = new FileStream(saveimg, FileMode.Create);// Creo en un nuevo archivo esa ruta
+                await file.CopyToAsync(stream);// agrego
+                string exten_img = Path.GetExtension(file.FileName);
+
+                if(exten_img == ".jpg"|| exten_img == ".png" || exten_img == ".gif"){
+
+                    ic.Name = "ImgHome"; //nombre imagen
+                    ic.Full_path = "imagenes/"+file.FileName; // ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
                     mensaje= "Se cambio la imagen con exito";
            
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            var response2 = await client. PostAsJsonAsync("https://localhost:44386/SitioGeneral/editarRutaImgHome", ic);
-            string resultado = await response2.Content.ReadAsStringAsync();
-            var response3 = JsonConvert.DeserializeObject<string>(resultado);
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    var response2 = await client. PostAsJsonAsync("https://localhost:44386/SitioGeneral/editarRutaImgHome", ic);
+                    string resultado = await response2.Content.ReadAsStringAsync();
+                    var response3 = JsonConvert.DeserializeObject<string>(resultado);
 
+                } else {
+                    mensaje= "El formato de la imagen no se encuentra entre las permitidas (jpg,png,gif)";
+                }
 
-            }else
-            {
-               mensaje= "El formato de la imagen no se encuentra entre las permitidas (jpg,png,gif)";
-            }
-            }else
-            {
+            } else {
                 mensaje = "No se ha seleccionado ningùn archivo.";
             }
 
             return Json(new { success = true, message = mensaje });
             //Llamar Api pasar objeto imagenes 
-
-
-
         }
 
 
         [HttpPost]
         public async Task<ActionResult> EditarHome(string home)
         {
-
-
-
             SitioGeneral sitio = new SitioGeneral();
 
             sitio.HOME = home;
@@ -191,11 +154,7 @@ namespace Presentacion.Controllers
             string resultado = await response4.Content.ReadAsStringAsync();
             var response5 = JsonConvert.DeserializeObject<string>(resultado);
 
-
-
             return Json(new { success = true, message = response5 });
-
-
             
         }// metodo 
 
@@ -208,7 +167,6 @@ namespace Presentacion.Controllers
             mensaje.Asunto = asunto;
             mensaje.Cuerpo = contenidoMsj;
 
-
             MailMessage ms = new MailMessage(mensaje.De, mensaje.Para);
             ms.Subject = mensaje.Asunto;
             ms.Body = mensaje.Cuerpo;
@@ -219,27 +177,16 @@ namespace Presentacion.Controllers
             smtp.Credentials = new NetworkCredential("bwestocean@gmail.com","West.2022");
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.EnableSsl = true;
-
             
-            try
-            {
-
+            try {
                 smtp.Send(ms);
                 return true;
-            }
-            catch (SmtpException e)
-            {
+            } catch (SmtpException e) {
                 Console.WriteLine("eror");
             }
 
            return false;
         
-        
-
         }
-     
-
     }
-
 }
-

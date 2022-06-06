@@ -1,11 +1,6 @@
-﻿
-
-
-function uploadFile() {
-
+﻿function uploadFile() {
 
     var formData = new FormData();
-
     var uploadField = document.getElementById('filee');
     formData.append("file", uploadField.files[0]);
 
@@ -18,36 +13,24 @@ function uploadFile() {
         processData: false,
         success: function (result) {
             
-
             var aswer = document.getElementById('answer');
             aswer.innerHTML = result.message;
             var modal = document.getElementById("myModal");
             modal.style.display = "block";
-
-
         },
         error:
             function (response) {
                 alert("Error en el llamado: " + response);
             }
     });
-
-
-
 }
-
 
 function updateAboutUs() {
    
-
     var text = document.getElementById('aboutUs');
     var sobreNosostros = text.value;
     
-
-
     if (trimfield(sobreNosostros) == '') {
-      
-      
         var aswer = document.getElementById('answer');
         aswer.innerHTML = "Complete el campo no puede ir vacio";
         var modal = document.getElementById("myModal");
@@ -55,50 +38,35 @@ function updateAboutUs() {
         
     } else {
         
-        
-
        $.ajax({
 
             type: 'POST',
             dataType: 'json',
             url: '/Admin/EditarSobreNosotros',
-           data: { sobreNosotros: sobreNosostros },
-           
+            data: { sobreNosotros: sobreNosostros },
 
-           success: function (result) {
+            success: function (result) {
 
-               
-
-              
-               var aswer = document.getElementById('answer');
-               aswer.innerHTML = result.message;
-               var modal = document.getElementById("myModal");
-               modal.style.display = "block";
-
-
-               
+                var aswer = document.getElementById('answer');
+                aswer.innerHTML = result.message;
+                var modal = document.getElementById("myModal");
+                modal.style.display = "block";
              
             },
             error:
                 function (response) {
                     alert("Error en el llamado: " + response);
                 }
-        });
-  
+            });
     }
-
 }
 
 function updateFacilities() {
 
-
     var text = document.getElementById('facilities');
     var facilidades = text.value;
 
-
-
     if (trimfield(facilidades) == '') {
-
 
         var aswer = document.getElementById('answer');
         aswer.innerHTML = "Complete el campo no puede ir vacio";
@@ -106,8 +74,6 @@ function updateFacilities() {
         modal.style.display = "block";
 
     } else {
-
-
 
         $.ajax({
 
@@ -115,20 +81,12 @@ function updateFacilities() {
             dataType: 'json',
             url: '/Admin/editarFacilidades',
             data: { facilidades: facilidades },
-
-
             success: function (result) {
-
-
-
 
                 var aswer = document.getElementById('answer');
                 aswer.innerHTML = result.message;
                 var modal = document.getElementById("myModal");
                 modal.style.display = "block";
-
-
-
 
             },
             error:
@@ -136,27 +94,15 @@ function updateFacilities() {
                     alert("Error en el llamado: " + response);
                 }
         });
-
     }
-
 }// editar facilidades
 
-
-
-
-
-
-
 function updateHome() {
-
 
     var text = document.getElementById('homeedit');
     var home = text.value;
 
-
-
     if (trimfield(home) == '') {
-
 
         var aswer = document.getElementById('answer');
         aswer.innerHTML = "Complete el campo no puede ir vacio";
@@ -171,8 +117,6 @@ function updateHome() {
             dataType: 'json',
             url: '/Admin/EditarHome',
             data: { home: home },
-
-
             success: function (result) {
 
                 var aswer = document.getElementById('answer');
@@ -186,34 +130,25 @@ function updateHome() {
                     alert("Error en el llamado: " + response);
                 }
         });
-
     }
-
 }
-//Editar Home
 
 function trimfield(str) {
     return str.replace(/^\s+|\s+$/g, '');
 }
 
-
 function cancelarupdateAboutUs() {
-
 
     var text = document.getElementById('aboutUs');
     text.value = "";
     var modal = document.getElementById('id01');
     modal.style.display = "none";
     window.location = "https://localhost:44343/Admin";
-
-
     window.location = "https://localhost:44343/Admin";
-
 
 }
 
 function cancelarupdateFacilities() {
-
 
     var text = document.getElementById('facilities');
     text.value = "";
@@ -221,21 +156,16 @@ function cancelarupdateFacilities() {
     modal.style.display = "none";
     window.location = "https://localhost:44343/Admin";
 
-
 }
 
 function cancelarupdateHome() {
-
 
     var text = document.getElementById('homeedit');
     text.value = "";
     var modal = document.getElementById('id03');
     modal.style.display = "none";
     window.location = "https://localhost:44343/Admin";
- 
 }
-
-
 
 
 function updateComoLlegar() {
@@ -258,21 +188,16 @@ function updateComoLlegar() {
             dataType: 'json',
             url: '/Admin/EditarComoLLegar',
             data: { comollegar: comollegar },
-
             success: function (result) {
-
                 var aswer = document.getElementById('answer');
                 aswer.innerHTML = result.message;
                 var modal = document.getElementById("myModal");
                 modal.style.display = "block";
-
             },
             error:
                 function (response) {
                     alert("Error en el llamado: " + response);
                 }
         });
-
     }
-
 }// editar cómon llegar
