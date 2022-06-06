@@ -20,9 +20,12 @@ namespace Presentacion.Controllers
         public IConfiguration Configuration { get; }
         HttpClient client = new HttpClient();
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
+         
             return View();
+
+
         }
 
         [HttpGet]
@@ -42,9 +45,7 @@ namespace Presentacion.Controllers
 
             return Ok(Habitaciones);
         }
-        
 
-        
 
     }
 }

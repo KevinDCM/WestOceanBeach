@@ -22,5 +22,15 @@ namespace API.Controllers
         {
             return new HabitacionBusiness().obtenerHabitacionesTemporada();
         }
+
+
+        [HttpGet]
+
+        [Route("Habitacion_Junior")]
+        public Habitacion Habitacion_Junior()
+        {
+            return new HabitacionBusiness().Habitacion_Junior();
+        }// fin m
+
     }
 }

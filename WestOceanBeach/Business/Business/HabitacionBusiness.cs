@@ -21,6 +21,11 @@ namespace Business.Business
             return dataHabitacion.obtenerHabitacionesTemporada();
 
         }
+        public Habitacion Habitacion_Junior()
+        {
+            return dataHabitacion.Habitacion_Junior();
+
+        }
 
     }
 }
