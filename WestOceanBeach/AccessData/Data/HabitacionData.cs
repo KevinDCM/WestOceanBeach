@@ -136,5 +136,44 @@ namespace AccessData.Data
             return habitacionesTemporada;
 
         }
+
+
+        public Habitacion Habitacion_Junior()
+        {
+
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("[SP_HABITACIONES_JUNIOR]", sqlConnection);
+            sqlCommand.ExecuteNonQuery();
+            Habitacion tipo_junior = new Habitacion();
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+
+                    DataRow dr = dt.Rows[i];
+                    string[] allColumns = dr.ItemArray.Select(obj => obj.ToString()).ToArray();
+                    ArrayList itm = new ArrayList(allColumns);
+
+                    
+                    string Descripcion = Convert.ToString(dt.Rows[i]["DESCRIPCION"]);
+                    string Ruta_Imagen = Convert.ToString(dt.Rows[i]["RUTA_IMAGEN"]);
+                    decimal TarifaDiaria = Convert.ToDecimal(dt.Rows[i]["TARIFA_DIARIA"]);
+
+                    tipo_junior.Descripcion = Descripcion;
+                    tipo_junior.ruta_imagen = Ruta_Imagen;
+                    tipo_junior.TarifaDiaria = TarifaDiaria;
+
+
+
+                }
+            }
+
+            return tipo_junior;
+        }// metodo
+
     }
 }

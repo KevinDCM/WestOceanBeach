@@ -49,6 +49,19 @@ namespace Presentacion.Controllers
             var sitioGeneral = JsonConvert.DeserializeObject<SitioGeneral>(resultado);
 
             ViewBag.facilidades = sitioGeneral.FACILIDADES;
+            //------------------------------------------------------------------------------------------------
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
+            var response3 = await client.GetAsync("https://localhost:44386/Habitacion/Habitacion_Junior");
+            string resultado3 = await response3.Content.ReadAsStringAsync();
+            Habitacion Habitaciones = JsonConvert.DeserializeObject<Habitacion>(resultado3);
+
+            ViewBag.Habitacion_junior_descripcion = Habitaciones.Descripcion;
+
+            ViewBag.Habitacion_junior_ruta_imagen = Habitaciones.ruta_imagen;
+
+            ViewBag.Habitacion_junior_tarifa_diaria = Habitaciones.TarifaDiaria;
 
             return View();
         }
@@ -188,5 +201,7 @@ namespace Presentacion.Controllers
            return false;
         
         }
+
+
     }
 }
