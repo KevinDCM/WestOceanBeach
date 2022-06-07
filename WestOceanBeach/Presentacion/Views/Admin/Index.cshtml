@@ -33,6 +33,7 @@
                             <a href="#inicio_01">Home</a>
                             <a href="">Modificar Pàginas</a>
                             <a href="">Listado de Reservaciones</a>
+                             <a href="#modificarHabitacion">Administrar Habitaciones</a>
                             <a href="">Ver Estado del Hotel Hoy</a>
                             <a href="">Disponibilidad de Habitaciones</a>
                             <a href="">Publicidad</a>
@@ -140,91 +141,87 @@
             </div>
         </section>
 
-  
 
-     <!--Modicar Habitaciones  -->
-  <section id="modificarHabitacion" class="container" style="margin-block: 1em; background-color: white">
-        <p class="new2"> Ediciòn de los Tipos de Habitaciones</p>
+          <!-- Sección Editar Acerca de  (Editar Acerca de ) -->
+        <section id="modificarHabitacion" class="container-fluid" style="margin-block: 1em; background-color: white">
+        <!--Modicar Habitaciones  -->
+          <p class="new2"> Ediciòn de los Tipos de Habitaciones</p>
             <label>Seleccione el Tipo de Habitaciòn a Editar </label>
-        <div class="container-fluid">
-        <div class="row">
-        <div class="col-sm-4 col-xs well">
-          <a href="#info1" class="inf">Estandar</a>
-        </div>
-        <div class="col-sm-4 col-xs well">
-          <a href="#info2" class="inf">Junior</a>
-        </div>
-        <div class="col-sm-4 col-xs well">
-        <a href="#info3" class="inf">Suite</a>
-        </div>
-      </div>
-  <!-- contenido informacion adicional -->
-  <div class="row">
-    <div id="info1" class="col-xs-12 well oculto">
-       <!-- Standar -->
-          <div class="col-sm-10">
-
-                 
-                 <h3>Habitaciòn Estandar</h3>
-                   <textarea class="noteToAdd" id="aboutUs" name="sitelink" rows="10" cols="70">@ViewBag.Habitacion_estandar_descripcion</textarea>
-           </div>
-            <div class="col-sm-10">
-                 <h3>Tarifa Diaria Actual:</h3>
-                 <input type="text" size="15" maxlength="30" value= @ViewBag.Habitacion_estandar_tarifa_diaria name="Tarifa_diaria">
-             </div>
-             <div class="col-sm-10">
-                 <h3>Imagen Actual:</h3>
-                 <img src=@ViewBag.Habitacion_estandar_ruta_imagen  style="width:100%" vspace="30" hspace="10" >
-             </div>
-         
-            <div class="col-sm-10">
-                 <h4 style="margin-left:1em">Subir Nueva Imagen:</h4> 
-                     @using(Html.BeginForm (new {enctype = "multipart / form-data"})){
-                                                    <input id="fileStandar" type = "file" name = "fileStandar" />
-                                        }
-                                        </div>
-           <div class="col-sm-10">
-               <input class="btn btn-success" id="btnAceptAboutUs" type="submit" value="Aceptar" style="background-color:#86b4ca;">
-               <input class="btn btn-success" id="btnCancelAboutUs" type="submit" value="Cancelar" style="background-color:#86b4ca;" >
-           </div>
-         </div>
-   
       
-    </div>
-    <div id="info2" class="col-xs-12 well oculto">
-      <!--junior -->
-             <div class="col-sm-10">
+                <div class="row">
+                <div class="col-sm-4 col-xs well">
+                  <a href="#info1" class="inf">Estandar</a>
+                </div>
+                <div class="col-sm-4 col-xs well">
+                  <a href="#info2" class="inf">Junior</a>
+                </div>
+                <div class="col-sm-4 col-xs well">
+                <a href="#info3" class="inf">Suite</a>
+                </div>
+              </div>
+                                 <!-- contenido informacion adicional -->
+              <div class="row">
+                <div id="info1" class="col-xs-12 well oculto">
+                   <!-- Standar -->
+                      <div class="col-sm-10">
 
                  
-                 <h3>Habitaciòn Junior</h3>
-                   <textarea class="noteToAdd" id="aboutUs" name="sitelink" rows="10" cols="70">@ViewBag.Habitacion_junior_descripcion</textarea>
-           </div>
-            <div class="col-sm-10">
-                 <h3>Tarifa Diaria Actual:</h3>
-                 <input type="text" size="15" maxlength="30" value= @ViewBag.Habitacion_junior_tarifa_diaria name="Tarifa_diaria">
-             </div>
-             <div class="col-sm-10">
-                 <h3>Imagen Actual:</h3>
-                 <img src=@ViewBag.Habitacion_junior_ruta_imagen  style="width:100%" vspace="30" hspace="10" >
-             </div>
+                             <h3>Habitaciòn Estandar</h3>
+                               <textarea class="noteToAdd" id="aboutUs" name="sitelink" rows="10" cols="70">@ViewBag.Habitacion_estandar_descripcion</textarea>
+                       </div>
+                        <div class="col-sm-10">
+                             <h3>Tarifa Diaria Actual:</h3>
+                             <input type="text" size="15" maxlength="30" value= @ViewBag.Habitacion_estandar_tarifa_diaria name="Tarifa_diaria">
+                         </div>
+                         <div class="col-sm-10">
+                             <h3>Imagen Actual:</h3>
+                             <img src=@ViewBag.Habitacion_estandar_ruta_imagen  style="width:100%" vspace="30" hspace="10" >
+                         </div>
          
-            <div class="col-sm-10">
-                 <h4 style="margin-left:1em">Subir Nueva Imagen:</h4> 
-                     @using(Html.BeginForm (new {enctype = "multipart / form-data"})){
-                                                    <input id="fileStandar" type = "file" name = "fileStandar" />
-                                        }
-                                        </div>
-           <div class="col-sm-10">
-               <input class="btn btn-success" id="btnAceptAboutUs" type="submit" value="Aceptar" style="background-color:#86b4ca;">
-               <input class="btn btn-success" id="btnCancelAboutUs" type="submit" value="Cancelar" style="background-color:#86b4ca;" >
-           </div>
-    </div>
-    <div id="info3" class="col-xs-12 well oculto">
+                        <div class="col-sm-10">
+                             <h4 style="margin-left:1em">Subir Nueva Imagen:</h4> 
+                                 @using(Html.BeginForm (new {enctype = "multipart / form-data"})){
+                                                                <input id="fileStandar" type = "file" name = "fileStandar" />
+                                                    }
+                                                    </div>
+                       <div class="col-sm-10">
+                           <input class="btn btn-success" id="btnAceptAboutUs" type="submit" value="Aceptar" style="background-color:#86b4ca;">
+                           <input class="btn btn-success" id="btnCancelAboutUs" type="submit" value="Cancelar" style="background-color:#86b4ca;" >
+                       </div>
+                     </div>
+                </div>
+                 <div id="info2" class="col-xs-12 well oculto">
+                  <!--junior -->
+                         <div class="col-sm-10">
+
+                 
+                             <h3>Habitaciòn Junior</h3>
+                               <textarea class="noteToAdd" id="aboutUs" name="sitelink" rows="10" cols="70">@ViewBag.Habitacion_junior_descripcion</textarea>
+                       </div>
+                        <div class="col-sm-10">
+                             <h3>Tarifa Diaria Actual:</h3>
+                             <input type="text" size="15" maxlength="30" value= @ViewBag.Habitacion_junior_tarifa_diaria name="Tarifa_diaria">
+                         </div>
+                         <div class="col-sm-10">
+                             <h3>Imagen Actual:</h3>
+                             <img src=@ViewBag.Habitacion_junior_ruta_imagen  style="width:100%" vspace="30" hspace="10" >
+                         </div>
+         
+                        <div class="col-sm-10">
+                             <h4 style="margin-left:1em">Subir Nueva Imagen:</h4> 
+                                 @using(Html.BeginForm (new {enctype = "multipart / form-data"})){
+                                                                <input id="fileStandar" type = "file" name = "fileStandar" />
+                                                    }
+                                                    </div>
+                       <div class="col-sm-10">
+                           <input class="btn btn-success" id="btnAceptAboutUs" type="submit" value="Aceptar" style="background-color:#86b4ca;">
+                           <input class="btn btn-success" id="btnCancelAboutUs" type="submit" value="Cancelar" style="background-color:#86b4ca;" >
+                       </div>
+                </div>
+                   <div id="info3" class="col-xs-12 well oculto">
     <!--Suite -->
             <div class="col-sm-10">
-
-                 
-                 <h3>Habitaciòn Suite</h3>
+                <h2>Habitaciòn Suite    Tarifa Diaria: </h2>
                    <textarea class="noteToAdd" id="aboutUs" name="sitelink" rows="10" cols="70">@ViewBag.Habitacion_suite_descripcion</textarea>
            </div>
             <div class="col-sm-10">
@@ -247,13 +244,10 @@
                <input class="btn btn-success" id="btnCancelAboutUs" type="submit" value="Cancelar" style="background-color:#86b4ca;" >
            </div>
     </div>
-  </div>
-</div>
-</section>
 
-       
 
-    <!-- The Modal Messages confimation  -->
+      </section>
+      <!-- The Modal Messages confimation  -->
     <div id="id01" class="modal1">
         <span onclick="document.getElementById('id01').style.display='none'" class="close1" title="Close Modal">×</span>
         <form class="modal-content1" >
