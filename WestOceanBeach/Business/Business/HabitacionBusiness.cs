@@ -26,6 +26,16 @@ namespace Business.Business
             return dataHabitacion.Habitacion_Junior();
 
         }
+        public Habitacion Habitacion_Estandar()
+        {
+            return dataHabitacion.Habitacion_Estandar();
+
+        }
+        public Habitacion Habitacion_Suite()
+        {
+            return dataHabitacion.Habitacion_Suite();
+
+        }
 
     }
 }

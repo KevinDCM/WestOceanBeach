@@ -143,57 +143,39 @@
   
 
      <!--Modicar Habitaciones  -->
-     <section id="modificarHabitacion" class="container" style="margin-block: 1em; background-color: white">
+  <section id="modificarHabitacion" class="container" style="margin-block: 1em; background-color: white">
+        <p class="new2"> Ediciòn de los Tipos de Habitaciones</p>
    
 
  <!--Standar -->
-         <div class="row" id="standar">
+   <div class="row" id="estandar">
              <div class="col-sm-10">
 
-                 <p class="new2"> Modificar Habitaciones </p>
-                 <h3>Standar</h3>
-                  <textarea class="noteToAdd" id="estandar" name="sitelink" rows="10" cols="70"> </textarea>
-
-            </div>
-            
-             <br />
-             <br />
-
-            <div class="row">
-              
-                <div class="col-sm-6"> 
-                      <br />
-                    <h4 style="margin-left:1em">Imagen Actual</h4>
-                    
-                <img src="imagenes/estandar.jpg" style="width:230px; height:230px; margin-left:1em" >
-
-
-                </div>
-                <div class="col-sm-6" >
-                      <br />
-                    <h4>Subir nueva imagen</h4>
-
-                    @using(Html.BeginForm (new {enctype = "multipart / form-data"})){
-                                <input id="fileStandar" type = "file" name = "fileStandar" />
-                                
-                            }
-
-                </div>
-
-
-
-            </div>
-
-               <div style="margin-left:30em;">
-
-                <input class="btn btn-success" id="btnAceptAboutUs" type="submit" value="Aceptar" style="background-color:#86b4ca;">
-                <input class="btn btn-success" id="btnCancelAboutUs" type="submit" value="Cancelar" style="background-color:#86b4ca;" >
-
-                </div>
-
-         </div>
-            <br />
-             <br />
+                 
+                 <h3>Habitaciòn Estandar</h3>
+                   <textarea class="noteToAdd" id="aboutUs" name="sitelink" rows="10" cols="70">@ViewBag.Habitacion_estandar_descripcion</textarea>
+           </div>
+            <div class="col-sm-10">
+                 <h3>Tarifa Diaria Actual:</h3>
+                 <input type="text" size="15" maxlength="30" value= @ViewBag.Habitacion_estandar_tarifa_diaria name="Tarifa_diaria">
+             </div>
+             <div class="col-sm-10">
+                 <h3>Imagen Actual:</h3>
+                 <img src=@ViewBag.Habitacion_estandar_ruta_imagen  style="width:100%" vspace="30" hspace="10" >
+             </div>
+         
+            <div class="col-sm-10">
+                 <h4 style="margin-left:1em">Subir Nueva Imagen:</h4> 
+                     @using(Html.BeginForm (new {enctype = "multipart / form-data"})){
+                                                    <input id="fileStandar" type = "file" name = "fileStandar" />
+                                        }
+                                        </div>
+           <div class="col-sm-10">
+               <input class="btn btn-success" id="btnAceptAboutUs" type="submit" value="Aceptar" style="background-color:#86b4ca;">
+               <input class="btn btn-success" id="btnCancelAboutUs" type="submit" value="Cancelar" style="background-color:#86b4ca;" >
+           </div>
+           </div>
+   
 
 
          <!--junior -->
@@ -228,52 +210,36 @@
            </div>
    
          <!--Suite -->
-
-
-          <div class="row" id="Suite">
+          <div class="row" id="suite">
              <div class="col-sm-10">
 
                  
-                 <h3>Suite</h3>
-                  <textarea class="noteToAdd" id="aboutUs" name="sitelink" rows="10" cols="70"> </textarea>
-
-            </div>
-            
-             <br />
-             <br />
-
-            <div class="row">
-              
-                <div class="col-sm-6"> 
-                      <br />
-                    <h4 style="margin-left:1em">Imagen Actual</h4>
-                    
-                <img src="imagenes/suite.jpg" style="width:230px; height:200px; margin-left:1em" >
-
-
-                </div>
-                <div class="col-sm-6" >
-                      <br />
-                    <h4>Subir nueva imagen</h4>
-
-                    @using(Html.BeginForm (new {enctype = "multipart / form-data"})){
-                                <input id="fileStandar" type = "file" name = "fileStandar" />
-                                
-                            }
-
-                </div>
-
-
-
-            </div>
-
-            <div class="col-sm-10">
-
-                <input class="btn btn-success" id="btnAceptAboutUs" type="submit" value="Aceptar" style="background-color:#86b4ca;">
-                <input class="btn btn-success" id="btnCancelAboutUs" type="submit" value="Cancelar" style="background-color:#86b4ca;" >
-
+                 <h3>Habitaciòn Suite</h3>
+                   <textarea class="noteToAdd" id="aboutUs" name="sitelink" rows="10" cols="70">@ViewBag.Habitacion_suite_descripcion</textarea>
            </div>
-         </div>
+            <div class="col-sm-10">
+                 <h3>Tarifa Diaria Actual:</h3>
+                 <input type="text" size="15" maxlength="30" value= @ViewBag.Habitacion_suite_tarifa_diaria name="Tarifa_diaria">
+             </div>
+             <div class="col-sm-10">
+                 <h3>Imagen Actual:</h3>
+                 <img src=@ViewBag.Habitacion_suite_ruta_imagen  style="width:100%" vspace="30" hspace="10" >
+             </div>
+         
+            <div class="col-sm-10">
+                 <h4 style="margin-left:1em">Subir Nueva Imagen:</h4> 
+                     @using(Html.BeginForm (new {enctype = "multipart / form-data"})){
+                                                    <input id="fileStandar" type = "file" name = "fileStandar" />
+                                        }
+                                        </div>
+           <div class="col-sm-10">
+               <input class="btn btn-success" id="btnAceptAboutUs" type="submit" value="Aceptar" style="background-color:#86b4ca;">
+               <input class="btn btn-success" id="btnCancelAboutUs" type="submit" value="Cancelar" style="background-color:#86b4ca;" >
+           </div>
+           </div>
+   
+
+         
      </section>
 
        

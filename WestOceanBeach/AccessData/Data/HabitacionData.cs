@@ -171,8 +171,87 @@ namespace AccessData.Data
 
                 }
             }
-
+            sqlConnection.Close();
             return tipo_junior;
+        }// metodo
+
+
+
+        public Habitacion Habitacion_Suite()
+        {
+
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("[SP_HABITACIONES_SUITE]", sqlConnection);
+            sqlCommand.ExecuteNonQuery();
+            Habitacion tipo_suite = new Habitacion();
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+
+                    DataRow dr = dt.Rows[i];
+                    string[] allColumns = dr.ItemArray.Select(obj => obj.ToString()).ToArray();
+                    ArrayList itm = new ArrayList(allColumns);
+
+
+                    string Descripcion = Convert.ToString(dt.Rows[i]["DESCRIPCION"]);
+                    string Ruta_Imagen = Convert.ToString(dt.Rows[i]["RUTA_IMAGEN"]);
+                    decimal TarifaDiaria = Convert.ToDecimal(dt.Rows[i]["TARIFA_DIARIA"]);
+
+                    tipo_suite.Descripcion = Descripcion;
+                    tipo_suite.ruta_imagen = Ruta_Imagen;
+                    tipo_suite.TarifaDiaria = TarifaDiaria;
+
+
+
+                }
+            }
+            sqlConnection.Close();
+
+            return tipo_suite;
+        }// metodo
+
+
+        public Habitacion Habitacion_Estandar()
+        {
+
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("[SP_HABITACIONES_ESTANDAR]", sqlConnection);
+            sqlCommand.ExecuteNonQuery();
+            Habitacion tipo_estandar = new Habitacion();
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+
+                    DataRow dr = dt.Rows[i];
+                    string[] allColumns = dr.ItemArray.Select(obj => obj.ToString()).ToArray();
+                    ArrayList itm = new ArrayList(allColumns);
+
+
+                    string Descripcion = Convert.ToString(dt.Rows[i]["DESCRIPCION"]);
+                    string Ruta_Imagen = Convert.ToString(dt.Rows[i]["RUTA_IMAGEN"]);
+                    decimal TarifaDiaria = Convert.ToDecimal(dt.Rows[i]["TARIFA_DIARIA"]);
+
+                    tipo_estandar.Descripcion = Descripcion;
+                    tipo_estandar.ruta_imagen = Ruta_Imagen;
+                    tipo_estandar.TarifaDiaria = TarifaDiaria;
+
+
+
+                }
+            }
+            sqlConnection.Close();
+
+            return tipo_estandar;
         }// metodo
 
     }
