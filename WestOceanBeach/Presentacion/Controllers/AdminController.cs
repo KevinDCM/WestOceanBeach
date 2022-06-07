@@ -49,19 +49,46 @@ namespace Presentacion.Controllers
             var sitioGeneral = JsonConvert.DeserializeObject<SitioGeneral>(resultado);
 
             ViewBag.facilidades = sitioGeneral.FACILIDADES;
-            //------------------------------------------------------------------------------------------------
+            //-------------------------------------------Habitaciones Junior-----------------------------------------------------
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
             var response3 = await client.GetAsync("https://localhost:44386/Habitacion/Habitacion_Junior");
             string resultado3 = await response3.Content.ReadAsStringAsync();
-            Habitacion Habitaciones = JsonConvert.DeserializeObject<Habitacion>(resultado3);
+            Habitacion Habitaciones_junior = JsonConvert.DeserializeObject<Habitacion>(resultado3);
 
-            ViewBag.Habitacion_junior_descripcion = Habitaciones.Descripcion;
+            ViewBag.Habitacion_junior_descripcion = Habitaciones_junior.Descripcion;
 
-            ViewBag.Habitacion_junior_ruta_imagen = Habitaciones.ruta_imagen;
+            ViewBag.Habitacion_junior_ruta_imagen = Habitaciones_junior.ruta_imagen;
 
-            ViewBag.Habitacion_junior_tarifa_diaria = Habitaciones.TarifaDiaria;
+            ViewBag.Habitacion_junior_tarifa_diaria = Habitaciones_junior.TarifaDiaria;
+
+            //-------------------------------------------Habitaciones Estandar-----------------------------------------------------
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
+            var response4 = await client.GetAsync("https://localhost:44386/Habitacion/Habitacion_Estandar");
+            string resultado4 = await response4.Content.ReadAsStringAsync();
+            Habitacion Habitaciones_estandar = JsonConvert.DeserializeObject<Habitacion>(resultado4);
+
+            ViewBag.Habitacion_estandar_descripcion = Habitaciones_estandar.Descripcion;
+
+            ViewBag.Habitacion_estandar_ruta_imagen = Habitaciones_estandar.ruta_imagen;
+
+            ViewBag.Habitacion_estandar_tarifa_diaria = Habitaciones_estandar.TarifaDiaria;
+            //-------------------------------------------Habitaciones Suite-----------------------------------------------------
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
+            var response5 = await client.GetAsync("https://localhost:44386/Habitacion/Habitacion_Suite");
+            string resultado5 = await response5.Content.ReadAsStringAsync();
+            Habitacion Habitaciones_suite = JsonConvert.DeserializeObject<Habitacion>(resultado5);
+
+            ViewBag.Habitacion_suite_descripcion = Habitaciones_suite.Descripcion;
+
+            ViewBag.Habitacion_suite_ruta_imagen = Habitaciones_suite.ruta_imagen;
+
+            ViewBag.Habitacion_suite_tarifa_diaria = Habitaciones_suite.TarifaDiaria;
 
             return View();
         }

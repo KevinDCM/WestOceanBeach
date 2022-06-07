@@ -32,5 +32,21 @@ namespace API.Controllers
             return new HabitacionBusiness().Habitacion_Junior();
         }// fin m
 
+        [HttpGet]
+
+        [Route("Habitacion_Estandar")]
+        public Habitacion Habitacion_Estandar()
+        {
+            return new HabitacionBusiness().Habitacion_Estandar();
+        }// fin m
+
+        [HttpGet]
+
+        [Route("Habitacion_Suite")]
+        public Habitacion Habitacion_Suite()
+        {
+            return new HabitacionBusiness().Habitacion_Suite();
+        }// fin m
+
     }
 }
