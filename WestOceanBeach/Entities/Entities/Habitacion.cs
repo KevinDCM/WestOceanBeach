@@ -15,6 +15,7 @@ namespace Entities.Entities
         public string ruta_imagen { get; set; }
         public int CantidadPersonas { get; set; }  
         public decimal TarifaDiaria { get; set; }
+        public string Tarifa { get; set; }
         public DateTime fechaI { get; set; }  // lo define el usuario
         public DateTime fechaF { get; set; }  // lo define el usuario
         // DateTime to string

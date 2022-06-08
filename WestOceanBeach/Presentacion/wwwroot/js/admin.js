@@ -23,7 +23,76 @@
                 alert("Error en el llamado: " + response);
             }
     });
-}
+}// uploadFile
+
+function cambiarImgHabitacionEstandar() {
+
+    var formData = new FormData();
+    var uploadField = document.getElementById('fileEstandar');
+    formData.append("file", uploadField.files[0]);
+
+    $.ajax({
+        type: 'POST',
+        url: "/Admin/CambiarImgHabitacionEstandar",
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (result) {
+
+        },
+        error:
+            function (response) {
+                alert("Error en el llamado: " + response);
+            }
+    });
+}// cambiar
+
+function cambiarImgHabitacionJunior() {
+
+    var formData = new FormData();
+    var uploadField = document.getElementById('fileJunior');
+    formData.append("file", uploadField.files[0]);
+
+    $.ajax({
+        type: 'POST',
+        url: "/Admin/CambiarImgHabitacionJunior",
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (result) {
+
+        },
+        error:
+            function (response) {
+                alert("Error en el llamado: " + response);
+            }
+    });
+}// cambiar
+
+function cambiarImgHabitacionSuite() {
+
+    var formData = new FormData();
+    var uploadField = document.getElementById('fileSuite');
+    formData.append("file", uploadField.files[0]);
+
+    $.ajax({
+        type: 'POST',
+        url: "/Admin/CambiarImgHabitacionSuite",
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (result) {
+
+        },
+        error:
+            function (response) {
+                alert("Error en el llamado: " + response);
+            }
+    });
+}// cambiar
 
 function updateAboutUs() {
    
@@ -201,6 +270,85 @@ function updateComoLlegar() {
         });
     }
 }// editar cómon llegar
+
+function updateHabitacionEstandar() {
+   
+    
+    var descripcion = document.getElementById('descripcionESTANDAR').value;
+    var tarifa = document.getElementById('tarifaESTANDAR').value;
+    var nombre = "ESTANDAR";
+    
+        $.ajax({
+
+            type: 'POST',
+            dataType: 'json',
+            url: '/Admin/EditarHabitacion',
+            data: { tarifa: tarifa, descripcion: descripcion, nombre: nombre },
+            success: function (result) {
+              
+                    alert("Listo: " + response);
+                
+            },
+            error:
+                function (response) {
+                    alert("Error en el llamado: " + response);
+                }
+        });
+
+    alert("LISTO");
+}// updateHabitacion
+
+function updateHabitacionJunior() {
+
+    var descripcion = document.getElementById('descripcionJUNIOR').value;
+    var tarifa = document.getElementById('tarifaJUNIOR').value;
+    var nombre = "JUNIOR";
+
+    $.ajax({
+
+        type: 'POST',
+        dataType: 'json',
+        url: '/Admin/EditarHabitacion',
+        data: { tarifa: tarifa, descripcion: descripcion, nombre: nombre },
+        success: function (result) {
+
+            alert("Listo: " + response);
+
+        },
+        error:
+            function (response) {
+                alert("Error en el llamado: " + response);
+            }
+    });
+
+    alert("LISTO");
+}// updateHabitacion
+
+function updateHabitacionSuite() {
+
+    var descripcion = document.getElementById('descripcionSUITE').value;
+    var tarifa = document.getElementById('tarifaSUITE').value;
+    var nombre = "SUITE";
+
+    $.ajax({
+
+        type: 'POST',
+        dataType: 'json',
+        url: '/Admin/EditarHabitacion',
+        data: { tarifa: tarifa, descripcion: descripcion, nombre: nombre },
+        success: function (result) {
+
+            alert("Listo: " + response);
+
+        },
+        error:
+            function (response) {
+                alert("Error en el llamado: " + response);
+            }
+    });
+
+    alert("LISTO");
+}// updateHabitacion
 
 jQuery(document).ready(function () {
     $(".oculto").hide();

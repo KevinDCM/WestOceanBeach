@@ -37,5 +37,15 @@ namespace Business.Business
 
         }
 
+        public string editarHabitacion(Habitacion habitacion)
+        {
+            return dataHabitacion.editarHabitacion(habitacion);
+        }// editarHabitacion
+
+        public string editarHabitacionImagen(Habitacion habitacion)
+        {
+            return dataHabitacion.editarHabitacionImagen(habitacion);
+        }//
+
     }
 }
