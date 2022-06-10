@@ -1,4 +1,27 @@
-﻿function uploadFile() {
+﻿
+$(document).ready(function () {
+
+    console.log('hello world2');
+    
+
+
+    var now = new Date();
+    var month = (now.getMonth() + 1);
+    var day = now.getDate();
+    if (month < 10)
+        month = "0" + month;
+    if (day < 10)
+        day = "0" + day;
+    var today = now.getFullYear() + '-' + month + '-' + day;
+    $('#fecha').val(today);
+
+
+
+}); 
+
+
+
+function uploadFile() {
 
     var formData = new FormData();
     var uploadField = document.getElementById('filee');
