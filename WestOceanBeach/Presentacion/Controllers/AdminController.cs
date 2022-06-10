@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -89,6 +90,18 @@ namespace Presentacion.Controllers
             ViewBag.Habitacion_suite_ruta_imagen = Habitaciones_suite.ruta_imagen;
 
             ViewBag.Habitacion_suite_tarifa_diaria = Habitaciones_suite.TarifaDiaria;
+
+            //Imagen de HOME
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage responseImgHome = await client.GetAsync("https://localhost:44386/SitioGeneral/ObtenerImagenesHome");
+            string responseImagenHomeContent = await responseImgHome.Content.ReadAsStringAsync();
+            List<Imagenes> imagenes = JsonConvert.DeserializeObject<List<Imagenes>>(responseImagenHomeContent);
+            @ViewBag.ImgHome = imagenes[0].Full_path;
+
 
             return View();
         }
