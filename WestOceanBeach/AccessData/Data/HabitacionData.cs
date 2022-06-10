@@ -254,5 +254,49 @@ namespace AccessData.Data
             return tipo_estandar;
         }// metodo
 
+        public string editarHabitacion(Habitacion habitacion)
+        {
+            string salida = "No se logro editar la habitacion ";
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("SP_update_tipoHabitacion", sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            sqlCommand.Parameters.AddWithValue("tarifa", Decimal.Parse(habitacion.Tarifa));
+            sqlCommand.Parameters.AddWithValue("descripcion", habitacion.Descripcion);
+            sqlCommand.Parameters.AddWithValue("nombre", habitacion.TipoHabitacion);
+
+            int rowAfected = sqlCommand.ExecuteNonQuery();
+            if (rowAfected == 1)
+            {
+
+                salida = "Se edito el tipo de habitacion con exito!";
+            }
+
+
+            sqlConnection.Close();
+
+            return salida;
+        }//editarHabitacion
+
+        public string editarHabitacionImagen(Habitacion habitacion)
+        {
+            string salida = "No se logro editar la habitacion ";
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("SP_update_tipoHabitacionImagen", sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            sqlCommand.Parameters.AddWithValue("ruta", habitacion.ruta_imagen);
+            sqlCommand.Parameters.AddWithValue("nombre", habitacion.TipoHabitacion);
+
+            int rowAfected = sqlCommand.ExecuteNonQuery();
+            if (rowAfected == 1)
+            {
+
+                salida = "Se edito el tipo de habitacion con exito!";
+            }// if
+
+            sqlConnection.Close();
+
+            return salida;
+        }//editarHabitacion
+
     }
 }

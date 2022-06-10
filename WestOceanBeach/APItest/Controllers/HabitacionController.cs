@@ -48,5 +48,17 @@ namespace API.Controllers
             return new HabitacionBusiness().Habitacion_Suite();
         }// fin m
 
+        [Route("EditarHabitacion")]
+        public string EditarHabitacion(Habitacion habitacion)
+        {
+            return new HabitacionBusiness().editarHabitacion(habitacion);
+        }//
+
+        [Route("EditarHabitacionImagen")]
+        public string EditarHabitacionImagen(Habitacion habitacion)
+        {
+            return new HabitacionBusiness().editarHabitacionImagen(habitacion);
+        }//
+
     }
 }
