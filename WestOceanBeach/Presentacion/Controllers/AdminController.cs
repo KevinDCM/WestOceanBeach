@@ -232,7 +232,7 @@ namespace Presentacion.Controllers
                 {
 
                     ic.Name = "ImgHome"; //nombre imagen
-                    ic.Full_path = "imagenes/" + file.FileName; // ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
+                    ic.Full_path = "/imagenes/" + file.FileName; // ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
                     mensaje = "Se cambio la imagen con exito";
 
                     Habitacion h = new Habitacion();
@@ -279,7 +279,7 @@ namespace Presentacion.Controllers
                 {
 
                     ic.Name = "ImgHome"; //nombre imagen
-                    ic.Full_path = "imagenes/" + file.FileName; // ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
+                    ic.Full_path = "/imagenes/" + file.FileName; // ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
                     mensaje = "Se cambio la imagen con exito";
 
                     Habitacion h = new Habitacion();
@@ -291,6 +291,7 @@ namespace Presentacion.Controllers
                     var response2 = await client.PostAsJsonAsync("https://localhost:44386/Habitacion/EditarHabitacionImagen", h);
                     string resultado = await response2.Content.ReadAsStringAsync();
                     var response3 = JsonConvert.DeserializeObject<string>(resultado);
+                    mensaje = response3;
 
                 }
                 else
@@ -326,7 +327,7 @@ namespace Presentacion.Controllers
                 {
 
                     ic.Name = "ImgHome"; //nombre imagen
-                    ic.Full_path = "imagenes/" + file.FileName; // ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
+                    ic.Full_path = "/imagenes/" + file.FileName; // ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
                     mensaje = "Se cambio la imagen con exito";
 
                     Habitacion h = new Habitacion();
@@ -338,6 +339,7 @@ namespace Presentacion.Controllers
                     var response2 = await client.PostAsJsonAsync("https://localhost:44386/Habitacion/EditarHabitacionImagen", h);
                     string resultado = await response2.Content.ReadAsStringAsync();
                     var response3 = JsonConvert.DeserializeObject<string>(resultado);
+                    mensaje = response3;
 
                 }
                 else
