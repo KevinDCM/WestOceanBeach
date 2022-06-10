@@ -290,7 +290,7 @@ namespace AccessData.Data
             if (rowAfected == 1)
             {
 
-                salida = "Se edito el tipo de habitacion con exito!";
+                salida = "Se edito la imagen correctamente!";
             }// if
 
             sqlConnection.Close();
