@@ -15,6 +15,8 @@ $(document).ready(function () {
     var today = now.getFullYear() + '-' + month + '-' + day;
     $('#fecha').val(today);
 
+    addrow("1","Estandar","disponible");
+
 
 
 }); 
@@ -388,3 +390,11 @@ jQuery(document).ready(function () {
         }
     });
 });
+
+function addrow(numero, tipo, estado) {
+
+    var contentRow = "<td>" + numero + "</td>" + "<td>" + tipo + "</td>" + "<td>" + estado + "</td>";
+    var table = document.getElementById("estadoActual");
+    var row = table.insertRow(table.rows.length);
+    row.innerHTML = contentRow;
+}
