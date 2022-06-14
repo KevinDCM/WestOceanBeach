@@ -298,7 +298,7 @@ namespace AccessData.Data
             return salida;
         }//editarHabitacion
 
-        public List<List<string>> estadoActualHabitacion()
+        public List<Habitacion> estadoActualHabitacion()
         {
 
 
@@ -306,7 +306,7 @@ namespace AccessData.Data
             sqlCommand = new SqlCommand("estado_actual_habitacion", sqlConnection);
             sqlCommand.ExecuteNonQuery();
           
-            List<List<string>> estadoHabitacionActual = new List<List<string>>();
+            List<Habitacion> habitaciones = new List<Habitacion>();
 
             using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
             {
@@ -324,16 +324,16 @@ namespace AccessData.Data
                     
 
 
-                    string numero = Convert.ToString(dt.Rows[i]["Numero"]);
+                    int numero = Convert.ToInt32(dt.Rows[i]["Numero"]);
                     string tipo = Convert.ToString(dt.Rows[i]["Tipo"]);
                     string estado = Convert.ToString(dt.Rows[i]["Estado"]);
                     List<string> tempList = new List<string>();
 
-                    tempList.Add(numero);
-                    tempList.Add(tipo);
-                    tempList.Add(estado);
-
-                    estadoHabitacionActual.Add(tempList);
+                    Habitacion habitacionTemp = new Habitacion();
+                    habitacionTemp.NumeroHabitacion = numero;
+                    habitacionTemp.TipoHabitacion = tipo;
+                    habitacionTemp.Encuentra= estado;
+                    habitaciones.Add(habitacionTemp);
 
                   
 
@@ -342,7 +342,7 @@ namespace AccessData.Data
                 }
             }
             sqlConnection.Close();
-            return estadoHabitacionActual;
+            return habitaciones;
 
         }// metodo
 

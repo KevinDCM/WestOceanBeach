@@ -56,13 +56,13 @@ namespace Presentacion.Controllers
             new MediaTypeWithQualityHeaderValue("application/json"));
             var response3 = await client.GetAsync("https://localhost:44386/Habitacion/Habitacion_Junior");
             string resultado3 = await response3.Content.ReadAsStringAsync();
-            Habitacion Habitaciones_junior = JsonConvert.DeserializeObject<Habitacion>(resultado3);
+           // Habitacion Habitaciones_junior = JsonConvert.DeserializeObject<Habitacion>(resultado3);
 
-            ViewBag.Habitacion_junior_descripcion = Habitaciones_junior.Descripcion;
+            //ViewBag.Habitacion_junior_descripcion = Habitaciones_junior.Descripcion;
 
-            ViewBag.Habitacion_junior_ruta_imagen = Habitaciones_junior.ruta_imagen;
+            //ViewBag.Habitacion_junior_ruta_imagen = Habitaciones_junior.ruta_imagen;
 
-            ViewBag.Habitacion_junior_tarifa_diaria = Habitaciones_junior.TarifaDiaria;
+            //ViewBag.Habitacion_junior_tarifa_diaria = Habitaciones_junior.TarifaDiaria;
 
             //-------------------------------------------Habitaciones Estandar-----------------------------------------------------
             client.DefaultRequestHeaders.Accept.Clear();
@@ -107,6 +107,28 @@ namespace Presentacion.Controllers
         }
 
         [HttpPost]
+        public async Task< IActionResult> estadoActualHabitaciones()
+        {
+
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
+            var response5 = await client.GetAsync("https://localhost:44386/Habitacion/estadoActualHabitacion");
+            string resultado = await response5.Content.ReadAsStringAsync();
+            List<Habitacion> estadoHabitaciones = JsonConvert.DeserializeObject<List<Habitacion>>(resultado);
+
+
+        
+            return Ok(estadoHabitaciones);
+
+
+        }
+
+
+
+
+            [HttpPost]
         public async Task<ActionResult> EditarFacilidades(string facilidades)
         {
             SitioGeneral sitio = new SitioGeneral();
