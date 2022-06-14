@@ -15,7 +15,30 @@ $(document).ready(function () {
     var today = now.getFullYear() + '-' + month + '-' + day;
     $('#fecha').val(today);
 
-    addrow("1","Estandar","disponible");
+   
+
+    $.ajax(
+        {
+            type: "POST",
+            dataType:'JSON',
+            url:  "/Admin/estadoActualHabitaciones",
+            success: function (data) {
+
+                $.each(data, function (key, item) {
+
+                  
+                    
+                    
+                    addrow(item.numeroHabitacion, item.tipoHabitacion, item.encuentra);
+
+                });
+               
+            },
+            error: function (xhr, statusText, err) {
+                alert("error" + xhr.status);
+            }
+
+        });
 
 
 
