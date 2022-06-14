@@ -47,5 +47,10 @@ namespace Business.Business
             return dataHabitacion.editarHabitacionImagen(habitacion);
         }//
 
+        public List<List<string>> estadoActualHabitacion()
+        {
+            return dataHabitacion.estadoActualHabitacion();
+    }//
+
     }
 }

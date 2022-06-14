@@ -298,5 +298,53 @@ namespace AccessData.Data
             return salida;
         }//editarHabitacion
 
+        public List<List<string>> estadoActualHabitacion()
+        {
+
+
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("estado_actual_habitacion", sqlConnection);
+            sqlCommand.ExecuteNonQuery();
+          
+            List<List<string>> estadoHabitacionActual = new List<List<string>>();
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+               
+            
+
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+
+                    DataRow dr = dt.Rows[i];
+                    
+
+
+                    string numero = Convert.ToString(dt.Rows[i]["Numero"]);
+                    string tipo = Convert.ToString(dt.Rows[i]["Tipo"]);
+                    string estado = Convert.ToString(dt.Rows[i]["Estado"]);
+                    List<string> tempList = new List<string>();
+
+                    tempList.Add(numero);
+                    tempList.Add(tipo);
+                    tempList.Add(estado);
+
+                    estadoHabitacionActual.Add(tempList);
+
+                  
+
+
+
+                }
+            }
+            sqlConnection.Close();
+            return estadoHabitacionActual;
+
+        }// metodo
+
     }
 }

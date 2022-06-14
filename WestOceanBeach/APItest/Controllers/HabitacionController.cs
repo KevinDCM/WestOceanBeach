@@ -60,5 +60,14 @@ namespace API.Controllers
             return new HabitacionBusiness().editarHabitacionImagen(habitacion);
         }//
 
+        [HttpGet]
+
+        [Route("estadoActualHabitacion")]
+        public List<List<string>> estadoActualHabitacion()
+        {
+            return new HabitacionBusiness().estadoActualHabitacion();
+        }// fin m
+
+
     }
 }
