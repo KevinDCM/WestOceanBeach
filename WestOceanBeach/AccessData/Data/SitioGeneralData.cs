@@ -82,7 +82,11 @@ namespace AccessData.Data
             return sitio;
         }// metodo
 
-        public SitioGeneral obtenerFacilidades()
+
+
+    
+
+public SitioGeneral obtenerFacilidades()
         {
 
             sqlConnection.Open();
