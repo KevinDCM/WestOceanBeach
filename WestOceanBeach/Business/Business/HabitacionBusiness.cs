@@ -21,6 +21,36 @@ namespace Business.Business
             return dataHabitacion.obtenerHabitacionesTemporada();
 
         }
+        public Habitacion Habitacion_Junior()
+        {
+            return dataHabitacion.Habitacion_Junior();
+
+        }
+        public Habitacion Habitacion_Estandar()
+        {
+            return dataHabitacion.Habitacion_Estandar();
+
+        }
+        public Habitacion Habitacion_Suite()
+        {
+            return dataHabitacion.Habitacion_Suite();
+
+        }
+
+        public string editarHabitacion(Habitacion habitacion)
+        {
+            return dataHabitacion.editarHabitacion(habitacion);
+        }// editarHabitacion
+
+        public string editarHabitacionImagen(Habitacion habitacion)
+        {
+            return dataHabitacion.editarHabitacionImagen(habitacion);
+        }//
+
+        public List<Habitacion> estadoActualHabitacion()
+        {
+            return dataHabitacion.estadoActualHabitacion();
+    }//
 
     }
 }

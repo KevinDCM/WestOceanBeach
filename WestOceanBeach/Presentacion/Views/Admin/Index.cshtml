@@ -4,289 +4,487 @@
     ViewData["Title"] = "Admin Module";
 }
 
+    <head>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" href="https://i.postimg.cc/Qxvj8K4q/logo.png">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="~/css/Admin.css" rel="stylesheet" type="text/css">
+    </head>
 
-
-  
-
-<head>
-    <meta charset="utf-8">
-    <link rel="shortcut icon" href="https://i.postimg.cc/Qxvj8K4q/logo.png">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="~/css/Admin.css" rel="stylesheet" type="text/css">
-</head>
- 
-
-<div class="container">
-
-    <!-- logo y header -->
-    <div id="menuu" class="col-sm-18">
-        <div class="titulo">
-         
-             <p class="admin01"> Site Administrativo del Hotel West Ocean Beach Resort</p>
-           
-        </div>
-    </div> </div>
-
- 
-
-        <!-- Menú principal y publicidad -->
-        <section id="inicio_01" class="container" style="margin-block: 1em; background-color: white">
-        <div class="col-sm-10">
-                 <div id="sidebar-menu" class="col-sm-2" style="width:100%" >
-                 <div id="header001" >
-                                 <div class="dropdown">
-              <button class="mainmenubtn">Menù Principal</button>
-              <div class="dropdown-child">
-                <a href="#inicio_01">Home</a>
-                <a href="">Modificar Pàginas</a>
-                <a href="">Listado de Reservaciones</a>
-                <a href="">Ver Estado del Hotel Hoy</a>
-                <a href="">Disponibilidad de Habitaciones</a>
-                <a href="">Publicidad</a>
-              </div>
+    <div class="container" style="width:100%">
+        <!-- logo y header -->
+        <div id="menuu" class="col-sm-18" style="width:100%">
+            <div class="titulo"  style="width:100%">
+                 <p class="admin01"> Site Administrativo del Hotel West Ocean Beach Resort</p>
             </div>
+        </div> 
+    </div>
 
-              </div>  
-             </div>
-         </div>
-      </section>
-
-                   <!-- Secciones (contenido) -->
-        <div style="margin-left: auto !important;" class="col-sm-9">
-
-            <!-- Sección Home (Inicio) -->
- 
-            <section id="inicio_01" class="container" style="margin-block: 1em; background-color: white">
-                <div class="row">
-                 
-                    <div class="col-sm-12">
-                        <p class="msjBienvenida">
-                  <center> <p class="admin01"> Mòdulo Administrativo</p> </center>
-                        <center> <p class="admin01"> West Ocean Beach Administrator Module</p> </center>
-                        <center>   <p class="admin02">Use this page for the administrator changes and login/logout</p>  </center>
-                 
-                                      <center>    <a  href="#inicio_01"; class="admin02" style="color:black;">Home</a><br> </center>
-                                       <center>   <a href="#sobre_nosotros_01";  class="admin02" style="color:black;">Sobre Nosotros</a><br> </center>
-                                       <center>   <a href="#Facilidades_01" ; class="admin02" style="color:black;">Facilidades</a><br> </center>
-                                        <center>  <a href="#como_llegar_01"; class="admin02" style="color:black;">Como Llegar</a><br> </center>
-                         </div>
-                </div>
-                 </section>
-
-   <!-- Sección Editar Home (Editar Home) -->
-            <section id="Home_001" class="container" style="margin-block: 1em; background-color: white">
-                <div class="row">
-                   
-                    <div class="col-sm-10">
-                         <p class="new2"> Ediciòn de la secciòn Home </p>
-                         
-                        
-                             <textarea class="noteToAdd" id="homeedit" name="sitelink" rows="10" cols="70"> @ViewBag.home </textarea>
-
-                                 <div class="form-group">
-                                     <div class="col-lg-6">
-                                         <input class="btn btn-success" id="btnAceptHome" type="submit" value="Aceptar" onclick="updateHome()" style="background-color: #86b4ca;">
-                                         <input class="btn btn-success" id="btnCancelHome" type="submit" value="Cancelar" onclick="document.getElementById('id03').style.display='block'" style="background-color: #86b4ca;">
-                                   
-                                     </div>
-                                 </div>
-
-                  </div>
-                </div>
-
-                <div class="row">
-                   <div class="col-sm-10">
-                      <p class="new2"> Cambiar Imagen de Home </p>
+    <!-- Menú principal y publicidad -->
+    <section id="inicio_01" class="container" style="margin-block: 1em; background-color: white">
+        <div class="col-sm-10">
+            <div id="sidebar-menu" class="col-sm-2" style="width:100%" >
+                <div id="header001" >
+                    <div class="dropdown">
+                        <button class="mainmenubtn">Menù Principal</button>
+                        <div class="dropdown-child">
+                            <a href="#inicio_01">Home</a>
+                            <a href="">Modificar Pàginas</a>
+                            <a href="">Listado de Reservaciones</a>
+                             <a href="#modificarHabitacion">Administrar Habitaciones</a>
+                            <a href="">Ver Estado del Hotel Hoy</a>
+                            <a href="">Disponibilidad de Habitaciones</a>
+                            <a href="">Publicidad</a>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-lg-6">
-                            @using(Html.BeginForm("EjemploImagen","Admin", FormMethod.Post, new { enctype="multipart/form-data"}))
-                                {
-                                    <div>
-                                        @Html.TextBox("file", "", new {  type= "file"}) <br />
-                                        <input type="submit" value="Cargar" />
-                                            @ViewBag.Message
 
-                                    </div>
-                                     
-                                    }
-                            </div>
-                            </div>
-                            </div>
-            </section>
-                
- <!-- Sección Editar Facilidades (Editar Facilidades) -->
-            <section id="Facilidades_01" class="container" style="margin-block: 1em; background-color: white">
-                <div class="row">
-                   
-                    <div class="col-sm-10">
-                         <p class="new2"> Ediciòn de la secciòn Facilidades </p>
-                         
-                        
-                             <textarea class="noteToAdd" id="facilities" name="sitelink" rows="10" cols="70">@ViewBag.Facilidades </textarea>
+                </div>  
+            </div>
+        </div>
+    </section>
 
-                                 <div class="form-group">
-                                     <div class="col-lg-6">
-                                         <input class="btn btn-success" id="btnAceptFacilities" type="submit" value="Aceptar" onclick="updateFacilities()" style="background-color: #86b4ca;">
-                                         <input class="btn btn-success" id="btnCancelFacilities" type="submit" value="Cancelar" onclick="document.getElementById('id02').style.display='block'" style="background-color: #86b4ca;">
-                                   
-                                     </div>
-                                 </div>
+    <!-- Secciones (contenido) -->
+    <div style="margin-left: auto !important;" class="col-sm-9">
 
-                  </div>
+        <!-- Sección Home (Inicio) -->
+        <section id="inicio_01" class="container" style="margin-block: 1em; background-color: white">
+            <div class="row">
+                <div class="col-sm-12">
+                    <p class="msjBienvenida">
+                    <center> <p class="admin01"> Mòdulo Administrativo</p> </center>
+                    <center> <p class="admin01"> West Ocean Beach Administrator Module</p> </center>
+                    <center> <p class="admin02">Use this page for the administrator changes and login/logout</p>  </center>
+                    <center> <a href="#inicio_01"; class="admin02" style="color:black;">Home</a><br> </center>
+                    <center> <a href="#sobre_nosotros_01"; class="admin02" style="color:black;">Sobre Nosotros</a><br> </center>
+                    <center> <a href="#Facilidades_01" ; class="admin02" style="color:black;">Facilidades</a><br> </center>
+                    <center> <a href="#como_llegar_01"; class="admin02" style="color:black;">Como Llegar</a><br> </center>
                 </div>
-            </section>
+            </div>
+        </section>
 
-
-    <!-- Sección Editar Cómo llegar -->
-    <section id="como_llegar_01" class="container" style="margin-block: 1em; background-color: white">
-        <div class="row">
-            <div class="col-sm-10">
-                <p class="new2"> Ediciòn de la sección Cómo llegar </p>
-                <textarea class="noteToAdd" id="comollegarr" name="sitelink" rows="10" cols="70">@ViewBag.comollegar </textarea>
+        <!-- Sección Editar Home (Editar Home) -->
+        <section id="Home_001" class="container" style="margin-block: 1em; background-color: white">
+            <div class="row">
+                <div class="col-sm-12">
+                        <p class="new2">Ediciòn de la secciòn Home </p>
+                        <textarea class="noteToAdd" id="homeedit" name="sitelink" rows="4" cols="70"> @ViewBag.home </textarea>
+                </div>
+                <table style="width:100%">
+              <tr>
+                <td>
+                     <div class="col-sm-12">
+                        <p>Imagen Actual:</p>
+                             <img src=@ViewBag.ImgHome  style="width:100%" vspace="30" hspace="10" >
+                         </div>
+                         </td>
+                <td>
+                    <div class="col-sm-12">
+                             <p>Cambiar Imagen de Home </p>
+                             </div>
                 <div class="form-group">
                     <div class="col-lg-6">
-                        <input class="btn btn-success" id="btnAceptFacilities" type="submit" value="Aceptar" onclick="updateComoLlegar()" style="background-color: #86b4ca;">
-                        <input class="btn btn-success" id="btnCancelFacilities" type="submit" value="Cancelar" onclick="document.getElementById('id02').style.display='block'" style="background-color: #86b4ca;">
+                            @using(Html.BeginForm (new {enctype = "multipart / form-data"})){
+                                <input id="filee" type = "file" name = "file" />
+                                <input type = "button" value = "Cargar" onclick = "uploadFile (); return false;" />
+                            }
+                        </div>
+                 </div>
+                </td>
+              </tr>
+                <tr>
+                <td></td>
+                <td>
+                        <div class="row" align="right">
+                <div class="form-group" align="right">
+                        <div class="col-lg-12" align="right">
+                            <input class="btn btn-success" id="btnAceptHome" type="submit" value="Aceptar" onclick="updateHome()" style="background-color: #86b4ca;">
+                            <input class="btn btn-success" id="btnCancelHome" type="submit" value="Cancelar" onclick="document.getElementById('id03').style.display='block'" style="background-color: #86b4ca;">
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+
+                </td>
+              </tr>
+            </table>
+         
+        </section>
+                
+        <!-- Sección Editar Facilidades (Editar Facilidades) -->
+        <section id="Facilidades_01" class="container" style="margin-block: 1em; background-color: white">
+            <div class="row">
+                <div class="col-sm-10">
+                        <p class="new2"> Ediciòn de la secciòn Facilidades </p>
+                        <textarea class="noteToAdd" id="facilities" name="sitelink" rows="10" cols="70">@ViewBag.Facilidades </textarea>
+                        <div class="form-group">
+                        <div class="col-lg-6">
+                            <input class="btn btn-success" id="btnAceptFacilities" type="submit" value="Aceptar" onclick="updateFacilities()" style="background-color: #86b4ca;">
+                            <input class="btn btn-success" id="btnCancelFacilities" type="submit" value="Cancelar" onclick="document.getElementById('id02').style.display='block'" style="background-color: #86b4ca;">
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Sección Editar Cómo llegar -->
+        <section id="como_llegar_01" class="container" style="margin-block: 1em; background-color: white">
+            <div class="row">
+                <div class="col-sm-10">
+                    <p class="new2"> Ediciòn de la sección Cómo llegar </p>
+                    <textarea class="noteToAdd" id="comollegarr" name="sitelink" rows="10" cols="70">@ViewBag.comollegar </textarea>
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <input class="btn btn-success" id="btnAceptFacilities" type="submit" value="Aceptar" onclick="updateComoLlegar()" style="background-color: #86b4ca;">
+                            <input class="btn btn-success" id="btnCancelFacilities" type="submit" value="Cancelar" onclick="document.getElementById('id02').style.display='block'" style="background-color: #86b4ca;">
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+        <!-- Sección Editar Acerca de  (Editar Acerca de ) -->
+        <section id="acercade_01" class="container" style="margin-block: 1em; background-color: white">
+            <div class="row">
+                <div class="col-sm-10">
+                    <div id="acercaDe">
+                        <p class="new2"> Ediciòn de la secciòn Acerca de</p>
+                        <textarea class="noteToAdd" id="aboutUs" name="sitelink" rows="10" cols="70">@ViewBag.CercaDe </textarea>
+                        <br>
+                        <input class="btn btn-success" id="btnAceptAboutUs" type="submit" value="Aceptar" onclick="updateAboutUs()" style="background-color:#86b4ca";>
+                        <input class="btn btn-success" id="btnCancelAboutUs" type="submit" value="Cancelar" style="background-color:#86b4ca"; onclick="document.getElementById('id01').style.display='block'" >
+                    </div>
+                </div>
             </div>
+        </section>
+
+
+          <!-- Sección Editar Acerca de  (Editar Acerca de ) -->
+        <section id="modificarHabitacion" class="container-fluid" style="margin-block: 1em; background-color: white">
+        <!--Modicar Habitaciones  -->
+          <p class="new2"> Ediciòn de los Tipos de Habitaciones</p>
+            <label>Seleccione el Tipo de Habitaciòn a Editar </label>
+      
+                <div class="row">
+                <div class="col-sm-4 col-xs well">
+                  <a href="#info1" class="inf">Estandar</a>
+                </div>
+                <div class="col-sm-4 col-xs well">
+                  <a href="#info2" class="inf">Junior</a>
+                </div>
+                <div class="col-sm-4 col-xs well">
+                <a href="#info3" class="inf">Suite</a>
+
+                <br>
+                <br>
+                </div>
+              </div>
+                                 <!-- contenido informacion adicional -->
+              <div class="row">
+                <div id="info1" class="col-xs-12 well oculto">
+                   <!-- Standar -->
+                   
+                   <table style="width:100%">
+                      <tr>
+                        <th>
+                               <div class="col-sm-10">
+                            <label>  Habitaciòn Estandar</label></div>
+                        </th>
+                        <th>
+                            <label>Tarifa Diaria Actual:  <input type="text" id="tarifaESTANDAR" size="5" maxlength="10" value= @ViewBag.Habitacion_estandar_tarifa_diaria name="Tarifa_diaria"> </label>
+                          
+                        </th>
+                      </tr>
+                    </table>
+                   <div class="col-sm-10">
+                       <textarea class="noteToAdd" id="descripcionESTANDAR" name="descripcionESTANDAR" rows="6" cols="70">@ViewBag.Habitacion_estandar_descripcion</textarea>
+                       </div>
+                       <table style="width:100%">
+                      <tr>
+                        <th>
+                         <div class="col-sm-10">
+                             <label>Imagen Actual:</label>
+                             <img src=@ViewBag.Habitacion_estandar_ruta_imagen  style="width:100%" vspace="30" hspace="10" >
+                         </div>
+                        </th>
+                        <th>
+                      <div class="col-sm-10">
+                             <label style="margin-left:1em">Subir Nueva Imagen:</label>
+                             @using (Html.BeginForm(new { enctype = "multipart / form-data" }))
+                             {
+        
+                                 <input id="fileEstandar" type="file" name="fileEstandar" />
+                                 <input type="button" value="OK" onclick="cambiarImgHabitacionEstandar()" ; return false;" />
+                             }
+                         </div>
+                        </th>
+                      </tr>
+                       <tr>
+                        <th>
+                        </th>
+
+                        <th>
+                        <div class="col-sm-10">
+                            <input class="btn btn-success" id="btnAceptAboutUs" onclick="updateHabitacionEstandar()" type="submit" value="Aceptar" style="background-color:#86b4ca;">
+                            <input class="btn btn-success" id="btnCancelAboutUs" type="submit" value="Cancelar" style="background-color:#86b4ca;">
+                        </div>
+                        </th>
+                      </tr>
+
+                    </table>
+                   
+                     </div>
+                </div>
+
+                 <div id="info2" class="col-xs-12 well oculto">
+                 <!--junior -->
+                   
+                   <table style="width:100%">
+                      <tr>
+                        <th>
+                               <div class="col-sm-10">
+                            <label>  Habitaciòn Junior</label></div>
+                        </th>
+                        <th>
+                            <label>Tarifa Diaria Actual:  <input type="text" id="tarifaESTANDAR" size="5" maxlength="10" value= @ViewBag.Habitacion_junior_tarifa_diaria name="Tarifa_diaria"> </label>
+                       </th>
+                      </tr>
+                    </table>
+                   <div class="col-sm-10">
+                       <textarea class="noteToAdd" id="descripcionESTANDAR" name="descripcionESTANDAR" rows="6" cols="70">@ViewBag.Habitacion_junior_descripcion</textarea>
+                       </div>
+                       <table style="width:100%">
+                      <tr>
+                        <th>
+                         <div class="col-sm-10">
+                             <label>Imagen Actual:</label>
+                             <img src=@ViewBag.Habitacion_junior_ruta_imagen  style="width:100%" vspace="30" hspace="10" >
+                         </div>
+                        </th>
+                        <th>
+                      <div class="col-sm-10">
+                             <label style="margin-left:1em">Subir Nueva Imagen:</label>
+                             @using (Html.BeginForm(new { enctype = "multipart / form-data" }))
+                             {
+        
+                                 <input id="fileEstandar" type="file" name="fileEstandar" />
+                                 <input type="button" value="OK" onclick="cambiarImgHabitacionEstandar()" ; return false;" />
+                             }
+                         </div>
+                        </th>
+                      </tr>
+                       <tr>
+                        <th>
+                        </th>
+
+                        <th>
+                        <div class="col-sm-10">
+                            <input class="btn btn-success" id="btnAceptAboutUs" onclick="updateHabitacionJunior()" type="submit" value="Aceptar" style="background-color:#86b4ca;">
+                            <input class="btn btn-success" id="btnCancelAboutUs" type="submit" value="Cancelar" style="background-color:#86b4ca;">
+                        </div>
+                        </th>
+                      </tr>
+
+                    </table>
+                   
+                     </div>
+        
+                
+                   <div id="info3" class="col-xs-12 well oculto">
+           <!--Suite -->
+                
+                   <table style="width:100%">
+                      <tr>
+                        <th>
+                               <div class="col-sm-10">
+                            <label>  Habitaciòn Suite</label></div>
+                        </th>
+                        <th>
+                            <label>Tarifa Diaria Actual:  <input type="text" id="tarifaESTANDAR" size="5" maxlength="10" value= @ViewBag.Habitacion_suite_tarifa_diaria name="Tarifa_diaria"> </label>
+                       </th>
+                      </tr>
+                    </table>
+                   <div class="col-sm-10">
+                       <textarea class="noteToAdd" id="descripcionESTANDAR" name="descripcionESTANDAR" rows="6" cols="70">@ViewBag.Habitacion_suite_descripcion</textarea>
+                       </div>
+                       <table style="width:100%">
+                      <tr>
+                        <th>
+                         <div class="col-sm-10">
+                             <label>Imagen Actual:</label>
+                             <img src=@ViewBag.Habitacion_suite_ruta_imagen  style="width:100%" vspace="30" hspace="10" >
+                         </div>
+                        </th>
+                        <th>
+                      <div class="col-sm-10">
+                             <label style="margin-left:1em">Subir Nueva Imagen:</label>
+                             @using (Html.BeginForm(new { enctype = "multipart / form-data" }))
+                             {
+        
+                                 <input id="fileEstandar" type="file" name="fileEstandar" />
+                                 <input type="button" value="OK" onclick="cambiarImgHabitacionEstandar()" ; return false;" />
+                             }
+                         </div>
+                        </th>
+                      </tr>
+                       <tr>
+                        <th>
+                        </th>
+
+                        <th>
+                        <div class="col-sm-10">
+                            <input class="btn btn-success" id="btnAceptAboutUs" onclick="updateHabitacionSuite()" type="submit" value="Aceptar" style="background-color:#86b4ca;">
+                            <input class="btn btn-success" id="btnCancelAboutUs" type="submit" value="Cancelar" style="background-color:#86b4ca;">
+                        </div>
+                        </th>
+                      </tr>
+
+                    </table>
+
+            
+    </div>
     </section>
 
 
-             <!-- Sección Editar Acerca de  (Editar Acerca de ) -->
-            <section id="acercade_01" class="container" style="margin-block: 1em; background-color: white">
-                       <div class="row">
-                                <div class="col-sm-10">
-                                    <div id="acercaDe">
-
-                                         <p class="new2">  Ediciòn de la secciòn Acerca de</p>
-                                            <textarea  class="noteToAdd" id="aboutUs" name="sitelink" rows="10" cols="70">@ViewBag.CercaDe </textarea>
-                                              <br>
-                                              <input class="class="btn btn-success"" id="btnAceptAboutUs" type="submit" value="Aceptar" onclick="updateAboutUs()" style="background-color:#86b4ca";>
-                                              <input class="btn btn-success" id="btnCancelAboutUs" type="submit" value="Cancelar" style="background-color:#86b4ca"; onclick="document.getElementById('id01').style.display='block'" >
-                                     
-                                    </div>
-
-                                </div>
-
-                            </div>
-            </section>
-
-
-<!-- The Modal Messages confimation  -->
-<div id="id01" class="modal1">
-  <span onclick="document.getElementById('id01').style.display='none'" class="close1" title="Close Modal">×</span>
-  <form class="modal-content1" >
-    <div class="container1">
-      <h1>Cancelar la operacion</h1>
-      <p>Estas seguro quieres cancelar la operacion?</p>
     
-      <div class="clearfix">
-        <button type="button" onclick="cancelarupdateAboutUs()" class="cancelbtn">Aceptar</button>
-        <button type="button"  onclick="document.getElementById('id01').style.display='none'" class="deletebtn">Cancelar</button>
-    
-    </div>
-    </div>
-  </form>
-</div>
 
-<div id="id02" class="modal1">
-    <span onclick="document.getElementById('id02').style.display='none'" class="close1" title="Close Modal">×</span>
-    <form class="modal-content1">
-        <div class="container1">
-            <h1>Cancelar la operacion</h1>
-            <p>Estas seguro quieres cancelar la operacion?</p>
-
-            <div class="clearfix">
-                <button type="button" onclick="cancelarupdateFacilities()" class="cancelbtn">Aceptar</button>
-                <button type="button" onclick="document.getElementById('id02').style.display='none'" class="deletebtn">Cancelar</button>
-            </div>
-        </div>
-    </form>
-</div>
-
-<div id="id03" class="modal1">
-  <span onclick="document.getElementById('id03').style.display='none'" class="close1" title="Close Modal">×</span>
-  <form class="modal-content1" >
-    <div class="container1">
-      <h1>Cancelar la operacion</h1>
-      <p>Estas seguro quieres cancelar la operacion?</p>
-    
-      <div class="clearfix">
-        <button type="button" onclick="cancelarupdateHome()" class="cancelbtn">Aceptar</button>
-        <button type="button"  onclick="document.getElementById('id03').style.display='none'" class="deletebtn">Cancelar</button>
-    
-    </div>
-    </div>
-  </form>
-</div>
-
-<!-- The Modal Messages -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p id="answer"></p>
-
-
-  </div>
-
-</div>
-
-
-
-<script>
-    // Get the modal
-    var modal = document.getElementById('id01');
-    var modalF = document.getElementById('id02');
-     var modalH = document.getElementById('id03');
    
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-      
-      if (event.target == modalF) {
-         modalF.style.display = "none";
-      }
-         if (event.target == modalH) {
-         modalH.style.display = "none";
-      }
+
+      <section id="EstadoActualHabitaciones"  class="container-fluid" style="margin-block: 1em; background-color: white;" >
+
+          <div class="row">
+
+              <div class="col-sm-10">
+
+                  <p class="new2"> Estado del Hotel Hoy</p>
+                  <input id="fecha" type="date" placeholder="dd/mm/yy" readonly>
+                  <br>
+                  <br>
+
+                  <div class="col-sm-11">
+
+
+                      <table class="table table-bordered" id="estadoActual">
+                      <thead>
+                        <tr>
+                          <th scope="col">  Numero</th>
+                          <th scope="col">Tipo</th>
+                          <th scope="col">Estado</th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                       
+                      </tbody>
+                    </table>
+
+                  </div>
+                  
+
+
+              </div>
+
+          </div>
+
+
+      </section>
+
+    </div>
+
+      <!-- The Modal Messages confimation  -->
+    <div id="id01" class="modal1">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close1" title="Close Modal">×</span>
+        <form class="modal-content1" >
+            <div class="container1">
+                <h1>Cancelar la operacion</h1>
+                <p>Estas seguro quieres cancelar la operacion?</p>
+                <div class="clearfix">
+                    <button type="button" onclick="cancelarupdateAboutUs()" class="cancelbtn">Aceptar</button>
+                    <button type="button"  onclick="document.getElementById('id01').style.display='none'" class="deletebtn">Cancelar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="id02" class="modal1">
+        <span onclick="document.getElementById('id02').style.display='none'" class="close1" title="Close Modal">×</span>
+        <form class="modal-content1">
+            <div class="container1">
+                <h1>Cancelar la operacion</h1>
+                <p>Estas seguro quieres cancelar la operacion?</p>
+                <div class="clearfix">
+                    <button type="button" onclick="cancelarupdateFacilities()" class="cancelbtn">Aceptar</button>
+                    <button type="button" onclick="document.getElementById('id02').style.display='none'" class="deletebtn">Cancelar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="id03" class="modal1">
+        <span onclick="document.getElementById('id03').style.display='none'" class="close1" title="Close Modal">×</span>
+        <form class="modal-content1" >
+            <div class="container1">
+                <h1>Cancelar la operacion</h1>
+                <p>Estas seguro quieres cancelar la operacion?</p>
+                <div class="clearfix">
+                    <button type="button" onclick="cancelarupdateHome()" class="cancelbtn">Aceptar</button>
+                    <button type="button"  onclick="document.getElementById('id03').style.display='none'" class="deletebtn">Cancelar</button>
+                </div>
+            </div>
+      </form>
+    </div>
+
+    <!-- The Modal Messages -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="answer"></p>
+        </div>
+    </div>
+
+
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+        var modalF = document.getElementById('id02');
+        var modalH = document.getElementById('id03');
+   
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+          if (event.target == modalF) {
+             modalF.style.display = "none";
+          }
+          if (event.target == modalH) {
+             modalH.style.display = "none";
+          }
+        }
+    </script>
+
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+          window.location = "https://localhost:44343/Admin";
+        }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+    </script>
+
     
-    }
-</script>
-
-<script>
-// Get the modal
-var modal = document.getElementById("myModal");
-
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-  window.location = "https://localhost:44343/Admin";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
-
-
-                                    
-
-
-
+      
