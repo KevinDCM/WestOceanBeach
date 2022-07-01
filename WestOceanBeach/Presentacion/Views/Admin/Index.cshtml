@@ -390,7 +390,7 @@
     </section>
 
 
-     <section id="inicio_01" class="container" style="margin-block: 1em; background-color: white">
+     <section id="inicio_01" class="container" style="margin-block: 1em; background-color: white;" >
             
          
        <p class="new2">Consultar Disponibilidad de Habitaciones </p>
@@ -406,7 +406,7 @@
                 
                             <label for="start">Fecha de llegada:</label>
 
-                            <input type="date" id="start" name="trip-start">
+                            <input type="date" id="myDateLlegada" name="trip-start">
                     
 
                 </div>
@@ -417,18 +417,19 @@
                      <label for="start">Fecha de salida:</label>
                      <br>
 
-                    <input type="date" id="start" name="trip-start" >
+                    <input type="date" id="myDateSalida" name="trip-start" >
 
                 </div>
 
                 <div class="col-sm-4 col-xs-well">
 
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" id="typeRoom">
                           
-                        <option selected>Tipo de Habitacion</option>
+                        <option selected disabled>Tipo de Habitacion</option>
                           <option value="1">Estandar</option>
                           <option value="2">Suite</option>
                           <option value="3">Junior</option>
+                           <option value="3">Todas</option>
                     </select>
                      
                 </div>
@@ -436,21 +437,57 @@
 
 
       </div>
+      <br>
+      <br>
+    <div class="row">
 
-      <div>
+           <div  class="col-sm-12">
 
+          <button type="button" class="btn btn-primary" style="background-color:#86b4ca; margin-left:35em;"  onclick="habitacionesPorFecha()">consultar</button>
+
+
+      </div>
+
+    </div>
+
+    
+    
+
+      <br>
+      <br>
+
+      <div >
+          <table id="mytable" class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Numero de habitacion</th>
+                      <th scope="col">Tipo</th>
+                      <th scope="col">Costo Estadia</th>
+                     
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                     
+                    </tr>
+                 
+                  </tbody>
+          </table>
 
 
       </div>
      
 
       <br>
-      <div  class="col-sm-12">
+     
 
-          <button type="button" class="btn btn-primary" style="background-color:#86b4ca; margin-left:6em;">consultar</button>
+      <div ></div>
 
 
-      </div>
+
 
    <section/>
 
