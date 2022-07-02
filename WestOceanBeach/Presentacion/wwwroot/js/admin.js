@@ -1,4 +1,4 @@
-﻿
+
 $(document).ready(function () {
 
     console.log('hello world2');
@@ -578,7 +578,6 @@ function addrow(numero, tipo, estado) {
     var row = table.insertRow(table.rows.length);
     row.innerHTML = contentRow;
 }
-
 function addrow2(numero, tipo, tarifa) {
 
     var contentRow = "<td>" + numero + "</td>" + "<td>" + tipo + "</td>" + "<td>" + tarifa + "</td>";
@@ -586,8 +585,6 @@ function addrow2(numero, tipo, tarifa) {
     var row = table.insertRow(table.rows.length);
     row.innerHTML = contentRow;
 }
-
-
 
 function createPDF() {
 

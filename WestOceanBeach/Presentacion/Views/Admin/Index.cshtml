@@ -356,7 +356,6 @@
             </div>
     </section>
 
-
     <section id="EstadoActualHabitaciones"  class="container-fluid" style="margin-block: 1em; background-color: white;" >
         <div class="row">
             <div class="col-sm-10">
@@ -411,7 +410,7 @@
 
                 </div>
 
-                <div class="col-sm-4  col-xs-well">
+                <div class="col-sm-4 col-xs-well">
 
 
                      <label for="start">Fecha de salida:</label>
@@ -422,6 +421,7 @@
                 </div>
 
                 <div class="col-sm-4 col-xs-well">
+                <label for="start">Tipo de Habitaciòn:</label>
 
                     <select class="form-select" aria-label="Default select example" id="typeRoom">
                           
@@ -487,12 +487,117 @@
    <section/>
 
 
+
+        <!-- Sección Ofertas-->
+        <section id="Ofertas" class="container" style="margin-block: 1em; background-color: white">
+           
+       <p class="new2">Mantenimiento de las Ofertas</p>
+         <br>
+      <div class="row">
+          <div class="col-sm-4 col-xs  col-xs-well">
+                    <label for="start">Ingrese el ID de la oferta que desea actualizar:</label>
+                    <input type="text"  style="width:50px;height:20px;text-align:right;padding-right:10px;" name="id_oferta"/>
+            </div>
+
+              <br>
+
+      </div>
+        <br>
+         <div class="row">
+                <div class="col-sm-4 col-xs  col-xs-well">
+                    <label for="start">Fecha de Inicio:</label>
+                    <input type="date" id="FechaInicio" name="trip-start">
+                           </div>
+                           <div class="col-sm-4 col-xs-well">
+
+                     <label for="start">Fecha de Fin:</label>
+                     <br>
+
+                    <input type="date" id="FechaFin" name="trip-start" >
+
+                    </div>
+      </div>
+        <br>
+   
+       <div class="row">
+
+                <div class="col-sm-4 col-xs-well">
+                <label for="start" >Tipo de habitaciòn:</label>
+
+                    <select class="form-select" aria-label="Default select example" id="typeRoom">
+                          
+                        <option selected disabled> Tipo de Habitacion:</option>
+                          <option value="1">Estandar</option>
+                          <option value="2">Suite</option>
+                          <option value="3">Junior</option>
+                    </select>
+
+                </div>
+                  <div class="col-sm-4 col-xs  col-xs-well">
+                    <label for="start">Descuento:</label> <br>
+                    <input type="text"  style="width:100px;height:20px;text-align:right;padding-right:10px;" name="descuento"/>
+                    </div>
+
+
+
+      </div>
+      <br>
+      <br>
+    <div class="row">
+
+           <div  class="col-sm-12">
+               
+           <button type="button" class="btn btn-primary" style="background-color:#86b4ca;"  onclick="">Consultar</button>
+           <button type="button" class="btn btn-primary" style="background-color:#86b4ca;"  onclick="">Insertar</button>
+          <button type="button" class="btn btn-primary" style="background-color:#86b4ca;"  onclick="">Eliminar</button>
+          <button type="button" class="btn btn-primary" style="background-color:#86b4ca;"  onclick="">Actualizar</button>
+
+
+      </div>
+
     </div>
 
+    
+    
 
-   
+      <br>
+      <br>
+
+      <div >
+          <table id="mytable" class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Id_Oferta</th>
+                      <th scope="col">Descuento</th>
+                      <th scope="col">Fecha de Inicio</th>
+                       <th scope="col">Fecha Final</th>
+                        <th scope="col">Tipo De Habitaciòn</th>
+                     
+                    </tr>
+                  </thead>
+                  <tbody>
+                   
+                 
+                  </tbody>
+          </table>
 
 
+      </div>
+     
+
+      <br>
+     
+
+      <div ></div>
+
+
+        </section>
+
+
+
+    </div>
+
+    </div>
 
       <!-- The Modal Messages confimation  -->
     <div id="id01" class="modal1">
