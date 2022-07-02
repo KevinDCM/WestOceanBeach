@@ -1,10 +1,11 @@
-﻿
+
 $(document).ready(function () {
 
     console.log('hello world2');
     
 
-
+    let tablaHabitaciones = document.getElementById("mytable");
+    tablaHabitaciones.setAttribute("hidden", "hidden");
     var now = new Date();
     var month = (now.getMonth() + 1);
     var day = now.getDate();
@@ -46,6 +47,10 @@ $(document).ready(function () {
 
 
 
+
+
+
+
 function uploadFile() {
 
     var formData = new FormData();
@@ -72,6 +77,121 @@ function uploadFile() {
             }
     });
 }// uploadFile
+
+
+
+
+function habitacionesPorFecha() {
+
+    var date = $('#myDateLlegada').val().split('-');
+    var day = date[2];
+    var month = date[1];
+    var year = date[0];
+
+    var date2 = $('#myDateSalida').val().split('-');
+    var day2 = date2[2];
+    var month2 = date2[1];
+    var year2 = date2[0];
+
+
+    var fechaLlegada = year + "-" + month + "-" + day ;
+
+    var fechaSalida = year2 + "-" + month2 + "-" + day2 ;
+
+
+   
+    var typeRoom = $("#typeRoom option:selected").text();
+
+
+    //hacer validacion pruebas aceptacion
+
+    //1.fecha llegada colocarla con el dia de hoy
+    //2.fecha salida colocarla con el dia de ayer  al de hoy
+    //3. fecha llegada no puede ser menor al dia actual
+    //4.fecha salida no puede ser menor al de fecha llegada
+    //5. fecha salida y llegada no pueden ir vacias
+    //tipo no puede ir vacio
+
+
+    var resultado = typeRoom.localeCompare("Todas");
+
+
+
+
+    if (resultado == 0) {
+        //llamar a las habitaciones disponibles todas sin importar el tipo 
+
+        $.ajax(
+            {
+                type: 'POST',
+                dataType: 'JSON',
+                url: '/Habitacion/ObtenerHabitacionesRangoFecha',
+                data: { fechaLlegada: fechaLlegada, fechaSalida: fechaSalida},
+                success:
+                    function (data) {
+                        // Generate HTML table.  
+                        $.each(data, function (key, item) {
+
+
+
+
+                            addrow2(item.numeroHabitacion, item.tipoHabitacion, item.tarifaDiaria);
+                            let element = document.getElementById("mytable");
+                            element.removeAttribute("hidden");
+
+                        });
+                    },
+                error:
+                    function (response) {
+                        alert("Error: " + response);
+                    }
+            });
+
+
+    } else {
+        //llama a las habitaciones pero por tipo
+
+        $.ajax(
+            {
+                type: 'POST',
+                dataType: 'JSON',
+                url: '/Habitacion/ObtenerHabitacionesRangoFechaTipo',
+                data: { fechaLlegada: fechaLlegada, fechaSalida: fechaSalida, typeRoom: typeRoom },
+                success:
+                    function (data) {
+
+                        $.each(data, function (key, item) {
+
+
+
+
+                            addrow2(item.numeroHabitacion, item.tipoHabitacion, item.tarifaDiaria);
+                            let element = document.getElementById("mytable");
+                            element.removeAttribute("hidden");
+
+                        });
+                        
+                    },
+                error:
+                    function (response) {
+                        alert("Error: " + response);
+                    }
+            });
+
+
+
+    }
+
+
+
+    
+
+
+
+    
+
+
+}
 
 function cambiarImgHabitacionEstandar() {
 
@@ -421,7 +541,13 @@ function addrow(numero, tipo, estado) {
     var row = table.insertRow(table.rows.length);
     row.innerHTML = contentRow;
 }
+function addrow2(numero, tipo, tarifa) {
 
+    var contentRow = "<td>" + numero + "</td>" + "<td>" + tipo + "</td>" + "<td>" + tarifa + "</td>";
+    var table = document.getElementById("mytable");
+    var row = table.insertRow(table.rows.length);
+    row.innerHTML = contentRow;
+}
 
 function createPDF() {
 

@@ -35,14 +35,14 @@ namespace AccessData.Data
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
 
-                    int CANTIDAD_PERSONAS = Convert.ToInt32(dt.Rows[i]["CANTIDAD_PERSONAS"]);
+                    //int CANTIDAD_PERSONAS = Convert.ToInt32(dt.Rows[i]["CANTIDAD_PERSONAS"]);
                     float DESCUENTO = Convert.ToInt32(dt.Rows[i]["DESCUENTO"]);
                     DateTime FECHA_INICIO = Convert.ToDateTime(dt.Rows[i]["FECHA_INICIO"]);
                     DateTime FECHA_FINAL = Convert.ToDateTime(dt.Rows[i]["FECHA_FINAL"]);
                     string TIPOHABITACION = Convert.ToString(dt.Rows[i]["TIPO_HABITACION"]);
 
                     Oferta OFERTA = new Oferta();
-                    OFERTA.cantidad_personas = CANTIDAD_PERSONAS;
+                    OFERTA.cantidad_personas = 0;
                     OFERTA.descuento = (int)Math.Ceiling(DESCUENTO);
                     OFERTA.fecha_inicio = FECHA_INICIO;
                     OFERTA.fecha_final = FECHA_FINAL;
