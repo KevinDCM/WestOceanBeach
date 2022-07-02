@@ -15,6 +15,20 @@ namespace Business.Business
             return dataHabitacion.ObtenerHabitacionesDisponibles(tipoHabitacion);
 
         }
+       
+
+          public List<Habitacion> ObtenerHabitacionesDisponiblesPorFechaTipo(Habitacion habitacion)
+        {
+            return dataHabitacion.ObtenerHabitacionesDisponiblesPorFechaTipo(habitacion);
+
+        }
+
+        public List<Habitacion> ObtenerHabitacionesDisponiblesPorFecha(Habitacion habitacion)
+        {
+            return dataHabitacion.ObtenerHabitacionesDisponiblesPorFecha(habitacion);
+
+        }
+
 
         public string obtenerHabitacionesTemporada()
         {

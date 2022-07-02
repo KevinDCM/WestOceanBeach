@@ -94,9 +94,9 @@ function habitacionesPorFecha() {
     var year2 = date2[0];
 
 
-    var fechaLlegada = day + "-" + month + "-" + year;
+    var fechaLlegada = year + "-" + month + "-" + day ;
 
-    var fechaSalida = day2 + "-" + month2 + "-" + year2;
+    var fechaSalida = year2 + "-" + month2 + "-" + day2 ;
 
 
    
@@ -125,12 +125,21 @@ function habitacionesPorFecha() {
             {
                 type: 'POST',
                 dataType: 'JSON',
-                url: '/Home/Ge',
-                data: { fechaLlegada: fechaLlegada, fechaSalida: fechaSalida, typeRoom: typeRoom },
+                url: '/Habitacion/ObtenerHabitacionesRangoFecha',
+                data: { fechaLlegada: fechaLlegada, fechaSalida: fechaSalida},
                 success:
-                    function (response) {
+                    function (data) {
                         // Generate HTML table.  
-                        convertJsonToHtmlTable(JSON.parse(response), $("#TableId"));
+                        $.each(data, function (key, item) {
+
+
+
+
+                            addrow2(item.numeroHabitacion, item.tipoHabitacion, item.tarifaDiaria);
+                            let element = document.getElementById("mytable");
+                            element.removeAttribute("hidden");
+
+                        });
                     },
                 error:
                     function (response) {
@@ -146,12 +155,22 @@ function habitacionesPorFecha() {
             {
                 type: 'POST',
                 dataType: 'JSON',
-                url: '/Home/Ge',
+                url: '/Habitacion/ObtenerHabitacionesRangoFechaTipo',
                 data: { fechaLlegada: fechaLlegada, fechaSalida: fechaSalida, typeRoom: typeRoom },
                 success:
-                    function (response) {
-                        // Generate HTML table.  
-                        convertJsonToHtmlTable(JSON.parse(response), $("#TableId"));
+                    function (data) {
+
+                        $.each(data, function (key, item) {
+
+
+
+
+                            addrow2(item.numeroHabitacion, item.tipoHabitacion, item.tarifaDiaria);
+                            let element = document.getElementById("mytable");
+                            element.removeAttribute("hidden");
+
+                        });
+                        
                     },
                 error:
                     function (response) {
@@ -522,6 +541,15 @@ function addrow(numero, tipo, estado) {
     var row = table.insertRow(table.rows.length);
     row.innerHTML = contentRow;
 }
+
+function addrow2(numero, tipo, tarifa) {
+
+    var contentRow = "<td>" + numero + "</td>" + "<td>" + tipo + "</td>" + "<td>" + tarifa + "</td>";
+    var table = document.getElementById("mytable");
+    var row = table.insertRow(table.rows.length);
+    row.innerHTML = contentRow;
+}
+
 
 
 function createPDF() {

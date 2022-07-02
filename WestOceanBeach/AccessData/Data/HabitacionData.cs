@@ -19,6 +19,106 @@ namespace AccessData.Data
             sqlCommand = new SqlCommand();
         }
 
+        public List<Habitacion> ObtenerHabitacionesDisponiblesPorFechaTipo(Habitacion habitacion)
+        {
+            DateTime Inicio = Convert.ToDateTime(habitacion.fechaIS);
+            DateTime Final = Convert.ToDateTime(habitacion.fechaFS);
+
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("SP_Habitaciones_Disponibles_Tipo", sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+            sqlCommand.Parameters.AddWithValue("@Inicio", Inicio);
+            sqlCommand.Parameters.AddWithValue("@Final", Final);
+            sqlCommand.Parameters.AddWithValue("@tipo", habitacion.TipoHabitacion);
+           
+          
+            sqlCommand.ExecuteNonQuery();
+            List<Habitacion> habitaciones = new List<Habitacion>();
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Habitacion temp = new Habitacion();
+
+
+                    temp.NumeroHabitacion = Convert.ToInt32(dt.Rows[i]["NUMERO_HABITACION"]);
+                    temp.TipoHabitacion = dt.Rows[i]["NOMBRE_TIPO"].ToString();
+                    temp.TarifaDiaria = Convert.ToDecimal((dt.Rows[i]["TARIFA_DIARIA"]));
+
+                    
+
+                    habitaciones.Add(temp);
+
+                }
+
+            };
+
+            sqlConnection.Close();
+
+            return habitaciones;
+
+
+
+        }
+
+
+        public List<Habitacion> ObtenerHabitacionesDisponiblesPorFecha(Habitacion habitacion)
+        {
+            DateTime Inicio = Convert.ToDateTime(habitacion.fechaIS);
+            DateTime Final = Convert.ToDateTime(habitacion.fechaFS);
+
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("SP_Habitaciones_Disponibles_General", sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+            sqlCommand.Parameters.AddWithValue("@Inicio", Inicio);
+            sqlCommand.Parameters.AddWithValue("@Final", Final);
+            
+
+
+            sqlCommand.ExecuteNonQuery();
+            List<Habitacion> habitaciones = new List<Habitacion>();
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Habitacion temp = new Habitacion();
+
+
+                    temp.NumeroHabitacion = Convert.ToInt32(dt.Rows[i]["NUMERO_HABITACION"]);
+                    temp.TipoHabitacion = dt.Rows[i]["NOMBRE_TIPO"].ToString();
+                    temp.TarifaDiaria = Convert.ToDecimal((dt.Rows[i]["TARIFA_DIARIA"]));
+
+
+
+                    habitaciones.Add(temp);
+
+                }
+
+            };
+
+            sqlConnection.Close();
+
+            return habitaciones;
+
+
+
+        }
+
+
+
+
+
+
         public List<Habitacion> ObtenerHabitacionesDisponibles(int tipoHabitacion)
         {
 
@@ -37,6 +137,10 @@ namespace AccessData.Data
             sqlCommand.ExecuteNonQuery();
 
             List<Habitacion> Habitaciones = new List<Habitacion>();
+
+
+
+
 
             using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
             {
