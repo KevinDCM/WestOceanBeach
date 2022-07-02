@@ -15,6 +15,31 @@ $(document).ready(function () {
     var today = now.getFullYear() + '-' + month + '-' + day;
     $('#fecha').val(today);
 
+   
+
+    $.ajax(
+        {
+            type: "POST",
+            dataType:'JSON',
+            url:  "/Admin/estadoActualHabitaciones",
+            success: function (data) {
+
+                $.each(data, function (key, item) {
+
+                  
+                    
+                    
+                    addrow(item.numeroHabitacion, item.tipoHabitacion, item.encuentra);
+
+                });
+               
+            },
+            error: function (xhr, statusText, err) {
+                alert("error" + xhr.status);
+            }
+
+        });
+
 
 
 }); 
@@ -388,3 +413,42 @@ jQuery(document).ready(function () {
         }
     });
 });
+
+function addrow(numero, tipo, estado) {
+
+    var contentRow = "<td>" + numero + "</td>" + "<td>" + tipo + "</td>" + "<td>" + estado + "</td>";
+    var table = document.getElementById("estadoActual");
+    var row = table.insertRow(table.rows.length);
+    row.innerHTML = contentRow;
+}
+
+
+function createPDF() {
+
+    var sTable = document.getElementById('estadoActual').innerHTML;
+console.log(sTable);
+
+    var style = "<style>";
+    style = style + "table {width: 100%;font: 17px Calibri;}";
+    style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+    style = style + "padding: 2px 3px;text-align: center;}";
+    style = style + "</style>";
+
+console.log(style);
+
+
+    // CREATE A WINDOW OBJECT.
+    var win = window.open('', '', 'height=700,width=700');
+
+    win.document.write('<html><head>');
+    win.document.write('<title>Reporte del estado actual de las habitaciones</title>');   // <title> FOR PDF HEADER.
+    win.document.write(style);          // ADD STYLE INSIDE THE HEAD TAG.
+    win.document.write('</head>');
+    win.document.write('<body>');
+    win.document.write(sTable);         // THE TABLE CONTENTS INSIDE THE BODY TAG.
+    win.document.write('</body></html>');
+
+    win.document.close(); 	// CLOSE THE CURRENT WINDOW.
+
+    win.print();    // PRINT THE CONTENTS.
+}

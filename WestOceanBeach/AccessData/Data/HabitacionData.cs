@@ -15,7 +15,7 @@ namespace AccessData.Data
         private SqlCommand sqlCommand;
         public HabitacionData()
         {
-            sqlConnection = new SqlConnection("Data Source=163.178.107.10;Initial Catalog=WestOceanBeach;Persist Security Info=True;User ID=laboratorios;Password=KmZpo.2796;Pooling=False");
+            sqlConnection = new SqlConnection("Data Source=163.178.107.10;Initial Catalog=WestOceanBeach;Persist Security Info=True;User ID=laboratorios;Password=Uy&)&nfC7QqQau.%278UQ24/=%;Pooling=False");
             sqlCommand = new SqlCommand();
         }
 
@@ -297,6 +297,54 @@ namespace AccessData.Data
 
             return salida;
         }//editarHabitacion
+
+        public List<Habitacion> estadoActualHabitacion()
+        {
+
+
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("estado_actual_habitacion", sqlConnection);
+            sqlCommand.ExecuteNonQuery();
+          
+            List<Habitacion> habitaciones = new List<Habitacion>();
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+               
+            
+
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+
+                    DataRow dr = dt.Rows[i];
+                    
+
+
+                    int numero = Convert.ToInt32(dt.Rows[i]["Numero"]);
+                    string tipo = Convert.ToString(dt.Rows[i]["Tipo"]);
+                    string estado = Convert.ToString(dt.Rows[i]["Estado"]);
+                    List<string> tempList = new List<string>();
+
+                    Habitacion habitacionTemp = new Habitacion();
+                    habitacionTemp.NumeroHabitacion = numero;
+                    habitacionTemp.TipoHabitacion = tipo;
+                    habitacionTemp.Encuentra= estado;
+                    habitaciones.Add(habitacionTemp);
+
+                  
+
+
+
+                }
+            }
+            sqlConnection.Close();
+            return habitaciones;
+
+        }// metodo
 
     }
 }

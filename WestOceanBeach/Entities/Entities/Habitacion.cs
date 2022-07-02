@@ -22,6 +22,8 @@ namespace Entities.Entities
         public string fechaIS { get; set; }
         public string fechaFS { get; set; }
 
-      
+        public string Encuentra { get; set; }
+
+
     }
 }

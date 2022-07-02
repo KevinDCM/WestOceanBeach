@@ -24,7 +24,7 @@ namespace API.Controllers
         }
 
 
-        [HttpGet]
+        [HttpPost]
 
         [Route("Habitacion_Junior")]
         public Habitacion Habitacion_Junior()
@@ -59,6 +59,15 @@ namespace API.Controllers
         {
             return new HabitacionBusiness().editarHabitacionImagen(habitacion);
         }//
+
+       
+
+        [Route("estadoActualHabitacion")]
+        public List<Habitacion> estadoActualHabitacion()
+        {
+            return new HabitacionBusiness().estadoActualHabitacion();
+        }// fin m
+
 
     }
 }
