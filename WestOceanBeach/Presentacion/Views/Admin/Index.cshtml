@@ -593,11 +593,106 @@
 
         </section>
 
+          <!-- Sección Temporadas -->
+                  <section id="Temporadas" class="container" style="margin-block: 1em; background-color: white">
+           
+       <p class="new2">Configuraciòn de Temporadas</p>
+        <br>
+         <div class="row">
+               <div class="col-sm-3 col-xs  col-xs-well">
+                <label for="start" >Temporada:</label>
 
+                    <select class="form-select" aria-label="Default select example" id="typeRoom">
+                          
+                        <option selected disabled> Temporada</option>
+                          <option value="1">Alta</option>
+                          <option value="2">Baja</option>
+                    </select>
+
+                </div>
+                <div class="col-sm-3 col-xs  col-xs-well">
+                    <label for="start">Fecha de Inicio:</label>
+                    <input type="date" id="FechaInicio" name="trip-start">
+                           </div>
+                           <div class="col-sm-3 col-xs  col-xs-well">
+
+                     <label for="start">Fecha de Fin:</label>
+                     <br>
+
+                    <input type="date" id="FechaFin" name="trip-start" >
+
+                    </div>
+      </div>
+   
+      <br>
+    <div class="row">
+
+           <div  class="col-sm-12">
+          <button type="button" class="btn btn-primary" onclick="" style="background-color:#86b4ca;"  onclick="">Actualizar</button>
+
+
+      </div>
 
     </div>
+    <br>
+   <div >
+           <table class="table table-responsive table-striped">
+                                <thead> 
+                                    <tr>
+                                        <th>Temporada</th>
+                                        <th>Fecha Inicio</th>
+                                        <th>Fecha Final</th>
+                                   
+                                </thead>
+                                <tbody>
 
+                                    <tr> 
+                                        <td>
+                                            @ViewBag.Tipo_temporada
+                                        </td>
+                                        <td>
+                                            @ViewBag.fecha_inicio
+    
+                                        </td>
+                                        <td>
+                                            @ViewBag.fecha_final
+       
+                                        </td>  
+                                    </tr>
+
+                                    <tr> 
+                                        <td>
+                                            @ViewBag.tipo_temporada02
+         
+                                        </td>
+                                        <td>
+                                            @ViewBag.fecha_inicio_02 
+        
+                                        </td>
+                                        <td>
+                                            @ViewBag.fecha_final_02 
+                                        </td>    
+                                    </tr>
+
+                                 
+                                </tbody>
+                            </table>
+
+
+      </div>
+     
+
+      <br>
+     
+
+      <div ></div>
+
+
+        </section>
+      
     </div>
+
+     
 
       <!-- The Modal Messages confimation  -->
     <div id="id01" class="modal1">

@@ -102,6 +102,20 @@ namespace Presentacion.Controllers
             List<Imagenes> imagenes = JsonConvert.DeserializeObject<List<Imagenes>>(responseImagenHomeContent);
             @ViewBag.ImgHome = imagenes[0].Full_path;
 
+            //---------------------temporadas
+          
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
+            var responseTemporada = await client.GetAsync("https://localhost:44386/Temporada/obtenerTemporadas");
+            string responsetemporada02 = await responseTemporada.Content.ReadAsStringAsync();
+            string[] temporada = responsetemporada02.Split('#');
+            @ViewBag.Tipo_temporada = temporada[1];
+            @ViewBag.fecha_inicio = temporada[2];
+            @ViewBag.fecha_final = temporada[3];//--Fecha inicio baja
+            @ViewBag.tipo_temporada02 = temporada[6];
+            @ViewBag.fecha_inicio_02 = temporada[7];//--
+            @ViewBag.fecha_final_02 = temporada[8];//--
 
             return View();
         }
@@ -394,8 +408,26 @@ namespace Presentacion.Controllers
             return Json(new { success = true, message = response5 });
             
         }// metodo 
+        //Editar temporadas
+        public async Task<ActionResult> EditarTemporada(string tipo_temporada, DateTime Fecha_Inicio, DateTime Fecha_Final)
+        {
+            Temporada temporada = new Temporada();
 
-        
+
+            temporada.tipo_temporada = tipo_temporada;
+            temporada.fecha_inicio = Fecha_Inicio;
+            temporada.fecha_final = Fecha_Final;
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var responseTT = await client.PostAsJsonAsync("https://localhost:44386/Temporada/EditarTemporada", temporada);
+            string resultado = await responseTT.Content.ReadAsStringAsync();
+            var responseT = JsonConvert.DeserializeObject<string>(resultado);
+
+            return Json(new { success = true, message = responseT });
+
+        }// metodo 
+
+
         public bool  enviarCorreo(string correoEnviar,string asunto, string contenidoMsj) {
 
             Mensaje mensaje = new Mensaje();
