@@ -370,6 +370,8 @@ function updateHome() {
     }
 }
 
+
+
 function trimfield(str) {
     return str.replace(/^\s+|\s+$/g, '');
 }
@@ -384,6 +386,8 @@ function cancelarupdateAboutUs() {
     window.location = "https://localhost:44343/Admin";
 
 }
+
+
 
 function cancelarupdateFacilities() {
 
