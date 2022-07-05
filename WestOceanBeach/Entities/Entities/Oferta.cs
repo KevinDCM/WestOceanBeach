@@ -13,5 +13,8 @@ namespace Entities.Entities
         public DateTime fecha_inicio { get; set; }
         public DateTime fecha_final { get; set; }
 
+        public string fecha_ini { get; set; }
+        public string fecha_fin { get; set; }
+
     }
 }
