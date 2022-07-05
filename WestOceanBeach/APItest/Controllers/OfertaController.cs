@@ -31,7 +31,7 @@ namespace API.Controllers
             return new OfertaBusiness().crearOfertaEspecial(oferta);
         }// fin m
 
-        [HttpPost]
+        [HttpGet]
         [Route("consultaGeneralOfertasEspeciales")]
         public List<Oferta> consultaGeneralOfertasEspeciales()
 
