@@ -21,9 +21,10 @@ namespace Business.Business
 
         }
 
-        public string EditarTemporada(Temporada temporada)
+        public string EditarTemporadas(Temporada temporada)
         {
-            return temporadadata.EditarTemporada(temporada);
+            return temporadadata.EditarTemporadas(temporada);
+
         }
 
     }

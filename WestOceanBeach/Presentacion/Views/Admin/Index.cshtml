@@ -602,7 +602,7 @@
                <div class="col-sm-3 col-xs  col-xs-well">
                 <label for="start" >Temporada:</label>
 
-                    <select class="form-select" aria-label="Default select example" id="typeRoom">
+                    <select class="form-select" id="TIPO_TEMPORADA" aria-label="Default select example" id="typeRoom">
                           
                         <option selected disabled> Temporada</option>
                           <option value="1">Alta</option>
@@ -613,14 +613,14 @@
                 </div>
                 <div class="col-sm-3 col-xs  col-xs-well">
                     <label for="start">Fecha de Inicio:</label>
-                    <input type="date" id="FechaInicio" name="trip-start">
+                    <input type="date" id="Fecha_Inicio" name="trip-start">
                            </div>
                            <div class="col-sm-3 col-xs  col-xs-well">
 
                      <label for="start">Fecha de Fin:</label>
                      <br>
 
-                    <input type="date" id="FechaFin" name="trip-start" >
+                    <input type="date" id="Fecha_Final" name="trip-start" >
 
                     </div>
       </div>
@@ -629,9 +629,12 @@
     <div class="row">
 
            <div  class="col-sm-12">
-          <button type="button" class="btn btn-primary" onclick="" style="background-color:#86b4ca;"  onclick="">Actualizar</button>
+     
+         
+             <button type="button" class="btn btn-primary" style="background-color:#86b4ca;"  onclick="actualizarTemporada()">Actualizar</button>
 
-
+                   <input class="btn btn-success" id="btnAceptTemporada" type="button" value="Aceptar" onclick="actualizarTemporada()" style="background-color: #86b4ca;">
+                  <input class="btn btn-success" id="btnCancelTemporada" type="button" value="Cancelar" onclick="document.getElementById('id04').style.display='block'" style="background-color: #86b4ca;">
       </div>
 
     </div>
@@ -729,6 +732,19 @@
                 <div class="clearfix">
                     <button type="button" onclick="cancelarupdateHome()" class="cancelbtn">Aceptar</button>
                     <button type="button"  onclick="document.getElementById('id03').style.display='none'" class="deletebtn">Cancelar</button>
+                </div>
+            </div>
+      </form>
+    </div>
+        <div id="id04" class="modal1">
+        <span onclick="document.getElementById('id04').style.display='none'" class="close1" title="Close Modal">×</span>
+        <form class="modal-content1" >
+            <div class="container1">
+                <h1>Cancelar la operacion</h1>
+                <p>Estas seguro quieres cancelar la operacion?</p>
+                <div class="clearfix">
+                    <button type="button" onclick="CancelTemporada()" class="cancelbtn">Aceptar</button>
+                    <button type="button"  onclick="document.getElementById('id04').style.display='none'" class="deletebtn">Cancelar</button>
                 </div>
             </div>
       </form>

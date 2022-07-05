@@ -573,6 +573,47 @@ function updateAboutUs() {
     }
 }
 
+
+
+
+function updateTemporada() {
+
+    var text = document.getElementById('Temporadas');
+    var temporadas = text.value;
+
+    if (trimfield(temporadas) == '') {
+        var aswer = document.getElementById('answer');
+        aswer.innerHTML = "Complete el campo no puede ir vacio";
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+
+    } else {
+
+        $.ajax({
+
+            type: 'POST',
+            dataType: 'json',
+            url: '/Admin/EditarTemporada',
+            data: { temporadas: temporadas },
+
+            success: function (result) {
+
+                var aswer = document.getElementById('answer');
+                aswer.innerHTML = result.message;
+                var modal = document.getElementById("myModal");
+                modal.style.display = "block";
+
+            },
+            error:
+                function (response) {
+                    alert("Error en el llamado: " + response);
+                }
+        });
+    }
+}
+
+
+
 function updateFacilities() {
 
     var text = document.getElementById('facilities');
@@ -663,6 +704,16 @@ function cancelarupdateAboutUs() {
 }
 
 
+function CancelTemporada() {
+
+    var text = document.getElementById('temporadas');
+    text.value = "";
+    var modal = document.getElementById('id01');
+    modal.style.display = "none";
+    window.location = "https://localhost:44343/Admin";
+    window.location = "https://localhost:44343/Admin";
+
+}
 
 function cancelarupdateFacilities() {
 
@@ -812,6 +863,34 @@ jQuery(document).ready(function () {
         }
     });
 });
+
+//*********************************
+function actualizarTemporada() {
+    var TIPO_TEMPORADA = $("#TIPO_TEMPORADA option:selected").text();
+   // var TIPO_TEMPORADA = $('#TIPO_TEMPORADA').val();
+    var FECHA_INICIO = $('#FECHA_INICIO').val();
+    var FECHA_FINAL = $('#FECHA_FINAL').val();
+
+
+
+    $.ajax({
+        type: "POST",
+        url: "/Admin/EditarTemporadas",
+        data: {
+            TIPO_TEMPORADA: TIPO_TEMPORADA, FECHA_INICIO: FECHA_INICIO
+            , FECHA_FINAL: FECHA_FINAL
+        },
+        contentType: "application/json",
+        success: function (result) {
+
+            alert(result);
+
+        },
+        error: function (result, status) {
+            console.log(result);
+        }
+    });
+}
 
 function addrow(numero, tipo, estado) {
 
