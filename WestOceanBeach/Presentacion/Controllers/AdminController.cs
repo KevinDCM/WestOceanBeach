@@ -408,25 +408,46 @@ namespace Presentacion.Controllers
             return Json(new { success = true, message = response5 });
             
         }// metodo 
-        //Editar temporadas
-        public async Task<ActionResult> EditarTemporada(string tipo_temporada, DateTime Fecha_Inicio, DateTime Fecha_Final)
+         //Editar temporadas
+        /*   public async Task<ActionResult> EditarTemporada(string tipo_temporada, DateTime Fecha_Inicio, DateTime Fecha_Final)
+           {
+               Temporada temporada = new Temporada();
+
+
+               temporada.tipo_temporada = tipo_temporada;
+               temporada.fecha_inicio = Fecha_Inicio;
+               temporada.fecha_final = Fecha_Final;
+               client.DefaultRequestHeaders.Accept.Clear();
+               client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+               var responseTT = await client.PostAsJsonAsync("https://localhost:44386/Temporada/EditarTemporada", temporada);
+               string resultado = await responseTT.Content.ReadAsStringAsync();
+               var responseT = JsonConvert.DeserializeObject<string>(resultado);
+
+               return Json(new { success = true, message = responseT });
+
+           }// metodo */
+
+        [HttpPost]
+
+        public async Task<IActionResult> EditarTemporadas(string TIPO_TEMPORADA, DateTime FECHA_INICIO, DateTime FECHA_FINAL) 
         {
-            Temporada temporada = new Temporada();
-
-
-            temporada.tipo_temporada = tipo_temporada;
-            temporada.fecha_inicio = Fecha_Inicio;
-            temporada.fecha_final = Fecha_Final;
             client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            var responseTT = await client.PostAsJsonAsync("https://localhost:44386/Temporada/EditarTemporada", temporada);
-            string resultado = await responseTT.Content.ReadAsStringAsync();
-            var responseT = JsonConvert.DeserializeObject<string>(resultado);
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+           Temporada Temporada_Admin = new Temporada();
 
-            return Json(new { success = true, message = responseT });
+            Temporada_Admin.tipo_temporada =  TIPO_TEMPORADA;
+            Temporada_Admin.fecha_inicio = FECHA_INICIO;
+            Temporada_Admin.fecha_final = FECHA_FINAL;
+       
 
-        }// metodo 
+            HttpResponseMessage response = await client.PostAsJsonAsync(
+                "https://localhost:44386/Temporada/EditarTemporada", Temporada_Admin);
 
+            string resultado = await response.Content.ReadAsStringAsync();
+
+            return Ok(resultado);
+        }
 
         public bool  enviarCorreo(string correoEnviar,string asunto, string contenidoMsj) {
 

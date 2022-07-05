@@ -256,7 +256,13 @@ function SolicitarReservacion(){
         error: function (result, status) {
 			console.log(result);
 		}
-    });
+	});
+
+
+
+
+
+	
 	
 
 }
