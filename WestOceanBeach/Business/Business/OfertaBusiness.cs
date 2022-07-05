@@ -22,5 +22,51 @@ namespace Business.Business
         
         
         }
+
+        public string crearOfertaEspecial(Oferta oferta) { 
+        
+        
+            return ofertaData.crearOfertaEspecial(oferta);
+        
+        
+        }
+
+        public List<Oferta> consultaGeneralOfertasEspeciales() {
+
+
+            return consultaGeneralOfertasEspeciales();
+        
+        
+        }
+
+        public List<Oferta> consultaGeneralOfertasEspecialesTipoHabitacion(Oferta oferta) {
+
+
+            return ofertaData.consultaGeneralOfertasEspecialesTipoHabitacion(oferta);
+
+
+        }
+
+        public string eliminarOfertaEspecial(Oferta oferta) {
+
+
+            return ofertaData.eliminarOfertaEspecial(oferta);
+
+
+        }
+
+
+        public string actualizarOfertaEspecial(Oferta oferta) {
+
+
+            return ofertaData.actualizarOfertaEspecial(oferta);
+
+
+        }
+
+
+
+
+
     }
 }
