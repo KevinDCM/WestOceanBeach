@@ -1,10 +1,11 @@
-﻿
+
 $(document).ready(function () {
 
-    console.log('hello world2');
+    
     
 
-
+    let tablaHabitaciones = document.getElementById("mytable");
+    tablaHabitaciones.setAttribute("hidden", "hidden");
     var now = new Date();
     var month = (now.getMonth() + 1);
     var day = now.getDate();
@@ -24,6 +25,9 @@ $(document).ready(function () {
             url:  "/Admin/estadoActualHabitaciones",
             success: function (data) {
 
+
+
+
                 $.each(data, function (key, item) {
 
                   
@@ -42,7 +46,249 @@ $(document).ready(function () {
 
 
 
+    $.ajax(
+        {
+            type: "POST",
+            dataType: 'JSON',
+            url: "/Oferta/ObtenerOfertasEspecialesGeneral",
+            success: function (data) {
+
+
+
+
+                $.each(data, function (key, item) {
+
+
+
+
+                    addrow3(item.id, item.descuento, item.fecha_ini, item.fecha_fin, item.tipo_habitacion);
+
+                });
+
+            },
+            error: function (xhr, statusText, err) {
+                alert("error" + xhr.status);
+            }
+
+        });
+
+
+
+
+
+
+
+
 }); 
+
+
+
+function createOfertSpecial(){
+
+
+    //pruebas de aceptacion faltan
+    //ningun campo este vacio
+    //fecha salida no sea mayor llegada
+    //fecha salida y llegada año actual
+
+
+    var date = $('#myDateLlegada2').val().split('-');
+    var day = date[2];
+    var month = date[1];
+    var year = date[0];
+
+    var date2 = $('#myDateSalida2').val().split('-');
+    var day2 = date2[2];
+    var month2 = date2[1];
+    var year2 = date2[0];
+
+
+    var fechaInicio = year + "-" + month + "-" + day;
+
+    var fechaFinal = year2 + "-" + month2 + "-" + day2;
+
+    var descuento = document.getElementById('descount').value;
+    var tipoHabitacion = $("#typeRoom2 option:selected").text();
+    $.ajax(
+        {
+            type: 'POST',
+            dataType: 'JSON',
+            url: '/Oferta/crearOfertaEspecial',
+            data: { descuento: descuento, fechaInicio: fechaInicio, fechaFinal: fechaFinal, tipoHabitacion: tipoHabitacion },
+            success:
+                function (data) {
+
+
+                    var aswer = document.getElementById('answer');
+                    aswer.innerHTML = data.message;
+                    var modal = document.getElementById("myModal");
+                    modal.style.display = "block";
+
+                    
+                },
+            error:
+                function (response) {
+                    alert("Error: " + response);
+                }
+        });
+
+
+
+
+
+}
+
+
+
+function updateOfertSpecial() {
+
+
+    //pruebas de aceptacion faltan
+    //ningun campo este vacio
+    //fecha salida no sea mayor llegada
+    //fecha salida y llegada año actual
+    //id y descuento no vayan vacios 
+
+
+    var date = $('#myDateLlegada2').val().split('-');
+    var day = date[2];
+    var month = date[1];
+    var year = date[0];
+
+    var date2 = $('#myDateSalida2').val().split('-');
+    var day2 = date2[2];
+    var month2 = date2[1];
+    var year2 = date2[0];
+
+
+    var fechaInicio = year + "-" + month + "-" + day;
+
+    var fechaFinal = year2 + "-" + month2 + "-" + day2;
+
+    var descuento = document.getElementById('descount').value;
+    var tipoHabitacion = $("#typeRoom2 option:selected").text();
+    var id = document.getElementById('oferta').value;
+
+
+    $.ajax(
+        {
+            type: 'POST',
+            dataType: 'JSON',
+            url: '/Oferta/actualizarOfertaEspecial',
+            data: { id:id,descuento: descuento, fechaInicio: fechaInicio, fechaFinal: fechaFinal, tipoHabitacion: tipoHabitacion },
+            success:
+                function (data) {
+
+
+                    var aswer = document.getElementById('answer');
+                    aswer.innerHTML = data.message;
+                    var modal = document.getElementById("myModal");
+                    modal.style.display = "block";
+
+
+                },
+            error:
+                function (response) {
+                    alert("Error: " + response);
+                }
+        });
+
+
+
+
+
+}
+
+
+
+function OfertSpecialTipoHabitacion() {
+
+
+    //pruebas de aceptacion faltan
+    
+    //tipo habitacion no vaya vacio
+
+
+   
+   
+    var tipoHabitacion = $("#typeRoom2 option:selected").text();
+
+
+    $.ajax(
+        {
+            type: 'POST',
+            dataType: 'JSON',
+            url: '/Oferta/ObtenerOfertasEspecialesGeneralTipoHabitacion',
+            data: { tipoHabitacion: tipoHabitacion },
+            success:
+                function (data) {
+
+                    $.each(data, function (key, item) {
+
+
+
+
+                        addrow3(item.id, item.descuento, item.fecha_ini, item.fecha_fin, item.tipo_habitacion);
+
+                    });
+                   
+
+
+                },
+            error:
+                function (response) {
+                    alert("Error: " + response);
+                }
+        });
+
+
+
+
+
+}
+
+
+
+
+
+function deleteOfertSpecial() {
+
+
+    //pruebas de aceptacion faltan
+    //id no venga vacio 
+
+    var id = document.getElementById('oferta').value;
+    
+    $.ajax(
+        {
+            type: 'POST',
+            dataType: 'JSON',
+            url: '/Oferta/eliminarOfertaEspecial',
+            data: { id: id},
+            success:
+                function (data) {
+
+
+                    var aswer = document.getElementById('answer');
+                    aswer.innerHTML = data.message;
+                    var modal = document.getElementById("myModal");
+                    modal.style.display = "block";
+
+
+                },
+            error:
+                function (response) {
+                    alert("Error: " + response);
+                }
+        });
+
+
+
+
+
+}
+
+
 
 
 
@@ -72,6 +318,155 @@ function uploadFile() {
             }
     });
 }// uploadFile
+
+
+
+
+function habitacionesPorFecha() {
+
+    var date = $('#myDateLlegada').val().split('-');
+    var day = date[2];
+    var month = date[1];
+    var year = date[0];
+
+    var date2 = $('#myDateSalida').val().split('-');
+    var day2 = date2[2];
+    var month2 = date2[1];
+    var year2 = date2[0];
+
+
+    var fechaLlegada = year + "-" + month + "-" + day ;
+
+    var fechaSalida = year2 + "-" + month2 + "-" + day2 ;
+
+
+   
+    var typeRoom = $("#typeRoom option:selected").text();
+
+
+    //hacer validacion pruebas aceptacion
+
+    //1.fecha llegada colocarla con el dia de hoy
+    //2.fecha salida colocarla con el dia de ayer  al de hoy
+    //3. fecha llegada no puede ser menor al dia actual
+    //4.fecha salida no puede ser menor al de fecha llegada
+    //5. fecha salida y llegada no pueden ir vacias
+    //tipo no puede ir vacio
+
+
+    var resultado = typeRoom.localeCompare("Todas");
+
+
+
+
+    if (resultado == 0) {
+        //llamar a las habitaciones disponibles todas sin importar el tipo
+
+
+        $.ajax(
+            {
+                type: 'POST',
+                dataType: 'JSON',
+                url: '/Habitacion/ObtenerHabitacionesRangoFecha',
+                data: { fechaLlegada: fechaLlegada, fechaSalida: fechaSalida},
+                success:
+                    function (data) {
+
+                      
+                        $('#mytable tbody > tr').remove();
+                       
+
+                        if (data) {
+                            
+                            // Generate HTML table.  
+                            $.each(data, function (key, item) {
+
+
+
+
+                                addrow2(item.numeroHabitacion, item.tipoHabitacion, item.tarifaDiaria);
+                                let element = document.getElementById("mytable");
+                                element.removeAttribute("hidden");
+
+                            });
+
+                        } else {
+
+                            alert("No se encontraron resultados");
+
+                        }
+                    },
+                error:
+                    function (response) {
+                        alert("Error: " + response);
+                    }
+            });
+
+
+    } else {
+        //llama a las habitaciones pero por tipo
+
+        
+
+        $.ajax(
+            {
+                type: 'POST',
+                dataType: 'JSON',
+                url: '/Habitacion/ObtenerHabitacionesRangoFechaTipo',
+                data: { fechaLlegada: fechaLlegada, fechaSalida: fechaSalida, typeRoom: typeRoom },
+                success:
+                    function (data) {
+                       
+                        $('#mytable tbody > tr').remove();
+
+                        if (data) {
+
+                           
+                            
+
+
+
+
+                            $.each(data, function (key, item) {
+
+
+
+
+                                addrow2(item.numeroHabitacion, item.tipoHabitacion, item.tarifaDiaria);
+                                let element = document.getElementById("mytable");
+                                element.removeAttribute("hidden");
+
+                            });
+                        } else {
+                          
+
+
+                            alert("No se encontraron respuestas");
+
+
+                        }
+                        
+                    },
+                error:
+                    function (response) {
+                        alert("Error: " + response);
+                    }
+            });
+
+
+
+    }
+
+
+
+    
+
+
+
+    
+
+
+}
 
 function cambiarImgHabitacionEstandar() {
 
@@ -178,6 +573,47 @@ function updateAboutUs() {
     }
 }
 
+
+
+
+function updateTemporada() {
+
+    var text = document.getElementById('Temporadas');
+    var temporadas = text.value;
+
+    if (trimfield(temporadas) == '') {
+        var aswer = document.getElementById('answer');
+        aswer.innerHTML = "Complete el campo no puede ir vacio";
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+
+    } else {
+
+        $.ajax({
+
+            type: 'POST',
+            dataType: 'json',
+            url: '/Admin/EditarTemporada',
+            data: { temporadas: temporadas },
+
+            success: function (result) {
+
+                var aswer = document.getElementById('answer');
+                aswer.innerHTML = result.message;
+                var modal = document.getElementById("myModal");
+                modal.style.display = "block";
+
+            },
+            error:
+                function (response) {
+                    alert("Error en el llamado: " + response);
+                }
+        });
+    }
+}
+
+
+
 function updateFacilities() {
 
     var text = document.getElementById('facilities');
@@ -250,6 +686,8 @@ function updateHome() {
     }
 }
 
+
+
 function trimfield(str) {
     return str.replace(/^\s+|\s+$/g, '');
 }
@@ -257,6 +695,18 @@ function trimfield(str) {
 function cancelarupdateAboutUs() {
 
     var text = document.getElementById('aboutUs');
+    text.value = "";
+    var modal = document.getElementById('id01');
+    modal.style.display = "none";
+    window.location = "https://localhost:44343/Admin";
+    window.location = "https://localhost:44343/Admin";
+
+}
+
+
+function CancelTemporada() {
+
+    var text = document.getElementById('temporadas');
     text.value = "";
     var modal = document.getElementById('id01');
     modal.style.display = "none";
@@ -414,10 +864,54 @@ jQuery(document).ready(function () {
     });
 });
 
+//*********************************
+function actualizarTemporada() {
+    var TIPO_TEMPORADA = $("#TIPO_TEMPORADA option:selected").text();
+   // var TIPO_TEMPORADA = $('#TIPO_TEMPORADA').val();
+    var FECHA_INICIO = $('#FECHA_INICIO').val();
+    var FECHA_FINAL = $('#FECHA_FINAL').val();
+
+
+
+    $.ajax({
+        type: "POST",
+        url: "/Admin/EditarTemporadas",
+        data: {
+            TIPO_TEMPORADA: TIPO_TEMPORADA, FECHA_INICIO: FECHA_INICIO
+            , FECHA_FINAL: FECHA_FINAL
+        },
+        contentType: "application/json",
+        success: function (result) {
+
+            alert(result);
+
+        },
+        error: function (result, status) {
+            console.log(result);
+        }
+    });
+}
+
 function addrow(numero, tipo, estado) {
 
     var contentRow = "<td>" + numero + "</td>" + "<td>" + tipo + "</td>" + "<td>" + estado + "</td>";
     var table = document.getElementById("estadoActual");
+    var row = table.insertRow(table.rows.length);
+    row.innerHTML = contentRow;
+}
+function addrow2(numero, tipo, tarifa) {
+
+    var contentRow = "<td>" + numero + "</td>" + "<td>" + tipo + "</td>" + "<td>" + tarifa + "</td>";
+    var table = document.getElementById("mytable");
+    var row = table.insertRow(table.rows.length);
+    row.innerHTML = contentRow;
+}
+
+
+function addrow3(id,descuento,fI,FF, tipo) {
+
+    var contentRow = "<td>" + id + "</td>" + "<td>" + descuento + "</td>" + "<td>" + fI + "</td>" + "<td>" + FF + "</td>" + "<td>" + tipo + "</td>";
+    var table = document.getElementById("mytable2");
     var row = table.insertRow(table.rows.length);
     row.innerHTML = contentRow;
 }
@@ -452,3 +946,11 @@ console.log(style);
 
     win.print();    // PRINT THE CONTENTS.
 }
+
+
+function replaceTable() {
+    const old_tbody = document.getElementById("mytable")
+    const new_tbody = document.createElement('tbody');
+    old_tbody.parentNode.replaceChild(new_tbody, old_tbody)
+}
+

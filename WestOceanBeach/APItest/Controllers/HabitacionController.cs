@@ -16,6 +16,23 @@ namespace API.Controllers
             return new HabitacionBusiness().ObtenerHabitacionesDisponibles(tipoHabitacion);
         }
 
+
+        [HttpPost]
+        [Route("ObtenerHabitacionesDisponiblesPorFechaTipo")]
+        public List<Habitacion> ObtenerHabitacionesDisponiblesPorFechaTipo(Habitacion habitacion)
+        {
+            return new HabitacionBusiness().ObtenerHabitacionesDisponiblesPorFechaTipo(habitacion);
+        }
+
+        [HttpPost]
+        [Route("ObtenerHabitacionesDisponiblesPorFecha")]
+        public List<Habitacion> ObtenerHabitacionesDisponiblesPorFecha(Habitacion habitacion)
+        {
+            return new HabitacionBusiness().ObtenerHabitacionesDisponiblesPorFecha(habitacion);
+        }
+
+
+
         [HttpGet]
         [Route("obtenerHabitacionesTemporada")]
         public string obtenerHabitacionesTemporada()
