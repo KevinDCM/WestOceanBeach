@@ -29,6 +29,7 @@ namespace Presentacion.Controllers
         public async Task<IActionResult> insertarCliente(Cliente cliente)
         {
 
+
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));

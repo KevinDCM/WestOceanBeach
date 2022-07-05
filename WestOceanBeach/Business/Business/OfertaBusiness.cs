@@ -34,7 +34,7 @@ namespace Business.Business
         public List<Oferta> consultaGeneralOfertasEspeciales() {
 
 
-            return consultaGeneralOfertasEspeciales();
+            return ofertaData.consultaGeneralOfertasEspeciales();
         
         
         }
