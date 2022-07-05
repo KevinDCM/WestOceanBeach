@@ -25,6 +25,9 @@ $(document).ready(function () {
             url:  "/Admin/estadoActualHabitaciones",
             success: function (data) {
 
+
+
+
                 $.each(data, function (key, item) {
 
                   
@@ -119,7 +122,8 @@ function habitacionesPorFecha() {
 
 
     if (resultado == 0) {
-        //llamar a las habitaciones disponibles todas sin importar el tipo 
+        //llamar a las habitaciones disponibles todas sin importar el tipo
+
 
         $.ajax(
             {
@@ -129,17 +133,30 @@ function habitacionesPorFecha() {
                 data: { fechaLlegada: fechaLlegada, fechaSalida: fechaSalida},
                 success:
                     function (data) {
-                        // Generate HTML table.  
-                        $.each(data, function (key, item) {
+
+                      
+                        $('#mytable tbody > tr').remove();
+                       
+
+                        if (data) {
+                            
+                            // Generate HTML table.  
+                            $.each(data, function (key, item) {
 
 
 
 
-                            addrow2(item.numeroHabitacion, item.tipoHabitacion, item.tarifaDiaria);
-                            let element = document.getElementById("mytable");
-                            element.removeAttribute("hidden");
+                                addrow2(item.numeroHabitacion, item.tipoHabitacion, item.tarifaDiaria);
+                                let element = document.getElementById("mytable");
+                                element.removeAttribute("hidden");
 
-                        });
+                            });
+
+                        } else {
+
+                            alert("No se encontraron resultados");
+
+                        }
                     },
                 error:
                     function (response) {
@@ -151,6 +168,8 @@ function habitacionesPorFecha() {
     } else {
         //llama a las habitaciones pero por tipo
 
+        
+
         $.ajax(
             {
                 type: 'POST',
@@ -159,17 +178,35 @@ function habitacionesPorFecha() {
                 data: { fechaLlegada: fechaLlegada, fechaSalida: fechaSalida, typeRoom: typeRoom },
                 success:
                     function (data) {
+                       
+                        $('#mytable tbody > tr').remove();
 
-                        $.each(data, function (key, item) {
+                        if (data) {
+
+                           
+                            
 
 
 
 
-                            addrow2(item.numeroHabitacion, item.tipoHabitacion, item.tarifaDiaria);
-                            let element = document.getElementById("mytable");
-                            element.removeAttribute("hidden");
+                            $.each(data, function (key, item) {
 
-                        });
+
+
+
+                                addrow2(item.numeroHabitacion, item.tipoHabitacion, item.tarifaDiaria);
+                                let element = document.getElementById("mytable");
+                                element.removeAttribute("hidden");
+
+                            });
+                        } else {
+                          
+
+
+                            alert("No se encontraron respuestas");
+
+
+                        }
                         
                     },
                 error:
@@ -582,3 +619,11 @@ console.log(style);
 
     win.print();    // PRINT THE CONTENTS.
 }
+
+
+function replaceTable() {
+    const old_tbody = document.getElementById("mytable")
+    const new_tbody = document.createElement('tbody');
+    old_tbody.parentNode.replaceChild(new_tbody, old_tbody)
+}
+

@@ -71,5 +71,30 @@ namespace Presentacion.Controllers
 
 
 
+        [HttpPost]
+        public async Task<IActionResult> ObtenerHabitacionesRangoFechaTipo(string fechaLlegada, string fechaSalida,string typeRoom)
+        {
+            Habitacion habitacion = new Habitacion();
+            habitacion.fechaFS = fechaSalida;
+            habitacion.fechaIS = fechaLlegada;
+            habitacion.TipoHabitacion = typeRoom;
+
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            var response = await client.PostAsJsonAsync("https://localhost:44386/Habitacion/ObtenerHabitacionesDisponiblesPorFechaTipo", habitacion);
+
+
+
+            string content = await response.Content.ReadAsStringAsync();
+
+            List<Habitacion> Habitaciones = JsonConvert.DeserializeObject<List<Habitacion>>(content);
+
+            return Ok(Habitaciones);
+        }
+
+
+
     }
 }
