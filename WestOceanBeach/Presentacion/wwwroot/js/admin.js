@@ -578,23 +578,35 @@ function updateAboutUs() {
 
 function updateTemporada() {
 
-    var text = document.getElementById('Temporadas');
-    var temporadas = text.value;
+    
 
-    if (trimfield(temporadas) == '') {
-        var aswer = document.getElementById('answer');
-        aswer.innerHTML = "Complete el campo no puede ir vacio";
-        var modal = document.getElementById("myModal");
-        modal.style.display = "block";
+    
+    var tipoTemporada = $("#TIPO_TEMPORADA option:selected").text();
+    var date2 = $('#Fecha_Inicio').val().split('-');
+    var day2 = date2[2];
+    var month2 = date2[1];
+    var year2 = date2[0];
 
-    } else {
+
+    var fechaInicio = year2 + "-" + month2 + "-" + day2;
+
+
+    var date = $('#Fecha_Final').val().split('-');
+    var day = date[2];
+    var month= date[1];
+    var year = date[0];
+
+
+    var fechaFinal = year + "-" + month + "-" + day;
+
+
 
         $.ajax({
 
             type: 'POST',
             dataType: 'json',
-            url: '/Admin/EditarTemporada',
-            data: { temporadas: temporadas },
+            url: '/Admin/EditarTemporadas',
+            data: { tipoTemporada: tipoTemporada, fechaInicio: fechaInicio, fechaFinal: fechaFinal },
 
             success: function (result) {
 
@@ -609,7 +621,11 @@ function updateTemporada() {
                     alert("Error en el llamado: " + response);
                 }
         });
-    }
+
+      
+
+        
+    
 }
 
 
