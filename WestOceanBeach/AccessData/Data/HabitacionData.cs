@@ -86,7 +86,10 @@ namespace AccessData.Data
 
             using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
             {
+              
                 DataTable dt = new DataTable();
+                 dt.Dispose();
+
                 adapter.Fill(dt);
 
                 for (int i = 0; i < dt.Rows.Count; i++)
@@ -103,14 +106,14 @@ namespace AccessData.Data
                     habitaciones.Add(temp);
 
                 }
+              
 
             };
 
             sqlConnection.Close();
-
+         
             return habitaciones;
-
-
+  
 
         }
 

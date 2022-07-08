@@ -19,13 +19,15 @@ namespace API.Controllers
             return new TemporadaBusiness().obtenerTemporadas();
         }
 
+
         [HttpPost]
-        [Route("EditarTemporada")]
-        public string EditarTemporada(Temporada temporada)
+        [Route("EditarTemporadas")]
+        public string EditarTemporadas(Temporada temporada)
         {
-            return new TemporadaBusiness().EditarTemporada(temporada);
+            return new TemporadaBusiness().EditarTemporadas(temporada);
         }
 
+ 
 
     }
 }
