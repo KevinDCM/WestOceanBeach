@@ -427,22 +427,23 @@ namespace Presentacion.Controllers
 
            }// metodo */
 
-        [HttpPost]
 
-        public async Task<IActionResult> EditarTemporadas(string TIPO_TEMPORADA, DateTime FECHA_INICIO, DateTime FECHA_FINAL) 
+        [HttpPost]
+        public async Task<IActionResult> EditarTemporadas(string tipoTemporada, string fechaInicio, string fechaFinal) 
         {
+
+            Temporada Temporada_Admin = new Temporada();
+
+            Temporada_Admin.tipo_temporada = tipoTemporada;
+            Temporada_Admin.fecha_inicio = Convert.ToDateTime(fechaInicio);
+            Temporada_Admin.fecha_final = Convert.ToDateTime(fechaFinal);
+
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-           Temporada Temporada_Admin = new Temporada();
-
-            Temporada_Admin.tipo_temporada =  TIPO_TEMPORADA;
-            Temporada_Admin.fecha_inicio = FECHA_INICIO;
-            Temporada_Admin.fecha_final = FECHA_FINAL;
-       
-
+         
             HttpResponseMessage response = await client.PostAsJsonAsync(
-                "https://localhost:44386/Temporada/EditarTemporada", Temporada_Admin);
+                "https://localhost:44386/Temporada/EditarTemporadas", Temporada_Admin);
 
             string resultado = await response.Content.ReadAsStringAsync();
 
