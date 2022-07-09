@@ -54,15 +54,15 @@ namespace Presentacion.Controllers
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
-            var response3 = await client.GetAsync("https://localhost:44386/Habitacion/Habitacion_Junior");
-            string resultado3 = await response3.Content.ReadAsStringAsync();
-           // Habitacion Habitaciones_junior = JsonConvert.DeserializeObject<Habitacion>(resultado3);
+            var responseJ = await client.GetAsync("https://localhost:44386/Habitacion/Habitacion_Junior");
+            string resultadoJJ = await responseJ.Content.ReadAsStringAsync();
+            Habitacion Habitaciones_junior = JsonConvert.DeserializeObject<Habitacion>(resultadoJJ);
 
-            //ViewBag.Habitacion_junior_descripcion = Habitaciones_junior.Descripcion;
+            ViewBag.Habitacion_Junior_descripcion = Habitaciones_junior.Descripcion;
 
-            //ViewBag.Habitacion_junior_ruta_imagen = Habitaciones_junior.ruta_imagen;
+            ViewBag.Habitacion_Junior_ruta_imagen = Habitaciones_junior.ruta_imagen;
 
-            //ViewBag.Habitacion_junior_tarifa_diaria = Habitaciones_junior.TarifaDiaria;
+            ViewBag.Habitacion_Junior_tarifa_diaria = Habitaciones_junior.TarifaDiaria;
 
             //-------------------------------------------Habitaciones Estandar-----------------------------------------------------
             client.DefaultRequestHeaders.Accept.Clear();
