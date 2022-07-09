@@ -249,7 +249,7 @@ namespace AccessData.Data
         {
 
             sqlConnection.Open();
-            sqlCommand = new SqlCommand("[SP_HABITACIONES_JUNIOR]", sqlConnection);
+            sqlCommand = new SqlCommand("SP_HABITACIONES_JUNIOR", sqlConnection);
             sqlCommand.ExecuteNonQuery();
             Habitacion tipo_junior = new Habitacion();
 
@@ -265,7 +265,7 @@ namespace AccessData.Data
                     string[] allColumns = dr.ItemArray.Select(obj => obj.ToString()).ToArray();
                     ArrayList itm = new ArrayList(allColumns);
 
-                    
+
                     string Descripcion = Convert.ToString(dt.Rows[i]["DESCRIPCION"]);
                     string Ruta_Imagen = Convert.ToString(dt.Rows[i]["RUTA_IMAGEN"]);
                     decimal TarifaDiaria = Convert.ToDecimal(dt.Rows[i]["TARIFA_DIARIA"]);
@@ -279,6 +279,7 @@ namespace AccessData.Data
                 }
             }
             sqlConnection.Close();
+
             return tipo_junior;
         }// metodo
 
