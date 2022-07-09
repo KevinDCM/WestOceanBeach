@@ -126,9 +126,9 @@ function createOfertSpecial(){
 
     if (strUser == "Tipo de Habitacion:" || trimfield(fechaLLegada1) == '' || trimfield(fechaSalida1) == '' || trimfield(descuento1) == '') {
 
-        var aswer = document.getElementById('answer');
+        var aswer = document.getElementById('answer3');
         aswer.innerHTML = "Complete los campos fecha inicio,fecha final, descuento, tipo habitacion para crear una oferta, no pueden ir vacios ninguno de estos campos. ";
-        var modal = document.getElementById("myModal");
+        var modal = document.getElementById("myModal2");
         modal.style.display = "block";
 
     } else {
@@ -164,7 +164,7 @@ function createOfertSpecial(){
 
                         var aswer = document.getElementById('answer');
                         aswer.innerHTML = data.message;
-                        var modal = document.getElementById("myModal");
+                        var modal = document.getElementById("myModal2");
                         modal.style.display = "block";
 
 
@@ -220,9 +220,9 @@ function updateOfertSpecial() {
 
     if (strUser == "Tipo de Habitacion:" || trimfield(fechaLLegada1) == '' || trimfield(fechaSalida1) == '' || trimfield(descuento1) == '' || trimfield(id2) == '') {
 
-        var aswer = document.getElementById('answer');
+        var aswer = document.getElementById('answer3');
         aswer.innerHTML = "Complete los campos fecha inicio,fecha final, descuento, tipo habitacion,id oferta para actualizar una oferta, no pueden ir vacios ninguno de estos campos. ";
-        var modal = document.getElementById("myModal");
+        var modal = document.getElementById("myModal2");
         modal.style.display = "block";
 
     } else {
@@ -298,9 +298,9 @@ function OfertSpecialTipoHabitacion() {
 
     if (strUser == "Tipo de Habitacion:") {
 
-        var aswer = document.getElementById('answer');
+        var aswer = document.getElementById('answer3');
         aswer.innerHTML = "Seleccione el tipo habitacion,para encontra una o varias ofertas, no pueden ir vacios este campo. ";
-        var modal = document.getElementById("myModal");
+        var modal = document.getElementById("myModal2");
         modal.style.display = "block";
 
     } else {
@@ -359,9 +359,9 @@ function deleteOfertSpecial() {
 
     if (trimfield(id2) == '') {
 
-        var aswer = document.getElementById('answer');
+        var aswer = document.getElementById('answer3');
         aswer.innerHTML = "Para eliminar una oferta debe llevar el id de la oferta,este no puede ir vacio";
-        var modal = document.getElementById("myModal");
+        var modal = document.getElementById("myModal2");
         modal.style.display = "block";
 
     } else {
