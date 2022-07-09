@@ -304,7 +304,7 @@ function OfertSpecialTipoHabitacion() {
         modal.style.display = "block";
 
     } else {
-
+        
 
         var tipoHabitacion = $("#typeRoom2 option:selected").text();
 
@@ -317,6 +317,7 @@ function OfertSpecialTipoHabitacion() {
                 data: { tipoHabitacion: tipoHabitacion },
                 success:
                     function (data) {
+                        $("#mytable2 td").parent().remove();
 
                         $.each(data, function (key, item) {
 
@@ -482,7 +483,7 @@ function habitacionesPorFecha() {
                     function (data) {
 
                       
-                        $('#mytable tbody > tr').remove();
+                        $("#mytable td").parent().remove();
                        
 
                         if (data) {
