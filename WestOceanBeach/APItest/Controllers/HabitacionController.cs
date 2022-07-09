@@ -41,7 +41,7 @@ namespace API.Controllers
         }
 
 
-        [HttpPost]
+        [HttpGet]
 
         [Route("Habitacion_Junior")]
         public Habitacion Habitacion_Junior()
