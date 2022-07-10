@@ -11,6 +11,22 @@
     cursor: pointer;
 }
 
+#btPrint {
+    font-size: 100%;
+    box-sizing: border-box;
+    display: block;
+    position: relative;
+    width: 6em ;
+    height: 8.5em;
+    background-color: #eee;
+    background-image: url('https://i.imgur.com/lZ5SgDE.png');
+    background-repeat: no-repeat;
+    background-size: 85% auto;
+    background-position: center 2em;
+    border-radius: 1px 2em 1px 1px;
+    border: 1px solid #ddd;
+}
+
 #imagenPublicidad {
     width: 8em !important;
     height: 10em !important;
