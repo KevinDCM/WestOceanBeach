@@ -258,13 +258,13 @@
             <label>  Habitaciòn Junior</label></div>
             </th>
             <th>
-            <label>Tarifa Diaria Actual:  <input type="text" id="tarifaESTANDAR" size="5" maxlength="10"  name="Tarifa_diaria" value= @ViewBag.Habitacion_junior_tarifa_diaria> </label>
+            <label>Tarifa Diaria Actual:  <input type="text" id="tarifaJUNIOR" size="5" maxlength="10"  name="Tarifa_diaria" value= @ViewBag.Habitacion_junior_tarifa_diaria> </label>
             
         </th>
             </tr>
             </table>
             <div class="col-sm-10">
-            <textarea class="noteToAdd" id="descripcionESTANDAR" name="descripcionESTANDAR" rows="6" cols="70">@ViewBag.Habitacion_junior_descripcion</textarea>
+            <textarea class="noteToAdd" id="descripcionJUNIOR" name="descripcionJUNIOR" rows="6" cols="70">@ViewBag.Habitacion_junior_descripcion</textarea>
             </div>
             <table style="width:100%">
             <tr>
@@ -280,8 +280,8 @@
             @using (Html.BeginForm(new { enctype = "multipart / form-data" }))
             {
         
-            <input id="fileEstandar" type="file" name="fileEstandar" />
-            <input type="button" value="OK" onclick="cambiarImgHabitacionEstandar()" ; return false;" />
+            <input id="fileJunior" type="file" name="fileJunior" />
+            <input type="button" value="OK" onclick="cambiarImgHabitacionJunior()" ; return false;" />
             }
             </div>
             </th>
@@ -313,12 +313,12 @@
             <label>  Habitaciòn Suite</label></div>
             </th>
             <th>
-            <label>Tarifa Diaria Actual:  <input type="text" id="tarifaESTANDAR" size="5" maxlength="10" value= @ViewBag.Habitacion_suite_tarifa_diaria name="Tarifa_diaria"> </label>
+            <label>Tarifa Diaria Actual:  <input type="text" id="tarifaSUITE" size="5" maxlength="10" value= @ViewBag.Habitacion_suite_tarifa_diaria name="Tarifa_diaria"> </label>
             </th>
             </tr>
             </table>
             <div class="col-sm-10">
-            <textarea class="noteToAdd" id="descripcionESTANDAR" name="descripcionESTANDAR" rows="6" cols="70">@ViewBag.Habitacion_suite_descripcion</textarea>
+            <textarea class="noteToAdd" id="descripcionSUITE" name="descripcionSUITE" rows="6" cols="70">@ViewBag.Habitacion_suite_descripcion</textarea>
             </div>
             <table style="width:100%">
             <tr>
@@ -334,8 +334,8 @@
             @using (Html.BeginForm(new { enctype = "multipart / form-data" }))
             {
         
-            <input id="fileEstandar" type="file" name="fileEstandar" />
-            <input type="button" value="OK" onclick="cambiarImgHabitacionEstandar()" ; return false;" />
+            <input id="fileSuite" type="file" name="fileSuite" />
+            <input type="button" value="OK" onclick="cambiarImgHabitacionSuite()" ; return false;" />
             }
             </div>
             </th>
