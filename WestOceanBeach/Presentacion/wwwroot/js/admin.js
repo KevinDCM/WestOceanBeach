@@ -38,6 +38,22 @@ $(document).ready(function () {
     var today = now.getFullYear() + '-' + month + '-' + day;
     $('#myDateLlegada2').val(today);
 
+    var todayI = now.getFullYear() + '-' + month + '-' + day;
+    $('#Fecha_Inicio').val(today);
+    var nowF = new Date();
+    var monthF = (nowF.getMonth() + 1);
+    var dayF = (nowF.getDate() + 1);
+    if (monthF < 10)
+        monthF = "0" + monthF;
+    if (dayF < 10)
+        dayF = "0" + dayF;
+    var todayF = now.getFullYear() + '-' + monthF + '-' + dayF;
+    $('#Fecha_Final').val(todayF);
+
+
+    var today11 = now.getFullYear() + '-' + month + '-' + day;
+    $('#fecha').val(today11);
+
    
 
     $.ajax(

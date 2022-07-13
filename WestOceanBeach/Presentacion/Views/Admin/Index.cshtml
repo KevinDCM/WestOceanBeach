@@ -66,7 +66,7 @@
 
         <!-- Sección Editar Home (Editar Home) -->
         <section id="Home_001" class="container" style="margin-block: 1em; background-color: white">
-            <div class="row">
+                 <div class="row">
                 <div class="col-sm-12">
                         <p class="new2">Ediciòn de la secciòn Home </p>
                         <textarea class="noteToAdd" id="homeedit" name="sitelink" rows="4" cols="70"> @ViewBag.home </textarea>
@@ -94,22 +94,19 @@
                 </td>
               </tr>
                 <tr>
-                <td></td>
                 <td>
                         <div class="row" align="right">
-                <div class="form-group" align="right">
-                        <div class="col-lg-12" align="right">
-                            <input class="btn btn-success" id="btnAceptHome" type="submit" value="Aceptar" onclick="updateHome()" style="background-color: #86b4ca;">
-                            <input class="btn btn-success" id="btnCancelHome" type="submit" value="Cancelar" onclick="document.getElementById('id03').style.display='block'" style="background-color: #86b4ca;">
+                           <div class="form-group" align="right">
+                                <div class="col-lg-12" align="right">
+                                    <input class="btn btn-success" id="btnAceptHome" type="submit" value="Aceptar" onclick="updateHome()" style="background-color: #86b4ca;">
+                                    <input class="btn btn-success" id="btnCancelHome" type="submit" value="Cancelar" onclick="document.getElementById('id03').style.display='block'" style="background-color: #86b4ca;">
+                                </div>
+                             </div>
                         </div>
-                    </div>
-                    </div>
-                    </div>
-
                 </td>
               </tr>
             </table>
-         
+          </div>
         </section>
                 
         <!-- Sección Editar Facilidades (Editar Facilidades) -->
@@ -361,7 +358,8 @@
         <div class="row">
             <div class="col-sm-10">
                 <p class="new2"> Estado del Hotel Hoy</p>
-                <input id="fecha" type="date" placeholder="dd/mm/yy" readonly>
+                 <label for="start">Fecha Actual:</label>
+                <input id="fecha" type="date" placeholder="dd/mm/yy" disabled >
                 <br>
                 <br>
                 <div class="col-sm-11">
@@ -396,16 +394,15 @@
                     <br>
                       <div class="row">
                           <div class="col-sm-4 col-xs  col-xs-well">
-                              <label for="start">Fecha de llegada:</label>
-                              <input type="date" id="myDateLlegada" name="trip-start">
+                              <label for="start">Fecha de llegada:</label> <br>
+                              <input type="date" id="myDateLlegada"  name="trip-start">
                           </div>
                           <div class="col-sm-4 col-xs-well">
-                              <label for="start">Fecha de salida:</label>
-                              <br>
+                              <label for="start">Fecha de salida:</label> <br>
                               <input type="date" id="myDateSalida" name="trip-start" >
                           </div>
                           <div class="col-sm-4 col-xs-well">
-                                <label for="start">Tipo de Habitaciòn:</label>
+                                <label for="start">Tipo de Habitaciòn:</label> <br>
 
                                     <select class="form-select" aria-label="Default select example" id="typeRoom">
                           
@@ -462,14 +459,12 @@
          <div class="row">
                 <div class="col-sm-4 col-xs  col-xs-well">
                     <label for="start">Fecha de Inicio:</label>
-                    <input type="date" id="myDateLlegada2" name="trip-start">
+                    <input type="date" min="2022-01-01"  id="myDateLlegada2" name="trip-start">
                            </div>
                            <div class="col-sm-4 col-xs-well">
 
                      <label for="start">Fecha de Fin:</label>
-                     <br>
-
-                    <input type="date" id="myDateSalida2" name="trip-start" >
+                    <input type="date" id="myDateSalida2" min="2022-01-01" name="trip-start" >
 
                     </div>
       </div>
@@ -569,14 +564,14 @@
                 </div>
                 <div class="col-sm-3 col-xs  col-xs-well">
                     <label for="start">Fecha de Inicio:</label>
-                    <input type="date" id="Fecha_Inicio" name="trip-start">
+                    <input type="date" id="Fecha_Inicio" min="2022-01-01" max="2022-12-31" name="trip-start">
                            </div>
                            <div class="col-sm-3 col-xs  col-xs-well">
 
                      <label for="start">Fecha de Fin:</label>
                      <br>
 
-                    <input type="date" id="Fecha_Final" name="trip-start" >
+                    <input type="date" id="Fecha_Final" min="2022-01-01" max="2022-12-31" name="trip-start" >
               
                     </div>
       </div>
