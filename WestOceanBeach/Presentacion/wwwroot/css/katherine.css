@@ -214,7 +214,5 @@ li {
 
 
 .saltos {
-    padding: 3em;
-    width: 22em;
-    overflow-wrap: break-word;
+    margin-top: 30px;
 }
