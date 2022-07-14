@@ -46,6 +46,22 @@ namespace Presentacion.Controllers
             return Ok(Habitaciones);
         }
 
+        
+        [HttpGet]
+        public async Task<IActionResult> ObtenerTarifaDiaria(Habitacion Habitacion)
+        {
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = await client.GetAsync(
+                "https://localhost:44386/Habitacion/ObtenerTarifaDiaria/" + Habitacion.CodigoTipoHabitacion);
+
+            string content = await response.Content.ReadAsStringAsync();
+
+            return Ok(content);
+        }
 
         [HttpPost]
         public async Task<IActionResult> ObtenerHabitacionesRangoFecha(string fechaLlegada, string fechaSalida)
@@ -92,6 +108,26 @@ namespace Presentacion.Controllers
             List<Habitacion> Habitaciones = JsonConvert.DeserializeObject<List<Habitacion>>(content);
 
             return Ok(Habitaciones);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> ValidarHabitacionDisponible([FromBody] Habitacion habitacion)
+        {
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            habitacion.fechaI = Convert.ToDateTime(habitacion.fechaIS);
+            habitacion.fechaF = Convert.ToDateTime(habitacion.fechaFS);
+
+            HttpResponseMessage response = await client.PostAsJsonAsync(
+                "https://localhost:44386/Habitacion/ValidarHabitacionDisponible", habitacion);
+
+            string resultado = await response.Content.ReadAsStringAsync();
+
+            return Ok(resultado);
         }
 
 

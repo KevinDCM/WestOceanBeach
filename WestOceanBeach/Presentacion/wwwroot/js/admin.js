@@ -1,9 +1,8 @@
 
 $(document).ready(function () {
 
+    cargarMantenimientoPublicidad();
     
-    
-    document.getElementById('myDateLlegada2').valueAsDate = new Date();
     var now = new Date();
     var month = (now.getMonth() + 1);
     var day = now.getDate();
@@ -12,8 +11,8 @@ $(document).ready(function () {
     if (day < 10)
         day = "0" + day;
     var today = now.getFullYear() + '-' + month + '-' + day;
-   // $('#myDateLlegada2').val(today);
-    document.getElementById("myDateLlegada2").min = today;
+
+
     var now2 = new Date();
     var month2 = (now2.getMonth() + 1);
     var day2 = (now2.getDate()+1);
@@ -22,21 +21,12 @@ $(document).ready(function () {
     if (day2 < 10)
         day2 = "0" + day2;
     var today2 = now.getFullYear() + '-' + month2 + '-' + day2;
-    
-    document.getElementById("myDateSalida2").min = today2;
-    $('#myDateSalida2').val(today2);
 
-    let tablaHabitaciones = document.getElementById("mytable");
-    tablaHabitaciones.setAttribute("hidden", "hidden");
-    var now = new Date();
-    var month = (now.getMonth() + 1);
-    var day = now.getDate();
-    if (month < 10)
-        month = "0" + month;
-    if (day < 10)
-        day = "0" + day;
-    var today = now.getFullYear() + '-' + month + '-' + day;
+    
+    $('#myDateLlegada').val(today);
+    $('#myDateSalida').val(today2);
     $('#myDateLlegada2').val(today);
+    $('#myDateSalida2').val(today2);
 
     var todayI = now.getFullYear() + '-' + month + '-' + day;
     $('#Fecha_Inicio').val(today);
@@ -115,17 +105,16 @@ $(document).ready(function () {
 
 
 
+    document.getElementById("loginadmin1").style.display = "none";
+    document.getElementById("mytable").style.display = "none";
 
 
 }); 
 
 
-
 function createOfertSpecial(){
 
-
     //pruebas de aceptacion faltan
-    
     
     var text = document.getElementById('myDateLlegada2');
     var fechaLLegada1 = text.value;
@@ -191,24 +180,10 @@ function createOfertSpecial(){
                     }
             });
 
-
-
-
-
     }
-
-    
- 
-
-
-    
-
-    
-
-
+   
 
 }
-
 
 
 function updateOfertSpecial() {
@@ -228,11 +203,8 @@ function updateOfertSpecial() {
     var descuento1 = text3.value;
     var id2 = document.getElementById('oferta').value;
 
-
-
     var e = document.getElementById("typeRoom2");
     var strUser = e.options[e.selectedIndex].value;
-
 
     if (strUser == "Tipo de Habitacion:" || trimfield(fechaLLegada1) == '' || trimfield(fechaSalida1) == '' || trimfield(descuento1) == '' || trimfield(id2) == '') {
 
@@ -242,10 +214,6 @@ function updateOfertSpecial() {
         modal.style.display = "block";
 
     } else {
-
-
-
-
 
         var date = $('#myDateLlegada2').val().split('-');
         var day = date[2];
@@ -257,15 +225,12 @@ function updateOfertSpecial() {
         var month2 = date2[1];
         var year2 = date2[0];
 
-
         var fechaInicio = year + "-" + month + "-" + day;
-
         var fechaFinal = year2 + "-" + month2 + "-" + day2;
 
         var descuento = document.getElementById('descount').value;
         var tipoHabitacion = $("#typeRoom2 option:selected").text();
         var id = document.getElementById('oferta').value;
-
 
         $.ajax(
             {
@@ -276,12 +241,10 @@ function updateOfertSpecial() {
                 success:
                     function (data) {
 
-
                         var aswer = document.getElementById('answer');
                         aswer.innerHTML = data.message;
                         var modal = document.getElementById("myModal");
                         modal.style.display = "block";
-
 
                     },
                 error:
@@ -290,13 +253,9 @@ function updateOfertSpecial() {
                     }
             });
 
-
-
     }
 
 }
-
-
 
 function OfertSpecialTipoHabitacion() {
 
@@ -305,12 +264,8 @@ function OfertSpecialTipoHabitacion() {
     
     //tipo habitacion no vaya vacio
 
-
-
-
     var e = document.getElementById("typeRoom2");
     var strUser = e.options[e.selectedIndex].value;
-
 
     if (strUser == "Tipo de Habitacion:") {
 
@@ -337,9 +292,6 @@ function OfertSpecialTipoHabitacion() {
 
                         $.each(data, function (key, item) {
 
-
-
-
                             addrow3(item.id, item.descuento, item.fecha_ini, item.fecha_fin, item.tipo_habitacion);
 
                         });
@@ -353,26 +305,17 @@ function OfertSpecialTipoHabitacion() {
                     }
             });
 
-
     }
-
 
 }
 
 
-
-
-
 function deleteOfertSpecial() {
-
 
     //pruebas de aceptacion faltan
     //id no venga vacio
 
-
-
     var id2 = document.getElementById('oferta').value;
-
 
     if (trimfield(id2) == '') {
 
@@ -394,12 +337,10 @@ function deleteOfertSpecial() {
                 success:
                     function (data) {
 
-
                         var aswer = document.getElementById('answer');
                         aswer.innerHTML = data.message;
                         var modal = document.getElementById("myModal");
                         modal.style.display = "block";
-
 
                     },
                 error:
@@ -410,12 +351,7 @@ function deleteOfertSpecial() {
 
     }
 
-
-
 }
-
-
-
 
 
 function uploadFile() {
@@ -446,8 +382,6 @@ function uploadFile() {
 }// uploadFile
 
 
-
-
 function habitacionesPorFecha() {
 
     var date = $('#myDateLlegada').val().split('-');
@@ -460,15 +394,11 @@ function habitacionesPorFecha() {
     var month2 = date2[1];
     var year2 = date2[0];
 
-
     var fechaLlegada = year + "-" + month + "-" + day ;
 
     var fechaSalida = year2 + "-" + month2 + "-" + day2 ;
-
-
    
     var typeRoom = $("#typeRoom option:selected").text();
-
 
     //hacer validacion pruebas aceptacion
 
@@ -479,119 +409,66 @@ function habitacionesPorFecha() {
     //5. fecha salida y llegada no pueden ir vacias
     //tipo no puede ir vacio
 
-
     var resultado = typeRoom.localeCompare("Todas");
 
-
-
-
-    if (resultado == 0) {
+    if (resultado === 0) {
         //llamar a las habitaciones disponibles todas sin importar el tipo
+        $.ajax({
+            type: 'POST',
+            dataType: 'JSON',
+            url: '/Habitacion/ObtenerHabitacionesRangoFecha',
+            data: { fechaLlegada: fechaLlegada, fechaSalida: fechaSalida},
+            success: function (data) {
 
-
-        $.ajax(
-            {
-                type: 'POST',
-                dataType: 'JSON',
-                url: '/Habitacion/ObtenerHabitacionesRangoFecha',
-                data: { fechaLlegada: fechaLlegada, fechaSalida: fechaSalida},
-                success:
-                    function (data) {
-
-                      
-                        $("#mytable td").parent().remove();
+                $("#mytable td").parent().remove();
                        
+                if (data) {
+                    // Generate HTML table.  
+                    $.each(data, function (key, item) {
+                        addrow2(item.numeroHabitacion, item.tipoHabitacion, item.tarifaDiaria);
+                        let element = document.getElementById("mytable");
+                        element.removeAttribute("hidden");
+                    });
 
-                        if (data) {
-                            
-                            // Generate HTML table.  
-                            $.each(data, function (key, item) {
-
-
-
-
-                                addrow2(item.numeroHabitacion, item.tipoHabitacion, item.tarifaDiaria);
-                                let element = document.getElementById("mytable");
-                                element.removeAttribute("hidden");
-
-                            });
-
-                        } else {
-
-                            alert("No se encontraron resultados");
-
-                        }
-                    },
-                error:
-                    function (response) {
-                        alert("Error: " + response);
-                    }
-            });
-
+                } else {
+                    alert("No se encontraron resultados");
+                }
+            },
+            error: function (response) {
+                alert("Error: " + response);
+            }
+        });
 
     } else {
+
         //llama a las habitaciones pero por tipo
-
-        
-
-        $.ajax(
-            {
-                type: 'POST',
-                dataType: 'JSON',
-                url: '/Habitacion/ObtenerHabitacionesRangoFechaTipo',
-                data: { fechaLlegada: fechaLlegada, fechaSalida: fechaSalida, typeRoom: typeRoom },
-                success:
-                    function (data) {
+        $.ajax({
+            type: 'POST',
+            dataType: 'JSON',
+            url: '/Habitacion/ObtenerHabitacionesRangoFechaTipo',
+            data: { fechaLlegada: fechaLlegada, fechaSalida: fechaSalida, typeRoom: typeRoom },
+            success: function (data) {
                        
-                        $('#mytable tbody > tr').remove();
+                $('#mytable tbody > tr').remove();
 
-                        if (data) {
-
+                if (data) {
                            
-                            
+                    $.each(data, function (key, item) {
+                        addrow2(item.numeroHabitacion, item.tipoHabitacion, item.tarifaDiaria);
+                        let element = document.getElementById("mytable");
+                        element.removeAttribute("hidden");
+                    });
 
-
-
-
-                            $.each(data, function (key, item) {
-
-
-
-
-                                addrow2(item.numeroHabitacion, item.tipoHabitacion, item.tarifaDiaria);
-                                let element = document.getElementById("mytable");
-                                element.removeAttribute("hidden");
-
-                            });
-                        } else {
-                          
-
-
-                            alert("No se encontraron respuestas");
-
-
-                        }
+                } else {
+                    alert("No se encontraron respuestas");
+                }
                         
-                    },
-                error:
-                    function (response) {
-                        alert("Error: " + response);
-                    }
-            });
-
-
-
+            },
+            error: function (response) {
+                    alert("Error: " + response);
+            }
+        });
     }
-
-
-
-    
-
-
-
-    
-
-
 }
 
 function cambiarImgHabitacionEstandar() {
@@ -698,7 +575,6 @@ function updateAboutUs() {
             });
     }
 }
-
 
 
 
@@ -1061,32 +937,59 @@ function addrow3(id,descuento,fI,FF, tipo) {
 
 function createPDF() {
 
-    var sTable = document.getElementById('estadoActual').innerHTML;
-console.log(sTable);
+    var now = new Date();
+    var month = (now.getMonth() + 1);
+    var day = now.getDate();
+    if (month < 10)
+        month = "0" + month;
+    if (day < 10)
+        day = "0" + day;
+    var today = 'Fecha:' + day + '-' + month + '-' + now.getFullYear();
 
-    var style = "<style>";
-    style = style + "table {width: 100%;font: 17px Calibri;}";
-    style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
-    style = style + "padding: 2px 3px;text-align: center;}";
-    style = style + "</style>";
+    var doc = new jsPDF('p', 'pt', 'letter');
+    var htmlstring = '';
+    var tempVarToCheckPageHeight = 0;
+    var pageHeight = 0;
+    pageHeight = doc.internal.pageSize.height;
+    specialElementHandlers = {
+        // element with id of "bypass" - jQuery style selector  
+        '#bypassme': function (element, renderer) {
+            // true = "handled elsewhere, bypass text extraction"  
+            return true
+        }
+    };
+    margins = {
+        top: 180,
+        bottom: 60,
+        left: 40,
+        right: 40,
+        width: 600
+    };
+    var y = 20;
+    doc.setLineWidth(2);
+    doc.text(200, y = y + 30, today.toString() + "\n" + "West Ocean Beach Resort Report"); 
+    doc.autoTable({
+        html: '#estadoActual',
+        startY: 70,
+        theme: 'grid',
+        columnStyles: {
+            0: {
+                cellWidth: 180,
+            },
+            1: {
+                cellWidth: 180,
+            },
+            2: {
+                cellWidth: 180,
+            }
+        },
+        styles: {
+            minCellHeight: 25
+        }
+    })
+    doc.save('Estado hotel hoy.pdf');
 
-console.log(style);
 
-
-    // CREATE A WINDOW OBJECT.
-    var win = window.open('', '', 'height=700,width=700');
-
-    win.document.write('<html><head>');
-    win.document.write('<title>Reporte del estado actual de las habitaciones</title>');   // <title> FOR PDF HEADER.
-    win.document.write(style);          // ADD STYLE INSIDE THE HEAD TAG.
-    win.document.write('</head>');
-    win.document.write('<body>');
-    win.document.write(sTable);         // THE TABLE CONTENTS INSIDE THE BODY TAG.
-    win.document.write('</body></html>');
-
-    win.document.close(); 	// CLOSE THE CURRENT WINDOW.
-
-    win.print();    // PRINT THE CONTENTS.
 }
 
 
@@ -1096,3 +999,149 @@ function replaceTable() {
     old_tbody.parentNode.replaceChild(new_tbody, old_tbody)
 }
 
+
+
+function RealizarIntercambio(){
+
+    // obtener valores de dropdowns  y hacer llamado ajax
+ 	var inactivo = $('#publi_inactivos').val();
+ 	var activo = $('#publi_activos').val();
+    var NombreEmpresa = inactivo;
+    var NombreEmpresa2 = activo;
+
+	$.ajax({
+        type: "POST", 
+        url: "/Publicidad/Edit",
+		data: JSON.stringify({ 
+			"NombreEmpresa": NombreEmpresa, 
+			"NombreEmpresa2" : NombreEmpresa2 
+		}),
+        contentType: "application/json",
+        success: function (result) {
+            alert("Hecho!");
+
+            // recargar valores de tabla y combos
+            cargarMantenimientoPublicidad();
+
+        },
+        error: function (result, status) {
+			console.log(result);
+		}
+	});
+
+    
+}
+
+function cargarMantenimientoPublicidad(){
+
+  // útil para el mantenimiento de la publicidad
+    $.ajax({
+				
+		url: "/Publicidad/GetAllPublicidad",
+		type: "GET",
+		contentType: "application/json;charset=utf-8",
+		dataType: "json",
+		success: function (result) {
+
+            var html = '';
+
+            $.each(result, function (key, item) {
+
+                html += '<tr>';
+                html += '<td>' + item.nombreEmpresa + '</td>';
+                var activo = "Activo";
+                var inactivo = "Inactivo";
+                if(item.activo === 1)
+                    html += '<td>' + activo + '</td>';
+                else
+                    html += '<td>' + inactivo + '</td>';
+                html += '</tr>';
+
+            });
+
+            $('.tbody12').html(html); 
+
+
+			var htmlS1 = ''; // elementos de publicidad inactiva
+			var htmlS2 = ''; // elementos de publicidad activa
+
+			$.each(result, function (key, item) {
+
+                if(item.activo === 0)
+				    htmlS1 += '<option>' + item.nombreEmpresa + '</option>';
+                else
+				    htmlS2 += '<option>' + item.nombreEmpresa + '</option>';
+
+			});
+
+			$('.sbody1').html(htmlS1);
+			$('.sbody2').html(htmlS2);
+
+
+
+
+            $.ajax({
+                url:  "/Admin/estadoActualHabitaciones",
+		        type: "GET",
+		        contentType: "application/json;charset=utf-8",
+		        dataType: "json",
+                success: function (result) {
+
+                    $.each(result, function (key, item) {
+                        addrow(item.numeroHabitacion, item.tipoHabitacion, item.encuentra);
+                    });
+
+                    $.ajax({
+                        type: "POST",
+                        dataType: 'JSON',
+                        url: "/Oferta/ObtenerOfertasEspecialesGeneral",
+                        success: function (result) {
+
+                            $.each(result, function (key, item) {
+                                addrow3(item.id, item.descuento, item.fecha_ini, item.fecha_fin, item.tipo_habitacion);
+                            });
+                        },
+                        error: function (xhr, statusText, err) {
+                            alert("error" + xhr.status);
+                        }
+                        });
+                },
+                error: function (xhr, statusText, err) {
+                    alert("error" + xhr.status);
+                }
+            });
+
+
+
+
+
+		},
+		error: function (errorMessage) {
+			alert(errorMessage.responseText);
+		}
+
+	});
+
+}
+
+function Logout(){
+
+	$.ajax({
+				
+		url: "/Login/Logout",
+		type: "GET",
+		contentType: "application/json;charset=utf-8",
+		dataType: "json",
+		success: function (result) {
+					
+            // se marca admin actual como inactivo en BD, y se vuelve al login administrativo
+           var url = 'https://localhost:44343/Login';
+                window.location.href = url;
+
+		},
+		error: function (errorMessage) {
+			alert(errorMessage.responseText);
+		}
+	});
+
+}

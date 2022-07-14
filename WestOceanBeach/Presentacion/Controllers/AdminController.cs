@@ -120,10 +120,9 @@ namespace Presentacion.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task< IActionResult> estadoActualHabitaciones()
         {
-
 
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
@@ -132,17 +131,14 @@ namespace Presentacion.Controllers
             string resultado = await response5.Content.ReadAsStringAsync();
             List<Habitacion> estadoHabitaciones = JsonConvert.DeserializeObject<List<Habitacion>>(resultado);
 
-
-        
             return Ok(estadoHabitaciones);
-
 
         }
 
 
 
 
-            [HttpPost]
+        [HttpPost]
         public async Task<ActionResult> EditarFacilidades(string facilidades)
         {
             SitioGeneral sitio = new SitioGeneral();

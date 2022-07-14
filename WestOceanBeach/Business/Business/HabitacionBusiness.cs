@@ -8,7 +8,12 @@ namespace Business.Business
 {
     public class HabitacionBusiness
     {
-        private static HabitacionData dataHabitacion = new HabitacionData();
+        private HabitacionData dataHabitacion;
+
+        public HabitacionBusiness()
+        {
+            dataHabitacion = new HabitacionData();
+        }
 
         public List<Habitacion> ObtenerHabitacionesDisponibles(int tipoHabitacion)
         {
@@ -29,6 +34,11 @@ namespace Business.Business
 
         }
 
+        public float ObtenerTarifaDiaria(int tipoHabitacion)
+        {
+            return dataHabitacion.ObtenerTarifaDiaria(tipoHabitacion);
+
+        }
 
         public string obtenerHabitacionesTemporada()
         {
@@ -66,5 +76,9 @@ namespace Business.Business
             return dataHabitacion.estadoActualHabitacion();
     }//
 
+        public string ValidarHabitacionDisponible(Habitacion habitacion)
+        {
+            return dataHabitacion.ValidarHabitacionDisponible(habitacion);
+        }
     }
 }

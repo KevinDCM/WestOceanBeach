@@ -1,0 +1,110 @@
+@model Entities.Entities.Administrador
+
+@{
+    ViewData["Title"] = "West Ocean Beach Admin Login - ";
+}
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="https://i.postimg.cc/Qxvj8K4q/logo.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<div class="container">
+
+    <div id="loginadmin0" style="">
+
+     <h4>Ingrese las credenciales de administrador:</h4>
+
+	<input autocomplete="off" type="text" name="nombre_usuario" id="nombre_usuario" class="form-control" placeholder="Nombre de usuario" required>
+	
+	<input autocomplete="off" type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+	
+    <br/>
+
+    <img src="https://i.postimg.cc/Gpr1Rtth/Captura.png" alt="security" width="200" height="100">
+	<button style="color: white; background-color:green;" class="submit-btn form-control" id="buttonLogin" onclick="return Login()"> Validar -></button>
+  
+    </div>
+
+    <div id="loginadmin1" style="background-color:green; height: 100px; top:300px">
+  
+        <p style="text-align: center !important; color: white">
+            <img src="https://i.postimg.cc/VsXZcrw6/1019092-200.png" alt="security" width="170" height="100">
+            <a style="text-align: center !important; color: white"  asp-controller="Admin" asp-action="Index" >Acceder</a>
+            @*redireccionar a vista Admin*@
+        </p>
+            
+    </div>
+  
+</div>
+
+
+<script>
+
+$(document).ready(function () {
+   
+    document.getElementById("loginadmin1").style.display = "none";
+}); 
+
+function Login(){
+
+    if (document.getElementById("nombre_usuario").value.length == 0
+        || document.getElementById("password").value.length == 0){
+        alert("Credenciales incompletas!");
+        return;
+    }
+
+	var NombreUsuario = $('#nombre_usuario').val();
+	var Password = $('#password').val();
+
+    // validar en base de datos si las credenciales ingresadas son correctas 
+    // si no hay ningun admin activo, marcar como activo y mostrar div oculto
+
+        $.ajax({
+			type: "POST", 
+			url: "/Login/Login",
+			data: JSON.stringify({ 
+				"NombreUsuario": NombreUsuario, 
+				"Password" : Password
+			}),
+			contentType: "application/json",
+			success: function (result) {
+
+			    respuesta = result;
+
+			    if (respuesta === "\"Si\""){
+
+                    alert('Ingreso correcto!');
+                    document.getElementById("loginadmin0").style.display = "none";
+                    document.getElementById("buttonLogin").style.display = "none";
+	                document.getElementById("loginadmin1").style.display = "";
+
+                }  else {
+
+                    if (respuesta === "\"otro\""){
+                        alert("Ya se encuentra otro administrador activo!");
+                    }
+
+                    if (respuesta === "\"No\""){
+                        alert("Credenciales incorrectas!");
+                    }
+                    
+                    if (respuesta === "\"again\""){
+                        alert("Bienvenido nuevamente " + NombreUsuario + "!");
+                        document.getElementById("loginadmin0").style.display = "none";
+                        document.getElementById("buttonLogin").style.display = "none";
+	                    document.getElementById("loginadmin1").style.display = "";
+                    }
+                }
+					
+			},
+			error: function (result, status) {
+				console.log(result);
+			}
+		});
+}
+
+</script>

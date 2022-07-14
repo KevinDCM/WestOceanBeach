@@ -1,6 +1,6 @@
 ﻿
 body {
-    background-image: url(" https://blogapi.uber.com/wp-content/uploads/2019/04/Playa-Jac%C3%B3.png");
+    background-image: url(" https://blogapi.uber.com/wp-content/uploads/2019/04/Playa-Jac%C3%B3.png") no-repeat;
     //background-color: #cccccc;
     width: 100%;
 }
@@ -68,7 +68,6 @@ p.new {
     font-size: large;
     text-align: center;
     font-size: 42px;
-    text-shadow: 7px 4px 5px #3498DB;
     width: 100%;
 }
 
@@ -76,7 +75,6 @@ p.new2 {
     font-family: new times roman;
     text-align: left;
     font-size: 32px;
-    text-shadow: 7px 4px 5px #3498DB;
 }
 
 
@@ -86,7 +84,6 @@ p.new3 {
     font-size: large;
     text-align: center;
     font-size: 24px;
-    text-shadow: 7px 4px 5px #3498DB;
     width: 100%;
 }
 
@@ -142,7 +139,6 @@ hr.menu {
 ul.menuVert1 {
     list-style: none;
     text-align: center;
-    text-shadow: 2px 2px 4px #3498Db;
     padding: 0;
     width: 100%;
 
@@ -218,7 +214,5 @@ li {
 
 
 .saltos {
-    padding: 3em;
-    width: 22em;
-    overflow-wrap: break-word;
+    margin-top: 30px;
 }

@@ -66,6 +66,65 @@ namespace AccessData.Data
 
         }
 
+        public float ObtenerTarifaDiaria(int tipoHabitacion)
+        {
+            // call stored procedure here...
+            float result = 0;
+
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("SP_getMontoACancelar", sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+            // adjuntar parámetros del procedimiento almacenado
+            sqlCommand.Parameters.AddWithValue("@tipoHabitacion", tipoHabitacion);
+
+            sqlCommand.ExecuteNonQuery();
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            {
+                DataTable dt = new DataTable();
+                dt.Dispose();
+                adapter.Fill(dt);
+
+                result = (float)Convert.ToDouble(dt.Rows[0]["TARIFA_DIARIA"]);
+
+            };
+
+            sqlConnection.Close();
+
+            return result;
+        }
+
+        public string ValidarHabitacionDisponible(Habitacion habitacion)
+        {
+            // call stored procedure here...
+            string salida = "No";
+
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("SP_ValidarHabitacionDisponible", sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+            // adjuntar parámetros del procedimiento almacenado
+            sqlCommand.Parameters.AddWithValue("@param_fechaIS", habitacion.fechaIS);
+            sqlCommand.Parameters.AddWithValue("@param_fechaFS", habitacion.fechaFS);
+            sqlCommand.Parameters.AddWithValue("@numHabitacion", habitacion.NumeroHabitacion);
+
+            sqlCommand.ExecuteNonQuery();
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            {
+                DataTable dt = new DataTable();
+                dt.Dispose();
+                adapter.Fill(dt);
+
+                salida = Convert.ToString(dt.Rows[0]["RESPONSE"]);
+
+            };
+
+            sqlConnection.Close();
+
+            return salida;
+        }
 
         public List<Habitacion> ObtenerHabitacionesDisponiblesPorFecha(Habitacion habitacion)
         {
@@ -113,14 +172,8 @@ namespace AccessData.Data
             sqlConnection.Close();
          
             return habitaciones;
-  
 
         }
-
-
-
-
-
 
         public List<Habitacion> ObtenerHabitacionesDisponibles(int tipoHabitacion)
         {
@@ -129,20 +182,11 @@ namespace AccessData.Data
             sqlCommand = new SqlCommand("SP_buscarHabitaciones", sqlConnection);
             sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
 
-            DateTime fechaI = Convert.ToDateTime("2022-05-20");
-            DateTime fechaF = Convert.ToDateTime("2022-05-21");
 
-            sqlCommand.Parameters.AddWithValue("@fechaI", fechaI);
-            sqlCommand.Parameters.AddWithValue("@fechaF", fechaF);
-            sqlCommand.Parameters.AddWithValue("@fechaIS", "");
-            sqlCommand.Parameters.AddWithValue("@fechaFS", "");
             sqlCommand.Parameters.AddWithValue("@tipoHabitacion", tipoHabitacion);
             sqlCommand.ExecuteNonQuery();
 
             List<Habitacion> Habitaciones = new List<Habitacion>();
-
-
-
 
 
             using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
@@ -167,7 +211,6 @@ namespace AccessData.Data
             };
 
             sqlConnection.Close();
-
             return Habitaciones;
         }
 
@@ -216,7 +259,6 @@ namespace AccessData.Data
                 var fechaInAlta2 = fechaIniAlta2.ToShortDateString();
                 var fechaFnAlta2 = fechaFinAlta2.ToShortDateString();
 
-
                 string imagen3 = dt.Rows[2]["imagen"].ToString();
                 string habitacion3 = dt.Rows[2]["HABITACION"].ToString();
                 string precioTempBaja3 = dt.Rows[2]["PRECIOTEMPORADABAJA"].ToString();
@@ -247,7 +289,6 @@ namespace AccessData.Data
 
         public Habitacion Habitacion_Junior()
         {
-
             sqlConnection.Open();
             sqlCommand = new SqlCommand("SP_HABITACIONES_JUNIOR", sqlConnection);
             sqlCommand.ExecuteNonQuery();
@@ -260,11 +301,9 @@ namespace AccessData.Data
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-
                     DataRow dr = dt.Rows[i];
                     string[] allColumns = dr.ItemArray.Select(obj => obj.ToString()).ToArray();
                     ArrayList itm = new ArrayList(allColumns);
-
 
                     string Descripcion = Convert.ToString(dt.Rows[i]["DESCRIPCION"]);
                     string Ruta_Imagen = Convert.ToString(dt.Rows[i]["RUTA_IMAGEN"]);
@@ -273,8 +312,6 @@ namespace AccessData.Data
                     tipo_junior.Descripcion = Descripcion;
                     tipo_junior.ruta_imagen = Ruta_Imagen;
                     tipo_junior.TarifaDiaria = TarifaDiaria;
-
-
 
                 }
             }
@@ -287,7 +324,6 @@ namespace AccessData.Data
 
         public Habitacion Habitacion_Suite()
         {
-
             sqlConnection.Open();
             sqlCommand = new SqlCommand("[SP_HABITACIONES_SUITE]", sqlConnection);
             sqlCommand.ExecuteNonQuery();
@@ -300,11 +336,9 @@ namespace AccessData.Data
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-
                     DataRow dr = dt.Rows[i];
                     string[] allColumns = dr.ItemArray.Select(obj => obj.ToString()).ToArray();
                     ArrayList itm = new ArrayList(allColumns);
-
 
                     string Descripcion = Convert.ToString(dt.Rows[i]["DESCRIPCION"]);
                     string Ruta_Imagen = Convert.ToString(dt.Rows[i]["RUTA_IMAGEN"]);
@@ -313,8 +347,6 @@ namespace AccessData.Data
                     tipo_suite.Descripcion = Descripcion;
                     tipo_suite.ruta_imagen = Ruta_Imagen;
                     tipo_suite.TarifaDiaria = TarifaDiaria;
-
-
 
                 }
             }
@@ -326,7 +358,6 @@ namespace AccessData.Data
 
         public Habitacion Habitacion_Estandar()
         {
-
             sqlConnection.Open();
             sqlCommand = new SqlCommand("[SP_HABITACIONES_ESTANDAR]", sqlConnection);
             sqlCommand.ExecuteNonQuery();
@@ -344,7 +375,6 @@ namespace AccessData.Data
                     string[] allColumns = dr.ItemArray.Select(obj => obj.ToString()).ToArray();
                     ArrayList itm = new ArrayList(allColumns);
 
-
                     string Descripcion = Convert.ToString(dt.Rows[i]["DESCRIPCION"]);
                     string Ruta_Imagen = Convert.ToString(dt.Rows[i]["RUTA_IMAGEN"]);
                     decimal TarifaDiaria = Convert.ToDecimal(dt.Rows[i]["TARIFA_DIARIA"]);
@@ -352,8 +382,6 @@ namespace AccessData.Data
                     tipo_estandar.Descripcion = Descripcion;
                     tipo_estandar.ruta_imagen = Ruta_Imagen;
                     tipo_estandar.TarifaDiaria = TarifaDiaria;
-
-
 
                 }
             }
@@ -379,7 +407,6 @@ namespace AccessData.Data
                 salida = "Se edito el tipo de habitacion con exito!";
             }
 
-
             sqlConnection.Close();
 
             return salida;
@@ -397,7 +424,6 @@ namespace AccessData.Data
             int rowAfected = sqlCommand.ExecuteNonQuery();
             if (rowAfected == 1)
             {
-
                 salida = "Se edito la imagen correctamente!";
             }// if
 
@@ -408,8 +434,6 @@ namespace AccessData.Data
 
         public List<Habitacion> estadoActualHabitacion()
         {
-
-
             sqlConnection.Open();
             sqlCommand = new SqlCommand("estado_actual_habitacion", sqlConnection);
             sqlCommand.ExecuteNonQuery();
@@ -421,16 +445,9 @@ namespace AccessData.Data
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
 
-               
-            
-
-
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-
                     DataRow dr = dt.Rows[i];
-                    
-
 
                     int numero = Convert.ToInt32(dt.Rows[i]["Numero"]);
                     string tipo = Convert.ToString(dt.Rows[i]["Tipo"]);
@@ -442,10 +459,6 @@ namespace AccessData.Data
                     habitacionTemp.TipoHabitacion = tipo;
                     habitacionTemp.Encuentra= estado;
                     habitaciones.Add(habitacionTemp);
-
-                  
-
-
 
                 }
             }

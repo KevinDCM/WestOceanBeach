@@ -16,6 +16,13 @@ namespace API.Controllers
             return new HabitacionBusiness().ObtenerHabitacionesDisponibles(tipoHabitacion);
         }
 
+        
+        [HttpGet]
+        [Route("ObtenerTarifaDiaria/{tipoHabitacion}")]
+        public float ObtenerTarifaDiaria(int tipoHabitacion)
+        {
+            return new HabitacionBusiness().ObtenerTarifaDiaria(tipoHabitacion);
+        }
 
         [HttpPost]
         [Route("ObtenerHabitacionesDisponiblesPorFechaTipo")]
@@ -77,13 +84,20 @@ namespace API.Controllers
             return new HabitacionBusiness().editarHabitacionImagen(habitacion);
         }//
 
-       
 
+        [HttpGet]
         [Route("estadoActualHabitacion")]
         public List<Habitacion> estadoActualHabitacion()
         {
             return new HabitacionBusiness().estadoActualHabitacion();
         }// fin m
+
+        [HttpPost]
+        [Route("ValidarHabitacionDisponible")]
+        public string ValidarHabitacionDisponible(Habitacion habitacion)
+        {
+            return new HabitacionBusiness().ValidarHabitacionDisponible(habitacion);
+        }
 
 
     }

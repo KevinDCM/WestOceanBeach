@@ -76,7 +76,7 @@ namespace AccessData.Data
 
                     Oferta OFERTA = new Oferta();
                     OFERTA.Id= IDOferta;
-                    OFERTA.cantidad_personas = 0;
+                    OFERTA.cantidad_dias = 0;
                     OFERTA.descuento = (int)Math.Ceiling(DESCUENTO);
                     OFERTA.fecha_ini = FECHA_INICIO.ToString("dd/MM/yyyy");
                     OFERTA.fecha_fin = FECHA_FINAL.ToString("dd/MM/yyyy");
@@ -125,7 +125,7 @@ namespace AccessData.Data
 
                     Oferta OFERTA = new Oferta();
                     OFERTA.Id = IDOferta;
-                    OFERTA.cantidad_personas = 0;
+                    OFERTA.cantidad_dias = 0;
                     OFERTA.descuento = (int)Math.Ceiling(DESCUENTO);
                     OFERTA.fecha_ini = FECHA_INICIO.ToString("dd/MM/yyyy");
                     OFERTA.fecha_fin = FECHA_FINAL.ToString("dd/MM/yyyy");
@@ -239,9 +239,10 @@ namespace AccessData.Data
                     DateTime FECHA_INICIO = Convert.ToDateTime(dt.Rows[i]["FECHA_INICIO"]);
                     DateTime FECHA_FINAL = Convert.ToDateTime(dt.Rows[i]["FECHA_FINAL"]);
                     string TIPOHABITACION = Convert.ToString(dt.Rows[i]["TIPO_HABITACION"]);
+                    int cantDias = Convert.ToInt32(dt.Rows[i]["CANTIDAD_DIAS"]);
 
                     Oferta OFERTA = new Oferta();
-                    OFERTA.cantidad_personas = 0;
+                    OFERTA.cantidad_dias = cantDias;
                     OFERTA.descuento = (int)Math.Ceiling(DESCUENTO);
                     OFERTA.fecha_inicio = FECHA_INICIO;
                     OFERTA.fecha_final = FECHA_FINAL;

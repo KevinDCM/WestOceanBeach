@@ -9,12 +9,10 @@ namespace Entities.Entities
         public int numReserva { get; set; }  // lo define la BD
 
         public DateTime fechaI { get; set; }  // lo define el usuario
-
         public DateTime fechaF { get; set; }  // lo define el usuario
-
-        // DateTime to string
         public string fechaIS { get; set; }
         public string fechaFS { get; set; }
+        public int NumHabitacion { get; set; }
 
         public string Cedula { get; set; }
         public string Nombre { get; set; }
@@ -26,15 +24,14 @@ namespace Entities.Entities
         public string Direccion { get; set; }
         public string Nacionalidad { get; set; }
 
-
-        // suma las tarifas diarias de las habitaciones escogidas
-        public float CostoSinDescuento { get; set; }
-        public float CostoFinal { get; set; } // lo define la BD, hace el descuento según temporada actual y/o la oferta
-        public List<Habitacion> Habitaciones { get; set; }  // las define el usuario (funcionalidad tipo carrito compras)
-        public string ListHabitaciones { get; set; }
-        public int Num_TarjetaCredito { get; set; }  // a modo simulación, no se guarda en BD
+        // suma la tarifa diaria de las habitaciones escogidas, de acuerdo a cantidad de días
+        public float PrecioTotal { get; set; }
+        public float Descuento { get; set; }
+        public float PrecioFinal { get; set; } // lo define la BD, hace el descuento según temporada actual y/o la oferta
+        public int NumTarjetaCredito { get; set; }  // a modo simulación, no se guarda en BD
 
         public int IdOFerta { get; set; }
+        public string Temporada { get; set; }
 
     }
 

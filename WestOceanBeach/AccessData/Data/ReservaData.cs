@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 
 namespace AccessData.Data
@@ -45,8 +47,12 @@ namespace AccessData.Data
             sqlCommand.Parameters.AddWithValue("@fechaF", reserva.fechaF);
             sqlCommand.Parameters.AddWithValue("@fechaIS", reserva.fechaIS);
             sqlCommand.Parameters.AddWithValue("@fechaFS", reserva.fechaFS);
-            sqlCommand.Parameters.AddWithValue("@listaHabitacionesEscogidas", reserva.ListHabitaciones);
+            sqlCommand.Parameters.AddWithValue("@numHabitacion", reserva.NumHabitacion);
             sqlCommand.Parameters.AddWithValue("@param_IdOferta", reserva.IdOFerta);
+            sqlCommand.Parameters.AddWithValue("@param_Temporada", reserva.Temporada);
+            sqlCommand.Parameters.AddWithValue("@costototal", reserva.PrecioTotal);
+            sqlCommand.Parameters.AddWithValue("@descuento", reserva.Descuento);
+
 
             sqlCommand.ExecuteNonQuery();
 
@@ -59,7 +65,82 @@ namespace AccessData.Data
             };
             sqlConnection.Close();
 
+            enviarCorreo(reserva.Correo, "Bienvenido a Hotel West Ocean Beach Resort",
+                "Estimado(a) " + reserva.Nombre + " " + reserva.PrimerApellido + " " + reserva.SegundoApellido + ", esto es una notificación de reserva realizada, desde " + reserva.fechaIS + " hasta " + reserva.fechaFS + " donde ocupará la habitación #" + reserva.NumHabitacion + ". Su precio final fue de: $" + reserva.PrecioFinal);
+
             return salida;
+        }
+
+        public bool enviarCorreo(string destinatario, string asunto, string contenidoMsj)
+        {
+
+            var client = new SmtpClient("smtp.mailtrap.io", 2525)
+            {
+                Credentials = new NetworkCredential("2ea82bed3cdd10", "4024f0dc586c86"),
+                EnableSsl = true
+            };
+
+            try
+            {
+                client.Send("bwestocean@gmail.com", destinatario, asunto, contenidoMsj);
+
+                return true;
+            }
+            catch (SmtpException e)
+            {
+                Console.WriteLine("eror");
+            }
+
+            return false;
+
+
+            /*
+
+            // forma 1
+             MailMessage message = new MailMessage();
+             SmtpClient smtp = new SmtpClient();
+             message.From = new MailAddress("bwestocean@gmail.com");
+             message.To.Add(new MailAddress(correoEnviar));
+             message.Subject = asunto;
+             message.Body = contenidoMsj;
+             smtp.Port = 587;
+             smtp.Host = "smtp.gmail.com"; //for gmail host  
+             smtp.EnableSsl = true;
+             smtp.UseDefaultCredentials = false;
+             smtp.Credentials = new NetworkCredential("bwestocean@gmail.com", "West.2022");
+             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+
+
+            // forma 2
+             Mensaje mensaje = new Mensaje();
+             mensaje.Para = correoEnviar;
+             mensaje.De = "bwestocean@gmail.com";
+             mensaje.Asunto = asunto;
+             mensaje.Cuerpo = contenidoMsj;
+
+             MailMessage ms = new MailMessage(mensaje.De, mensaje.Para);
+             ms.Subject = mensaje.Asunto;
+             ms.Body = mensaje.Cuerpo;
+
+             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);//protocolo de envio
+             smtp.UseDefaultCredentials = false;
+
+             smtp.Credentials = new NetworkCredential("bwestocean@gmail.com", "West.2022");
+             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+             smtp.EnableSsl = true;
+
+
+            try
+            {
+                smtp.Send(message);
+                return true;
+            }
+            catch (SmtpException e)
+            {
+                Console.WriteLine("eror");
+            }
+             */
+
         }
     }
 }
