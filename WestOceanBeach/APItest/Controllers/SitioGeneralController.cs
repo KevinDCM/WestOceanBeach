@@ -83,6 +83,20 @@ namespace API.Controllers
             return new SitioGeneralBusiness().ObtenerImagenesHome();
         }
 
+        [HttpPost]
+        [Route("Login")]
+        public string Login(Login login)
+        {
+            return new SitioGeneralBusiness().Login(login);
+        }
+
+        [HttpGet]
+        [Route("Logout")]
+        public string Logout( )
+        {
+            return new SitioGeneralBusiness().Logout();
+        }
+
     }// fin clase
 
 }

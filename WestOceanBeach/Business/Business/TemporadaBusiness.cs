@@ -27,5 +27,10 @@ namespace Business.Business
 
         }
 
+        public Temporada GetTemporadaActual() 
+        {
+            return temporadadata.GetTemporadaActual();
+        }
+
     }
 }

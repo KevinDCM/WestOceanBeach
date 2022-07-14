@@ -81,6 +81,7 @@ namespace Presentacion.Controllers
 
             ViewBag.Facilidades = sitioGeneralF.FACILIDADES;
 
+
             // Ofertas que se muestran en el header (top 5)
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
@@ -91,22 +92,22 @@ namespace Presentacion.Controllers
 
             List<Oferta> ofertas = JsonConvert.DeserializeObject<List<Oferta>>(resultado02);
 
-            string top5_ofertas = "| ";
+            string top_ofertas = "| ";
 
             for(int i=0; i<ofertas.Count; i++)
             {
 
-                top5_ofertas += "Oferta  #" + (i+1) + 
+                top_ofertas += "Oferta  #" + (i+1) + 
                 ", Habitación: " + ofertas[i].tipo_habitacion +
                 ", Descuento: " + ofertas[i].descuento +
-                "%, Inicia: " + ofertas[i].fecha_inicio +
-                ", Finaliza: " + ofertas[i].fecha_final;
-                // top5_ofertas +=", Cantidad de personas: " + ofertas[i].cantidad_personas;
+                "%, Inicio oferta: " + ofertas[i].fecha_inicio +
+                ", Fin oferta: " + ofertas[i].fecha_final +
+                ", Cantidad de noches: " + ofertas[i].cantidad_dias;
 
-                top5_ofertas += "  |  ";
+                top_ofertas += "  |  ";
             }
 
-            @ViewBag.top5_Ofertas = top5_ofertas;
+            @ViewBag.top5_Ofertas = top_ofertas;
 
 
             // Tarifas de habitaciones según Temporada
@@ -147,7 +148,7 @@ namespace Presentacion.Controllers
             @ViewBag.fechaTermAlta3 = habitaciones[24];
 
 
-            // PUBLICIDAD   (programado para mostrar 4 elementos publicitarios)
+            // PUBLICIDAD   (programado para mostrar solo 4 elementos publicitarios)
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));

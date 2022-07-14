@@ -109,6 +109,37 @@ namespace AccessData.Data
         }
 
 
+        //[SP_obtenerTemporadaActual]
+        public Temporada GetTemporadaActual()
+        {
+
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("SP_obtenerTemporadaActual", sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+            Temporada temporada = new Temporada();
+
+            sqlCommand.ExecuteNonQuery();
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            {
+
+                DataTable dt = new DataTable(); 
+                adapter.Fill(dt);
+
+                string tipoTemporada = dt.Rows[0]["TIPO_TEMPORADA"].ToString();
+                float descuento = Convert.ToInt32(dt.Rows[0]["DESCUENTO_TEMPORADA"]);
+
+                temporada.descuento_temporada = (int)descuento;
+                temporada.tipo_temporada = tipoTemporada;
+
+            };
+
+            sqlConnection.Close();
+
+            return temporada;
+        }
+
     }// fin clase
 
 }// fin

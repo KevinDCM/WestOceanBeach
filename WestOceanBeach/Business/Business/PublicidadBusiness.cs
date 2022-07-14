@@ -14,5 +14,17 @@ namespace Business.Business
         {
             return dataPublicidad.getPublicidadActiva();
         }
+
+        public List<Publicidad> GetAll()
+        {
+            return dataPublicidad.GetAll();
+
+        }
+
+        public string Edit(Publicidad publicidad)
+        {
+            return dataPublicidad.Edit(publicidad);
+
+        }
     }
 }

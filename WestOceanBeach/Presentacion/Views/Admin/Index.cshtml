@@ -1,7 +1,7 @@
 @model  Entities.Entities.SitioGeneral
 
 @{
-    ViewData["Title"] = "Admin Module";
+    ViewData["Title"] = "West OB Administrator Module --";
 }
 
     <head>
@@ -25,18 +25,18 @@
     <!-- Menú principal y publicidad -->
     <section id="inicio_01" class="container" style="margin-block: 1em; background-color: white">
         <div class="col-sm-10">
-            <div id="sidebar-menu" class="col-sm-2" style="width:100%" >
+            <div id="sidebar-menu" class="col-sm-2" style="width:100%; overflow:auto;" >
                 <div id="header001" >
                     <div class="dropdown">
-                        <button class="mainmenubtn">Menù Principal</button>
+                        <button class="mainmenubtn">Menú Principal</button>
                         <div class="dropdown-child">
                             <a href="#inicio_01">Home</a>
-                            <a href="">Modificar Pàginas</a>
-                            <a href="">Listado de Reservaciones</a>
+                            <a href="#Home_001">Modificar Páginas</a>
+                            <a href="#listadoReservas1">Listado de Reservaciones</a>
                              <a href="#modificarHabitacion">Administrar Habitaciones</a>
-                            <a href="">Ver Estado del Hotel Hoy</a>
-                            <a href="">Disponibilidad de Habitaciones</a>
-                            <a href="">Publicidad</a>
+                            <a href="#EstadoActualHabitaciones">Ver Estado del Hotel Hoy</a>
+                            <a href="#inicio_01">Disponibilidad de Habitaciones</a>
+                            <a href="#mantpublicidad">Publicidad</a>
                         </div>
                     </div>
 
@@ -53,13 +53,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <p class="msjBienvenida">
-                    <center> <p class="admin01"> Mòdulo Administrativo</p> </center>
+                    <center> <p class="admin01"> Módulo Administrativo</p> </center>
                     <center> <p class="admin01"> West Ocean Beach Administrator Module</p> </center>
-                    <center> <p class="admin02">Use this page for the administrator changes and login/logout</p>  </center>
-                    <center> <a href="#inicio_01"; class="admin02" style="color:black;">Home</a><br> </center>
-                    <center> <a href="#sobre_nosotros_01"; class="admin02" style="color:black;">Sobre Nosotros</a><br> </center>
-                    <center> <a href="#Facilidades_01" ; class="admin02" style="color:black;">Facilidades</a><br> </center>
-                    <center> <a href="#como_llegar_01"; class="admin02" style="color:black;">Como Llegar</a><br> </center>
+                    <center> <a href="#inicio_01"; class="admin02" style="text-decoration: underline;color:black;">Home</a><br> </center>
+                    <center> <a href="#acercade_01"; class="admin02" style="text-decoration: underline;color:black;">Sobre Nosotros</a><br> </center>
+                    <center> <a href="#Facilidades_01" ; class="admin02" style="text-decoration: underline;color:black;">Facilidades</a><br> </center>
+                    <center> <a href="#como_llegar_01"; class="admin02" style="text-decoration: underline;color:black;">Cómo Llegar</a><br> </center>
                 </div>
             </div>
         </section>
@@ -68,7 +67,7 @@
         <section id="Home_001" class="container" style="margin-block: 1em; background-color: white">
             <div class="row">
                 <div class="col-sm-12">
-                        <p class="new2">Ediciòn de la secciòn Home </p>
+                        <p class="new2">Edición de la sección Home </p>
                         <textarea class="noteToAdd" id="homeedit" name="sitelink" rows="4" cols="70"> @ViewBag.home </textarea>
                 </div>
                 <table style="width:100%">
@@ -116,7 +115,7 @@
         <section id="Facilidades_01" class="container" style="margin-block: 1em; background-color: white">
             <div class="row">
                 <div class="col-sm-10">
-                        <p class="new2"> Ediciòn de la secciòn Facilidades </p>
+                        <p class="new2"> Edición de la sección Facilidades </p>
                         <textarea class="noteToAdd" id="facilities" name="sitelink" rows="10" cols="70">@ViewBag.Facilidades </textarea>
                         <div class="form-group">
                         <div class="col-lg-6">
@@ -132,7 +131,7 @@
         <section id="como_llegar_01" class="container" style="margin-block: 1em; background-color: white">
             <div class="row">
                 <div class="col-sm-10">
-                    <p class="new2"> Ediciòn de la sección Cómo llegar </p>
+                    <p class="new2"> Edición de la sección Cómo llegar </p>
                     <textarea class="noteToAdd" id="comollegarr" name="sitelink" rows="10" cols="70">@ViewBag.comollegar </textarea>
                     <div class="form-group">
                         <div class="col-lg-6">
@@ -149,7 +148,7 @@
             <div class="row">
                 <div class="col-sm-10">
                     <div id="acercaDe">
-                        <p class="new2"> Ediciòn de la secciòn Acerca de</p>
+                        <p class="new2"> Edición de la sección Acerca de</p>
                         <textarea class="noteToAdd" id="aboutUs" name="sitelink" rows="10" cols="70">@ViewBag.CercaDe </textarea>
                         <br>
                         <input class="btn btn-success" id="btnAceptAboutUs" type="submit" value="Aceptar" onclick="updateAboutUs()" style="background-color:#86b4ca";>
@@ -164,8 +163,8 @@
         <section id="modificarHabitacion" class="container-fluid" style="margin-block: 1em; background-color: white">
            
             <!--Modicar Habitaciones  -->
-            <p class="new2"> Ediciòn de los Tipos de Habitaciones</p>
-            <label>Seleccione el Tipo de Habitaciòn a Editar </label>
+            <p class="new2"> Edición de los Tipos de Habitaciones</p>
+            <label>Seleccione el Tipo de Habitación a Editar </label>
       
             <div class="row">
                 <div class="col-sm-4 col-xs well">
@@ -194,7 +193,7 @@
                     <tr>
                         <th>
                             <div class="col-sm-10">
-                                <label>  Habitaciòn Estandar</label>
+                                <label>  Habitación Estandar</label>
                             </div>
                         </th>
 
@@ -255,7 +254,7 @@
             <tr>
             <th>
             <div class="col-sm-10">
-            <label>  Habitaciòn Junior</label></div>
+            <label>  Habitación Junior</label></div>
             </th>
             <th>
             <label>Tarifa Diaria Actual:  <input type="text" id="tarifaESTANDAR" size="5" maxlength="10"  name="Tarifa_diaria" value= @ViewBag.Habitacion_junior_tarifa_diaria> </label>
@@ -310,7 +309,7 @@
             <tr>
             <th>
             <div class="col-sm-10">
-            <label>  Habitaciòn Suite</label></div>
+            <label>  Habitación Suite</label></div>
             </th>
             <th>
             <label>Tarifa Diaria Actual:  <input type="text" id="tarifaESTANDAR" size="5" maxlength="10" value= @ViewBag.Habitacion_suite_tarifa_diaria name="Tarifa_diaria"> </label>
@@ -381,8 +380,8 @@
                 </div>
 
                 <p>
-                <input type="button" value="Exportar a PDF" 
-                    id="btPrint" onclick="createPDF()" />
+                <input type="button" value="PDF" 
+                    id="btPrint" onclick="createPDF()"/>
                 </p>
 
             </div>
@@ -461,17 +460,15 @@
         <br>
          <div class="row">
                 <div class="col-sm-4 col-xs  col-xs-well">
+
                     <label for="start">Fecha de Inicio:</label>
                     <input type="date" id="myDateLlegada2" name="trip-start">
-                           </div>
-                           <div class="col-sm-4 col-xs-well">
 
-                     <label for="start">Fecha de Fin:</label>
-                     <br>
+                    <label for="start">Fecha de Fin:</label>
+                    <input type="date" id="myDateSalida2" name="trip-start">
 
-                    <input type="date" id="myDateSalida2" name="trip-start" >
+                </div>
 
-                    </div>
       </div>
         <br>
    
@@ -492,7 +489,12 @@
                   <div class="col-sm-4 col-xs  col-xs-well">
                     <label for="start">Descuento:</label> <br>
                     <input id="descount" type="text"  style="width:100px;height:20px;text-align:right;padding-right:10px;" name="descuento"/>
-                    </div>
+                   </div>
+
+                    <div class="col-sm-4 col-xs  col-xs-well">
+                        <label for="start">Cantidad de días:</label> <br>
+                        <input id="cantDias" type="text"  style="width:100px;height:20px;text-align:right;padding-right:10px;" name="cantDias"/>
+                   </div>
 
 
 
@@ -644,9 +646,69 @@
 
       <br>
      
-        </section>
-      
+      </section>
+
+
+      <!-- Editar publicidad  -->
+    <section name="mantpublicidad" id="mantpublicidad" class="container" style="margin-block: 1em; background-color: white">
+
+            <h4>Mantenimiento de la publicidad: </h4>
+            <p>Los elementos activados, son los que se muestran en la página del cliente.</p>
+            <p>Se permiten solo 4 elementos activos. </p>
+
+            <table class="table table-hover" id="table12" >
+
+                <thead>
+                    <tr>
+                        <th>
+                            Publicidad
+                        </th>
+                        <th >
+                            Estado 
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody class="tbody12">
+                </tbody>
+
+            </table>
+
+            <div style="display: inline !important;" id="" class="entry-form">
+
+                <label>Si desea activar/desactivar algún elemento, realice un intercambio: </label>
+
+                <br/>
+
+                <label>Activar: </label>
+	            <select style="width: 100px;" id="publi_inactivos" class="sbody1">
+	            </select>
+
+                <br/>
+
+	            <button style="width: 300px; color:white; background-color: blue !important" class="submit-btn form-control" id="buttonCambiar" onclick="return RealizarIntercambio()">↕ Intercambiar ↕</button> 
+                              
+                <br/>
+
+                <label>Desactivar: </label>
+	            <select style="width: 100px;" id="publi_activos" class="sbody2">
+	            </select>
+
+             </div>
+
+    </section>
+
+                <br/>
+                <br/>
+
+    <div>
+	    <button style="color:white; background-color: red !important; height: 60px!important" class="submit-btn form-control" id="buttonLogout" onclick="return Logout()">Cerrar sesión</button> 
     </div>
+
+</div>
+
+
+
 
      
 

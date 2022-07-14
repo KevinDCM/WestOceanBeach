@@ -4,12 +4,9 @@ using System.Text;
 
 namespace Entities.Entities
 {
-    public class Administrador : Persona
+    public class Login
     {
-        public int IdEmpleado { get; set; }
         public string NombreUsuario { get; set; }
         public string Password { get; set; }
-        public Boolean activo { get; set; }
-
     }
 }

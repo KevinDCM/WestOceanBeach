@@ -256,13 +256,14 @@
             <section id="reservas" class="container" style="background-color:white;">
                 <div style="display: block !important;" class="row">
                     <h1>Reservas</h1>
+
                     <br/>
                     <br/>
 
                      @*solicitar disponibilidad de habitaciones segun el tipo*@
                     <div id="rangoFechas" style="display: block !important; background-color:white;" class="entry-form">
 
-                        <h4>Ver habitaciones disponibles según el tipo</h4>
+                        <h4 id="titleR">Ver habitación disponible según el tipo</h4>
  
                         <label>Fecha inicio: </label>
 	                    <input id="fechaI" type="date" placeholder="dd/mm/yy">
@@ -273,51 +274,22 @@
 
 	                    <label>Tipo de Habitación: </label>
 
-	                    <select id="tipoHabitacion">
+	                    <select id="tipoHabitacion"  onchange="onChangeTipoHabitacion()">
 		                    <option value="1">Junior</option>
 		                    <option value="2">Estándar</option>
 		                    <option value="3">Suite</option>
 	                    </select>
-	
-	                    <br/>
-	
-	                    <button class="submit-btn form-control" id="button" onclick="return ObtenerHabitacionesDisponibles()">Consultar</button> 
 
-                    </div>
-
-                    <br/>
-                    <br/>
-
-                    @*carrito para seleccionar habitaciones a reservar*@
-                    <div style="display: block !important;" id="divSelectHabitaciones" class="entry-form">
-                        
-                        <h3>Seleccionar habitaciones a reservar</h3>
-                        <label>Seleccione una habitación: </label>
+                        <label>Número de habitación: </label>
 	                    <select style="width: 100px;" id="numsHabitacion" class="sbody">
 	                    </select>
-
-
-                         <label>Fecha inicio: </label>
-	                    <input id="fechaI2" type="date">
-
-	                    <label>Fecha final: </label>
-	                    <input id="fechaF2" type="date">
+	
 	                    <br/>
-
-                        <div style="display:inline">
-                            <div style="border-style: solid">
-                                <label>Habitaciones escogidas: </label>
-                                <p id="habitacionesEscogidas"></p>
-                            </div>
-                            <button style="font-size:12px;color:red;">Descartar <i class="fa fa-trash-o"></i></button>
-	                    </div>
-                        <div style="display: inline !important;">
-	                        <button style="background-color: blue !important;" class="submit-btn form-control" id="button" onclick="return AgregarHabitacionAlCarrito()">Agregar</button>
-                            <button class="submit-btn form-control" id="button" onclick="return VerDatosCliente()">Finalizar</button>   
-	                        <button style="background-color: yellow !important" class="submit-btn form-control" id="button" onclick="return ReiniciarReserva()">Reiniciar</button>     
-                        </div>
+	
+	                    <button style="background-color: green !important" class="submit-btn form-control" id="buttonC" onclick="return ValidarReserva()">Consultar disponibilidad</button> 
+                        <button style="background-color: green !important" class="submit-btn form-control" id="buttonReiniciar" onclick="return ReiniciarReserva()">Reiniciar reserva</button>
                     </div>
-
+                  
                     <br/>
                     <br/>
 
@@ -326,40 +298,42 @@
                         
                         <h3>Finalizar reservación</h3>
 
-	                    <input type="text" name="cedula" id="cedula" class="form-control" placeholder="Cédula" required autocomplete="off">
+	                    <input autocomplete="off" type="number" name="cedula" id="cedula" class="form-control" placeholder="Cédula" required autocomplete="off">
 
-	                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" required>
+	                    <input autocomplete="off" type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" required>
 	
-	                    <input type="text" name="PrimerApellido" id="PrimerApellido" class="form-control" placeholder="Primer Apellido" required>
+	                    <input autocomplete="off" type="text" name="PrimerApellido" id="PrimerApellido" class="form-control" placeholder="Primer Apellido" required>
 	
-	                    <input type="text" name="SegundoApellido" id="SegundoApellido" class="form-control" placeholder="Segundo Apellido" required>
+	                    <input autocomplete="off" type="text" name="SegundoApellido" id="SegundoApellido" class="form-control" placeholder="Segundo Apellido" required>
 
-	                    <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo electrónico" required>
+	                    <input autocomplete="off" type="email" name="correo" id="correo" class="form-control" placeholder="Correo electrónico" required>
 
-	                    <input type="text" name="Telefono" id="Telefono" class="form-control" placeholder="Teléfono" required>
+	                    <input autocomplete="off" type="number" name="Telefono" id="Telefono" class="form-control" placeholder="Teléfono" required>
 
-	                    <input type="number" name="edad" id="edad" class="form-control" placeholder="Edad" required>
+	                    <input autocomplete="off" type="number" name="edad" id="edad" class="form-control" placeholder="Edad" required>
 
-	                    <input type="text" name="Direccion" id="Direccion" class="form-control" placeholder="Dirección" required>
+	                    <input autocomplete="off" type="text" name="Direccion" id="Direccion" class="form-control" placeholder="Dirección" required>
 	
-	                    <input type="text" name="Nacionalidad" id="Nacionalidad" class="form-control" placeholder="Nacionalidad" required>	
-	
-	                    <label>Fecha de nacimiento:</label>
-	                    <input id="fechaNacimiento" class="form-control" type="date">
-	
+	                    <input autocomplete="off" type="text" name="Nacionalidad" id="Nacionalidad" class="form-control" placeholder="Nacionalidad" required>	
+
                         <br/>
 
 	                    <div style="display: block !important;"> 
 		                    <label>Datos de pago:</label>
-		                    <input name="precio" id="precio" class="form-control" placeholder="Precio Total: $100" readonly required>
+		                    <p id="tarifaDiaria" class="form-control" readonly required>
+		                    <p id="cantNoches" class="form-control" readonly required>
+		                    <p id="precioT" class="form-control" placeholder="Precio Total: $" readonly required>
+                            <p id="descuento" class="form-control" placeholder="Descuento: $" readonly required>
+                            <p id="precioF" class="form-control" placeholder="Precio Final: $" readonly required>
 		
-		                    <input type="number" name="numeroTarjeta" id="numeroTarjeta" class="form-control" placeholder="Número de tarjeta" required>
-		
-		                    <img src="https://i.postimg.cc/Gpr1Rtth/Captura.png" alt="security" width="200" height="100">
+		                   
 	                    </div>
-	
+
+                        <input autocomplete="off" type="number" name="numeroTarjeta" id="numeroTarjeta" class="form-control" placeholder="Número de tarjeta" required>
+                        <input autocomplete="off" type="number" name="" id="cvv" class="form-control" placeholder="CVV" required>
+		                
+                        <img src="https://i.postimg.cc/Gpr1Rtth/Captura.png" alt="security" width="200" height="100">
 	                    <button class="submit-btn form-control" id="button" onclick="return SolicitarReservacion()">Reservar</button>
-                        <button style="background-color: yellow !important;" class="submit-btn form-control" id="button" onclick="return ReiniciarReserva()">Reiniciar</button>   
 
                     </div>
 
@@ -530,8 +504,8 @@
 
             <section id="loginadmin" style="background-color:lightgray;">
   
-                <p style="text-align: center !important;">
-                   Ir al <a  asp-controller="Admin" asp-action="Index" >Login administrativo</a>
+                <p style="text-align: center !important; height: 60px!important">
+                   Ir al <a  asp-controller="Login" asp-action="Index" >Login administrativo</a>
                    @*redireccionar a vista Admin*@
                 </p>
             
