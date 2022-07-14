@@ -19,5 +19,19 @@ namespace API.Controllers
            return new PublicidadBusiness().getPublicidadActiva();
         }
 
+        [HttpGet]
+        [Route("GetAll")]
+        public List<Publicidad> GetAll()
+        {
+            return new PublicidadBusiness().GetAll();
+        }
+
+        [HttpPost]
+        [Route("Edit")]
+        public string Edit(Publicidad publicidad)
+        {
+            return new PublicidadBusiness().Edit(publicidad);
+        }
+
     }
 }

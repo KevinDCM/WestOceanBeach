@@ -250,7 +250,6 @@ hr.menu02 {
 ul.menuVert2 {
     list-style: none;
     text-align: left;
-    text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
     padding: 0;
     width: 100%;
 }
@@ -281,7 +280,7 @@ ul.menuVert2 {
         }
 
 #header001 {
-    top: 13em;
+    top: 11em !important;
     padding: 0;
     position: fixed;
 }
@@ -291,7 +290,6 @@ p.admin01 {
     font-size: large;
     text-align: center;
     font-size: 42px;
-    text-shadow: 7px 4px 5px #3498Db;
     width: 100%;
 }
 

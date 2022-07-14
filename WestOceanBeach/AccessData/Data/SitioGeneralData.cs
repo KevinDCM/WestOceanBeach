@@ -255,5 +255,116 @@ public SitioGeneral obtenerFacilidades()
             return salida;
         }// metodo
 
+        public string Login(Login login)
+        {
+            string salida = "No";
+
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("SP_Adminlogin", sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+            // parámetros del cliente
+            sqlCommand.Parameters.AddWithValue("@param_nombre", login.NombreUsuario);
+            sqlCommand.Parameters.AddWithValue("@param_password", login.Password);
+
+            sqlCommand.ExecuteNonQuery();
+
+            List<Administrador> list = new List<Administrador>();
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            {
+                DataTable dt = new DataTable();
+                dt.Dispose();
+                adapter.Fill(dt);
+
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Administrador admin = new Administrador();
+
+                    admin.NombreUsuario = Convert.ToString(dt.Rows[i]["NOMBRE_USUARIO"]);
+                    admin.Password = Convert.ToString(dt.Rows[i]["PASSWORD"]);
+                    admin.activo = Convert.ToBoolean(dt.Rows[i]["activo"]);
+
+                    if(admin.NombreUsuario.Equals(login.NombreUsuario) 
+                        && admin.Password.Equals(login.Password) 
+                        && admin.activo)
+                    {
+                        return "again";// ya está activo y son sus credenciales, puede ingresar de nuevo
+                    }
+                    if(admin.activo 
+                        && !(admin.NombreUsuario.Equals(login.NombreUsuario)) 
+                        && !(admin.Password.Equals(login.Password))) 
+                    { 
+                        return "otro"; // hay otro admin activo
+                    }
+
+                    list.Add(admin);
+
+                };
+
+            };
+
+            // si no hay ninguno activo
+            // verificar credenciales
+            for (int i = 0; i < list.Count; i++)
+            {
+                bool nombre = list[i].NombreUsuario.Equals(login.NombreUsuario);
+                bool pass = list[i].Password.Equals(login.Password);
+
+                if (nombre && pass)
+                {
+                    salida = "Si"; // inicia sesión
+                    break;
+                }
+
+
+            }
+
+            sqlConnection.Close();
+
+            marcarAdminComoActivo(login.NombreUsuario, login.Password);
+
+            return salida;
+
+        }
+
+        private void marcarAdminComoActivo(string nombreUsuario, string password)
+        {
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("SP_AdminActiveSession", sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+            // parámetros del cliente
+            sqlCommand.Parameters.AddWithValue("@param_nombre", nombreUsuario);
+            sqlCommand.Parameters.AddWithValue("@param_password", password);
+
+            sqlCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();
+        }
+
+        public string Logout( )
+        {
+            string salida = "Ok";
+
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("SP_Adminlogout", sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+
+            sqlCommand.ExecuteNonQuery();
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            {
+
+
+            };
+            sqlConnection.Close();
+
+            return salida;
+
+        }
+
     }
 }

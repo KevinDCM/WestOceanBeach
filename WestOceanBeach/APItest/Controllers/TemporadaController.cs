@@ -27,7 +27,14 @@ namespace API.Controllers
             return new TemporadaBusiness().EditarTemporadas(temporada);
         }
 
- 
+
+        [HttpGet]
+        [Route("GetTemporadaActual")]
+        public Temporada GetTemporadaActual()
+        {
+            return new TemporadaBusiness().GetTemporadaActual();
+        }
+
 
     }
 }
