@@ -28,7 +28,82 @@ $(document).ready(function () {
     $('#myDateLlegada2').val(today);
     $('#myDateSalida2').val(today2);
 
-    $('#fecha').val(today);
+    var todayI = now.getFullYear() + '-' + month + '-' + day;
+    $('#Fecha_Inicio').val(today);
+    var nowF = new Date();
+    var monthF = (nowF.getMonth() + 1);
+    var dayF = (nowF.getDate() + 1);
+    if (monthF < 10)
+        monthF = "0" + monthF;
+    if (dayF < 10)
+        dayF = "0" + dayF;
+    var todayF = now.getFullYear() + '-' + monthF + '-' + dayF;
+    $('#Fecha_Final').val(todayF);
+
+
+    var today11 = now.getFullYear() + '-' + month + '-' + day;
+    $('#fecha').val(today11);
+
+   
+
+    $.ajax(
+        {
+            type: "POST",
+            dataType:'JSON',
+            url:  "/Admin/estadoActualHabitaciones",
+            success: function (data) {
+
+
+
+
+                $.each(data, function (key, item) {
+
+                  
+                    
+                    
+                    addrow(item.numeroHabitacion, item.tipoHabitacion, item.encuentra);
+
+                });
+               
+            },
+            error: function (xhr, statusText, err) {
+                alert("error" + xhr.status);
+            }
+
+        });
+
+
+
+    $.ajax(
+        {
+            type: "POST",
+            dataType: 'JSON',
+            url: "/Oferta/ObtenerOfertasEspecialesGeneral",
+            success: function (data) {
+
+
+
+
+                $.each(data, function (key, item) {
+
+
+
+
+                    addrow3(item.id, item.descuento, item.fecha_ini, item.fecha_fin, item.tipo_habitacion);
+
+                });
+
+            },
+            error: function (xhr, statusText, err) {
+                alert("error" + xhr.status);
+            }
+
+        });
+
+
+
+
+
 
     document.getElementById("loginadmin1").style.display = "none";
     document.getElementById("mytable").style.display = "none";

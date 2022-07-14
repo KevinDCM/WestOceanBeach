@@ -13,25 +13,25 @@
 }
 
 #btnAceptAboutUs {
-    background-color: #007bff;
+    background-color: #86b4ca;
     text-align: center;
     color: white;
     margin: 13px;
     width: 115px;
     height: 45px;
     border-radius: 0.3em;
-    border-color: #007bff;
+    border-color: #86b4ca;
 }
 
 #btnCancelAboutUs {
-    background-color: red;
+    background-color: #86b4ca;
     text-align: center;
     color: white;
     margin: 13px;
     width: 115px;
     height: 45px;
     border-radius: 0.3em;
-    border-color: white;
+    border-color: #86b4ca;
 }
 
 #homeedit {
@@ -47,41 +47,41 @@
 }
 
 #btnAceptHome {
-    background-color: #007bff;
+    background-color:#86b4ca;
     text-align: center;
     color: white;
     margin: 13px;
     width: 115px;
     height: 45px;
     border-radius: 0.3em;
-    border-color: #007bff;
+    border-color: #86b4ca;
 }
 
 #btnCancelHome {
-    background-color: red;
+    background-color:#86b4ca;
     text-align: center;
     color: white;
     margin: 13px;
     width: 115px;
     height: 45px;
     border-radius: 0.3em;
-    border-color: white;
+    border-color: #86b4ca;
 }
 
 
 #btnAceptFacilities {
-    background-color: #007bff;
+    background-color: #86b4ca;
     text-align: center;
     color: white;
     margin: 13px;
     width: 115px;
     height: 45px;
     border-radius: 0.3em;
-    border-color: #007bff;
+    border-color: #86b4ca;
 }
 
 #btnCancelFacilities {
-    background-color: red;
+    background-color: #86b4ca;
     text-align: center;
     color: white;
     margin: 13px;
@@ -187,7 +187,7 @@ hr {
 
     .close1:hover,
     .close1:focus {
-        color: #f44336;
+        color: #86b4ca;
         cursor: pointer;
     }
 
@@ -212,13 +212,13 @@ button:hover {
 
 /* Add a color to the cancel button */
 .cancelbtn {
-    background-color: red;
+    background-color: #86b4ca;
     color: black;
 }
 
 /* Add a color to the delete button */
 .deletebtn {
-    background-color: #007bff;
+    background-color: #86b4ca;
 }
 
 /* Add padding and center-align text to the container */
