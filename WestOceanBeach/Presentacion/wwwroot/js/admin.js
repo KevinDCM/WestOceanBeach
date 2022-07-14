@@ -2,10 +2,6 @@
 $(document).ready(function () {
 
     cargarMantenimientoPublicidad();
-
-    document.getElementById("loginadmin1").style.display = "none";
-    document.getElementById("mytable").style.display = "none";
-
     
     var now = new Date();
     var month = (now.getMonth() + 1);
@@ -34,37 +30,8 @@ $(document).ready(function () {
 
     $('#fecha').val(today);
 
-    $.ajax({
-        url:  "/Admin/estadoActualHabitaciones",
-		type: "GET",
-		contentType: "application/json;charset=utf-8",
-		dataType: "json",
-        success: function (result) {
-
-            $.each(result, function (key, item) {
-                addrow(item.numeroHabitacion, item.tipoHabitacion, item.encuentra);
-            });
-        },
-        error: function (xhr, statusText, err) {
-            alert("error" + xhr.status);
-        }
-    });
-
-
-    $.ajax({
-        type: "POST",
-        dataType: 'JSON',
-        url: "/Oferta/ObtenerOfertasEspecialesGeneral",
-        success: function (result) {
-
-            $.each(result, function (key, item) {
-                addrow3(item.id, item.descuento, item.fecha_ini, item.fecha_fin, item.tipo_habitacion);
-            });
-        },
-        error: function (xhr, statusText, err) {
-            alert("error" + xhr.status);
-        }
-     });
+    document.getElementById("loginadmin1").style.display = "none";
+    document.getElementById("mytable").style.display = "none";
 
 
 }); 
@@ -1007,6 +974,43 @@ function cargarMantenimientoPublicidad(){
 
 			$('.sbody1').html(htmlS1);
 			$('.sbody2').html(htmlS2);
+
+
+
+
+            $.ajax({
+                url:  "/Admin/estadoActualHabitaciones",
+		        type: "GET",
+		        contentType: "application/json;charset=utf-8",
+		        dataType: "json",
+                success: function (result) {
+
+                    $.each(result, function (key, item) {
+                        addrow(item.numeroHabitacion, item.tipoHabitacion, item.encuentra);
+                    });
+
+                    $.ajax({
+                        type: "POST",
+                        dataType: 'JSON',
+                        url: "/Oferta/ObtenerOfertasEspecialesGeneral",
+                        success: function (result) {
+
+                            $.each(result, function (key, item) {
+                                addrow3(item.id, item.descuento, item.fecha_ini, item.fecha_fin, item.tipo_habitacion);
+                            });
+                        },
+                        error: function (xhr, statusText, err) {
+                            alert("error" + xhr.status);
+                        }
+                        });
+                },
+                error: function (xhr, statusText, err) {
+                    alert("error" + xhr.status);
+                }
+            });
+
+
+
 
 
 		},
