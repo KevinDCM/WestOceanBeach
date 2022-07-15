@@ -130,8 +130,18 @@ namespace Presentacion.Controllers
             var response5 = await client.GetAsync("https://localhost:44386/Habitacion/estadoActualHabitacion");
             string resultado = await response5.Content.ReadAsStringAsync();
             List<Habitacion> estadoHabitaciones = JsonConvert.DeserializeObject<List<Habitacion>>(resultado);
+            if (estadoHabitaciones is null)
+            {
+                @ViewBag.estadohotelactual = "No hay datos registrados";
 
+            }
+            else {
+                return Ok(estadoHabitaciones);
+
+
+            }
             return Ok(estadoHabitaciones);
+
 
         }
 

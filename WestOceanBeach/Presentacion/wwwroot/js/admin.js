@@ -169,7 +169,7 @@ function createOfertSpecial(){
                     function (data) {
 
 
-                        var aswer = document.getElementById('answer');
+                        var aswer = document.getElementById('answer3');
                         aswer.innerHTML = data.message;
                         var modal = document.getElementById("myModal2");
                         modal.style.display = "block";
@@ -243,7 +243,7 @@ function updateOfertSpecial() {
                 success:
                     function (data) {
 
-                        var aswer = document.getElementById('answer');
+                        var aswer = document.getElementById('answer3');
                         aswer.innerHTML = data.message;
                         var modal = document.getElementById("myModal");
                         modal.style.display = "block";
@@ -339,7 +339,7 @@ function deleteOfertSpecial() {
                 success:
                     function (data) {
 
-                        var aswer = document.getElementById('answer');
+                        var aswer = document.getElementById('answer3');
                         aswer.innerHTML = data.message;
                         var modal = document.getElementById("myModal");
                         modal.style.display = "block";
