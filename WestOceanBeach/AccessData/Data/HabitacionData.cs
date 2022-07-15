@@ -396,7 +396,7 @@ namespace AccessData.Data
             sqlConnection.Open();
             sqlCommand = new SqlCommand("SP_update_tipoHabitacion", sqlConnection);
             sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-            sqlCommand.Parameters.AddWithValue("tarifa", habitacion.TarifaDiaria);
+            sqlCommand.Parameters.AddWithValue("tarifa", decimal.Parse(habitacion.Tarifa));
             sqlCommand.Parameters.AddWithValue("descripcion", habitacion.Descripcion);
             sqlCommand.Parameters.AddWithValue("nombre", habitacion.TipoHabitacion);
 
