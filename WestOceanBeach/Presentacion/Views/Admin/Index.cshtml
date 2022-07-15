@@ -194,11 +194,12 @@
                         </th>
 
                         <th>
-                            <label>Tarifa Diaria Actual:  <input type="text"  inputmode="numeric" id="tarifaESTANDAR" size="5" maxlength="10" value= @ViewBag.Habitacion_estandar_tarifa_diaria name="Tarifa_diaria"> </label>
+                            <label>Tarifa Diaria Actual:  <input type="text"  oninput="limitDecimalPlaces(event, 2)" onkeypress="return isNumberKey(event)" id="tarifaESTANDAR" size="5" maxlength="10" value= @ViewBag.Habitacion_estandar_tarifa_diaria name="Tarifa_diaria"> </label>
                         </th>
                     </tr>
                 </table>
 
+ 
 
                 <div class="col-sm-10">
                     <textarea class="noteToAdd" id="descripcionESTANDAR" name="descripcionESTANDAR" rows="6" cols="70">@ViewBag.Habitacion_estandar_descripcion</textarea>
@@ -253,7 +254,7 @@
             <label>  Habitación Junior</label></div>
             </th>
             <th>
-            <label>Tarifa Diaria Actual:  <input type="text" id="tarifaJUNIOR"  inputmode="numeric" size="5" maxlength="10"  name="Tarifa_diaria" value= @ViewBag.Habitacion_junior_tarifa_diaria> </label>
+            <label>Tarifa Diaria Actual:  <input type="text" id="tarifaJUNIOR" oninput="limitDecimalPlaces(event, 2)" onkeypress="return isNumberKey(event)"  size="5" maxlength="10"  name="Tarifa_diaria" value= @ViewBag.Habitacion_junior_tarifa_diaria> </label>
             
         </th>
             </tr>
@@ -308,7 +309,7 @@
             <label>  Habitación Suite</label></div>
             </th>
             <th>
-            <label>Tarifa Diaria Actual:  <input type="text" id="tarifaSUITE"   inputmode="numeric" size="5" maxlength="10" value= @ViewBag.Habitacion_suite_tarifa_diaria name="Tarifa_diaria"> </label>
+            <label>Tarifa Diaria Actual:  <input type="text" id="tarifaSUITE"   oninput="limitDecimalPlaces(event, 2)" onkeypress="return isNumberKey(event)" size="5" maxlength="10" value= @ViewBag.Habitacion_suite_tarifa_diaria name="Tarifa_diaria"> </label>
             </th>
             </tr>
             </table>
