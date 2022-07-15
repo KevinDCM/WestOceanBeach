@@ -105,6 +105,8 @@ $(document).ready(function () {
 
 
 
+
+
     document.getElementById("loginadmin1").style.display = "none";
     document.getElementById("mytable").style.display = "none";
 
