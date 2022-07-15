@@ -49,12 +49,29 @@ namespace Presentacion.Controllers
 
             var response = await client.GetAsync("https://localhost:44386/SitioGeneral/obtenerSitioGeneral");
             string resultado = await response.Content.ReadAsStringAsync();
-            SitioGeneral sitioGeneral = JsonConvert.DeserializeObject<SitioGeneral>(resultado);
 
-            ViewBag.Home = sitioGeneral.HOME;
-            ViewBag.CercaDe = sitioGeneral.SOBRE_NOSOTROS;
-            ViewBag.Contacto= sitioGeneral.CONTACTO;
-            ViewBag.ComoLLegar = sitioGeneral.COMO_LLEGAR;
+            SitioGeneral sitioGeneral =JsonConvert.DeserializeObject<SitioGeneral>(resultado);
+
+
+
+
+            if (sitioGeneral is null)
+            {
+
+                ViewBag.mensajehome = "NO hay datos registrados en la base de datos";
+                @ViewBag.mensajeacerca = "No hay datos registrados";
+                @ViewBag.mensajeacontactenos = "No hay datos registrados";
+                @ViewBag.mensajeacomollegar= "No hay datos registrados";
+            }
+            else {
+                ViewBag.Home = sitioGeneral.HOME;
+                ViewBag.CercaDe = sitioGeneral.SOBRE_NOSOTROS;
+                ViewBag.Contacto = sitioGeneral.CONTACTO;
+                ViewBag.ComoLLegar = sitioGeneral.COMO_LLEGAR;
+
+            }
+            
+          
 
             //Imagen de HOME
 
@@ -64,8 +81,25 @@ namespace Presentacion.Controllers
 
             HttpResponseMessage responseImgHome = await client.GetAsync("https://localhost:44386/SitioGeneral/ObtenerImagenesHome");
             string responseImagenHomeContent = await responseImgHome.Content.ReadAsStringAsync();
+           
             List<Imagenes> imagenes = JsonConvert.DeserializeObject<List<Imagenes>>(responseImagenHomeContent);
-            @ViewBag.ImgHome = imagenes[0].Full_path;
+            
+
+
+            if (imagenes is null)
+            {
+
+                @ViewBag.mensajehomeimagen = "No hay imagen registrada en la base de datos";
+
+
+            }
+            else {
+
+                @ViewBag.ImgHome = imagenes[0].Full_path;
+
+            }
+
+           
          
 
 
@@ -77,9 +111,21 @@ namespace Presentacion.Controllers
 
             var responseF = await client.GetAsync("https://localhost:44386/SitioGeneral/obtenerFacilidades");
             string resultadoF = await responseF.Content.ReadAsStringAsync();
-            var sitioGeneralF = JsonConvert.DeserializeObject<SitioGeneral>(resultadoF);
+            SitioGeneral sitioGeneralF =JsonConvert.DeserializeObject<SitioGeneral>(resultadoF);
 
-            ViewBag.Facilidades = sitioGeneralF.FACILIDADES;
+            if (sitioGeneralF is null)
+            {
+                @ViewBag.mensajefacilidades = "No hay datos registrados";
+
+
+            }
+            else {
+                ViewBag.Facilidades = sitioGeneralF.FACILIDADES;
+
+
+            }
+
+
 
 
             // Ofertas que se muestran en el header (top 5)
@@ -90,62 +136,89 @@ namespace Presentacion.Controllers
             var response02 = await client.GetAsync("https://localhost:44386/Oferta/obtenerOfertaSobresalientes");
             string resultado02 = await response02.Content.ReadAsStringAsync();
 
-            List<Oferta> ofertas = JsonConvert.DeserializeObject<List<Oferta>>(resultado02);
+            List<Oferta> ofertas =JsonConvert.DeserializeObject<List<Oferta>>(resultado02);
 
-            string top_ofertas = "| ";
-
-            for(int i=0; i<ofertas.Count; i++)
+            if (ofertas is null)
             {
+                @ViewBag.mensajeoferta = "No hay ofertas";
 
-                top_ofertas += "Oferta  #" + (i+1) + 
-                ", Habitación: " + ofertas[i].tipo_habitacion +
-                ", Descuento: " + ofertas[i].descuento +
-                "%, Inicio oferta: " + ofertas[i].fecha_inicio +
-                ", Fin oferta: " + ofertas[i].fecha_final +
-                ", Cantidad de noches: " + ofertas[i].cantidad_dias;
 
-                top_ofertas += "  |  ";
+
             }
+            else {
+                string top_ofertas = "| ";
 
-            @ViewBag.top5_Ofertas = top_ofertas;
+                for (int i = 0; i < ofertas.Count; i++)
+                {
 
+                    top_ofertas += "Oferta  #" + (i + 1) +
+                    ", Habitación: " + ofertas[i].tipo_habitacion +
+                    ", Descuento: " + ofertas[i].descuento +
+                    "%, Inicio oferta: " + ofertas[i].fecha_inicio +
+                    ", Fin oferta: " + ofertas[i].fecha_final +
+                    ", Cantidad de noches: " + ofertas[i].cantidad_dias;
+
+                    top_ofertas += "  |  ";
+                }
+
+                @ViewBag.top5_Ofertas = top_ofertas;
+
+
+                
+
+
+            }
 
             // Tarifas de habitaciones según Temporada
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var responseHabitacionTemporada= await client.GetAsync("https://localhost:44386/Habitacion/obtenerHabitacionesTemporada");
+            var responseHabitacionTemporada = await client.GetAsync("https://localhost:44386/Habitacion/obtenerHabitacionesTemporada");
             string resultadoHabitacionTemporada = await responseHabitacionTemporada.Content.ReadAsStringAsync();
 
-            string[] habitaciones = resultadoHabitacionTemporada.Split('#');
 
-            @ViewBag.habitacionImagen1=habitaciones[1];
-            @ViewBag.nombre1 = habitaciones[2];
-            @ViewBag.precioBaja1 = habitaciones[3];
-            @ViewBag.fechaIniBaja1 = habitaciones[4];
-            @ViewBag.fechaTermBaja1 = habitaciones[5];
-            @ViewBag.precioAlta1 = habitaciones[6];
-            @ViewBag.fechaIniAlta1 = habitaciones[7];
-            @ViewBag.fechaTermAlta1 = habitaciones[8];
+            if (resultadoHabitacionTemporada == "")
+            {
 
-            @ViewBag.habitacionImagen2 = habitaciones[9];
-            @ViewBag.nombre2 = habitaciones[10];
-            @ViewBag.precioBaja2 = habitaciones[11];
-            @ViewBag.fechaIniBaja2 = habitaciones[12];
-            @ViewBag.fechaTermBaja2 = habitaciones[13];
-            @ViewBag.precioAlta2 = habitaciones[14];
-            @ViewBag.fechaIniAlta2 = habitaciones[15];
-            @ViewBag.fechaTermAlta2 = habitaciones[16];
+                @ViewBag.mensajetarifa = "No hay datos registrados";
 
-            @ViewBag.habitacionImagen3 = habitaciones[17];
-            @ViewBag.nombre3 = habitaciones[18];
-            @ViewBag.precioBaja3 = habitaciones[19];
-            @ViewBag.fechaIniBaja3 = habitaciones[20];
-            @ViewBag.fechaTermBaja3 = habitaciones[21];
-            @ViewBag.precioAlta3 = habitaciones[22];
-            @ViewBag.fechaIniAlta3 = habitaciones[23];
-            @ViewBag.fechaTermAlta3 = habitaciones[24];
+            }
+            else {
+
+
+                string[] habitaciones = resultadoHabitacionTemporada.Split('#');
+
+                @ViewBag.habitacionImagen1 = habitaciones[1];
+                @ViewBag.nombre1 = habitaciones[2];
+                @ViewBag.precioBaja1 = habitaciones[3];
+                @ViewBag.fechaIniBaja1 = habitaciones[4];
+                @ViewBag.fechaTermBaja1 = habitaciones[5];
+                @ViewBag.precioAlta1 = habitaciones[6];
+                @ViewBag.fechaIniAlta1 = habitaciones[7];
+                @ViewBag.fechaTermAlta1 = habitaciones[8];
+
+                @ViewBag.habitacionImagen2 = habitaciones[9];
+                @ViewBag.nombre2 = habitaciones[10];
+                @ViewBag.precioBaja2 = habitaciones[11];
+                @ViewBag.fechaIniBaja2 = habitaciones[12];
+                @ViewBag.fechaTermBaja2 = habitaciones[13];
+                @ViewBag.precioAlta2 = habitaciones[14];
+                @ViewBag.fechaIniAlta2 = habitaciones[15];
+                @ViewBag.fechaTermAlta2 = habitaciones[16];
+
+                @ViewBag.habitacionImagen3 = habitaciones[17];
+                @ViewBag.nombre3 = habitaciones[18];
+                @ViewBag.precioBaja3 = habitaciones[19];
+                @ViewBag.fechaIniBaja3 = habitaciones[20];
+                @ViewBag.fechaTermBaja3 = habitaciones[21];
+                @ViewBag.precioAlta3 = habitaciones[22];
+                @ViewBag.fechaIniAlta3 = habitaciones[23];
+                @ViewBag.fechaTermAlta3 = habitaciones[24];
+
+            }
+
+            
 
 
             // PUBLICIDAD   (programado para mostrar solo 4 elementos publicitarios)
@@ -158,18 +231,30 @@ namespace Presentacion.Controllers
             string responsePublicidadContent = await responsePublicidad.Content.ReadAsStringAsync();
 
             List<Publicidad> publicidad = JsonConvert.DeserializeObject<List<Publicidad>>(responsePublicidadContent);
+            if (publicidad is null)
+            {
+                @ViewBag.publicidadmsj = "No hay datos registrados";
 
-            @ViewBag.public1 = publicidad[0].RutaImagen;
-            @ViewBag.uri1 = publicidad[0].SiteUrl;
+            }
+            else {
 
-            @ViewBag.public2 = publicidad[1].RutaImagen;
-            @ViewBag.uri2 = publicidad[1].SiteUrl;
 
-            @ViewBag.public3 = publicidad[2].RutaImagen;
-            @ViewBag.uri3 = publicidad[2].SiteUrl;
+                @ViewBag.public1 = publicidad[0].RutaImagen;
+                @ViewBag.uri1 = publicidad[0].SiteUrl;
 
-            @ViewBag.public4 = publicidad[3].RutaImagen;
-            @ViewBag.uri4 = publicidad[3].SiteUrl;
+                @ViewBag.public2 = publicidad[1].RutaImagen;
+                @ViewBag.uri2 = publicidad[1].SiteUrl;
+
+                @ViewBag.public3 = publicidad[2].RutaImagen;
+                @ViewBag.uri3 = publicidad[2].SiteUrl;
+
+                @ViewBag.public4 = publicidad[3].RutaImagen;
+                @ViewBag.uri4 = publicidad[3].SiteUrl;
+
+            }
+
+
+
 
             return View();
         }
