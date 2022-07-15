@@ -26,7 +26,8 @@
                           <p class="new3">
                               <marquee>  
                                   <a href="#reservas" style="color:black;">Ofertas Actuales<br/>@ViewBag.top5_Ofertas </a>
-                               </marquee> 
+                              <a>@ViewBag.mensajeoferta</a>
+                              </marquee> 
                            </p>
                      </div>
                 </div>            
@@ -77,6 +78,7 @@
             <div id="header02">
 
                 <h4 id="tituloPublicidad">Publicidad</h4>
+                <h4>@ViewBag.publicidadmsj</h4>
 
                 <div class="row" >
                     <div class="slideshow-container"> 
@@ -125,7 +127,9 @@
                     <div class="col-sm-6">
 
                         <img src=@ViewBag.ImgHome  style="width:100%" vspace="30" hspace="10" >
-                             <!--<img class="img-fluid " src=  alt="Nature" > -->
+                       
+                        <!--<img class="img-fluid " src=  alt="Nature" > -->
+                        <h2 >@ViewBag.mensajehomeimagen</h2>
                     </div>
                     <div class="col-sm-6">
                         <p class="msjBienvenida">
@@ -134,9 +138,12 @@
                             @ViewBag.Home
 
                         </p>
+                        <h2 >@ViewBag.mensajehome</h2>
 
                     </div>
                 </div>
+                
+
             </section>
 
 
@@ -158,6 +165,7 @@
                         <p class="Alineacion">
                             @ViewBag.Facilidades
                         </p>
+                         <h2 >@ViewBag.mensajefacilidades</h2>
                     </div>
                 </div>
                 <script>
@@ -186,10 +194,13 @@
                 <div class="row">
                     <h2>Tarifas(por noche)</h2>
                     <br>
+                    
 
                    
                     <div class="col-sm-12">
                        <div class="container">
+                           <h2>@ViewBag.mensajetarifa</h2>
+                           <br />
                             <table class="table table-responsive table-striped">
                                 <thead> 
                                     <tr> 
@@ -349,6 +360,7 @@
                 <p id="parrafoHome" class="Alineacion" >
                     @ViewBag.CercaDe
                 </p>
+                <h2>@ViewBag.mensajeacerca</h2>
 
                 <!-- galeria -->
                 <h4 id="galeria1">Galería</h4>
@@ -469,6 +481,8 @@
                         <p class="">
                             @ViewBag.ComoLLegar
                         </p>
+
+                        <h2> @ViewBag.mensajeacomollegar</h2>
                      </div>
                 </div>
 
@@ -478,6 +492,8 @@
             <section id="contacto" class="container" style="margin-block: 1em; background-color: white;  text-align: left;">
 
                 <h2 id="contactoo" >Contáctenos</h2>
+
+                <h3>@ViewBag.mensajeacontactenos</h3>
                 
                 <div class="row">
               
