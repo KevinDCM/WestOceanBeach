@@ -69,6 +69,13 @@ namespace API.Controllers
 
         }
 
+        [HttpGet]
+        [Route("GetDescuentoOferta/{id}")]
+        public float GetDescuentoOferta(int id)
+        {
+            return new OfertaBusiness().GetDescuentoOferta(id);
+        }
+
 
     }
 }

@@ -18,5 +18,14 @@ namespace API.Controllers
         {
             return new ReservaBusiness().RealizarReserva(reserva);
         }
+
+        [HttpGet]
+        [Route("ReservaConOferta/{id}")]
+        public int ReservaConOferta(int id)
+        {
+            return new ReservaBusiness().ReservaConOferta(id);
+
+        }
+
     }
 }

@@ -260,6 +260,36 @@ namespace AccessData.Data
 
         }//obtenerOfertasSobresalientes
 
+
+        public float GetDescuentoOferta(int id)
+        {
+            float descuentor = 0;
+
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("SP_getDescuentoOferta", sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            sqlCommand.Parameters.AddWithValue("@idOferta", id);
+
+            sqlCommand.ExecuteNonQuery();
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            {
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                float descuento = (float)Convert.ToInt32(dt.Rows[0]["DESCUENTO"]);
+
+                descuentor = (int)descuento;
+
+            };
+
+            sqlConnection.Close();
+
+            return descuentor;
+        }
+
+
     }// fin clase
 
 }// fin

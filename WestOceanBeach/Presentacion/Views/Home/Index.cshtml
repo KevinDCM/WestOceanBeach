@@ -270,6 +270,10 @@
 
                     <br/>
                     <br/>
+                    <label id="lblnumOferta" style="margin-left: 790px;">Nº Oferta: </label>
+                    <input id="numOferta" style="width: 70px; margin-left: 790px;" type="number" placeholder="1">
+	                <br/>
+                    <button style="margin-top: -100px;margin-left: 790px;width: auto;color:black; background-color: yellow !important" class="" id="buttonOf" onclick="return ValidarOferta()">Solicitar</button> 
 
                      @*solicitar disponibilidad de habitaciones segun el tipo*@
                     <div id="rangoFechas" style="display: block !important; background-color:white;" class="entry-form">
@@ -283,7 +287,7 @@
 	                    <input id="fechaF" type="date" placeholder="dd/mm/yy">
 	                    <br/>
 
-	                    <label>Tipo de Habitación: </label>
+	                    <label id="titleTH">Tipo de Habitación: </label>
 
 	                    <select id="tipoHabitacion"  onchange="onChangeTipoHabitacion()">
 		                    <option value="1">Junior</option>
@@ -291,7 +295,7 @@
 		                    <option value="3">Suite</option>
 	                    </select>
 
-                        <label>Número de habitación: </label>
+                        <label id="titleNH">Número de habitación: </label>
 	                    <select style="width: 100px;" id="numsHabitacion" class="sbody">
 	                    </select>
 	
