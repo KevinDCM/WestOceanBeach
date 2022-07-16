@@ -669,11 +669,10 @@ function updateTemporada() {
 
             success: function (result) {
 
-                var aswer = document.getElementById('answer');
-                aswer.innerHTML = result.message;
+                var aswer = document.getElementById('answer3');
+                aswer.innerHTML = data.message;
                 var modal = document.getElementById("myModal");
                 modal.style.display = "block";
-
             },
             error:
                 function (response) {
@@ -1176,8 +1175,8 @@ function Logout(){
 }
 
  function limitDecimalPlaces(e, count) {
-  if (e.target.value.indexOf(',') == -1) { return; }
-  if ((e.target.value.length - e.target.value.indexOf(',')) > count) {
+  if (e.target.value.indexOf('.') == -1) { return; }
+  if ((e.target.value.length - e.target.value.indexOf('.')) > count) {
     e.target.value = parseFloat(e.target.value).toFixed(count);
   }
 }
