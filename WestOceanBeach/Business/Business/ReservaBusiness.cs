@@ -17,5 +17,11 @@ namespace Business.Business
             else
                 return ("Menores de edad no pueden hacer reservaciones.");
         }
+
+        public int ReservaConOferta(int id)
+        {
+            return dataReserva.ReservaConOferta(id);
+         
+        }
     }
 }
