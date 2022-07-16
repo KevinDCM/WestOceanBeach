@@ -527,27 +527,54 @@ function updateTemporada() {
 
 
 
-        $.ajax({
 
-            type: 'POST',
-            dataType: 'json',
-            url: '/Admin/EditarTemporadas',
-            data: { tipoTemporada: tipoTemporada, fechaInicio: fechaInicio, fechaFinal: fechaFinal },
+        if (day2 == day2 && month2 == month) {
 
-            success: function (result) {
+            var aswer = document.getElementById('answer3');
+            aswer.innerHTML = "La fecha inicio no puede ser la misma fecha final.";
+            var modal = document.getElementById("myModal2");
+            modal.style.display = "block";
+
+
+        } else {
+
+
+            if (month2 > month && day2 > day) {
 
                 var aswer = document.getElementById('answer3');
-                aswer.innerHTML = data.message;
-                var modal = document.getElementById("myModal");
+                aswer.innerHTML = "La fecha inicio no puede ser mayor a la fecha final.";
+                var modal = document.getElementById("myModal2");
                 modal.style.display = "block";
-            },
-            error:
-                function (response) {
-                    alert("Error en el llamado: " + response);
-                }
-        });
 
-      
+
+            } else {
+
+                $.ajax({
+
+                    type: 'POST',
+                    dataType: 'json',
+                    url: '/Admin/EditarTemporadas',
+                    data: { tipoTemporada: tipoTemporada, fechaInicio: fechaInicio, fechaFinal: fechaFinal },
+
+                    success: function (result) {
+
+                        var aswer = document.getElementById('answer');
+                        aswer.innerHTML = result.message;
+                        var modal = document.getElementById("myModal");
+                        modal.style.display = "block";
+
+                    },
+                    error:
+                        function (response) {
+                            alert("Error en el llamado: " + response);
+                        }
+                });
+
+
+
+            }
+
+        }
 
         
     
