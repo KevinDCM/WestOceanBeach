@@ -397,11 +397,11 @@
                       <div class="row">
                           <div class="col-sm-4 col-xs  col-xs-well">
                               <label for="start">Fecha de llegada:</label> <br>
-                              <input type="date" id="myDateLlegada"  name="trip-start">
+                              <input type="date" id="myDateLlegada"  name="trip-start" onkeydown="return false">
                           </div>
                           <div class="col-sm-4 col-xs-well">
                               <label for="start">Fecha de salida:</label> <br>
-                              <input type="date" id="myDateSalida" name="trip-start" >
+                              <input type="date" id="myDateSalida" name="trip-start" onkeydown="return false" >
                           </div>
                           <div class="col-sm-4 col-xs-well">
                                 <label for="start">Tipo de Habitaciòn:</label> <br>
@@ -491,15 +491,8 @@
                 </div>
                   <div class="col-sm-4 col-xs  col-xs-well">
                     <label for="start">Descuento:</label> <br>
-                    <input id="descount" type="text"  style="width:100px;height:20px;text-align:right;padding-right:10px;" name="descuento"/>
+                    <input id="descount" type="number"  style="width:100px;height:20px;text-align:right;padding-right:10px;" name="descuento"/>
                    </div>
-
-                    <div class="col-sm-4 col-xs  col-xs-well">
-                        <label for="start">Cantidad de días:</label> <br>
-                        <input id="cantDias" type="text"  style="width:100px;height:20px;text-align:right;padding-right:10px;" name="cantDias"/>
-                   </div>
-
-
 
       </div>
       <br>
