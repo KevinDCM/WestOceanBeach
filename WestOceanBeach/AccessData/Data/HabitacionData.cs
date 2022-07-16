@@ -455,9 +455,7 @@ namespace AccessData.Data
         public string editarHabitacion(Habitacion habitacion)
         {
             string salida;
-            try
-            {
-
+           
              salida = "No se logro editar la habitacion ";
             sqlConnection.Open();
             sqlCommand = new SqlCommand("SP_update_tipoHabitacion", sqlConnection);
@@ -465,9 +463,8 @@ namespace AccessData.Data
             sqlCommand.Parameters.AddWithValue("tarifa", decimal.Parse(habitacion.Tarifa));
             sqlCommand.Parameters.AddWithValue("descripcion", habitacion.Descripcion);
             sqlCommand.Parameters.AddWithValue("nombre", habitacion.TipoHabitacion);
-
-            int rowAfected = sqlCommand.ExecuteNonQuery();
-            if (rowAfected == 1)
+ 
+            if (sqlCommand.ExecuteNonQuery() == 1)
             {
 
                 salida = "Se edito el tipo de habitacion con exito!";
@@ -475,12 +472,7 @@ namespace AccessData.Data
 
             sqlConnection.Close();
 
-            }
-            catch (SqlException exp)
-            {
-                // Log what you need from here.
-                throw new InvalidOperationException("Data could not be read", exp);
-            }
+           
             return salida;
         }//editarHabitacion
 
