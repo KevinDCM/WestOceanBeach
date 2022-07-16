@@ -15,62 +15,88 @@ namespace AccessData.Data
         private SqlCommand sqlCommand;
         public HabitacionData()
         {
-            sqlConnection = new SqlConnection("Data Source=163.178.107.10;Initial Catalog=WestOceanBeach;Persist Security Info=True;User ID=laboratorios;Password=Uy&)&nfC7QqQau.%278UQ24/=%;Pooling=False");
-            sqlCommand = new SqlCommand();
+            try
+            {
+                sqlConnection = new SqlConnection("Data Source=163.178.107.10;Initial Catalog=WestOceanBeach;Persist Security Info=True;User ID=laboratorios;Password=Uy&)&nfC7QqQau.%278UQ24/=%;Pooling=False");
+                sqlCommand = new SqlCommand();
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine("{0} First exception caught.", ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Last exception caught.", ex.Message);
+            }
+           
         }
 
         public List<Habitacion> ObtenerHabitacionesDisponiblesPorFechaTipo(Habitacion habitacion)
         {
-            DateTime Inicio = Convert.ToDateTime(habitacion.fechaIS);
-            DateTime Final = Convert.ToDateTime(habitacion.fechaFS);
 
-            sqlConnection.Open();
-            sqlCommand = new SqlCommand("SP_Habitaciones_Disponibles_Tipo", sqlConnection);
-            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-
-            sqlCommand.Parameters.AddWithValue("@Inicio", Inicio);
-            sqlCommand.Parameters.AddWithValue("@Final", Final);
-            sqlCommand.Parameters.AddWithValue("@tipo", habitacion.TipoHabitacion);
-           
           
-            sqlCommand.ExecuteNonQuery();
-            List<Habitacion> habitaciones = new List<Habitacion>();
+                DateTime Inicio = Convert.ToDateTime(habitacion.fechaIS);
+                DateTime Final = Convert.ToDateTime(habitacion.fechaFS);
 
-            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
-            {
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
+                sqlConnection.Open();
+                sqlCommand = new SqlCommand("SP_Habitaciones_Disponibles_Tipo", sqlConnection);
+                sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
 
-                for (int i = 0; i < dt.Rows.Count; i++)
+                sqlCommand.Parameters.AddWithValue("@Inicio", Inicio);
+                sqlCommand.Parameters.AddWithValue("@Final", Final);
+                sqlCommand.Parameters.AddWithValue("@tipo", habitacion.TipoHabitacion);
+
+
+                sqlCommand.ExecuteNonQuery();
+                List<Habitacion> habitaciones = new List<Habitacion>();
+                try
                 {
-                    Habitacion temp = new Habitacion();
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        Habitacion temp = new Habitacion();
 
 
-                    temp.NumeroHabitacion = Convert.ToInt32(dt.Rows[i]["NUMERO_HABITACION"]);
-                    temp.TipoHabitacion = dt.Rows[i]["NOMBRE_TIPO"].ToString();
-                    temp.TarifaDiaria = Convert.ToDecimal((dt.Rows[i]["TARIFA_DIARIA"]));
+                        temp.NumeroHabitacion = Convert.ToInt32(dt.Rows[i]["NUMERO_HABITACION"]);
+                        temp.TipoHabitacion = dt.Rows[i]["NOMBRE_TIPO"].ToString();
+                        temp.TarifaDiaria = Convert.ToDecimal((dt.Rows[i]["TARIFA_DIARIA"]));
 
-                    
 
-                    habitaciones.Add(temp);
 
-                }
+                        habitaciones.Add(temp);
 
-            };
+                    }
 
-            sqlConnection.Close();
+                };
+
+                sqlConnection.Close();
+
+               
+
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine("{0} First exception caught.", ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Last exception caught.", ex.Message);
+            }
 
             return habitaciones;
-
-
-
         }
 
         public float ObtenerTarifaDiaria(int tipoHabitacion)
         {
             // call stored procedure here...
             float result = 0;
-
+         try
+           {
+               
             sqlConnection.Open();
             sqlCommand = new SqlCommand("SP_getMontoACancelar", sqlConnection);
             sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
@@ -79,97 +105,123 @@ namespace AccessData.Data
             sqlCommand.Parameters.AddWithValue("@tipoHabitacion", tipoHabitacion);
 
             sqlCommand.ExecuteNonQuery();
-
             using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+                {
+                    DataTable dt = new DataTable();
+                    dt.Dispose();
+                    adapter.Fill(dt);
+
+                    result = (float)Convert.ToDouble(dt.Rows[0]["TARIFA_DIARIA"]);
+
+                };
+
+                sqlConnection.Close();
+            }
+            catch (SqlException exp)
             {
-                DataTable dt = new DataTable();
-                dt.Dispose();
-                adapter.Fill(dt);
-
-                result = (float)Convert.ToDouble(dt.Rows[0]["TARIFA_DIARIA"]);
-
-            };
-
-            sqlConnection.Close();
+               
+                throw new InvalidOperationException("Data could not be read", exp);
+            }
+            
 
             return result;
         }
 
         public string ValidarHabitacionDisponible(Habitacion habitacion)
         {
-            // call stored procedure here...
-            string salida = "No";
-
-            sqlConnection.Open();
-            sqlCommand = new SqlCommand("SP_ValidarHabitacionDisponible", sqlConnection);
-            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-
-            // adjuntar parámetros del procedimiento almacenado
-            sqlCommand.Parameters.AddWithValue("@param_fechaIS", habitacion.fechaIS);
-            sqlCommand.Parameters.AddWithValue("@param_fechaFS", habitacion.fechaFS);
-            sqlCommand.Parameters.AddWithValue("@numHabitacion", habitacion.NumeroHabitacion);
-
-            sqlCommand.ExecuteNonQuery();
-
-            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+             string salida = "No";
+            try
             {
-                DataTable dt = new DataTable();
-                dt.Dispose();
-                adapter.Fill(dt);
+                // call stored procedure here...
+               
 
-                salida = Convert.ToString(dt.Rows[0]["RESPONSE"]);
+                sqlConnection.Open();
+                sqlCommand = new SqlCommand("SP_ValidarHabitacionDisponible", sqlConnection);
+                sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
 
-            };
+                // adjuntar parámetros del procedimiento almacenado
+                sqlCommand.Parameters.AddWithValue("@param_fechaIS", habitacion.fechaIS);
+                sqlCommand.Parameters.AddWithValue("@param_fechaFS", habitacion.fechaFS);
+                sqlCommand.Parameters.AddWithValue("@numHabitacion", habitacion.NumeroHabitacion);
 
-            sqlConnection.Close();
+                sqlCommand.ExecuteNonQuery();
 
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+                {
+                    DataTable dt = new DataTable();
+                    dt.Dispose();
+                    adapter.Fill(dt);
+
+                    salida = Convert.ToString(dt.Rows[0]["RESPONSE"]);
+
+                };
+
+                sqlConnection.Close();
+
+            }
+            catch (SqlException exp)
+            {
+                // Log what you need from here.
+                throw new InvalidOperationException("Data could not be read", exp);
+            }
+          
             return salida;
         }
 
         public List<Habitacion> ObtenerHabitacionesDisponiblesPorFecha(Habitacion habitacion)
         {
-            DateTime Inicio = Convert.ToDateTime(habitacion.fechaIS);
-            DateTime Final = Convert.ToDateTime(habitacion.fechaFS);
-
-            sqlConnection.Open();
-            sqlCommand = new SqlCommand("SP_Habitaciones_Disponibles_General", sqlConnection);
-            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-
-            sqlCommand.Parameters.AddWithValue("@Inicio", Inicio);
-            sqlCommand.Parameters.AddWithValue("@Final", Final);
-            
-
-
-            sqlCommand.ExecuteNonQuery();
-            List<Habitacion> habitaciones = new List<Habitacion>();
-
-            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            List<Habitacion> habitaciones;
+            try
             {
-              
-                DataTable dt = new DataTable();
-                 dt.Dispose();
+                DateTime Inicio = Convert.ToDateTime(habitacion.fechaIS);
+                DateTime Final = Convert.ToDateTime(habitacion.fechaFS);
 
-                adapter.Fill(dt);
+                sqlConnection.Open();
+                sqlCommand = new SqlCommand("SP_Habitaciones_Disponibles_General", sqlConnection);
+                sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
 
-                for (int i = 0; i < dt.Rows.Count; i++)
+                sqlCommand.Parameters.AddWithValue("@Inicio", Inicio);
+                sqlCommand.Parameters.AddWithValue("@Final", Final);
+
+
+
+                sqlCommand.ExecuteNonQuery();
+                habitaciones = new List<Habitacion>();
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
                 {
-                    Habitacion temp = new Habitacion();
+
+                    DataTable dt = new DataTable();
+                    dt.Dispose();
+
+                    adapter.Fill(dt);
+
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        Habitacion temp = new Habitacion();
 
 
-                    temp.NumeroHabitacion = Convert.ToInt32(dt.Rows[i]["NUMERO_HABITACION"]);
-                    temp.TipoHabitacion = dt.Rows[i]["NOMBRE_TIPO"].ToString();
-                    temp.TarifaDiaria = Convert.ToDecimal((dt.Rows[i]["TARIFA_DIARIA"]));
+                        temp.NumeroHabitacion = Convert.ToInt32(dt.Rows[i]["NUMERO_HABITACION"]);
+                        temp.TipoHabitacion = dt.Rows[i]["NOMBRE_TIPO"].ToString();
+                        temp.TarifaDiaria = Convert.ToDecimal((dt.Rows[i]["TARIFA_DIARIA"]));
 
 
 
-                    habitaciones.Add(temp);
+                        habitaciones.Add(temp);
 
-                }
-              
+                    }
 
-            };
 
-            sqlConnection.Close();
+                };
+
+                sqlConnection.Close();
+            }
+            catch (SqlException exp)
+            {
+                // Log what you need from here.
+                throw new InvalidOperationException("Data could not be read", exp);
+            }
+           
          
             return habitaciones;
 
@@ -289,33 +341,43 @@ namespace AccessData.Data
 
         public Habitacion Habitacion_Junior()
         {
-            sqlConnection.Open();
-            sqlCommand = new SqlCommand("SP_HABITACIONES_JUNIOR", sqlConnection);
-            sqlCommand.ExecuteNonQuery();
-            Habitacion tipo_junior = new Habitacion();
-
-            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            Habitacion tipo_junior;
+            try
             {
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
+                sqlConnection.Open();
+                sqlCommand = new SqlCommand("SP_HABITACIONES_JUNIOR", sqlConnection);
+                sqlCommand.ExecuteNonQuery();
+                 tipo_junior = new Habitacion();
 
-                for (int i = 0; i < dt.Rows.Count; i++)
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
                 {
-                    DataRow dr = dt.Rows[i];
-                    string[] allColumns = dr.ItemArray.Select(obj => obj.ToString()).ToArray();
-                    ArrayList itm = new ArrayList(allColumns);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
 
-                    string Descripcion = Convert.ToString(dt.Rows[i]["DESCRIPCION"]);
-                    string Ruta_Imagen = Convert.ToString(dt.Rows[i]["RUTA_IMAGEN"]);
-                    decimal TarifaDiaria = Convert.ToDecimal(dt.Rows[i]["TARIFA_DIARIA"]);
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        DataRow dr = dt.Rows[i];
+                        string[] allColumns = dr.ItemArray.Select(obj => obj.ToString()).ToArray();
+                        ArrayList itm = new ArrayList(allColumns);
 
-                    tipo_junior.Descripcion = Descripcion;
-                    tipo_junior.ruta_imagen = Ruta_Imagen;
-                    tipo_junior.TarifaDiaria = TarifaDiaria;
+                        string Descripcion = Convert.ToString(dt.Rows[i]["DESCRIPCION"]);
+                        string Ruta_Imagen = Convert.ToString(dt.Rows[i]["RUTA_IMAGEN"]);
+                        decimal TarifaDiaria = Convert.ToDecimal(dt.Rows[i]["TARIFA_DIARIA"]);
 
+                        tipo_junior.Descripcion = Descripcion;
+                        tipo_junior.ruta_imagen = Ruta_Imagen;
+                        tipo_junior.TarifaDiaria = TarifaDiaria;
+
+                    }
                 }
+                sqlConnection.Close();
             }
-            sqlConnection.Close();
+            catch (SqlException exp)
+            {
+                // Log what you need from here.
+                throw new InvalidOperationException("Mensaje de error:", exp);
+            }
+            
 
             return tipo_junior;
         }// metodo
@@ -392,11 +454,15 @@ namespace AccessData.Data
 
         public string editarHabitacion(Habitacion habitacion)
         {
-            string salida = "No se logro editar la habitacion ";
+            string salida;
+            try
+            {
+
+             salida = "No se logro editar la habitacion ";
             sqlConnection.Open();
             sqlCommand = new SqlCommand("SP_update_tipoHabitacion", sqlConnection);
             sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-            sqlCommand.Parameters.AddWithValue("tarifa", Decimal.Parse(habitacion.Tarifa));
+            sqlCommand.Parameters.AddWithValue("tarifa", decimal.Parse(habitacion.Tarifa));
             sqlCommand.Parameters.AddWithValue("descripcion", habitacion.Descripcion);
             sqlCommand.Parameters.AddWithValue("nombre", habitacion.TipoHabitacion);
 
@@ -409,6 +475,12 @@ namespace AccessData.Data
 
             sqlConnection.Close();
 
+            }
+            catch (SqlException exp)
+            {
+                // Log what you need from here.
+                throw new InvalidOperationException("Data could not be read", exp);
+            }
             return salida;
         }//editarHabitacion
 

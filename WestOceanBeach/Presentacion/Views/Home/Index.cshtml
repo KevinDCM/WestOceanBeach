@@ -301,8 +301,8 @@
 	
 	                    <br/>
 	
-	                    <button style="background-color: green !important" class="submit-btn form-control" id="buttonC" onclick="return ValidarReserva()">Consultar disponibilidad</button> 
-                        <button style="background-color: green !important" class="submit-btn form-control" id="buttonReiniciar" onclick="return ReiniciarReserva()">Reiniciar reserva</button>
+	                    <button style="background-color: #86b4ca !important" class="submit-btn form-control" id="buttonC" onclick="return ValidarReserva()">Consultar disponibilidad</button> 
+                        <button style="background-color: #86b4ca !important" class="submit-btn form-control" id="buttonReiniciar" onclick="return ReiniciarReserva()">Reiniciar reserva</button>
                     </div>
                   
                     <br/>
@@ -348,7 +348,7 @@
                         <input autocomplete="off" type="number" name="" id="cvv" class="form-control" placeholder="CVV" required>
 		                
                         <img src="https://i.postimg.cc/Gpr1Rtth/Captura.png" alt="security" width="200" height="100">
-	                    <button class="submit-btn form-control" id="button" onclick="return SolicitarReservacion()">Reservar</button>
+	                    <button  style="background-color: #86b4ca "  class="submit-btn form-control" id="button" onclick="return SolicitarReservacion()">Reservar</button>
 
                     </div>
 
@@ -524,15 +524,10 @@
 
             <section id="loginadmin" style="background-color:lightgray;">
   
-                <p style="text-align: center !important; height: 60px!important">
+                <p style="text-align: center !important; height: 40px!important">
                    Ir al <a  asp-controller="Login" asp-action="Index" >Login administrativo</a>
                    @*redireccionar a vista Admin*@
                 </p>
-                <p style="text-align: center !important; height: 60px!important">
-                   Ir al <a  asp-controller="Validaciones" asp-action="Index_Val" >Login administrativo</a>
-                   @*redireccionar a vista Admin*@
-                </p>
-            
             </section>
 
         </div>

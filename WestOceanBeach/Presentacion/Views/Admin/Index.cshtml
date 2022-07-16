@@ -194,11 +194,12 @@
                         </th>
 
                         <th>
-                            <label>Tarifa Diaria Actual:  <input type="text"  inputmode="numeric" id="tarifaESTANDAR" size="5" maxlength="10" value= @ViewBag.Habitacion_estandar_tarifa_diaria name="Tarifa_diaria"> </label>
+                            <label>Tarifa Diaria Actual:  <input type="text"  oninput="limitDecimalPlaces(event, 2)" onkeypress="return isNumberKey(event)" id="tarifaESTANDAR" size="5" maxlength="10" value= @ViewBag.Habitacion_estandar_tarifa_diaria name="Tarifa_diaria"> </label>
                         </th>
                     </tr>
                 </table>
 
+ 
 
                 <div class="col-sm-10">
                     <textarea class="noteToAdd" id="descripcionESTANDAR" name="descripcionESTANDAR" rows="6" cols="70">@ViewBag.Habitacion_estandar_descripcion</textarea>
@@ -220,7 +221,7 @@
                                 {
         
                                     <input id="fileEstandar" type="file" name="fileEstandar" />
-                                    <input type="button" value="OK" onclick="cambiarImgHabitacionEstandar()" ; return false;" />
+                                    <input type="button" value="Cargar" onclick="cambiarImgHabitacionEstandar() ; return false;" />
                                 }
                             </div>
                         </th>
@@ -253,7 +254,7 @@
             <label>  Habitación Junior</label></div>
             </th>
             <th>
-            <label>Tarifa Diaria Actual:  <input type="text" id="tarifaJUNIOR"  inputmode="numeric" size="5" maxlength="10"  name="Tarifa_diaria" value= @ViewBag.Habitacion_junior_tarifa_diaria> </label>
+            <label>Tarifa Diaria Actual:  <input type="text" id="tarifaJUNIOR"  oninput="limitDecimalPlaces(event, 2)" onkeypress="return isNumberKey(event)"  size="5" maxlength="10"  name="Tarifa_diaria" value= @ViewBag.Habitacion_junior_tarifa_diaria> </label>
             
         </th>
             </tr>
@@ -276,7 +277,7 @@
             {
         
             <input id="fileJunior" type="file" name="fileJunior" />
-            <input type="button" value="OK" onclick="cambiarImgHabitacionJunior()" ; return false;" />
+            <input type="button" value="Cargar" onclick="cambiarImgHabitacionJunior(); return false;" />
             }
             </div>
             </th>
@@ -330,7 +331,7 @@
             {
         
             <input id="fileSuite" type="file" name="fileSuite" />
-            <input type="button" value="OK" onclick="cambiarImgHabitacionSuite()" ; return false;" />
+            <input type="button" value="Cargar" onclick="cambiarImgHabitacionSuite(); return false;" />
             }
             </div>
             </th>
@@ -573,14 +574,14 @@
                 </div>
                 <div class="col-sm-3 col-xs  col-xs-well">
                     <label for="start">Fecha de Inicio:</label>
-                    <input type="date" id="Fecha_Inicio" min="2022-01-01" max="2022-12-31" name="trip-start">
+                    <input type="date" id="Fecha_Inicio" min="2022-01-01" max="2022-12-31"  name="trip-start" onkeydown="return false">
                            </div>
                            <div class="col-sm-3 col-xs  col-xs-well">
 
                      <label for="start">Fecha de Fin:</label>
                      <br>
 
-                    <input type="date" id="Fecha_Final" min="2022-01-01" max="2022-12-31" name="trip-start" >
+                    <input type="date" id="Fecha_Final" min="2022-01-01" max="2022-12-31"  name="trip-start" onkeydown="return false">
               
                     </div>
       </div>
@@ -688,7 +689,7 @@
 
                 <br/>
 
-	            <button style="width: 300px; color:white; background-color: blue !important" class="submit-btn form-control" id="buttonCambiar" onclick="return RealizarIntercambio()">↕ Intercambiar ↕</button> 
+	            <button style="width: 300px; color:white; background-color: #86b4ca !important" class="submit-btn form-control" id="buttonCambiar" onclick="return RealizarIntercambio()">↕ Intercambiar ↕</button> 
                               
                 <br/>
 
@@ -704,7 +705,7 @@
                 <br/>
 
     <div>
-	    <button style="color:white; background-color: red !important; height: 60px!important" class="submit-btn form-control" id="buttonLogout" onclick="return Logout()">Cerrar sesión</button> 
+	    <button style="color:white; background-color:#86b4ca !important; height: 60px!important" class="submit-btn form-control" id="buttonLogout" onclick="return Logout()">Cerrar sesión</button> 
     </div>
 
 </div>

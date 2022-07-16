@@ -221,7 +221,7 @@ namespace Presentacion.Controllers
         [HttpPost]
         public async Task<IActionResult> ChangeImageHome(IFormFile file) {
 
-            string mensaje = "";
+            string mensajeIH = "";
 
             if (file != null && file.Length > 0) {
 
@@ -235,23 +235,24 @@ namespace Presentacion.Controllers
 
                     ic.Name = "ImgHome"; //nombre imagen
                     ic.Full_path = "imagenes/"+file.FileName; // ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
-                    mensaje= "Se cambio la imagen con exito";
+                    mensajeIH= "Se cambio la imagen con exito";
            
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     var response2 = await client. PostAsJsonAsync("https://localhost:44386/SitioGeneral/editarRutaImgHome", ic);
                     string resultado = await response2.Content.ReadAsStringAsync();
                     var response3 = JsonConvert.DeserializeObject<string>(resultado);
+                    mensajeIH = "Se ha cambiado la imagen con exito !";
 
                 } else {
-                    mensaje= "El formato de la imagen no se encuentra entre las permitidas (jpg,png,gif)";
+                    mensajeIH= "El formato de la imagen no se encuentra entre las permitidas (jpg,png,gif)";
                 }
 
             } else {
-                mensaje = "No se ha seleccionado ningùn archivo.";
+                mensajeIH = "No se ha seleccionado ningùn archivo.";
             }
 
-            return Json(new { success = true, message = mensaje });
+            return Json(new { success = true, message = mensajeIH });
             //Llamar Api pasar objeto imagenes 
         }//
 
@@ -259,7 +260,7 @@ namespace Presentacion.Controllers
         public async Task<IActionResult> CambiarImgHabitacionEstandar(IFormFile file)
         {
 
-            string mensaje = "";
+            string mensajeIE = "";
 
             if (file != null && file.Length > 0)
             {
@@ -273,9 +274,9 @@ namespace Presentacion.Controllers
                 if (exten_img == ".jpg" || exten_img == ".png" || exten_img == ".gif")
                 {
 
-                    ic.Name = "ImgHome"; //nombre imagen
+                    ic.Name = "ImgEstandar"; //nombre imagen
                     ic.Full_path = "/imagenes/" + file.FileName; // ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
-                    mensaje = "Se cambio la imagen con exito";
+                    mensajeIE = "Se cambio la imagen con exito";
 
                     Habitacion h = new Habitacion();
                     h.ruta_imagen = ic.Full_path;
@@ -283,30 +284,31 @@ namespace Presentacion.Controllers
 
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    var response2 = await client.PostAsJsonAsync("https://localhost:44386/Habitacion/EditarHabitacionImagen", h);
-                    string resultado = await response2.Content.ReadAsStringAsync();
-                    var response3 = JsonConvert.DeserializeObject<string>(resultado);
-                    
+                    var responseE = await client.PostAsJsonAsync("https://localhost:44386/Habitacion/EditarHabitacionImagen", h);
+                    string resultadoE = await responseE.Content.ReadAsStringAsync();
+                    var responseEE = JsonConvert.DeserializeObject<string>(resultadoE);
+                    mensajeIE = "Se ha cambiado la imagen con exito !";
+
                 }
                 else
                 {
-                    mensaje = "El formato de la imagen no se encuentra entre las permitidas (jpg,png,gif)";
+                    mensajeIE = "El formato de la imagen no se encuentra entre las permitidas (jpg,png,gif)";
                 }
 
             }
             else
             {
-                mensaje = "No se ha seleccionado ningùn archivo.";
+                mensajeIE = "No se ha seleccionado ningùn archivo.";
             }
 
-            return Json(new { success = true, message = mensaje });
+            return Json(new { success = true, message = mensajeIE });
             //Llamar Api pasar objeto imagenes 
         }// 
 
         public async Task<IActionResult> CambiarImgHabitacionJunior(IFormFile file)
         {
 
-            string mensaje = "";
+            string mensajeHJ = "";
 
             if (file != null && file.Length > 0)
             {
@@ -320,9 +322,9 @@ namespace Presentacion.Controllers
                 if (exten_img == ".jpg" || exten_img == ".png" || exten_img == ".gif")
                 {
 
-                    ic.Name = "ImgHome"; //nombre imagen
+                    ic.Name = "ImgJunior"; //nombre imagen
                     ic.Full_path = "/imagenes/" + file.FileName; // ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
-                    mensaje = "Se cambio la imagen con exito";
+                    mensajeHJ = "Se cambio la imagen con exito";
 
                     Habitacion h = new Habitacion();
                     h.ruta_imagen = ic.Full_path;
@@ -330,31 +332,32 @@ namespace Presentacion.Controllers
 
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    var response2 = await client.PostAsJsonAsync("https://localhost:44386/Habitacion/EditarHabitacionImagen", h);
-                    string resultado = await response2.Content.ReadAsStringAsync();
-                    var response3 = JsonConvert.DeserializeObject<string>(resultado);
-                    mensaje = response3;
+                    var responseJ = await client.PostAsJsonAsync("https://localhost:44386/Habitacion/EditarHabitacionImagen", h);
+                    string resultadoJ = await responseJ.Content.ReadAsStringAsync();
+                    var responseJJ = JsonConvert.DeserializeObject<string>(resultadoJ);
+                    //mensaje = responseJJ;
+                    mensajeHJ = "Se ha cambiado la imagen con exito !";
 
                 }
                 else
                 {
-                    mensaje = "El formato de la imagen no se encuentra entre las permitidas (jpg,png,gif)";
+                    mensajeHJ = "El formato de la imagen no se encuentra entre las permitidas (jpg,png,gif)";
                 }
 
             }
             else
             {
-                mensaje = "No se ha seleccionado ningùn archivo.";
+                mensajeHJ = "No se ha seleccionado ningún archivo.";
             }
 
-            return Json(new { success = true, message = mensaje });
+            return Json(new { success = true, message = mensajeHJ });
             //Llamar Api pasar objeto imagenes 
         }// 
 
         public async Task<IActionResult> CambiarImgHabitacionSuite(IFormFile file)
         {
 
-            string mensaje = "";
+            string mensajeHS = "";
 
             if (file != null && file.Length > 0)
             {
@@ -368,9 +371,9 @@ namespace Presentacion.Controllers
                 if (exten_img == ".jpg" || exten_img == ".png" || exten_img == ".gif")
                 {
 
-                    ic.Name = "ImgHome"; //nombre imagen
+                    ic.Name = "ImgStandar"; //nombre imagen
                     ic.Full_path = "/imagenes/" + file.FileName; // ruta imagen se guardo,aqui seria llamar a la base de datos y luego viewbag recupero el path y ya sabe donde esta.
-                    mensaje = "Se cambio la imagen con exito";
+                    mensajeHS = "Se cambio la imagen con exito";
 
                     Habitacion h = new Habitacion();
                     h.ruta_imagen = ic.Full_path;
@@ -378,24 +381,25 @@ namespace Presentacion.Controllers
 
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    var response2 = await client.PostAsJsonAsync("https://localhost:44386/Habitacion/EditarHabitacionImagen", h);
-                    string resultado = await response2.Content.ReadAsStringAsync();
-                    var response3 = JsonConvert.DeserializeObject<string>(resultado);
-                    mensaje = response3;
+                    var responseS = await client.PostAsJsonAsync("https://localhost:44386/Habitacion/EditarHabitacionImagen", h);
+                    string resultadoSS = await responseS.Content.ReadAsStringAsync();
+                    var responseSS = JsonConvert.DeserializeObject<string>(resultadoSS);
+                    //mensaje = responseSS;
+                    mensajeHS = "Se ha cambiado la imagen con exito !";
 
                 }
                 else
                 {
-                    mensaje = "El formato de la imagen no se encuentra entre las permitidas (jpg,png,gif)";
+                    mensajeHS = "El formato de la imagen no se encuentra entre las permitidas (jpg,png,gif)";
                 }
 
             }
             else
             {
-                mensaje = "No se ha seleccionado ningùn archivo.";
+                mensajeHS = "No se ha seleccionado ningùn archivo.";
             }
 
-            return Json(new { success = true, message = mensaje });
+            return Json(new { success = true, message = mensajeHS });
             //Llamar Api pasar objeto imagenes 
         }// 
 

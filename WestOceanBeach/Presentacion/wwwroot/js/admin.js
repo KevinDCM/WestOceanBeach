@@ -34,14 +34,26 @@ $(document).ready(function () {
     document.getElementById('myDateSalida2').setAttribute('min', today2);
    
     var nowF = new Date();
-    var monthF = (nowF.getMonth() + 1);
-    var dayF = (nowF.getDate() + 1);
+    var monthF = (nowF.getMonth() + 2);
+    var dayF = (nowF.getDate() +2 );
     if (monthF < 10)
         monthF = "0" + monthF;
     if (dayF < 10)
         dayF = "0" + dayF;
     var todayF = now.getFullYear() + '-' + monthF + '-' + dayF;
     $('#Fecha_Final').val(todayF);
+
+
+
+    var nowI = new Date();
+    var monthI = (nowI.getMonth() + 1);
+    var dayI = (nowI.getDate() + 1);
+    if (monthI < 10)
+        monthI = "0" + monthI;
+    if (dayI < 10)
+        dayI = "0" + dayI;
+    var todayI = now.getFullYear() + '-' + monthI + '-' + dayI;
+    $('#Fecha_Inicio').val(todayI);
 
 
     var today11 = now.getFullYear() + '-' + month + '-' + day;
@@ -615,18 +627,12 @@ function updateAboutUs() {
 
 
 
-function updateTemporada() {
-
-    
-
-    
+function updateTemporada() {    
     var tipoTemporada = $("#TIPO_TEMPORADA option:selected").text();
     var date2 = $('#Fecha_Inicio').val().split('-');
     var day2 = date2[2];
     var month2 = date2[1];
     var year2 = date2[0];
-
-
     var fechaInicio = year2 + "-" + month2 + "-" + day2;
 
 
@@ -638,7 +644,21 @@ function updateTemporada() {
 
     var fechaFinal = year + "-" + month + "-" + day;
 
+    var e = document.getElementById("TIPO_TEMPORADA");
+    var strUser_T = e.options[e.selectedIndex].value;
 
+
+
+
+
+    if (strUser_T == "Temporada") {
+
+        var aswer = document.getElementById('answer3');
+        aswer.innerHTML = "Ingrese el tipo de temporada, por favor!";
+        var modal = document.getElementById("myModal2");
+        modal.style.display = "block";
+
+    } else {
 
         $.ajax({
 
@@ -661,10 +681,9 @@ function updateTemporada() {
                 }
         });
 
-      
 
-        
-    
+     }
+ 
 }
 
 
@@ -919,33 +938,6 @@ jQuery(document).ready(function () {
     });
 });
 
-//*********************************
-function actualizarTemporada() {
-    var TIPO_TEMPORADA = $("#TIPO_TEMPORADA option:selected").text();
-   // var TIPO_TEMPORADA = $('#TIPO_TEMPORADA').val();
-    var FECHA_INICIO = $('#FECHA_INICIO').val();
-    var FECHA_FINAL = $('#FECHA_FINAL').val();
-
-
-
-    $.ajax({
-        type: "POST",
-        url: "/Admin/EditarTemporadas",
-        data: {
-            TIPO_TEMPORADA: TIPO_TEMPORADA, FECHA_INICIO: FECHA_INICIO
-            , FECHA_FINAL: FECHA_FINAL
-        },
-        contentType: "application/json",
-        success: function (result) {
-
-            alert(result);
-
-        },
-        error: function (result, status) {
-            console.log(result);
-        }
-    });
-}
 
 function addrow(numero, tipo, estado) {
 
@@ -1181,4 +1173,20 @@ function Logout(){
 		}
 	});
 
+}
+
+ function limitDecimalPlaces(e, count) {
+  if (e.target.value.indexOf(',') == -1) { return; }
+  if ((e.target.value.length - e.target.value.indexOf(',')) > count) {
+    e.target.value = parseFloat(e.target.value).toFixed(count);
+  }
+}
+
+function isNumberKey(evt)
+{
+  var charCode = (evt.which) ? evt.which : evt.keyCode;
+  if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
+    return false;
+
+  return true;
 }
