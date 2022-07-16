@@ -29,6 +29,33 @@ $(document).ready(function () {
 
     $('#fecha').val(today);
 
+
+ 
+    $('#Fecha_Inicio').val(todayI);
+    var nowI = new Date();
+    var monthI = (nowI.getMonth() + 1);
+    var dayI = (nowI.getDate() + 1);
+    if (monthI< 10)
+        monthI= "0" + monthI;
+    if (dayI < 10)
+        dayI = "0" + dayI;
+    var todayI= now.getFullYear() + '-' + monthI + '-' + dayI;
+
+
+
+    $('#Fecha_Final').val(todayF);
+    var nowF = new Date();
+    var monthF = (nowF.getMonth() + 2);
+    var dayF = (nowF.getDate() + 2);
+    if (monthF < 10)
+        monthF = "0" + monthF;
+    if (dayF < 10)
+        dayF = "0" + dayF;
+    var todayF = now.getFullYear() + '-' + monthF + '-' + dayF;
+
+  
+
+
     document.getElementById("loginadmin1").style.display = "none";
     document.getElementById("mytable").style.display = "none";
 
@@ -538,6 +565,18 @@ function updateTemporada() {
 
     var fechaFinal = year + "-" + month + "-" + day;
 
+    var e = document.getElementById("TIPO_TEMPORADA");
+    var strUser_T = e.options[e.selectedIndex].value;
+
+
+    if (strUser_T == "Temporada") {
+
+        var aswer = document.getElementById('answer3');
+        aswer.innerHTML = "Por favor ingrese los datos faltantes! ";
+        var modal = document.getElementById("myModal2");
+        modal.style.display = "block";
+
+    } else {
 
 
         $.ajax({
@@ -565,6 +604,7 @@ function updateTemporada() {
 
         
     
+     }
 }
 
 
