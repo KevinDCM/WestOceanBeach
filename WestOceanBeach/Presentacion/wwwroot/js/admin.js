@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
 
     cargarMantenimientoPublicidad();
@@ -28,68 +27,7 @@ $(document).ready(function () {
     $('#myDateLlegada2').val(today);
     $('#myDateSalida2').val(today2);
 
-    var todayI = now.getFullYear() + '-' + month + '-' + day;
-
-    document.getElementById('myDateLlegada2').setAttribute('min', todayI);
-    document.getElementById('myDateSalida2').setAttribute('min', today2);
-   
-    var nowF = new Date();
-    var monthF = (nowF.getMonth() + 2);
-    var dayF = (nowF.getDate() +2 );
-    if (monthF < 10)
-        monthF = "0" + monthF;
-    if (dayF < 10)
-        dayF = "0" + dayF;
-    var todayF = now.getFullYear() + '-' + monthF + '-' + dayF;
-    $('#Fecha_Final').val(todayF);
-
-
-
-    var nowI = new Date();
-    var monthI = (nowI.getMonth() + 1);
-    var dayI = (nowI.getDate() + 1);
-    if (monthI < 10)
-        monthI = "0" + monthI;
-    if (dayI < 10)
-        dayI = "0" + dayI;
-    var todayI = now.getFullYear() + '-' + monthI + '-' + dayI;
-    $('#Fecha_Inicio').val(todayI);
-
-
-    var today11 = now.getFullYear() + '-' + month + '-' + day;
-    $('#fecha').val(today11);
-
-   
-
-    $.ajax(
-        {
-            type: "POST",
-            dataType:'JSON',
-            url:  "/Admin/estadoActualHabitaciones",
-            success: function (data) {
-
-
-
-
-                $.each(data, function (key, item) {
-
-                  
-                    
-                    
-                    addrow(item.numeroHabitacion, item.tipoHabitacion, item.encuentra);
-
-                });
-               
-            },
-            error: function (xhr, statusText, err) {
-                alert("error" + xhr.status);
-            }
-
-
-
-
-
-        });
+    $('#fecha').val(today);
 
     document.getElementById("loginadmin1").style.display = "none";
     document.getElementById("mytable").style.display = "none";
@@ -115,9 +53,6 @@ function createOfertSpecial(){
     var strUser = e.options[e.selectedIndex].value;
 
 
-
-
-
     if (strUser == "Tipo de Habitacion:" || trimfield(fechaLLegada1) == '' || trimfield(fechaSalida1) == '' || trimfield(descuento1) == '') {
 
         var aswer = document.getElementById('answer3');
@@ -128,60 +63,47 @@ function createOfertSpecial(){
     } else {
 
 
-        if (descuento1 <= 30) {
+
+        var date = $('#myDateLlegada2').val().split('-');
+        var day = date[2];
+        var month = date[1];
+        var year = date[0];
+
+        var date2 = $('#myDateSalida2').val().split('-');
+        var day2 = date2[2];
+        var month2 = date2[1];
+        var year2 = date2[0];
 
 
+        var fechaInicio = year + "-" + month + "-" + day;
 
-            var date = $('#myDateLlegada2').val().split('-');
-            var day = date[2];
-            var month = date[1];
-            var year = date[0];
+        var fechaFinal = year2 + "-" + month2 + "-" + day2;
 
-            var date2 = $('#myDateSalida2').val().split('-');
-            var day2 = date2[2];
-            var month2 = date2[1];
-            var year2 = date2[0];
-
-
-            var fechaInicio = year + "-" + month + "-" + day;
-
-            var fechaFinal = year2 + "-" + month2 + "-" + day2;
-
-            var descuento = document.getElementById('descount').value;
-            var tipoHabitacion = $("#typeRoom2 option:selected").text();
-            $.ajax(
-                {
-                    type: 'POST',
-                    dataType: 'JSON',
-                    url: '/Oferta/crearOfertaEspecial',
-                    data: { descuento: descuento, fechaInicio: fechaInicio, fechaFinal: fechaFinal, tipoHabitacion: tipoHabitacion },
-                    success:
-                        function (data) {
+        var descuento = document.getElementById('descount').value;
+        var tipoHabitacion = $("#typeRoom2 option:selected").text();
+        $.ajax(
+            {
+                type: 'POST',
+                dataType: 'JSON',
+                url: '/Oferta/crearOfertaEspecial',
+                data: { descuento: descuento, fechaInicio: fechaInicio, fechaFinal: fechaFinal, tipoHabitacion: tipoHabitacion },
+                success:
+                    function (data) {
 
 
-                            var aswer = document.getElementById('answer3');
-                            aswer.innerHTML = data.message;
-                            var modal = document.getElementById("myModal2");
-                            modal.style.display = "block";
+                        var aswer = document.getElementById('answer');
+                        aswer.innerHTML = data.message;
+                        var modal = document.getElementById("myModal2");
+                        modal.style.display = "block";
 
 
-                        },
-                    error:
-                        function (response) {
-                            alert("Error: " + response);
-                        }
-                });
+                    },
+                error:
+                    function (response) {
+                        alert("Error: " + response);
+                    }
+            });
 
-        } else {
-
-
-            var aswer = document.getElementById('answer3');
-            aswer.innerHTML = "El descuento debe ser menor a 30";
-            var modal = document.getElementById("myModal2");
-            modal.style.display = "block";
-
-
-        }
     }
    
 
@@ -217,60 +139,44 @@ function updateOfertSpecial() {
 
     } else {
 
+        var date = $('#myDateLlegada2').val().split('-');
+        var day = date[2];
+        var month = date[1];
+        var year = date[0];
 
-        if (descuento1 <= 30) {
+        var date2 = $('#myDateSalida2').val().split('-');
+        var day2 = date2[2];
+        var month2 = date2[1];
+        var year2 = date2[0];
 
+        var fechaInicio = year + "-" + month + "-" + day;
+        var fechaFinal = year2 + "-" + month2 + "-" + day2;
 
+        var descuento = document.getElementById('descount').value;
+        var tipoHabitacion = $("#typeRoom2 option:selected").text();
+        var id = document.getElementById('oferta').value;
 
+        $.ajax(
+            {
+                type: 'POST',
+                dataType: 'JSON',
+                url: '/Oferta/actualizarOfertaEspecial',
+                data: { id: id, descuento: descuento, fechaInicio: fechaInicio, fechaFinal: fechaFinal, tipoHabitacion: tipoHabitacion },
+                success:
+                    function (data) {
 
+                        var aswer = document.getElementById('answer');
+                        aswer.innerHTML = data.message;
+                        var modal = document.getElementById("myModal");
+                        modal.style.display = "block";
 
+                    },
+                error:
+                    function (response) {
+                        alert("Error: " + response);
+                    }
+            });
 
-            var date = $('#myDateLlegada2').val().split('-');
-            var day = date[2];
-            var month = date[1];
-            var year = date[0];
-
-            var date2 = $('#myDateSalida2').val().split('-');
-            var day2 = date2[2];
-            var month2 = date2[1];
-            var year2 = date2[0];
-
-            var fechaInicio = year + "-" + month + "-" + day;
-            var fechaFinal = year2 + "-" + month2 + "-" + day2;
-
-            var descuento = document.getElementById('descount').value;
-            var tipoHabitacion = $("#typeRoom2 option:selected").text();
-            var id = document.getElementById('oferta').value;
-
-            $.ajax(
-                {
-                    type: 'POST',
-                    dataType: 'JSON',
-                    url: '/Oferta/actualizarOfertaEspecial',
-                    data: { id: id, descuento: descuento, fechaInicio: fechaInicio, fechaFinal: fechaFinal, tipoHabitacion: tipoHabitacion },
-                    success:
-                        function (data) {
-
-                            var aswer = document.getElementById('answer3');
-                            aswer.innerHTML = data.message;
-                            var modal = document.getElementById("myModal");
-                            modal.style.display = "block";
-
-                        },
-                    error:
-                        function (response) {
-                            alert("Error: " + response);
-                        }
-                });
-
-        } else {
-
-            var aswer = document.getElementById('answer3');
-            aswer.innerHTML = "El descuento debe ser menor a 30";
-            var modal = document.getElementById("myModal2");
-            modal.style.display = "block";
-
-        }
     }
 
 }
@@ -355,7 +261,7 @@ function deleteOfertSpecial() {
                 success:
                     function (data) {
 
-                        var aswer = document.getElementById('answer3');
+                        var aswer = document.getElementById('answer');
                         aswer.innerHTML = data.message;
                         var modal = document.getElementById("myModal");
                         modal.style.display = "block";
@@ -596,12 +502,18 @@ function updateAboutUs() {
 
 
 
-function updateTemporada() {    
+function updateTemporada() {
+
+    
+
+    
     var tipoTemporada = $("#TIPO_TEMPORADA option:selected").text();
     var date2 = $('#Fecha_Inicio').val().split('-');
     var day2 = date2[2];
     var month2 = date2[1];
     var year2 = date2[0];
+
+
     var fechaInicio = year2 + "-" + month2 + "-" + day2;
 
 
@@ -613,72 +525,33 @@ function updateTemporada() {
 
     var fechaFinal = year + "-" + month + "-" + day;
 
-    var e = document.getElementById("TIPO_TEMPORADA");
-    var strUser_T = e.options[e.selectedIndex].value;
 
 
+        $.ajax({
 
+            type: 'POST',
+            dataType: 'json',
+            url: '/Admin/EditarTemporadas',
+            data: { tipoTemporada: tipoTemporada, fechaInicio: fechaInicio, fechaFinal: fechaFinal },
 
+            success: function (result) {
 
-    if (strUser_T == "Temporada") {
-
-        var aswer = document.getElementById('answer3');
-        aswer.innerHTML = "Ingrese el tipo de temporada, por favor!";
-        var modal = document.getElementById("myModal2");
-        modal.style.display = "block";
-
-    } else {
-
-
-        if (day2 == day2 && month2 == month) {
-
-            var aswer = document.getElementById('answer3');
-            aswer.innerHTML = "La fecha inicio no puede ser la misma fecha final.";
-            var modal = document.getElementById("myModal2");
-            modal.style.display = "block";
-
-        } else {
-
-
-            if (month2 > month && day2 > day) {
-
-                var aswer = document.getElementById('answer3');
-                aswer.innerHTML = "La fecha inicio no puede ser mayor a la fecha final.";
-                var modal = document.getElementById("myModal2");
+                var aswer = document.getElementById('answer');
+                aswer.innerHTML = result.message;
+                var modal = document.getElementById("myModal");
                 modal.style.display = "block";
 
+            },
+            error:
+                function (response) {
+                    alert("Error en el llamado: " + response);
+                }
+        });
 
-            } else {
+      
 
-                $.ajax({
-
-                    type: 'POST',
-                    dataType: 'json',
-                    url: '/Admin/EditarTemporadas',
-                    data: { tipoTemporada: tipoTemporada, fechaInicio: fechaInicio, fechaFinal: fechaFinal },
-
-                    success: function (result) {
-
-                        var aswer = document.getElementById('answer');
-                        aswer.innerHTML = result.message;
-                        var modal = document.getElementById("myModal");
-                        modal.style.display = "block";
-
-                    },
-                    error:
-                        function (response) {
-                            alert("Error en el llamado: " + response);
-                        }
-                });
-
-
-
-            }
-
-        }
-
-     }
- 
+        
+    
 }
 
 
@@ -933,6 +806,33 @@ jQuery(document).ready(function () {
     });
 });
 
+//*********************************
+function actualizarTemporada() {
+    var TIPO_TEMPORADA = $("#TIPO_TEMPORADA option:selected").text();
+   // var TIPO_TEMPORADA = $('#TIPO_TEMPORADA').val();
+    var FECHA_INICIO = $('#FECHA_INICIO').val();
+    var FECHA_FINAL = $('#FECHA_FINAL').val();
+
+
+
+    $.ajax({
+        type: "POST",
+        url: "/Admin/EditarTemporadas",
+        data: {
+            TIPO_TEMPORADA: TIPO_TEMPORADA, FECHA_INICIO: FECHA_INICIO
+            , FECHA_FINAL: FECHA_FINAL
+        },
+        contentType: "application/json",
+        success: function (result) {
+
+            alert(result);
+
+        },
+        error: function (result, status) {
+            console.log(result);
+        }
+    });
+}
 
 function addrow(numero, tipo, estado) {
 
