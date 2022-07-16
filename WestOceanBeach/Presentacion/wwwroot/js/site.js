@@ -5,7 +5,8 @@ var TemporadaActual = "";
 var DescuentoTemporada = 0;
 var respuestaHabitacionDisponible = "";
 var precioTotal = 0;
-var precioFinal = 0;	
+var precioFinal = 0;
+var HabitOfert = 0;	
 
 $(document).ready(function () {
 
@@ -281,8 +282,12 @@ function habitacionDisponible(){
 						$('#tipoHabitacion').prop('disabled', true);
 						document.getElementById('buttonC').style.visibility = 'hidden';
 						document.getElementById('titleR').style.visibility = 'hidden';
+						document.getElementById('buttonOf').style.visibility = 'hidden';
+						document.getElementById('lblnumOferta').style.visibility = 'hidden';
+						document.getElementById('numOferta').style.visibility = 'hidden';
 
-						document.getElementById("buttonReiniciar").style.display = "";
+
+						document.getElementById("buttonReiniciar").style.display = ""; 
 						document.getElementById("datosCliente").style.display = "";
 
 					},
@@ -314,6 +319,15 @@ function ReiniciarReserva(){
 	$('#numsHabitacion').prop('disabled', false);
 	$('#tipoHabitacion').prop('disabled', false);
 	document.getElementById('buttonC').style.visibility = 'visible';
+	document.getElementById('lblnumOferta').style.visibility = 'visible';
+	document.getElementById('numOferta').style.visibility = 'visible';
+
+	document.getElementById('buttonOf').style.visibility = 'visible';
+	document.getElementById('tipoHabitacion').style.visibility = 'visible';
+	document.getElementById('numsHabitacion').style.visibility = 'visible';
+
+	document.getElementById('titleTH').style.visibility = 'visible';
+	document.getElementById('titleNH').style.visibility = 'visible';
 
 	respuestaHabitacionDisponible = "";
 }
@@ -365,6 +379,9 @@ function SolicitarReservacion(){
 		var IdOferta = IdOfertaSeleccionada;
 		var Temporada = TemporadaActual; 
 		var NumHabitacion = parseInt($('#numsHabitacion :selected').text());
+		if	(IdOferta != 0) { 
+			NumHabitacion = HabitOfert;
+		}
 		var PrecioFinal = precioFinal;
 		var PrecioTotal = precioTotal;
 		var Descuento = DescuentoTemporada;
@@ -401,6 +418,7 @@ function SolicitarReservacion(){
 				PrecioFinal = 0;
 				PrecioTotal = 0;
 				DescuentoTemporada = 0;
+				HabitOfert = 0;
 				ReiniciarReserva();
 
 				// clear inputs
@@ -416,18 +434,20 @@ function SolicitarReservacion(){
 				$('#numeroTarjeta').val('');
 				$('#cvv').val('');
 
-              Email.send({
-                    Host: "smtp.mailtrap.io",
-                    Username: "2ea82bed3cdd10", //  mailtrap credentials 
-                    Password: "4024f0dc586c86",
-                    To: Correo,  
-                    From: "bwestocean@gmail.com",  //  "the organization's email"
-                    Subject: "Bienvenido a Hotel West Ocean Beach Resort!",
-                    Body: "Reserva realizada!",
-                })
-                .then(function (message) {
-                    //alert("mail sent successfully")
-                });
+				Email.send({
+					Host: "smtp.mailtrap.io",
+					Username: "2ea82bed3cdd10", //  mailtrap credentials 
+					Password: "4024f0dc586c86",
+					To: Correo,  
+					From: "bwestocean@gmail.com",  //  "the organization's email"
+					Subject: "Bienvenido a Hotel West Ocean Beach Resort!",
+					Body: "Reserva realizada!",
+				})
+				.then(function (message) {
+					//alert("mail sent successfully")
+				});
+
+				location.reload();
 
 					
 			},
@@ -447,25 +467,160 @@ function SolicitarReservacion(){
 
 function ValidarOferta(){
 
-		// IdOfertaSeleccionada = selectedValue
-		// cantidad de dias
-		// tipo habitacion
-		// escogerle un número de habitación disponible (random)
-		// insertar varias habitaciones más en la bd
 
-		// aqui se debe solicitar el precio total, el descuento y el precio final de la reserva 
-		// llamando a ReservaController/GetMontos(param tipoHabitacion)
 
-		// var precioTotal = "Precio Total: $";
-		// concatenar precio	  precioTotal + value.toString()	
-		// document.getElementById("precioT").innerHTML = precioTotal;
+	if (document.getElementById("numOferta").value.length == 0){
+		alert("Especifique el código de oferta!");
+		return;
+	}
 
-		// var descuento = "Descuento: $";
-		// concatenar descuento	  descuento + value2.toString()	
-		// document.getElementById("descuento").innerHTML = descuento;
+	document.getElementById("tipoHabitacion").style.display = "none";
+	document.getElementById("numsHabitacion").style.display = "none";
+	document.getElementById("titleTH").style.display = "none";
+	document.getElementById("titleNH").style.display = "none";
 
-		// var precioFinal = "Precio Final: $";
-		// concatenar precio	  precioFinal + value3.toString()	
-		// document.getElementById("precioF").innerHTML = precioFinal
-		
+
+	IdOfertaSeleccionada = parseInt($('#numOferta').val());
+	var Id = IdOfertaSeleccionada;
+
+	$.ajax({
+		type: "GET", 
+		url: "/Reserva/ReservaConOferta",
+		data: {"Id": Id},
+		contentType: "application/json;charset=utf-8",
+		dataType: "json",
+		success: function (result) {
+
+			var numeroHabitAsignada = parseInt(result);
+			HabitOfert = numeroHabitAsignada;// num habitación
+			console.log(numeroHabitAsignada);
+
+			var now2 = new Date();
+			var month2 = (now2.getMonth() + 1);               
+			var day2 = (now2.getDate()+1);
+			if (month2 < 10) 
+				month2 = "0" + month2;
+			if (day2 < 10) 
+				day2 = "0" + day2;
+			var tomorrow = now2.getFullYear() + '-' + month2 + '-' + day2;
+
+			var now3 = new Date();
+			var month3 = (now3.getMonth() + 1);               
+			var day3 = (now3.getDate()+2);
+			if (month3 < 10) 
+				month3 = "0" + month3;
+			if (day3 < 10) 
+				day3 = "0" + day3;
+			var ptomorrow = now3.getFullYear() + '-' + month3 + '-' + day3;
+
+			$('#fechaI').val(tomorrow);
+			$('#fechaF').val(ptomorrow);
+
+
+			var Inicio_date = parseDate(tomorrow); 
+			var Final_date = parseDate(ptomorrow);
+
+			var cantidadDias = 2; // fechaInicio mañana y fechaFin pasado mañana
+
+			var CodigoTipoHabitacion = "";
+
+			if(	numeroHabitAsignada >= 1 && numeroHabitAsignada <=7 )
+			{
+				CodigoTipoHabitacion = "1";	
+			}
+
+			if(	numeroHabitAsignada >= 8 && numeroHabitAsignada <=14 )
+			{
+				CodigoTipoHabitacion = "2";	
+			}
+
+			if(	numeroHabitAsignada >= 15 && numeroHabitAsignada <=21 )
+			{
+				CodigoTipoHabitacion = "3";	
+			}
+			
+	 		$.ajax({
+				
+				url: "/Habitacion/ObtenerTarifaDiaria",
+				data: {"CodigoTipoHabitacion": CodigoTipoHabitacion},
+				type: "GET",
+				contentType: "application/json;charset=utf-8",
+				dataType: "json",
+				success: function (result) {
+					
+					var tarifaDiaria = parseFloat(result);
+
+					$.ajax({			
+						url: "/Oferta/GetDescuentoOferta",
+						data: {"Id": Id},
+						type: "GET",
+						contentType: "application/json;charset=utf-8",
+						dataType: "json",
+						success: function (result) {
+
+							var descuentoTotal = DescuentoTemporada + parseFloat(result);
+							precioTotal = tarifaDiaria * cantidadDias;
+							precioFinal = precioTotal - descuentoTotal;	
+							// este caso lleva oferta
+
+							// calcular precio total (cargar en formulario)
+							var precioTotalS = "Precio Total: $";	  
+							let resultPrecioTotal = precioTotalS.concat(precioTotal.toString());
+							document.getElementById("precioT").innerHTML = resultPrecioTotal;
+
+							// calcular precio final (cargar en formulario)
+							var precioFinalS = "Precio Final: $";	  
+							let resultPrecioFinal = precioFinalS.concat(precioFinal.toString());
+							document.getElementById("precioF").innerHTML = resultPrecioFinal;
+
+							// descuento según temporada (cargar en formulario)
+							var descuentoS = "Descuento: (Incluye oferta) $";
+							let resultDescuento = descuentoS.concat(descuentoTotal.toString());
+							document.getElementById("descuento").innerHTML = resultDescuento;
+
+							// cantidad de días (cargar en formulario)
+							var cantDiasStr = "Cantidad de noches: ";
+							let resultCantDias = cantDiasStr.concat(cantidadDias.toString());
+							document.getElementById("cantNoches").innerHTML = resultCantDias;
+
+							// tarifa diaria (cargar en formulario)
+							var tDS = "Tarifa por noche: $";
+							let resulttDS = tDS.concat(tarifaDiaria.toString());
+							document.getElementById("tarifaDiaria").innerHTML = resulttDS;
+
+			
+							respuestaHabitacionDisponible =	"";
+
+							$('#fechaF').prop('disabled', true); 
+							$('#fechaI').prop('disabled', true);
+							$('#numsHabitacion').prop('disabled', true);
+							$('#tipoHabitacion').prop('disabled', true);
+							document.getElementById('buttonC').style.visibility = 'hidden';
+							document.getElementById('titleR').style.visibility = 'hidden';
+							document.getElementById('buttonOf').style.visibility = 'hidden';
+							document.getElementById('lblnumOferta').style.visibility = 'hidden';
+							document.getElementById('numOferta').style.visibility = 'hidden';
+
+							document.getElementById("buttonReiniciar").style.display = ""; 
+							document.getElementById("datosCliente").style.display = "";
+
+							alert("Se le ha asigado la habitación # " + numeroHabitAsignada + ", del " + tomorrow + " hasta " + ptomorrow);	
+	
+						},
+						error: function (errorMessage) {
+							alert(errorMessage.responseText);
+						}
+					});
+
+				},
+				error: function (errorMessage) {
+					alert(errorMessage.responseText);
+				}
+			});
+
+		},
+		error: function (result, status) {
+			console.log(result);
+		}
+	});
 }

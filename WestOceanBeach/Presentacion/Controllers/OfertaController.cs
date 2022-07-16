@@ -38,9 +38,6 @@ namespace Presentacion.Controllers
             return Ok(Habitaciones);
         }
 
-
-
-
         [HttpPost]
         public async Task<IActionResult> ObtenerOfertasEspecialesGeneral()
         {
@@ -59,8 +56,6 @@ namespace Presentacion.Controllers
             return Ok(ofertas);
         }
 
-
-
         [HttpPost]
         public async Task<IActionResult> ObtenerOfertasEspecialesGeneralTipoHabitacion(string tipoHabitacion)
         {
@@ -78,21 +73,14 @@ namespace Presentacion.Controllers
             return Ok(ofertas);
         }
 
-
-
         [HttpPost]
         public async Task<IActionResult> crearOfertaEspecial(int descuento,string fechaInicio,string fechaFinal,string tipoHabitacion)
         {
-
-
             Oferta oferta= new Oferta();
             oferta.descuento = descuento;
             oferta.fecha_inicio = Convert.ToDateTime(fechaInicio);
             oferta.fecha_final = Convert.ToDateTime(fechaFinal);
             oferta.tipo_habitacion = tipoHabitacion;
-
-
-
 
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
@@ -102,18 +90,13 @@ namespace Presentacion.Controllers
             string resultado = await response.Content.ReadAsStringAsync();
             var response3 = JsonConvert.DeserializeObject<string>(resultado);
 
-            return Json(new { success = true, message = response3 });
-
-           
-
+            return Json(new { success = true, message = response3 });       
          
         }
-
 
         [HttpPost]
         public async Task<IActionResult> actualizarOfertaEspecial(int id,int descuento, string fechaInicio, string fechaFinal, string tipoHabitacion)
         {
-
 
             Oferta oferta = new Oferta();
             oferta.Id = id;
@@ -121,9 +104,6 @@ namespace Presentacion.Controllers
             oferta.fecha_inicio = Convert.ToDateTime(fechaInicio);
             oferta.fecha_final = Convert.ToDateTime(fechaFinal);
             oferta.tipo_habitacion = tipoHabitacion;
-
-
-
 
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
@@ -135,25 +115,13 @@ namespace Presentacion.Controllers
 
             return Json(new { success = true, message = response3 });
 
-
-
-
         }
-
-
-
 
         [HttpPost]
         public async Task<IActionResult> eliminarOfertaEspecial(int id)
         {
-
-
             Oferta oferta = new Oferta();
             oferta.Id = id;
-         
-
-
-
 
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
@@ -165,15 +133,24 @@ namespace Presentacion.Controllers
 
             return Json(new { success = true, message = response3 });
 
-
-
-
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult> GetDescuentoOferta(Oferta Oferta)
+        {
 
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
 
+            HttpResponseMessage response = await client.GetAsync(
+                "https://localhost:44386/Oferta/GetDescuentoOferta/" + Oferta.Id);
 
+            string content = await response.Content.ReadAsStringAsync();
+
+            return Ok(content);
+        }
 
     }
 }

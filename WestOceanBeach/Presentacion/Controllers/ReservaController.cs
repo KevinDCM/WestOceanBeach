@@ -58,6 +58,22 @@ namespace Presentacion.Controllers
             return Ok(resultado);
 
         }
+
+        [HttpGet]
+        public async Task<IActionResult> ReservaConOferta(Oferta oferta)
+        {
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var id = oferta.Id;
+            var response = await client.GetAsync("https://localhost:44386/Reserva/ReservaConOferta/"+ id);
+            string resultado = await response.Content.ReadAsStringAsync();
+            // convert result to int
+            return Ok(resultado);
+
+        }
+
     }
 
 }

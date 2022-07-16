@@ -10,33 +10,33 @@ namespace Business.Business
         private static OfertaData ofertaData;
 
         public OfertaBusiness() {
-          
-        
-            ofertaData=new OfertaData();
+
+
+            ofertaData = new OfertaData();
         }
 
 
         public List<Oferta> obtenerOfertaSobresaliente() {
 
             return ofertaData.obtenerOfertaSobresaliente();
-        
-        
+
+
         }
 
-        public string crearOfertaEspecial(Oferta oferta) { 
-        
-        
+        public string crearOfertaEspecial(Oferta oferta) {
+
+
             return ofertaData.crearOfertaEspecial(oferta);
-        
-        
+
+
         }
 
         public List<Oferta> consultaGeneralOfertasEspeciales() {
 
 
             return ofertaData.consultaGeneralOfertasEspeciales();
-        
-        
+
+
         }
 
         public List<Oferta> consultaGeneralOfertasEspecialesTipoHabitacion(Oferta oferta) {
@@ -65,7 +65,9 @@ namespace Business.Business
         }
 
 
-
+        public float GetDescuentoOferta(int id){
+            return ofertaData.GetDescuentoOferta(id);
+        }
 
 
     }

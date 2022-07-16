@@ -22,6 +22,31 @@ namespace AccessData.Data
             sqlCommand = new SqlCommand();
         }
 
+        public int ReservaConOferta(int id)
+        {
+            Int32 resultado = 0;
+
+            sqlConnection.Open();
+            sqlCommand = new SqlCommand("SP_ValidarOferta", sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            // parámetro: id de oferta
+            sqlCommand.Parameters.AddWithValue("@paramidOferta",id);
+            sqlCommand.ExecuteNonQuery();
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
+            {
+                DataTable dt = new DataTable();
+                dt.Dispose();
+                adapter.Fill(dt);
+
+                resultado = Convert.ToInt32(dt.Rows[0]["RESPONSE"]);
+                // retorna un número de habitación disponible, o un No
+            };
+
+            sqlConnection.Close();
+            return resultado;
+        }
+
         public string RealizarReserva(Reserva reserva)
         {
             // call stored procedure here...
