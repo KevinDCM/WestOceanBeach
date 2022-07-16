@@ -503,6 +503,11 @@ function cambiarImgHabitacionEstandar() {
         contentType: false,
         processData: false,
         success: function (result) {
+            var aswer = document.getElementById('answer');
+            aswer.innerHTML = result.message;
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+
 
         },
         error:
@@ -526,6 +531,10 @@ function cambiarImgHabitacionJunior() {
         contentType: false,
         processData: false,
         success: function (result) {
+            var aswer = document.getElementById('answer');
+            aswer.innerHTML = result.message;
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
 
         },
         error:
@@ -549,6 +558,10 @@ function cambiarImgHabitacionSuite() {
         contentType: false,
         processData: false,
         success: function (result) {
+            var aswer = document.getElementById('answer');
+            aswer.innerHTML = result.message;
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
 
         },
         error:
