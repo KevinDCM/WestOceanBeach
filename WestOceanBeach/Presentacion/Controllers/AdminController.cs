@@ -457,7 +457,7 @@ namespace Presentacion.Controllers
 
             string resultado = await response.Content.ReadAsStringAsync();
 
-            return Ok(resultado);
+            return Json(new { success = true, message = resultado });
         }
 
         public bool  enviarCorreo(string correoEnviar,string asunto, string contenidoMsj) {
