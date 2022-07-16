@@ -64,6 +64,8 @@ function createOfertSpecial(){
 
 
 
+
+
         var date = $('#myDateLlegada2').val().split('-');
         var day = date[2];
         var month = date[1];
@@ -81,28 +83,70 @@ function createOfertSpecial(){
 
         var descuento = document.getElementById('descount').value;
         var tipoHabitacion = $("#typeRoom2 option:selected").text();
-        $.ajax(
-            {
-                type: 'POST',
-                dataType: 'JSON',
-                url: '/Oferta/crearOfertaEspecial',
-                data: { descuento: descuento, fechaInicio: fechaInicio, fechaFinal: fechaFinal, tipoHabitacion: tipoHabitacion },
-                success:
-                    function (data) {
 
 
-                        var aswer = document.getElementById('answer');
-                        aswer.innerHTML = data.message;
-                        var modal = document.getElementById("myModal2");
-                        modal.style.display = "block";
+
+        if (month == month2 && day2 == day) {
+
+            var aswer = document.getElementById('answer3');
+            aswer.innerHTML = "La fecha inicio no puede ser igual a la fecha final";
+            var modal = document.getElementById("myModal2");
+            modal.style.display = "block";
+
+        } else {
+
+            if (month2 < month) {
+
+                var aswer = document.getElementById('answer3');
+                aswer.innerHTML = "La fecha final no puede ser menor a la fecha inicio";
+                var modal = document.getElementById("myModal2");
+                modal.style.display = "block";
 
 
-                    },
-                error:
-                    function (response) {
-                        alert("Error: " + response);
-                    }
-            });
+            } else {
+
+
+                if (descuento >30) {
+
+                    var aswer = document.getElementById('answer3');
+                    aswer.innerHTML = "No se permiten descuento mayores a 30";
+                    var modal = document.getElementById("myModal2");
+                    modal.style.display = "block";
+
+
+
+                }
+
+                $.ajax(
+                    {
+                        type: 'POST',
+                        dataType: 'JSON',
+                        url: '/Oferta/crearOfertaEspecial',
+                        data: { descuento: descuento, fechaInicio: fechaInicio, fechaFinal: fechaFinal, tipoHabitacion: tipoHabitacion },
+                        success:
+                            function (data) {
+
+
+                                var aswer = document.getElementById('answer');
+                                aswer.innerHTML = data.message;
+                                var modal = document.getElementById("myModal2");
+                                modal.style.display = "block";
+
+
+                            },
+                        error:
+                            function (response) {
+                                alert("Error: " + response);
+                            }
+                    });
+
+
+
+            }
+
+
+        }
+      
 
     }
    
