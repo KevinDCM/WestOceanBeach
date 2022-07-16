@@ -85,42 +85,11 @@ $(document).ready(function () {
                 alert("error" + xhr.status);
             }
 
-        });
 
 
 
-    $.ajax(
-        {
-            type: "POST",
-            dataType: 'JSON',
-            url: "/Oferta/ObtenerOfertasEspecialesGeneral",
-            success: function (data) {
-
-
-
-
-                $.each(data, function (key, item) {
-
-
-
-
-                    addrow3(item.id, item.descuento, item.fecha_ini, item.fecha_fin, item.tipo_habitacion);
-
-                });
-
-            },
-            error: function (xhr, statusText, err) {
-                alert("error" + xhr.status);
-            }
 
         });
-
-
-
-
-
-
-
 
     document.getElementById("loginadmin1").style.display = "none";
     document.getElementById("mytable").style.display = "none";
