@@ -536,11 +536,10 @@ function updateTemporada() {
 
             success: function (result) {
 
-                var aswer = document.getElementById('answer');
-                aswer.innerHTML = result.message;
+                var aswer = document.getElementById('answer3');
+                aswer.innerHTML = data.message;
                 var modal = document.getElementById("myModal");
                 modal.style.display = "block";
-
             },
             error:
                 function (response) {
@@ -1069,3 +1068,4 @@ function Logout(){
 	});
 
 }
+

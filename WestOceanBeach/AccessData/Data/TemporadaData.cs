@@ -54,38 +54,11 @@ namespace AccessData.Data
             return temporadas;
             
         }
-        /*
-
-        public string EditarTemporadas(Temporada temporada)
-        {
-            string salida = "No se logro editar  el apartado facilidades ";
-            sqlConnection.Open();
-            sqlCommand = new SqlCommand("SP_ACTUALIZAR_TEMPORADA", sqlConnection);
-            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-            sqlCommand.Parameters.AddWithValue("TIPO_TEMPORADA", temporada.tipo_temporada);
-            sqlCommand.Parameters.AddWithValue("FECHA_INICIO", temporada.tipo_temporada);
-            sqlCommand.Parameters.AddWithValue("FECHA_FINAL", temporada.tipo_temporada);
-  
-
-
-            int rowAfected = sqlCommand.ExecuteNonQuery();
-            if (rowAfected == 1)
-            {
-
-                salida = "Se edito el apartado de temporadas  con exito!";
-            }
-
-
-            sqlConnection.Close();
-
-            return salida;
-        }// metodo*/
-
 
         public string EditarTemporadas(Temporada temporada)
         {
             // call stored procedure here...
-            string salida = "ConfiguraciònTemporada realizada!";
+            string salida = "Configuración Temporada realizada!";
 
             sqlConnection.Open();
             sqlCommand = new SqlCommand("SP_ACTUALIZAR_TEMPORADA", sqlConnection);
