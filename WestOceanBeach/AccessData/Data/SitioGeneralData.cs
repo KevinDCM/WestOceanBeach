@@ -288,7 +288,7 @@ public SitioGeneral obtenerFacilidades()
 
                     if(admin.NombreUsuario.Equals(login.NombreUsuario) 
                         && admin.Password.Equals(login.Password) 
-                        && admin.activo)
+                        && admin.activo)    // case sensisitive
                     {
                         return "again";// ya está activo y son sus credenciales, puede ingresar de nuevo
                     }
@@ -317,7 +317,7 @@ public SitioGeneral obtenerFacilidades()
                     salida = "Si"; // inicia sesión
                     break;
                 }
-
+            
 
             }
 
